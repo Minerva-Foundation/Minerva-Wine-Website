@@ -5,25 +5,27 @@
 </template>
 
 <script lang="ts">
+import { groq } from '@nuxtjs/sanity';
 import * as defTypes from '~/assets/ts/default-types';
 import { RootState } from '~/store/index';
 
-const test: defTypes.test = {
-  name: 'Gisela',
-  height: 20,
-};
-
 export default {
+  name: 'TestFirst',
+  data: () => ({
+    sanityObj: [] as defTypes.Article[],
+  }),
+  async fetch() {
+    this.sanityObj = (await this.$sanity.fetch(
+      groq`*[_type == "post"]`
+    )) as Array<defTypes.Article>;
+  },
   computed: {
     primStore(): RootState {
       return this.$store.state;
     },
   },
-  methods: {
-    Test() {
-      console.log(test);
-    },
-  },
+  created() {},
+  methods: {},
 };
 </script>
 
