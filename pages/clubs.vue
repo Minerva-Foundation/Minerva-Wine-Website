@@ -10,12 +10,13 @@
 
 <script lang="ts">
 import { groq } from '@nuxtjs/sanity';
+import Vue from 'vue';
 import * as defTypes from '~/assets/ts/default-types';
 
-export default {
+export default Vue.extend({
   name: 'ClubsArticles',
   components: {},
-  async asyncData({ $sanity }: { $sanity: any }) {
+  async asyncData({ app: { $sanity } }) {
     const query = groq`*[_type == "post"]`;
     const articles = (await $sanity.fetch(query)) as defTypes.Article[];
     return { articles };
@@ -25,7 +26,7 @@ export default {
   mounted() {
     this.$accessor.SET_ARTICLES(this.articles);
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

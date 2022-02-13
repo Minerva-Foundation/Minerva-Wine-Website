@@ -5,24 +5,27 @@
 </template>
 
 <script lang="ts">
+import { groq } from '@nuxtjs/sanity';
+import Vue from 'vue';
 import * as defTypes from '~/assets/ts/default-types';
 import portableImage from '~/components/portableImage.vue';
 
-export default {
+export default Vue.extend({
+  async asyncData({ app: { $sanity }, route }) {
+    const query = groq`*[_type == "post" && slug.current == "${route.params.articleFocused}"]`;
+    const currentArticle = (
+      (await $sanity.fetch(query)) as defTypes.Article[]
+    )[0];
+    return { currentArticle };
+  },
   data: () => ({
-    currentArticle: {} as defTypes.Article,
     serializers: {
       types: {
         image: portableImage,
       },
     },
   }),
-  mounted() {
-    this.currentArticle = this.$accessor.articleBySlug(
-      this.$route.params.articleFocused
-    );
-  },
-};
+});
 </script>
 
 <style lang="scss" scoped>
