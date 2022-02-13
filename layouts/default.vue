@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-    <h1 class="mainTitle">HELLO WORLD</h1>
+    <nav class="mainNav">
+      <NuxtLink to="/"> Home </NuxtLink>
+      <NuxtLink to="/clubs"> Clubs </NuxtLink>
+    </nav>
     <Nuxt />
   </div>
 </template>

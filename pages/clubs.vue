@@ -1,17 +1,16 @@
 <template>
-  <div class="wrapper">
-    <article v-for="article in articles" :key="article._id">
-      {{ article.title }}
-      <SanityContent :blocks="article.body" :serializers="serializers" />
-    </article>
-  </div>
+  <ul class="wrapper">
+    <li v-for="article in articles" :key="article._id">
+      <NuxtLink :to="`${article.slug.current}`">
+        {{ article.title }}
+      </NuxtLink>
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
 import { groq } from '@nuxtjs/sanity';
-import * as defTypes from '../assets/ts/default-types';
-import portableImage from '../components/portableImage.vue';
-import { RootState } from '~/store/index';
+import * as defTypes from '~/assets/ts/default-types';
 
 export default {
   name: 'ClubsArticles',
@@ -21,15 +20,13 @@ export default {
     const articles = (await $sanity.fetch(query)) as defTypes.Article[];
     return { articles };
   },
-  data: () => ({
-    serializers: {
-      types: {
-        image: portableImage,
-      },
-    },
-  }),
+  data: () => ({}),
+  computed: {},
+  mounted() {
+    this.$accessor.SET_ARTICLES(this.articles);
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>
