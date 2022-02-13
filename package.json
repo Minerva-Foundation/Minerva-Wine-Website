@@ -1,5 +1,5 @@
 {
-  "name": "TechTestNuxt",
+  "name": "test",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,9 +14,12 @@
   },
   "dependencies": {
     "@nuxtjs/sanity": "^0.10.0",
+    "@nuxtjs/style-resources": "^1.2.1",
     "@sanity/client": "^3.0.6",
+    "@sanity/image-url": "^1.0.1",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
+    "sanity-blocks-vue-component": "^1.0.0",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
@@ -28,7 +31,6 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
-    "@nuxtjs/style-resources": "^1.2.1",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",

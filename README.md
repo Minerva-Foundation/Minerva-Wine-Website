@@ -1,4 +1,4 @@
-# TechTestNuxt
+# test
 
 ## Build Setup
 
