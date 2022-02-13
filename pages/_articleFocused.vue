@@ -8,8 +8,8 @@
 import { groq } from '@nuxtjs/sanity';
 import Vue from 'vue';
 import * as defTypes from '~/assets/ts/default-types';
-import portableImage from '~/components/portableImage.vue';
-import portableH1 from '~/components/portableH1.vue';
+import portableImage from '~/components/portableTextComps/portableImage.vue';
+import portableH1 from '~/components/portableTextComps/portableH1.vue';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity }, route }) {
