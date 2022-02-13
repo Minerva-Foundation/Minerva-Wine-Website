@@ -4,8 +4,9 @@
 
 <script>
 import imageUrlBuilder from '@sanity/image-url';
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
   props: {
     asset: {
       type: Object,
@@ -18,5 +19,5 @@ export default {
       return builder.image(src);
     },
   },
-};
+});
 </script>
