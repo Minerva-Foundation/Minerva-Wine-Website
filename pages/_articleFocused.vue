@@ -9,6 +9,7 @@ import { groq } from '@nuxtjs/sanity';
 import Vue from 'vue';
 import * as defTypes from '~/assets/ts/default-types';
 import portableImage from '~/components/portableImage.vue';
+import portableH1 from '~/components/portableH1.vue';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity }, route }) {
@@ -24,7 +25,7 @@ export default Vue.extend({
         image: portableImage,
       },
       marks: {
-        link: 'a target="_blank"',
+        link: portableH1,
       },
     },
   }),
