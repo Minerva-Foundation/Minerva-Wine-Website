@@ -23,6 +23,9 @@ export default Vue.extend({
       types: {
         image: portableImage,
       },
+      marks: {
+        link: 'a target="_blank"',
+      },
     },
   }),
 });

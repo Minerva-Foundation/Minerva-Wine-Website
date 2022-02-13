@@ -21,9 +21,9 @@ export default Vue.extend({
     const articles = (await $sanity.fetch(query)) as defTypes.Article[];
     return { articles };
   },
-  // mounted() {
-  //   this.$accessor.SET_ARTICLES(this.articles);
-  // },
+  mounted() {
+    this.$accessor.SET_ARTICLES(this.articles);
+  },
 });
 </script>
 
