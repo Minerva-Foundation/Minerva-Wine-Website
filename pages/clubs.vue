@@ -17,15 +17,13 @@ export default Vue.extend({
   name: 'ClubsArticles',
   components: {},
   async asyncData({ app: { $sanity } }) {
-    const query = groq`*[_type == "post"]`;
+    const query = groq`*[_type == "post"]{_createdAt, author, categories, slug, title}`;
     const articles = (await $sanity.fetch(query)) as defTypes.Article[];
     return { articles };
   },
-  data: () => ({}),
-  computed: {},
-  mounted() {
-    this.$accessor.SET_ARTICLES(this.articles);
-  },
+  // mounted() {
+  //   this.$accessor.SET_ARTICLES(this.articles);
+  // },
 });
 </script>
 
