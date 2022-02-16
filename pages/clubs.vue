@@ -9,16 +9,15 @@
 </template>
 
 <script lang="ts">
-import { groq } from '@nuxtjs/sanity';
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/default-types';
+import * as defTypes from '~/assets/ts/defaultTypes';
+import { getBaseArticleInfo } from '~/assets/ts/apiFuctions';
 
 export default Vue.extend({
   name: 'ClubsArticles',
   components: {},
   async asyncData({ app: { $sanity } }) {
-    const query = groq`*[_type == "post"]{_createdAt, author, categories, slug, title }`;
-    const articles = (await $sanity.fetch(query)) as defTypes.Article[];
+    const articles: defTypes.Article[] = await getBaseArticleInfo($sanity);
     return { articles };
   },
   data: () => ({

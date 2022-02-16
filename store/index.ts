@@ -1,6 +1,6 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { getAccessorType } from 'typed-vuex'
-import * as defTypes from '../assets/ts/default-types'
+import * as defTypes from '../assets/ts/defaultTypes'
 
 export const state = () => ({
   articles: [] as defTypes.Article[],

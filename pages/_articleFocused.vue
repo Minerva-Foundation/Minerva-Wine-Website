@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { groq } from '@nuxtjs/sanity';
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/default-types';
+import * as defTypes from '~/assets/ts/defaultTypes';
+import { getArticleBySlug } from '~/assets/ts/apiFuctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableH1 from '~/components/portableTextComps/portableH1.vue';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity }, route }) {
-    const query = groq`*[_type == "post" && slug.current == "${route.params.articleFocused}"]`;
-    const currentArticle = (
-      (await $sanity.fetch(query)) as defTypes.Article[]
-    )[0];
+    const currentArticle: defTypes.Article = await getArticleBySlug(
+      route.params.articleFocused,
+      $sanity
+    );
     return { currentArticle };
   },
   data: () => ({
