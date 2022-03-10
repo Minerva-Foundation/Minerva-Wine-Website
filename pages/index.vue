@@ -24,11 +24,24 @@ export default {};
   width: 600px;
 }
 .slide1 {
-  background: linear-gradient(
-    78.98deg,
-    rgba(0, 0, 0, 0.5) 0.33%,
-    rgba(196, 196, 196, 0) 88.83%
-  );
+  background: $main;
+  background-image: url('~static/images/vines.png'); /* fallback */
+  background-image: linear-gradient(
+      78.98deg,
+      rgba(0, 0, 0, 0.5) 0.33%,
+      rgba(196, 196, 196, 0) 88.83%
+    ),
+    url('~static/images/vines.png');
+
+  background-size: contain;
+  background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
+  position: relative;
+
+  .sectionContent {
+    position: absolute;
+    left: 10vw;
+    top: 20vh;
+  }
 }
 </style>

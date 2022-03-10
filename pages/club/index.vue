@@ -1,7 +1,7 @@
 <template>
   <ul class="wrapper">
     <li v-for="article in articles" :key="article._id">
-      <NuxtLink :to="`${article.slug.current}`">
+      <NuxtLink :to="`/club/${article.slug.current}`">
         {{ article.title }}
       </NuxtLink>
     </li>

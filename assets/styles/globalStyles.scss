@@ -12,20 +12,24 @@
   color: $main-font;
 }
 
-a.nuxt-link-exact-active {
+.mainNav .nuxt-link-active {
   position: relative;
-}
-a.nuxt-link-exact-active:after {
-  content: '';
-  background: $secondary;
-  position: absolute;
-  bottom: -2px;
-  right: 0;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height: 2px;
+
+  &::before {
+    content: '';
+    background: $secondary;
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 2px;
+  }
+  &.homeMain::before {
+    content: none;
+  }
 }
 
 a {

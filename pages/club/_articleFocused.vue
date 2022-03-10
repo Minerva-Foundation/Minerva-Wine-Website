@@ -12,6 +12,7 @@ import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 
 export default Vue.extend({
+  name: 'FocusedArticle',
   async asyncData({ app: { $sanity }, route }) {
     const currentArticle: defTypes.Article = await getArticleBySlug(
       route.params.articleFocused,

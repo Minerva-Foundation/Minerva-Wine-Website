@@ -1,7 +1,23 @@
 <template>
   <nav class="mainNav">
-    <NuxtLink to="/"> Home </NuxtLink>
-    <NuxtLink to="/club"> Club </NuxtLink>
+    <NuxtLink class="homeMain" to="/">
+      <div class="home">
+        <img src="~static/images/torch.svg" alt="Homepage" class="torch" />
+        <img
+          src="~static/images/minervaText.svg"
+          alt="Homepage"
+          class="homeText"
+        />
+      </div>
+    </NuxtLink>
+    <ul class="mainLinks">
+      <li><NuxtLink to="/wine">Wine</NuxtLink></li>
+      <li><NuxtLink to="/club">Club</NuxtLink></li>
+      <li><NuxtLink to="/advanced">Advanced</NuxtLink></li>
+    </ul>
+    <div class="btnWrapper">
+      <!-- <input type="button" value="CONNECT WALLET" /> -->
+    </div>
   </nav>
 </template>
 
@@ -17,5 +33,49 @@ export default Vue.extend({
 .mainNav {
   height: $header-height;
   color: $main;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+
+    .homeText {
+      height: 30px;
+    }
+  }
+
+  .btnWrapper {
+    width: 220px;
+  }
+
+  .mainLinks {
+    height: 40px;
+    display: flex;
+    font-size: 1.2em;
+    transform: scale(1, 1.3);
+    -webkit-transform: scale(1, 1.3); /* Safari and Chrome */
+    -moz-transform: scale(1, 1.3); /* Firefox */
+    -ms-transform: scale(1, 1.3); /* IE 9+ */
+    -o-transform: scale(1, 1.3); /* Opera */
+  }
+
+  .mainLinks *::after {
+    content: '   ·   ';
+    white-space: pre;
+    color: $main-font;
+    font-size: 27px;
+  }
+
+  .mainLinks :last-child::after {
+    content: '';
+    white-space: pre;
+    color: $main-font;
+    font-size: 30px;
+  }
 }
 </style>
