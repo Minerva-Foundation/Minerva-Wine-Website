@@ -9,7 +9,7 @@ import Vue from 'vue';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getArticleBySlug } from '~/assets/ts/apiFuctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
-import portableH1 from '~/components/portableTextComps/portableH1.vue';
+import portableLink from '~/components/portableTextComps/portableLink.vue';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity }, route }) {
@@ -25,7 +25,7 @@ export default Vue.extend({
         image: portableImage,
       },
       marks: {
-        link: portableH1,
+        link: portableLink,
       },
     },
   }),
