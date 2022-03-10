@@ -1,7 +1,7 @@
 @import './vars.scss';
 
 * {
-  font-family: sans-serif;
+  font-family: Helvetica;
   scroll-behavior: smooth;
   margin: 0px;
 }
@@ -9,6 +9,26 @@
 .app {
   background-color: $prim-color;
   min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Roslindale';
+  color: $main-font;
+  font-size: 6.47em;
+  font-weight: lighter;
+}
+
+h2 {
+  font-family: 'Sabiya-Regular';
+  color: $cursive-big;
+  font-size: 6.7em;
+  font-weight: normal;
+  margin-bottom: -30px;
+}
+
+p {
+  color: $main-font;
+  font-size: 1.37em;
 }
 
 .button {
