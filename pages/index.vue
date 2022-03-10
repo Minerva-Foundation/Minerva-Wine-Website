@@ -1,17 +1,19 @@
 <template>
   <main class="wrapper cursiveBig">
     <section class="slide1">
-      <h2>Welcome to</h2>
-      <h1>A new era of wine.</h1>
-      <p class="intro">
-        Minerva is an international community who are passionate about wine. We
-        work with select producers from across the world who have unique stories
-        to tell and whose dedication to the art of winemaking set them apart in
-        the wine industry.
-      </p>
+      <article class="sectionContent">
+        <h2>Welcome to</h2>
+        <h1>A new era of wine.</h1>
+        <p class="intro">
+          Minerva is an international community who are passionate about wine.
+          We work with select producers from across the world who have unique
+          stories to tell and whose dedication to the art of winemaking set them
+          apart in the wine industry.
+        </p>
+      </article>
     </section>
   </main>
-</template>
+</template>/* Rectangle 32 */
 
 <script>
 export default {};
@@ -20,5 +22,13 @@ export default {};
 <style lang="scss" scoped>
 .intro {
   width: 600px;
+}
+.slide1 {
+  background: linear-gradient(
+    78.98deg,
+    rgba(0, 0, 0, 0.5) 0.33%,
+    rgba(196, 196, 196, 0) 88.83%
+  );
+  height: calc(100vh - #{$header-height});
 }
 </style>

@@ -7,8 +7,31 @@
 }
 
 .app {
-  background-color: $prim-color;
+  background-color: $main;
   min-height: 100vh;
+  color: $main-font;
+}
+
+a.nuxt-link-exact-active {
+  position: relative;
+}
+a.nuxt-link-exact-active:after {
+  content: '';
+  background: $secondary;
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: $main-font;
+  font-family: 'Roslindale';
 }
 
 h1 {
@@ -20,7 +43,7 @@ h1 {
 
 h2 {
   font-family: 'Sabiya-Regular';
-  color: $cursive-big;
+  color: $secondary;
   font-size: 6.7em;
   font-weight: normal;
   margin-bottom: -30px;
