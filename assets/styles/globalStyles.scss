@@ -11,7 +11,7 @@
   min-height: 100vh;
 }
 
-.mainNav .nuxt-link-active {
+.underline {
   position: relative;
 
   &::before {
@@ -26,6 +26,26 @@
     width: 50%;
     height: 2px;
   }
+}
+
+.linkHover {
+  @extend .underline;
+
+  &:before {
+    width: 0%;
+  }
+
+  &:hover {
+    &:before {
+      transition: width ease 0.2s;
+      width: 50%;
+    }
+  }
+}
+
+.mainNav .nuxt-link-active {
+  @extend .underline;
+
   &.homeMain::before {
     content: none;
   }
@@ -33,7 +53,6 @@
 
 a {
   text-decoration: none;
-  font-family: 'Roslindale';
 }
 
 .rosStretch {
@@ -46,13 +65,13 @@ a {
   color: $bright-font;
 }
 
-h1 {
+.customh1 {
   @extend .rosStretch;
   font-size: 6.47em;
   font-weight: normal;
 }
 
-h2 {
+.customh2 {
   font-family: 'Sabiya-Regular';
   color: $secondary;
   font-size: 6.7em;
@@ -61,23 +80,89 @@ h2 {
 }
 
 p {
-  color: $bright-font;
+  color: inherit;
   font-size: 1.37em;
 }
 
 .button {
   display: inline-block;
+  height: $btn-height;
+  letter-spacing: 0.06em;
   text-decoration: none;
-  padding: 16px 20px 20px 20px;
+  padding: 15px 20px 15px 20px;
   line-height: 0.8;
-  height: 63px;
   background-color: $secondary;
-  font-size: 1.2em;
-  border: none;
+  font-size: 1em;
   color: $bright-font;
+  border: none;
   border-radius: 7px;
-  cursor: default;
-  transition: 0.3s ease all;
+  cursor: pointer;
+  transition: 0.2s ease all;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  min-width: 198px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $secondary;
+    border-radius: 7px;
+    z-index: -2;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: lighten($secondary, 3%);
+    transition: all 0.2s;
+    border-radius: 0px;
+    z-index: -1;
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    &:before {
+      background-color: $secondary;
+    }
+  }
+}
+
+.buttonLight {
+  @extend .button;
+  background-color: transparent;
+  border: $secondary 2.5px solid;
+  color: $bright-font;
+
+  &:after {
+    content: none;
+  }
+
+  &:before {
+    content: none;
+  }
+
+  &:hover {
+    background-color: $secondary;
+  }
+
+  &:active {
+    background-color: transparent;
+    transition: 0s all;
+  }
 }
 
 .smaller {

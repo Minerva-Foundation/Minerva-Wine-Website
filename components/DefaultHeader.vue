@@ -11,9 +11,9 @@
       </div>
     </NuxtLink>
     <ul class="mainLinks rosStretch">
-      <li><NuxtLink to="/wine">Wine</NuxtLink></li>
-      <li><NuxtLink to="/club">Club</NuxtLink></li>
-      <li><NuxtLink to="/advanced">Advanced</NuxtLink></li>
+      <li><NuxtLink to="/wine" class="linkHover">Wine</NuxtLink></li>
+      <li><NuxtLink to="/club" class="linkHover">Club</NuxtLink></li>
+      <li><NuxtLink to="/advanced" class="linkHover">Advanced</NuxtLink></li>
     </ul>
     <div class="btnWrapper">
       <InputsConnectWallet />
@@ -61,6 +61,7 @@ export default Vue.extend({
     list-style: none;
     li a {
       color: $bright-font;
+      font-family: 'Roslindale';
     }
   }
 
