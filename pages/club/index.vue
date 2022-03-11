@@ -23,6 +23,11 @@ export default Vue.extend({
   data: () => ({
     articles: [] as defTypes.Article[],
   }),
+  head() {
+    return {
+      title: 'Minerva Club',
+    };
+  },
   mounted() {
     this.$accessor.SET_ARTICLES(this.articles);
   },

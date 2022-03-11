@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'TestNuxt',
+    title: 'Minerva',
     htmlAttrs: {
       lang: 'en',
     },

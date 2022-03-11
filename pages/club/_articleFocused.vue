@@ -29,7 +29,13 @@ export default Vue.extend({
         link: portableLink,
       },
     },
+    currentArticle: {} as defTypes.Article,
   }),
+  head() {
+    return {
+      title: this.currentArticle.title,
+    };
+  },
 });
 </script>
 
