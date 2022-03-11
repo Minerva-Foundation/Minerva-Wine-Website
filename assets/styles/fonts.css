@@ -1,36 +1,41 @@
 @font-face {
-    font-family: "Sabiya-Regular";
-    src: url('~static/fonts/Sabiya/font.woff2') format('woff2'), url('~static/fonts/Sabiya/font.woff') format('woff');
+  font-family: 'Sabiya-Regular';
+  src: url('~static/fonts/Sabiya/font.woff2') format('woff2'),
+    url('~static/fonts/Sabiya/font.woff') format('woff');
 }
 
 @font-face {
-    src: url('~static/fonts/Roslindale/Roslindale-TextRegular.woff2') format("woff2"),
-            url('~static/fonts/Roslindale/Roslindale-TextRegular.woff') format("woff");
-    font-family: 'Roslindale';
-    font-style: normal;
-    font-weight: normal;
+  src: url('~static/fonts/Roslindale/Roslindale-TextRegular.woff2')
+      format('woff2'),
+    url('~static/fonts/Roslindale/Roslindale-TextRegular.woff') format('woff');
+  font-family: 'Roslindale';
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
-    src: url('~static/fonts/Roslindale/Roslindale-TextItalic.woff2') format("woff2"),
-            url('~static/fonts/Roslindale/Roslindale-TextItalic.woff') format("woff");
-    font-family: 'Roslindale';
-    font-style: italic;
-    font-weight: normal;
+  src: url('~static/fonts/Roslindale/Roslindale-TextItalic.woff2')
+      format('woff2'),
+    url('~static/fonts/Roslindale/Roslindale-TextItalic.woff') format('woff');
+  font-family: 'Roslindale';
+  font-style: italic;
+  font-weight: normal;
 }
 
 @font-face {
-    src: url('~static/fonts/Roslindale/Roslindale-TextBold.woff2') format("woff2"),
-            url('~static/fonts/Roslindale/Roslindale-TextBold.woff') format("woff");
-    font-family: 'Roslindale';
-    font-style: normal;
-    font-weight: bold;
+  src: url('~static/fonts/Roslindale/Roslindale-TextBold.woff2') format('woff2'),
+    url('~static/fonts/Roslindale/Roslindale-TextBold.woff') format('woff');
+  font-family: 'Roslindale';
+  font-style: normal;
+  font-weight: bold;
 }
 
 @font-face {
-    src: url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff2') format("woff2"),
-            url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff') format("woff");
-    font-family: 'Roslindale';
-    font-style: italic;
-    font-weight: normal;
+  src: url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff2')
+      format('woff2'),
+    url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff')
+      format('woff');
+  font-family: 'Roslindale';
+  font-style: italic;
+  font-weight: normal;
 }

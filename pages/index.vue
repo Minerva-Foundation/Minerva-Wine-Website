@@ -10,10 +10,11 @@
           stories to tell and whose dedication to the art of winemaking set them
           apart in the wine industry.
         </p>
+        <InputsConnectWallet />
       </article>
     </section>
   </main>
-</template>/* Rectangle 32 */
+</template>
 
 <script>
 export default {};
@@ -25,15 +26,15 @@ export default {};
 }
 .slide1 {
   background: $main;
-  background-image: url('~static/images/vines.png'); /* fallback */
+  background-image: url('~static/images/vines_cropped.png'); /* fallback */
   background-image: linear-gradient(
       78.98deg,
       rgba(0, 0, 0, 0.5) 0.33%,
       rgba(196, 196, 196, 0) 88.83%
     ),
-    url('~static/images/vines.png');
-
-  background-size: contain;
+    url('~static/images/vines_cropped.png');
+  background-position: center bottom;
+  background-size: cover;
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
   position: relative;
@@ -41,7 +42,13 @@ export default {};
   .sectionContent {
     position: absolute;
     left: 10vw;
-    top: 20vh;
+    top: 30vh;
+  }
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 22px;
+    line-height: 33.5px;
   }
 }
 </style>

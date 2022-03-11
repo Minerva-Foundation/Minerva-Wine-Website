@@ -10,13 +10,13 @@
         />
       </div>
     </NuxtLink>
-    <ul class="mainLinks">
+    <ul class="mainLinks rosStretch">
       <li><NuxtLink to="/wine">Wine</NuxtLink></li>
       <li><NuxtLink to="/club">Club</NuxtLink></li>
       <li><NuxtLink to="/advanced">Advanced</NuxtLink></li>
     </ul>
     <div class="btnWrapper">
-      <!-- <input type="button" value="CONNECT WALLET" /> -->
+      <InputsConnectWallet />
     </div>
   </nav>
 </template>
@@ -36,7 +36,7 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 40px 0px 40px;
 
   .home {
     display: flex;
@@ -57,11 +57,7 @@ export default Vue.extend({
     height: 40px;
     display: flex;
     font-size: 1.2em;
-    transform: scale(1, 1.3);
-    -webkit-transform: scale(1, 1.3); /* Safari and Chrome */
-    -moz-transform: scale(1, 1.3); /* Firefox */
-    -ms-transform: scale(1, 1.3); /* IE 9+ */
-    -o-transform: scale(1, 1.3); /* Opera */
+    list-style: none;
   }
 
   .mainLinks *::after {
