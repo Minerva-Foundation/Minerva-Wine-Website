@@ -4,12 +4,11 @@
   font-family: Helvetica;
   scroll-behavior: smooth;
   margin: 0px;
+  color: $dark-font;
 }
 
 .app {
-  background-color: $main;
   min-height: 100vh;
-  color: $main-font;
 }
 
 .mainNav .nuxt-link-active {
@@ -34,7 +33,6 @@
 
 a {
   text-decoration: none;
-  color: $main-font;
   font-family: 'Roslindale';
 }
 
@@ -45,7 +43,7 @@ a {
   -ms-transform: scale(1, 1.4); /* IE 9+ */
   -o-transform: scale(1, 1.4); /* Opera */
   font-family: 'Roslindale';
-  color: $main-font;
+  color: $bright-font;
 }
 
 h1 {
@@ -63,7 +61,7 @@ h2 {
 }
 
 p {
-  color: $main-font;
+  color: $bright-font;
   font-size: 1.37em;
 }
 
@@ -76,7 +74,7 @@ p {
   background-color: $secondary;
   font-size: 1.2em;
   border: none;
-  color: $main-font;
+  color: $bright-font;
   border-radius: 7px;
   cursor: default;
   transition: 0.3s ease all;
@@ -84,4 +82,5 @@ p {
 
 .smaller {
   font-size: 0.8em;
+  color: inherit;
 }

@@ -28,9 +28,9 @@ export default Vue.extend({
       title: 'Minerva Club',
     };
   },
-  mounted() {
-    this.$accessor.SET_ARTICLES(this.articles);
-  },
+  // mounted() {
+  //   this.$accessor.SET_ARTICLES(this.articles);
+  // },
 });
 </script>
 

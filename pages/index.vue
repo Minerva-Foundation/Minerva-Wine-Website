@@ -2,8 +2,8 @@
   <main class="wrapper cursiveBig">
     <section class="slide1">
       <article class="sectionContent">
-        <h2>Welcome to</h2>
-        <h1>A new era of wine.</h1>
+        <h2 class="customh2">Welcome to</h2>
+        <h1 class="customh1">A new era of wine.</h1>
         <p class="intro">
           Minerva is an international community who are passionate about wine.
           We work with select producers from across the world who have unique
@@ -21,9 +21,14 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  color: $bright-font;
+}
+
 .intro {
   width: 600px;
 }
+
 .slide1 {
   background: $main;
   background-image: url('~static/images/vines_cropped.png'); /* fallback */

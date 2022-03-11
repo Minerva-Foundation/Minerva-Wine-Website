@@ -32,7 +32,8 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .mainNav {
   height: $header-height;
-  color: $main;
+  color: $bright-font;
+  background-color: $main;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,19 +59,22 @@ export default Vue.extend({
     display: flex;
     font-size: 1.2em;
     list-style: none;
+    li a {
+      color: $bright-font;
+    }
   }
 
   .mainLinks *::after {
     content: '   ·   ';
     white-space: pre;
-    color: $main-font;
+    color: $bright-font;
     font-size: 27px;
   }
 
   .mainLinks :last-child::after {
     content: '';
     white-space: pre;
-    color: $main-font;
+    color: $bright-font;
     font-size: 30px;
   }
 }
