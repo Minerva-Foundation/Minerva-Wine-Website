@@ -11,6 +11,16 @@
   min-height: 100vh;
 }
 
+img {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .underline {
   position: relative;
 
@@ -72,6 +82,16 @@ a {
   font-size: 6.7rem;
   font-weight: normal;
   margin-bottom: -10px;
+}
+
+.customh3 {
+  @extend .customh1;
+  font-size: 3.75rem;
+}
+
+.customh4 {
+  @extend .customh2;
+  font-size: 4rem;
 }
 
 p {

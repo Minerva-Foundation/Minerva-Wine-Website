@@ -76,8 +76,47 @@
           real-world experiences and other exclusive materials for the
           privilege.
         </p>
-        <button class="button">FIND YOUR WINE</button>
+        <button class="button">EXPLORE THE CLUB</button>
       </article>
+      <img
+        src="~static/images/wine_barrels.png"
+        alt="Wine Barrels"
+        class="barrels"
+      />
+    </section>
+    <section class="slide5">
+      <article class="sectionContent">
+        <h2 class="customh2">Learn</h2>
+        <h1 class="customh1">How It Works</h1>
+        <CollapsibleGuide
+          iteration="Stage 01"
+          header="Select your wine."
+          main-text="Browse through the selection of fine wine listed. Once you have selected your wine of choice, you will be able to purchase using your blockchain wallet. The Minerva community funds new vintages and bespoke wines, with discounts offered for the early stage of purchase. Be sure to note the delivery guidance and take note of the producer’s delivery date."
+          :first="true"
+        />
+        <CollapsibleGuide
+          iteration="Stage 02"
+          header="View your wine online."
+          main-text="Once you have purchased your wine you will be able to see it on ‘My Wines’. Each purchase is accompanied by a unique piece of artwork which are in themselves a desirable asset. At this point, you will be able to access exclusive material in ‘Minerva Club’; this includes a space where you can discuss with the producer directly."
+        />
+        <CollapsibleGuide
+          iteration="Stage 03"
+          header="Wait & appreciate."
+          main-text="Minerva sells wine as it enters production, meaning that customers can see their bottle progress from the vine onwards. As your wine matures, you can enjoy Minerva Club material, display your wine and artwork proudly in a number of different ways online, and enjoy access to additional opportunities through your purchase. You can claim yield earned with your sale funds periodically or wait to let it compound."
+          secondary-text="If you desire, you would also be able to sell your blockchain receipt online. This passes ownership of the wine to other individuals. In that regard, your NFT receipt can be viewed as a tradable asset."
+        />
+        <CollapsibleGuide
+          iteration="Stage 04"
+          header="Receive your wine."
+          main-text="Once your wine has matured in production, the winemaker will deliver directly to all addresses holding the NFT receipt at the specified delivery time. There will still be a record of your purchase and you will retain the unique artwork in your blockchain wallet. "
+          secondary-text=" After delivery, all unclaimed yield earned during this time period will be ready to be withdrawn or to lead to greater discounts on your next Minerva purchase."
+        />
+      </article>
+      <img
+        src="~static/images/wine_barrels.png"
+        alt="Wine Barrels"
+        class="barrels"
+      />
     </section>
   </main>
 </template>
@@ -101,6 +140,14 @@ p {
 
 .sectionContent {
   color: $bright-font;
+
+  * {
+    z-index: 1;
+  }
+}
+
+.barrels {
+  z-index: 0;
 }
 
 .slide1 {
@@ -161,10 +208,6 @@ p {
     align-items: center;
     height: 900px;
 
-    & * {
-      z-index: 1;
-    }
-
     .pwrapper {
       margin-top: 30px;
       max-width: min(70vw, 1200px);
@@ -220,15 +263,47 @@ p {
 
 .slide4 {
   position: relative;
+  height: 100vh;
 
   .sectionContent {
-    margin-left: 10%;
-    margin-top: 306px;
-    padding-bottom: 200px;
+    position: absolute;
+    left: 10%;
+    top: 24%;
 
     p {
-      max-width: 900px;
+      max-width: 700px;
     }
+  }
+
+  .barrels {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 45%;
+  }
+}
+
+.slide5 {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  .sectionContent {
+    width: 60%;
+    padding-bottom: 200px;
+  }
+
+  .barrels {
+    position: absolute;
+    top: -230px;
+    left: 20px;
+    width: 45%;
   }
 }
 </style>
