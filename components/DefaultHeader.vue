@@ -57,7 +57,7 @@ export default Vue.extend({
   .mainLinks {
     height: 40px;
     display: flex;
-    font-size: 1.2em;
+    font-size: 1.474em;
     list-style: none;
     li a {
       color: $bright-font;

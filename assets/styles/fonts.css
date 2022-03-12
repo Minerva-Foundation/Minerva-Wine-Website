@@ -5,37 +5,11 @@
 }
 
 @font-face {
-  src: url('~static/fonts/Roslindale/Roslindale-TextRegular.woff2')
+  src: url('~static/fonts/Roslindale/Roslindale-DisplayCondensedLight.woff2')
       format('woff2'),
-    url('~static/fonts/Roslindale/Roslindale-TextRegular.woff') format('woff');
-  font-family: 'Roslindale';
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  src: url('~static/fonts/Roslindale/Roslindale-TextItalic.woff2')
-      format('woff2'),
-    url('~static/fonts/Roslindale/Roslindale-TextItalic.woff') format('woff');
-  font-family: 'Roslindale';
-  font-style: italic;
-  font-weight: normal;
-}
-
-@font-face {
-  src: url('~static/fonts/Roslindale/Roslindale-TextBold.woff2') format('woff2'),
-    url('~static/fonts/Roslindale/Roslindale-TextBold.woff') format('woff');
-  font-family: 'Roslindale';
-  font-style: normal;
-  font-weight: bold;
-}
-
-@font-face {
-  src: url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff2')
-      format('woff2'),
-    url('~static/fonts/Roslindale/Roslindale-TextBoldItalic.woff')
+    url('~static/fonts/Roslindale/Roslindale-DisplayCondensedLight.woff')
       format('woff');
   font-family: 'Roslindale';
-  font-style: italic;
-  font-weight: normal;
+  font-style: normal;
+  font-weight: 300;
 }

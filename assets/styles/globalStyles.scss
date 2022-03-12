@@ -56,43 +56,38 @@ a {
 }
 
 .rosStretch {
-  transform: scale(1, 1.4);
-  -webkit-transform: scale(1, 1.4); /* Safari and Chrome */
-  -moz-transform: scale(1, 1.4); /* Firefox */
-  -ms-transform: scale(1, 1.4); /* IE 9+ */
-  -o-transform: scale(1, 1.4); /* Opera */
   font-family: 'Roslindale';
   color: $bright-font;
 }
 
 .customh1 {
   @extend .rosStretch;
-  font-size: 6.47em;
+  font-size: 7.6em;
   font-weight: normal;
 }
 
 .customh2 {
   font-family: 'Sabiya-Regular';
   color: $secondary;
-  font-size: 6.7em;
+  font-size: 6.7rem;
   font-weight: normal;
   margin-bottom: -10px;
 }
 
 p {
   color: inherit;
-  font-size: 1.37em;
+  font-size: 1.37rem;
 }
 
 .button {
   display: inline-block;
   height: $btn-height;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.06rem;
   text-decoration: none;
   padding: 15px 20px 15px 20px;
   line-height: 0.8;
   background-color: $secondary;
-  font-size: 1em;
+  font-size: 1rem;
   color: $bright-font;
   border: none;
   border-radius: 7px;
