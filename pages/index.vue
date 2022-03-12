@@ -163,8 +163,7 @@ p {
 }
 
 .slide1 {
-  background-image: url('~static/images/vines_cropped.webp'),
-    url('~static/images/vines_cropped.jpg'); /* fallback */
+  background-image: url('~static/images/vines_cropped.webp'); /* fallback */
   background-image: linear-gradient(
       78.98deg,
       rgba(0, 0, 0, 0.5) 0.33%,
@@ -245,8 +244,7 @@ p {
 }
 
 .slide3 {
-  background-image: url('~static/images/white_wine.webp'),
-    url('~static/images/white_wine.jpg');
+  background-image: url('~static/images/white_wine.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;
