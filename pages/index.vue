@@ -80,12 +80,12 @@
       </article>
       <div class="imgwrapper">
         <img
-          src="~static/images/wine_shelf.jpg"
+          src="~static/images/wine_shelf.webp"
           alt="Wine shelf"
           class="backimg"
         />
         <img
-          src="~static/images/wine_clink.jpg"
+          src="~static/images/wine_clink.webp"
           alt="Wine glasses clinking"
           class="frontimg"
         />
@@ -163,13 +163,13 @@ p {
 }
 
 .slide1 {
-  background-image: url('~static/images/vines_cropped.jpg'); /* fallback */
+  background-image: url('~static/images/vines_cropped.webp'); /* fallback */
   background-image: linear-gradient(
       78.98deg,
       rgba(0, 0, 0, 0.5) 0.33%,
       rgba(196, 196, 196, 0) 88.83%
     ),
-    url('~static/images/vines_cropped.jpg');
+    url('~static/images/vines_cropped.webp');
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -244,7 +244,7 @@ p {
 }
 
 .slide3 {
-  background-image: url('~static/images/white_wine.jpg');
+  background-image: url('~static/images/white_wine.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;
