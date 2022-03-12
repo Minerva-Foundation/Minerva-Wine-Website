@@ -2,6 +2,7 @@
   font-family: 'Sabiya-Regular';
   src: url('~static/fonts/Sabiya/font.woff2') format('woff2'),
     url('~static/fonts/Sabiya/font.woff') format('woff');
+  font-display: fallback;
 }
 
 @font-face {
@@ -12,4 +13,5 @@
   font-family: 'Roslindale';
   font-style: normal;
   font-weight: 300;
+  font-display: fallback;
 }
