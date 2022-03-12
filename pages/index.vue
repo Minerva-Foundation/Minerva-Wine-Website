@@ -192,7 +192,8 @@ p {
   background-image: url('~static/images/white_wine.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: calc(100vh - #{$header-height});
+  background-position: center left;
+  height: calc(100vh - 100px);
   position: relative;
   max-height: 2000px;
 
