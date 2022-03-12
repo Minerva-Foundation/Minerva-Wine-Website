@@ -78,6 +78,18 @@
         </p>
         <button class="button">EXPLORE THE CLUB</button>
       </article>
+      <div class="imgwrapper">
+        <img
+          src="~static/images/wine_shelf.jpg"
+          alt="Wine shelf"
+          class="backimg"
+        />
+        <img
+          src="~static/images/wine_clink.jpg"
+          alt="Wine glasses clinking"
+          class="frontimg"
+        />
+      </div>
       <img
         src="~static/images/wine_barrels.png"
         alt="Wine Barrels"
@@ -264,21 +276,59 @@ p {
 .slide4 {
   position: relative;
   height: 100vh;
+  min-height: 1000px;
 
   .sectionContent {
     position: absolute;
     left: 10%;
-    top: 24%;
+    top: 30%;
 
     p {
       max-width: 700px;
     }
   }
 
+  .imgwrapper {
+    position: absolute;
+    right: 5%;
+    top: calc(50% - 10vw);
+    width: 37vw;
+    height: 40vw;
+    z-index: 1;
+
+    @media screen and (max-width: 1500px) {
+      display: none;
+    }
+
+    .backimg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+
+      @media screen and (max-width: 1600px) {
+        width: 70%;
+        top: 100px;
+      }
+    }
+
+    .frontimg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 65%;
+
+      @media screen and (max-width: 1600px) {
+        left: 90px;
+        width: 55%;
+      }
+    }
+  }
+
   .barrels {
     position: absolute;
     top: 100px;
-    right: 20px;
+    right: 75px;
     width: 45%;
   }
 }
@@ -296,12 +346,17 @@ p {
 
   .sectionContent {
     width: 60%;
+    padding-top: 200px;
     padding-bottom: 200px;
+
+    @media screen and (max-width: 1200px) {
+      width: 82%;
+    }
   }
 
   .barrels {
     position: absolute;
-    top: -230px;
+    top: -30px;
     left: 20px;
     width: 45%;
   }

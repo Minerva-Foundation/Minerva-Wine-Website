@@ -142,7 +142,6 @@ export default Vue.extend({
 
     .iteration {
       flex-shrink: 0;
-      padding-top: 12px;
       width: 210px;
     }
 
@@ -153,6 +152,10 @@ export default Vue.extend({
         padding: 30px 15% 40px 0px;
         opacity: 0;
         overflow: hidden;
+      }
+
+      h3 {
+        padding-right: 70px;
       }
 
       .expandedp {
