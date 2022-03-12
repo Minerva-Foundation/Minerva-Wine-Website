@@ -58,6 +58,27 @@
         <button class="button">FIND YOUR WINE</button>
       </article>
     </section>
+    <section class="slide4">
+      <article class="sectionContent">
+        <h2 class="customh2">Welcome to</h2>
+        <h1 class="customh1">Minerva Club</h1>
+        <p>
+          Minerva wines are sold on the blockchain, meaning that the receipt of
+          sale is clear, permanent and indisputable. We also use this receipt as
+          a key to the ‘Minerva Club’, where Minerva wine owners have access to
+          exclusive interviews, comment pieces, investment advice, wine tasting
+          notes and more. <br />
+          Within Minerva Club, each producer will have their own space to talk
+          directly with the individuals who have purchased their wine. This
+          unique two-way dynamic means that producers will be able to know and
+          understand their customers better than ever. As a result, they will be
+          able to offer their customers priority access to new vintages,
+          real-world experiences and other exclusive materials for the
+          privilege.
+        </p>
+        <button class="button">FIND YOUR WINE</button>
+      </article>
+    </section>
   </main>
 </template>
 
@@ -83,13 +104,13 @@ p {
 }
 
 .slide1 {
-  background-image: url('~static/images/vines_cropped.png'); /* fallback */
+  background-image: url('~static/images/vines_cropped.jpg'); /* fallback */
   background-image: linear-gradient(
       78.98deg,
       rgba(0, 0, 0, 0.5) 0.33%,
       rgba(196, 196, 196, 0) 88.83%
     ),
-    url('~static/images/vines_cropped.png');
+    url('~static/images/vines_cropped.jpg');
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -168,7 +189,7 @@ p {
 }
 
 .slide3 {
-  background-image: url('~static/images/white_wine.png');
+  background-image: url('~static/images/white_wine.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
@@ -179,10 +200,6 @@ p {
     position: absolute;
     right: 5%;
     bottom: 12%;
-
-    * {
-      margin-right: 50px;
-    }
 
     h1 {
       margin-bottom: 40px;
@@ -196,6 +213,20 @@ p {
       margin-right: 0px;
       display: block;
       max-width: 600px;
+    }
+  }
+}
+
+.slide4 {
+  position: relative;
+
+  .sectionContent {
+    margin-left: 10%;
+    margin-top: 306px;
+    padding-bottom: 200px;
+
+    p {
+      max-width: 900px;
     }
   }
 }
