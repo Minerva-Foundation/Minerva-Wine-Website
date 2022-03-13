@@ -52,4 +52,5 @@ export default {
   styleResources: {
     scss: ['~/assets/styles/vars.scss'],
   },
+  
 }

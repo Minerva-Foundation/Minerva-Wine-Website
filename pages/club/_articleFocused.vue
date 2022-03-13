@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
-    <article class="contentwrapper">
+  <div class="wrapperSanity">
+    <article class="contentwrapperSanity">
       <h1 class="customh1">{{ currentArticle.title }}</h1>
       <SanityContent
-        class="body"
+        class="bodySanity"
         :blocks="currentArticle.body"
         :serializers="serializers"
       />
@@ -49,28 +49,36 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
-.wrapper {
+<style lang="scss">
+.wrapperSanity {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .contentwrapper {
-    width: 60vw;
+  .contentwrapperSanity {
+    max-width: 55em;
     padding: calc(100px + #{$header-height}) 0px 100px 0px;
 
-    .body {
-      color: $dark-font-lighter;
+    h1 {
+      color: $dark-font;
+      margin-bottom: 50px;
+      font-size: 5em;
+    }
 
-      h1 {
-        color: $dark-font;
-        margin-bottom: 50px;
-      }
+    .bodySanity {
+      color: $dark-font-lighter;
 
       p {
         margin: 5px 0px 5px 0px;
-        color: lighten($dark-font-lighter, 5%);
+        color: #333;
         min-height: 1em;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-font-smoothing: antialiased !important;
+        text-rendering: optimizelegibility !important;
+        letter-spacing: 0.05em;
+        font-size: 1.5em;
+        line-height: 1.4;
       }
 
       h4 {
@@ -83,7 +91,12 @@ export default Vue.extend({
       }
 
       ul {
-        font-size: 1.5em;
+        font-size: 1.4em;
+
+        li {
+          margin-bottom: 12px;
+          width: 30em;
+        }
       }
     }
   }
