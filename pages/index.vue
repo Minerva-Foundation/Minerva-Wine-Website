@@ -4,12 +4,7 @@
       <article class="sectionContent">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">A new era of wine.</h1>
-        <p class="intro">
-          Minerva is an international community who are passionate about wine.
-          We work with select producers from across the world who have unique
-          stories to tell and whose dedication to the art of winemaking set them
-          apart in the wine industry.
-        </p>
+        <h3 class="customh3">Exciting Wines Directly from the Vineyard</h3>
         <InputsConnectWallet />
       </article>
     </section>
@@ -66,15 +61,20 @@
           Minerva wines are sold on the blockchain, meaning that the receipt of
           sale is clear, permanent and indisputable. We also use this receipt as
           a key to the ‘Minerva Club’, where Minerva wine owners have access to
-          exclusive interviews, comment pieces, investment advice, wine tasting
-          notes and more. <br />
-          Within Minerva Club, each producer will have their own space to talk
-          directly with the individuals who have purchased their wine. This
-          unique two-way dynamic means that producers will be able to know and
-          understand their customers better than ever. As a result, they will be
-          able to offer their customers priority access to new vintages,
-          real-world experiences and other exclusive materials for the
-          privilege.
+          <span class="highlight"
+            >exclusive interviews, comment pieces, investment advice, wine
+            tasting notes and more</span
+          >. <br />
+          Within Minerva Club, each producer will have their own space to
+          <span class="highlight">talk directly</span> with the individuals who
+          have purchased their wine. This unique two-way dynamic means that
+          producers will be able to know and understand their customers better
+          than ever. As a result, they will be able to offer their customers
+          <span class="highlight"
+            >priority access to new vintages, real-world experiences and other
+            exclusive materials</span
+          >
+          for the privilege.
         </p>
         <button class="button">EXPLORE THE CLUB</button>
       </article>
@@ -150,6 +150,12 @@ p {
   font-size: 1.375rem;
 }
 
+.highlight {
+  color: $bright-font;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
 .sectionContent {
   color: $bright-font;
 
@@ -191,8 +197,8 @@ p {
   position: relative;
   z-index: 2;
 
-  .intro {
-    width: 600px;
+  h3 {
+    margin-bottom: 50px;
   }
 
   .sectionContent {

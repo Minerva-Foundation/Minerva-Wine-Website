@@ -10,6 +10,7 @@ import * as defTypes from '~/assets/ts/defaultTypes';
 import { getArticleBySlug } from '~/assets/ts/apiFuctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
+import portableYT from '~/components/portableTextComps/portableYT.vue';
 
 export default Vue.extend({
   name: 'FocusedArticle',
@@ -24,6 +25,7 @@ export default Vue.extend({
     serializers: {
       types: {
         image: portableImage,
+        youtube: portableYT,
       },
       marks: {
         link: portableLink,
