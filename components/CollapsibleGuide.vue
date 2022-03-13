@@ -29,7 +29,7 @@
         <h3 class="customh3" @click="expanded = !expanded">{{ header }}</h3>
         <p ref="para" class="mainText" :class="{ expandedp: expanded }">
           {{ mainText }}
-          <br />
+          <br /><br />
           {{ secondaryText }}
         </p>
       </div>

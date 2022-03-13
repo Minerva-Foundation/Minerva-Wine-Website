@@ -1,5 +1,7 @@
 <template>
-  <img class="cover" :src="urlFor(asset._ref).url()" quality="85" />
+  <div class="imgwrapper">
+    <img class="cover" :src="urlFor(asset._ref).url()" quality="85" />
+  </div>
 </template>
 
 <script>
@@ -21,3 +23,11 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.cover {
+  display: block;
+  margin: 50px auto 50px auto;
+  width: 100%;
+}
+</style>

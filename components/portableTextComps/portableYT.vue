@@ -19,4 +19,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+iframe {
+  display: block;
+  margin: 50px auto 50px auto;
+}
 </style>
