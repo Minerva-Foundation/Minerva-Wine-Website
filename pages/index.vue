@@ -162,7 +162,7 @@ p {
   z-index: 0;
 }
 
-.slide1 {
+.webp .slide1 {
   background-image: url('~static/images/vines_cropped.webp'); /* fallback */
   background-image: linear-gradient(
       78.98deg,
@@ -170,6 +170,19 @@ p {
       rgba(196, 196, 196, 0) 88.83%
     ),
     url('~static/images/vines_cropped.webp');
+}
+
+.no-webp .slide1 {
+  background-image: url('~static/images/vines_cropped.jpg'); /* fallback */
+  background-image: linear-gradient(
+      78.98deg,
+      rgba(0, 0, 0, 0.5) 0.33%,
+      rgba(196, 196, 196, 0) 88.83%
+    ),
+    url('~static/images/vines_cropped.jpg');
+}
+
+.slide1 {
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -243,8 +256,15 @@ p {
   }
 }
 
-.slide3 {
+.webp .slide3 {
   background-image: url('~static/images/white_wine.webp');
+}
+
+.no-webp .slide3 {
+  background-image: url('~static/images/white_wine.jpg');
+}
+
+.slide3 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;

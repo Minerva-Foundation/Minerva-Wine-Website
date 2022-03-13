@@ -39,7 +39,10 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources'],
+  modules: ['@nuxtjs/style-resources', ['nuxt-modernizr', {
+    'feature-detects': ["test/img/webp"],
+    options: ['setClasses'],
+  }]],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
