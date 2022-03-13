@@ -95,8 +95,16 @@ a {
 }
 
 p {
+  margin: 5px 0px 5px 0px;
   color: inherit;
-  font-size: 1.37rem;
+  min-height: 1em;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
+  letter-spacing: 0.05em;
+  font-size: 1.5em;
+  line-height: 1.4;
 }
 
 .button {

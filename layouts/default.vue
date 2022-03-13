@@ -9,13 +9,12 @@
 <style lang="scss" scoped>
 .app {
   width: 100%;
-  overflow-x: hidden;
 }
 .header {
   width: 100vw;
 }
 .main {
   z-index: 1;
-  margin-bottom: 300px;
+  margin-bottom: 200px;
 }
 </style>

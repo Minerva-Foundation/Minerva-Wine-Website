@@ -13,7 +13,7 @@
 }
 .main {
   z-index: 1;
-  margin-bottom: 300px;
+  margin-bottom: 200px;
   background-color: white;
 }
 </style>

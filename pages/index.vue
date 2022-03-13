@@ -14,16 +14,16 @@
         <h1 class="customh1">What Is Minerva?</h1>
         <div class="pwrapper">
           <p>
-            Minerva is an international community who are passionate about wine.
-            We work with select producers from across the world who have unique
-            stories to tell and whose dedication to the art of winemaking set
-            them apart in the wine industry.
+            Minerva is an international community of individuals who are
+            passionate about wine. We work with select producers from across the
+            world who have unique stories to tell and whose dedication to the
+            art of winemaking set them apart in the wine industry.
           </p>
           <p>
-            Minerva allows customers to buy wine directly from producers, with
-            confirmation of sale stored safely on the blockchain. Our wines are
-            carefully-selected for their quality and innovation, sourced
-            directly from winemakers across the world.
+            Minerva allows customers to buy en primeur wine directly from
+            producers, with confirmation of sale stored safely on the
+            blockchain. Our wines are carefully-selected for their quality and
+            innovation, sourced directly from winemakers across the world.
           </p>
         </div>
         <div class="btnwrapper">
@@ -43,12 +43,16 @@
         <h1 class="customh1">Quality Wines</h1>
         <p>
           Minerva’s team of wine investors, sommeliers, and producers understand
-          that this is a time of change for the industry. The importance of
-          legacy, reputation, and quality are indisputable, and we reflect this
-          with selections of fine wines from the popular Bordeaux, Burgundy, and
-          Champagne regions. These well-established markets are known for making
-          wines that accrue in value and Minerva will offer unique access
-          directly to these producers.
+          that this is a <span class="highlight">time of change</span> for the
+          industry. Our team also recognises that wine is meant to be enjoyed,
+          and that the international wine market is shifting.
+          <br /><br />Minerva has established links directly with winemakers in
+          France, the US, Australia, South Africa, Argentina, Chile, and beyond.
+          This ensures that Minerva customers will have access to
+          <span class="highlight">exciting and impactful wines</span>, delivered
+          directly to their door. All of our bottles are stored and cared for
+          within strict standards specified by the producers themselves,
+          ensuring that wines retain their character and value as intended.
         </p>
         <button class="button">FIND YOUR WINE</button>
       </article>
@@ -64,7 +68,7 @@
           <span class="highlight"
             >exclusive interviews, comment pieces, investment advice, wine
             tasting notes and more</span
-          >. <br />
+          >. <br /><br />
           Within Minerva Club, each producer will have their own space to
           <span class="highlight">talk directly</span> with the individuals who
           have purchased their wine. This unique two-way dynamic means that
@@ -109,19 +113,19 @@
         <CollapsibleGuide
           iteration="Stage 02"
           header="View your wine online."
-          main-text="Once you have purchased your wine you will be able to see it on ‘My Wines’. Each purchase is accompanied by a unique piece of artwork which are in themselves a desirable asset. At this point, you will be able to access exclusive material in ‘Minerva Club’; this includes a space where you can discuss with the producer directly."
+          main-text="Once you have purchased your wine you will be able to see it on ‘My Wines’. Each purchase is accompanied by a unique piece of artwork which are in themselves a desirable asset. At this point, you will be able to access exclusive material in ‘Minerva Club’; this includes a space where you can discuss with the producer directly. "
         />
         <CollapsibleGuide
           iteration="Stage 03"
           header="Wait & appreciate."
-          main-text="Minerva sells wine as it enters production, meaning that customers can see their bottle progress from the vine onwards. As your wine matures, you can enjoy Minerva Club material, display your wine and artwork proudly in a number of different ways online, and enjoy access to additional opportunities through your purchase. You can claim yield earned with your sale funds periodically or wait to let it compound."
+          main-text="Minerva sells wine as it enters production, meaning that customers can see their bottle progress from the vine onwards. As your wine matures, you can enjoy Minerva Club material, display your wine and artwork proudly in a number of different ways online, and enjoy access to additional yield opportunities through your purchase."
           secondary-text="If you desire, you would also be able to sell your blockchain receipt online. This passes ownership of the wine to other individuals. In that regard, your NFT receipt can be viewed as a tradable asset."
         />
         <CollapsibleGuide
           iteration="Stage 04"
           header="Receive your wine."
           main-text="Once your wine has matured in production, the winemaker will deliver directly to all addresses holding the NFT receipt at the specified delivery time. There will still be a record of your purchase and you will retain the unique artwork in your blockchain wallet. "
-          secondary-text=" After delivery, all unclaimed yield earned during this time period will be ready to be withdrawn or to lead to greater discounts on your next Minerva purchase."
+          secondary-text="After delivery, all unclaimed yield earned during this time period will be ready to be withdrawn or to lead to greater discounts on your next Minerva purchase."
         />
       </article>
       <img
@@ -274,7 +278,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;
-  height: calc(100vh - 100px);
+  height: 100vh;
   position: relative;
   max-height: 2000px;
 
