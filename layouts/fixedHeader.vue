@@ -1,13 +1,19 @@
 <template>
   <div class="app">
     <DefaultHeader class="header" />
-    <Nuxt />
+    <Nuxt class="main" />
+    <DefaultFooter />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .header {
   position: fixed;
-  width: calc(100vw - 80px);
+  width: 100vw;
+}
+.main {
+  z-index: 1;
+  margin-bottom: 300px;
+  background-color: white;
 }
 </style>

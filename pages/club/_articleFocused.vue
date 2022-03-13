@@ -2,6 +2,7 @@
   <div class="wrapperSanity">
     <article class="contentwrapperSanity">
       <h1 class="customh1">{{ currentArticle.title }}</h1>
+      <portableImage :asset="currentArticle.mainImage.asset" />
       <SanityContent
         class="bodySanity"
         :blocks="currentArticle.body"
@@ -21,6 +22,7 @@ import portableYT from '~/components/portableTextComps/portableYT.vue';
 
 export default Vue.extend({
   name: 'FocusedArticle',
+  components: { portableImage },
   layout: 'fixedHeader',
   async asyncData({ app: { $sanity }, route }) {
     const currentArticle: defTypes.Article = await getArticleBySlug(
@@ -83,7 +85,13 @@ export default Vue.extend({
 
       h4 {
         font-size: 2em;
-        margin-bottom: 15px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin-bottom: 25px;
       }
 
       iframe {
@@ -91,7 +99,8 @@ export default Vue.extend({
       }
 
       ul {
-        font-size: 1.4em;
+        font-size: 1.5em;
+        color: #333;
 
         li {
           margin-bottom: 12px;

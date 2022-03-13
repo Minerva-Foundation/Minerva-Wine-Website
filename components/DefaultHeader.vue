@@ -1,24 +1,26 @@
 <template>
-  <nav class="mainNav">
-    <NuxtLink class="homeMain" to="/">
-      <div class="home">
-        <img src="~static/images/torch.svg" alt="Homepage" class="torch" />
-        <img
-          src="~static/images/minervaText.svg"
-          alt="Homepage"
-          class="homeText"
-        />
+  <header>
+    <nav class="mainNav">
+      <NuxtLink class="homeMain" to="/">
+        <div class="home">
+          <img src="~static/images/torch.svg" alt="Homepage" class="torch" />
+          <img
+            src="~static/images/minervaText.svg"
+            alt="Homepage"
+            class="homeText"
+          />
+        </div>
+      </NuxtLink>
+      <ul class="mainLinks rosStretch">
+        <li><NuxtLink to="/wine" class="linkHover">Wine</NuxtLink></li>
+        <li><NuxtLink to="/club" class="linkHover">Club</NuxtLink></li>
+        <li><NuxtLink to="/advanced" class="linkHover">Advanced</NuxtLink></li>
+      </ul>
+      <div class="btnWrapper">
+        <InputsConnectWallet />
       </div>
-    </NuxtLink>
-    <ul class="mainLinks rosStretch">
-      <li><NuxtLink to="/wine" class="linkHover">Wine</NuxtLink></li>
-      <li><NuxtLink to="/club" class="linkHover">Club</NuxtLink></li>
-      <li><NuxtLink to="/advanced" class="linkHover">Advanced</NuxtLink></li>
-    </ul>
-    <div class="btnWrapper">
-      <InputsConnectWallet />
-    </div>
-  </nav>
+    </nav>
+  </header>
 </template>
 
 <script"ts">
