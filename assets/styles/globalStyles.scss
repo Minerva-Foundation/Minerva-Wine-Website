@@ -1,5 +1,9 @@
 @import './vars.scss';
 
+html {
+  overflow-y: scroll;
+}
+
 * {
   font-family: Helvetica;
   scroll-behavior: smooth;

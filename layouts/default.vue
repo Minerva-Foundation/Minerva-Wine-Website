@@ -11,7 +11,7 @@
   width: 100%;
 }
 .header {
-  width: 100vw;
+  width: 100%;
 }
 .main {
   z-index: 1;
