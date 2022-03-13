@@ -57,30 +57,30 @@ export default Vue.extend({
 
     * {
       color: $dark-font-lighter;
-    }
 
-    h1 {
-      color: $dark-font;
-      margin-bottom: 50px;
-    }
+      h1 {
+        color: $dark-font;
+        margin-bottom: 50px;
+      }
 
-    p {
-      margin: 5px 0px 5px 0px;
-      color: lighten($dark-font-lighter, 5%);
-      min-height: 1em;
-    }
+      p {
+        margin: 5px 0px 5px 0px;
+        color: lighten($dark-font-lighter, 5%);
+        min-height: 1em;
+      }
 
-    h4 {
-      font-size: 2em;
-      margin-bottom: 15px;
-    }
+      h4 {
+        font-size: 2em;
+        margin-bottom: 15px;
+      }
 
-    iframe {
-      margin: 50px 50px 50px 50px;
-    }
+      iframe {
+        margin: 50px 50px 50px 50px;
+      }
 
-    ul {
-      font-size: 1.5em;
+      ul {
+        font-size: 1.5em;
+      }
     }
   }
 }

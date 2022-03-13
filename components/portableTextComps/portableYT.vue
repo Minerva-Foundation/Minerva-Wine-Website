@@ -1,6 +1,13 @@
 <template>
   <div>
-    <iframe frameborder="0" allowfullscreen width="800" height="450" :src="url">
+    <iframe
+      ref="iframe"
+      frameborder="0"
+      allowfullscreen
+      width="800"
+      height="450"
+      :src="url"
+    >
     </iframe>
   </div>
 </template>
