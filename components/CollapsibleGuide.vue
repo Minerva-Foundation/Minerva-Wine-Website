@@ -23,10 +23,10 @@
 
     <div class="wrapper" :class="{ collapsedWrapper: !expanded }">
       <div class="iteration">
-        <h4 class="customh4">{{ iteration }}</h4>
+        <h4 class="customh4" @click="expanded = !expanded">{{ iteration }}</h4>
       </div>
       <div class="main">
-        <h3 class="customh3">{{ header }}</h3>
+        <h3 class="customh3" @click="expanded = !expanded">{{ header }}</h3>
         <p ref="para" class="mainText" :class="{ expandedp: expanded }">
           {{ mainText }}
           <br />
@@ -143,6 +143,10 @@ export default Vue.extend({
     .iteration {
       flex-shrink: 0;
       width: 210px;
+
+      h4 {
+        cursor: pointer;
+      }
     }
 
     .main {
@@ -156,6 +160,7 @@ export default Vue.extend({
 
       h3 {
         padding-right: 70px;
+        cursor: pointer;
       }
 
       .expandedp {
