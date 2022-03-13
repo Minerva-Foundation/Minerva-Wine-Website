@@ -2,7 +2,11 @@
   <div class="wrapper">
     <article class="contentwrapper">
       <h1 class="customh1">{{ currentArticle.title }}</h1>
-      <SanityContent :blocks="currentArticle.body" :serializers="serializers" />
+      <SanityContent
+        class="body"
+        :blocks="currentArticle.body"
+        :serializers="serializers"
+      />
     </article>
   </div>
 </template>
@@ -55,7 +59,7 @@ export default Vue.extend({
     width: 60vw;
     padding: calc(100px + #{$header-height}) 0px 100px 0px;
 
-    * {
+    .body {
       color: $dark-font-lighter;
 
       h1 {
