@@ -7,7 +7,15 @@
         <button class="button">CONNECT WALLET</button>
       </div>
     </aside>
-    <ul class="linkWrapper">
+    <ul
+      class="linkWrapper"
+      :style="{
+        'grid-template-columns':
+          'repeat(auto-fill, minmax(max(593px, 100%/' +
+          articleCount +
+          '), 1fr))',
+      }"
+    >
       <NuxtLink
         v-for="article in articles"
         :key="article._id"
@@ -42,6 +50,11 @@ export default Vue.extend({
     return {
       title: 'Minerva Club',
     };
+  },
+  computed: {
+    articleCount() {
+      return this.articles.length;
+    },
   },
   // mounted() {
   //   this.$accessor.SET_ARTICLES(this.articles);
@@ -92,19 +105,16 @@ export default Vue.extend({
 .linkWrapper {
   background-color: white;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
   padding: 0;
   position: relative;
+  display: grid;
+  overflow-x: hidden;
 
   a {
-    flex: 1 1 calc(593px + 1em);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 547px;
+    width: 100%;
     height: 670px;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
