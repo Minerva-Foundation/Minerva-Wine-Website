@@ -41,6 +41,7 @@ export default Vue.extend({
   .image {
     width: 547px;
     height: 378px;
+    margin-bottom: 10px;
 
     img {
       width: 100%;
@@ -50,6 +51,8 @@ export default Vue.extend({
   }
 
   .taa {
+    margin-bottom: 10px;
+
     .title {
       font-family: 'Roslindale';
       font-weight: 100;
@@ -62,13 +65,20 @@ export default Vue.extend({
   }
 
   .abstract {
-    font-size: 1em;
-    color: #333;
+    font-size: 1.1em;
+    max-height: 100px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.1em;
+    overflow: hidden;
+    color: #777;
   }
 
   .rm {
     color: $secondary;
     font-weight: 600;
+    margin-bottom: 10px;
   }
 }
 </style>

@@ -11,7 +11,7 @@
       class="linkWrapper"
       :style="{
         'grid-template-columns':
-          'repeat(auto-fill, minmax(max(593px, 100%/' +
+          'repeat(auto-fill, minmax(max(610px, 100%/' +
           articleCount +
           '), 1fr))',
       }"
