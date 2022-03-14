@@ -12,9 +12,16 @@
         </div>
       </NuxtLink>
       <ul class="mainLinks rosStretch">
-        <li><NuxtLink to="/wine" class="linkHover">Wine</NuxtLink></li>
-        <li><NuxtLink to="/club" class="linkHover">Club</NuxtLink></li>
-        <li><NuxtLink to="/advanced" class="linkHover">Advanced</NuxtLink></li>
+        <li>
+          <NuxtLink to="/wine" class="linkHover" @click="$nuxt.$loading.start()"
+            >Wine</NuxtLink
+          >
+        </li>
+        <li>
+          <NuxtLink to="/club" class="linkHover" @click="$nuxt.$loading.start()"
+            >Club</NuxtLink
+          >
+        </li>
       </ul>
       <div class="btnWrapper">
         <InputsConnectWallet />
