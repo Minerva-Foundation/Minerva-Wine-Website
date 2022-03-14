@@ -27,7 +27,9 @@
           </p>
         </div>
         <div class="btnwrapper">
-          <button class="button">MORE INFO</button>
+          <a href="https://docs.minerva.market/" target="_blank"
+            ><button class="button">MORE INFO</button></a
+          >
           <button class="buttonLight">CONTACT US</button>
         </div>
       </article>
@@ -54,7 +56,9 @@
           within strict standards specified by the producers themselves,
           ensuring that wines retain their character and value as intended.
         </p>
-        <button class="button">FIND YOUR WINE</button>
+        <NuxtLink to="/wine"
+          ><button class="button">FIND YOUR WINE</button></NuxtLink
+        >
       </article>
     </section>
     <section class="slide4">
@@ -80,7 +84,9 @@
           >
           for the privilege.
         </p>
-        <button class="button">EXPLORE THE CLUB</button>
+        <NuxtLink to="/club"
+          ><button class="button">EXPLORE THE CLUB</button></NuxtLink
+        >
       </article>
       <div class="imgwrapper">
         <img
