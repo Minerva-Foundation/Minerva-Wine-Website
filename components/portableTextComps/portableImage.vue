@@ -27,7 +27,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .cover {
   display: block;
-  margin: 50px auto 50px auto;
   width: 100%;
 }
 </style>

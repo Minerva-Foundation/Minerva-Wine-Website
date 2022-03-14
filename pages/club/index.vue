@@ -1,11 +1,26 @@
 <template>
-  <ul class="wrapper">
-    <li v-for="article in articles" :key="article._id">
-      <NuxtLink :to="`/club/${article.slug.current}`">
-        {{ article.title }}
+  <div class="clubWrapper">
+    <aside class="clubHeader">
+      <div class="headerContent">
+        <h2 class="customh2">Welcome to</h2>
+        <h1 class="customh1">Minerva Club</h1>
+        <button class="button">CONNECT WALLET</button>
+      </div>
+    </aside>
+    <ul class="linkWrapper">
+      <NuxtLink
+        v-for="article in articles"
+        :key="article._id"
+        :to="`/club/${article.slug.current}`"
+      >
+        <ArticleCard :article="article" />
       </NuxtLink>
-    </li>
-  </ul>
+      <div class="borderhiderR"></div>
+      <div class="borderhiderB"></div>
+      <div class="borderhiderL"></div>
+      <div class="borderhiderT"></div>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,4 +50,97 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.webp .clubHeader {
+  background-image: url('~static/images/cork.webp'); /* fallback */
+  background-image: linear-gradient(
+      68.77deg,
+      rgba(0, 0, 0, 0.553) 18.51%,
+      rgba(196, 196, 196, 0) 63.79%
+    ),
+    url('~static/images/cork.webp');
+}
+
+.no-webp .clubHeader {
+  background-image: url('~static/images/cork.jpg'); /* fallback */
+  background-image: linear-gradient(
+      68.77deg,
+      rgba(0, 0, 0, 0.553) 18.51%,
+      rgba(196, 196, 196, 0) 63.79%
+    ),
+    url('~static/images/cork.jpg');
+}
+
+.clubHeader {
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-height: 622px;
+  min-height: 400px;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+
+  .headerContent {
+    margin-left: 3vw;
+
+    h2 {
+      margin-bottom: -30px;
+    }
+  }
+}
+
+.linkWrapper {
+  background-color: white;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  position: relative;
+
+  a {
+    flex: 1 1 calc(593px + 1em);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 547px;
+    height: 670px;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .borderhiderR {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    right: 0;
+    top: 0;
+  }
+  .borderhiderT {
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    top: 0;
+  }
+  .borderhiderB {
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+  }
+  .borderhiderL {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    top: 0;
+  }
+}
 </style>

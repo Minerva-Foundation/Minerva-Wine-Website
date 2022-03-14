@@ -67,6 +67,10 @@ export default Vue.extend({
       font-size: 5em;
     }
 
+    img {
+      margin: 50px auto 50px auto;
+    }
+
     .bodySanity {
       color: $dark-font-lighter;
 
