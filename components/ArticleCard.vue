@@ -1,6 +1,10 @@
 <template>
   <article class="wrapperArticleCard">
-    <portableImage class="image" :asset="article.mainImage.asset" />
+    <portableImage
+      class="image"
+      :asset="article.mainImage.asset"
+      :new-height="378"
+    />
     <span class="taa"
       ><h3 class="title">{{ article.title }}</h3>
       <i>by</i> <span class="author">{{ article.author.name }}</span>

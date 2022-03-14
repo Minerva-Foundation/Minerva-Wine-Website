@@ -1,6 +1,10 @@
 <template>
   <div class="imgwrapper">
-    <img class="cover" :src="urlFor(asset._ref).url()" quality="85" />
+    <img
+      class="cover"
+      :src="urlFor(asset._ref).url() + newHeightString"
+      quality="85"
+    />
   </div>
 </template>
 
@@ -13,6 +17,17 @@ export default Vue.extend({
     asset: {
       type: Object,
       required: true,
+    },
+    newHeight: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
+  computed: {
+    newHeightString() {
+      if (this.newHeight !== '') return '?h=' + this.newHeight;
+      else return '';
     },
   },
   methods: {
