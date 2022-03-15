@@ -2,7 +2,7 @@ import { groq } from "@nuxtjs/sanity";
 import * as defTypes from "./defaultTypes"
 
 export async function getArticleBySlug(slug: String, sanity: any ):  Promise<defTypes.Article> {
-    const query = groq`*[_type == "post" && slug.current == "${slug}"]`;
+    const query = groq`*[_type == "post" && slug.current == "${slug}"]{_createdAt,title,abstract,author->,body,categories,mainImage,seo,slug}`;
     const currentArticle: defTypes.Article = (
       (await sanity.fetch(query)) as defTypes.Article[]
     )[0];

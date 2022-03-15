@@ -1,16 +1,54 @@
-export interface Author {
+export interface Child {
+    _key: string;
+    _type: string;
+    marks: any[];
+    text: string;
+}
+
+export interface Bio {
+    _key: string;
+    _type: string;
+    children: Child[];
+    markDefs: any[];
+    style: string;
+}
+
+export interface Asset {
     _ref: string;
     _type: string;
 }
 
-export interface Child {
+export interface Image {
+    _type: string;
+    asset: Asset;
+}
+
+export interface Slug {
+    _type: string;
+    current: string;
+}
+
+export interface Author {
+    _createdAt: Date;
+    _id: string;
+    _rev: string;
+    _type: string;
+    _updatedAt: Date;
+    bio: Bio[];
+    image: Image;
+    name: string;
+    slug: Slug;
+    type: string;
+}
+
+export interface Child2 {
     _key: string;
     _type: string;
     marks: string[];
     text: string;
 }
 
-export interface Asset {
+export interface Asset2 {
     _ref: string;
     _type: string;
 }
@@ -34,11 +72,11 @@ export interface Hotspot {
 export interface Body {
     _key: string;
     _type: string;
-    children: Child[];
+    children: Child2[];
     markDefs: any[];
     style: string;
     url: string;
-    asset: Asset;
+    asset: Asset2;
     crop: Crop;
     hotspot: Hotspot;
 }
@@ -49,14 +87,14 @@ export interface Category {
     _type: string;
 }
 
-export interface Asset2 {
+export interface Asset3 {
     _ref: string;
     _type: string;
 }
 
 export interface MainImage {
     _type: string;
-    asset: Asset2;
+    asset: Asset3;
 }
 
 export interface Seo {
@@ -65,27 +103,22 @@ export interface Seo {
     seo_title: string;
 }
 
-export interface Slug {
+export interface Slug2 {
     _type: string;
     current: string;
 }
 
 export interface Article {
     _createdAt: Date;
-    _id: string;
-    _rev: string;
-    _type: string;
-    _updatedAt: Date;
     abstract: string;
     author: Author;
     body: Body[];
     categories: Category[];
     mainImage: MainImage;
     seo: Seo;
-    slug: Slug;
+    slug: Slug2;
     title: string;
 }
-
 export interface CondensedAuthor {
     name: string;
 }

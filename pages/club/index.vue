@@ -4,7 +4,6 @@
       <div class="headerContent">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">Minerva Club</h1>
-        <button class="button">CONNECT WALLET</button>
       </div>
     </aside>
     <ul
@@ -95,6 +94,7 @@ export default Vue.extend({
 
   .headerContent {
     margin-left: 3vw;
+    margin-top: 50px;
   }
 }
 

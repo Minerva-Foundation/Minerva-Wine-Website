@@ -53,6 +53,7 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   height: 573px;
+  padding-top: 20px;
 
   * {
     max-width: 547px;

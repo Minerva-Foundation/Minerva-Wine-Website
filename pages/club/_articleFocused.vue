@@ -1,14 +1,46 @@
 <template>
-  <div class="wrapperSanity">
-    <article class="contentwrapperSanity">
-      <h1 class="customh1">{{ currentArticle.title }}</h1>
-      <portableImage :asset="currentArticle.mainImage.asset" />
-      <SanityContent
-        class="bodySanity"
-        :blocks="currentArticle.body"
-        :serializers="serializers"
-      />
-    </article>
+  <div class="wrapperClubArticle">
+    <aside class="extraInfo">
+      <div class="wrapperFixed">
+        <div class="authorWrapper">
+          <NuxtLink to="/club">
+            <button class="button">
+              <span class="larger">&#8249; </span> GO BACK
+            </button>
+          </NuxtLink>
+          <span class="sectionTitle">Author</span>
+          <address class="author">
+            <portableImage
+              class="authorImage"
+              :asset="currentArticle.author.image.asset"
+              :new-height="100"
+            />
+            {{ currentArticle.author.name }}
+            <SanityContent
+              :blocks="currentArticle.author.bio"
+              :serializers="serializers"
+            />
+          </address>
+        </div>
+      </div>
+    </aside>
+    <div class="wrapperSanity">
+      <article class="contentwrapperSanity">
+        <h1 class="customh1">{{ currentArticle.title }}</h1>
+        <span class="aad"
+          ><i class="by">by</i>
+          <span class="author">{{ currentArticle.author.name }},</span
+          ><i class="date"> {{ formatDate }}</i></span
+        >
+        <p class="abstract">{{ currentArticle.abstract }}</p>
+        <portableImage :asset="currentArticle.mainImage.asset" />
+        <SanityContent
+          class="bodySanity"
+          :blocks="currentArticle.body"
+          :serializers="serializers"
+        />
+      </article>
+    </div>
   </div>
 </template>
 
@@ -48,67 +80,179 @@ export default Vue.extend({
       title: this.currentArticle.title,
     };
   },
+  computed: {
+    formatDate() {
+      const raw: String = this.currentArticle._createdAt
+        .toString()
+        .substring(0, this.currentArticle._createdAt.toString().indexOf('T'))
+        .replaceAll('-', '');
+
+      const temp: String =
+        raw.substring(6, 8) +
+        '/' +
+        raw.substring(4, 6) +
+        '/' +
+        raw.substring(0, 4);
+      return temp;
+    },
+  },
 });
 </script>
 
 <style lang="scss">
-.wrapperSanity {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.wrapperClubArticle {
+  display: grid;
+  grid-template-columns: [aside] min(400px, 20vw) [content] auto;
+  padding-top: $header-height;
 
-  .contentwrapperSanity {
-    max-width: 55em;
-    padding: calc(100px + #{$header-height}) 0px 100px 0px;
+  .extraInfo {
+    border-right: #d8d8d8 1px solid;
 
-    h1 {
-      color: $dark-font;
-      margin-bottom: 50px;
-      font-size: 5em;
+    .wrapperFixed {
+      position: fixed;
+      width: min(400px, 20vw);
+      height: 100%;
+
+      .authorWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+
+        a {
+          margin-bottom: 70px;
+          margin-right: calc(70% - 130px);
+          margin-top: 40px;
+
+          .button {
+            min-width: 0px;
+            width: 140px;
+
+            .larger {
+              font-size: 1.3em;
+              color: $bright-font;
+            }
+          }
+        }
+
+        .sectionTitle {
+          padding-top: 4vh;
+          width: 70%;
+          text-align: left;
+          border-bottom: #d8d8d8 1px solid;
+          padding-bottom: 5px;
+          margin-bottom: 20px;
+          color: #777;
+        }
+
+        .author {
+          font-style: normal;
+          color: #333;
+          width: 70%;
+          font-size: 2em;
+          font-family: 'Roslindale';
+
+          .authorImage {
+            margin-bottom: 10px;
+
+            img {
+              width: 100px;
+              border-radius: 50%;
+            }
+          }
+
+          p {
+            margin-top: 10px;
+            color: rgb(95, 95, 95);
+            letter-spacing: 0.01em;
+            font-size: 1.3rem;
+            line-height: 1.4rem;
+          }
+        }
+      }
     }
+  }
 
-    img {
-      margin: 50px auto 50px auto;
-    }
+  .wrapperSanity {
+    padding-top: 100px;
+    padding-bottom: 200px;
+    grid-column: content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    .bodySanity {
-      color: $dark-font-lighter;
+    .contentwrapperSanity {
+      max-width: 55em;
 
-      p {
-        margin: 5px 0px 5px 0px;
-        color: #333;
-        min-height: 1em;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased !important;
-        -moz-font-smoothing: antialiased !important;
-        text-rendering: optimizelegibility !important;
-        letter-spacing: 0.05em;
-        font-size: 1.5em;
-        line-height: 1.4;
+      h1 {
+        color: $dark-font;
+        font-size: 5em;
       }
 
-      h4 {
-        font-size: 2em;
+      .aad {
+        .by {
+          color: #777;
+        }
+
+        .author {
+          font-size: 1.1em;
+          color: #333;
+        }
+
+        .date {
+          margin-left: 0.3em;
+          color: #333;
+        }
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-        margin-bottom: 25px;
+      .abstract {
+        margin-top: 30px;
       }
 
-      iframe {
-        margin: 50px 50px 50px 50px;
+      img {
+        margin: 50px auto 50px auto;
       }
 
-      ul {
-        font-size: 1.5em;
-        color: #333;
+      .bodySanity {
+        color: $dark-font-lighter;
 
-        li {
-          margin-bottom: 12px;
-          width: 30em;
+        p {
+          margin: 5px 0px 5px 0px;
+          color: #333;
+          min-height: 1em;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased !important;
+          -moz-font-smoothing: antialiased !important;
+          text-rendering: optimizelegibility !important;
+          letter-spacing: 0.05em;
+          font-size: 1.5em;
+          line-height: 1.4;
+        }
+
+        h4 {
+          font-size: 2em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+          margin-bottom: 25px;
+        }
+
+        iframe {
+          margin: 50px 50px 50px 50px;
+        }
+
+        ul {
+          font-size: 1.5em;
+          color: #333;
+
+          li {
+            margin-bottom: 12px;
+            width: 30em;
+          }
         }
       }
     }

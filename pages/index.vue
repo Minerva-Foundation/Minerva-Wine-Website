@@ -209,6 +209,8 @@ p {
 
   h3 {
     margin-bottom: 50px;
+    font-family: Helvetica;
+    font-size: 2em;
   }
 
   .sectionContent {
