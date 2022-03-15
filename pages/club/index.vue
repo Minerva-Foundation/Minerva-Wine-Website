@@ -95,10 +95,6 @@ export default Vue.extend({
 
   .headerContent {
     margin-left: 3vw;
-
-    h2 {
-      margin-bottom: -30px;
-    }
   }
 }
 
