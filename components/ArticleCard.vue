@@ -7,7 +7,8 @@
     />
     <span class="taa"
       ><h3 class="title">{{ article.title }}</h3>
-      <i>by</i> <span class="author">{{ article.author.name }}</span>
+      <i class="by">by</i> <span class="author">{{ article.author.name }},</span
+      ><i class="date"> {{ formatDate }}</i>
     </span>
     <p class="abstract">
       {{ article.abstract }}
@@ -27,6 +28,21 @@ export default Vue.extend({
     article: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    formatDate() {
+      const raw: String = this.article._createdAt
+        .substring(0, this.article._createdAt.indexOf('T'))
+        .replaceAll('-', '');
+
+      const temp: String =
+        raw.substring(6, 8) +
+        '/' +
+        raw.substring(4, 6) +
+        '/' +
+        raw.substring(0, 4);
+      return temp;
     },
   },
 });
@@ -56,25 +72,37 @@ export default Vue.extend({
 
   .taa {
     margin-bottom: 10px;
+    font-size: 1.1em;
 
     .title {
       font-family: 'Roslindale';
       font-weight: 100;
-      font-size: 2.56em;
+      font-size: 2.05em;
+      margin-bottom: 3px;
+    }
+
+    .by {
+      color: #777;
     }
 
     .author {
       font-size: 1.1em;
+      color: #333;
+    }
+
+    .date {
+      margin-left: 0.3em;
+      color: #333;
     }
   }
 
   .abstract {
     font-size: 1.1em;
-    max-height: 100px;
+    max-height: 60px;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-height: 1.1em;
+    line-height: 1.15em;
     overflow: hidden;
     color: #777;
   }

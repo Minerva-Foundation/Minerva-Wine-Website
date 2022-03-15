@@ -13,14 +13,10 @@
       </NuxtLink>
       <ul class="mainLinks rosStretch">
         <li>
-          <NuxtLink to="/wine" class="linkHover" @click="$nuxt.$loading.start()"
-            >Wine</NuxtLink
-          >
+          <NuxtLink to="/wine" class="linkHover">Wine</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/club" class="linkHover" @click="$nuxt.$loading.start()"
-            >Club</NuxtLink
-          >
+          <NuxtLink to="/club" class="linkHover">Club</NuxtLink>
         </li>
       </ul>
       <div class="btnWrapper">
