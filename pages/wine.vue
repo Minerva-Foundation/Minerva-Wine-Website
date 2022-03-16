@@ -26,8 +26,8 @@
     align-items: flex-start;
 
     .cs {
-      margin-top: 20vh;
-      font-size: 8em;
+      margin-top: 40vh;
+      font-size: 10vw;
       color: $main;
     }
   }

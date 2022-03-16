@@ -260,7 +260,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 900px;
+    height: 1000px;
 
     @media screen and (max-width: 800px) {
       height: 1100px;
@@ -302,12 +302,7 @@ p {
   background-image: url('~static/images/white_wine.webp');
 
   @media screen and (max-width: $second-incr) {
-    background-image: linear-gradient(
-        166.28deg,
-        rgba(0, 0, 0, 0.5) -28.96%,
-        rgba(196, 196, 196, 0) 131.82%
-      ),
-      url('~static/images/white_wine.webp');
+    background-image: url('~static/images/white_wine_small.webp');
   }
 }
 
@@ -315,12 +310,7 @@ p {
   background-image: url('~static/images/white_wine.jpg');
 
   @media screen and (max-width: $second-incr) {
-    background-image: linear-gradient(
-        166.28deg,
-        rgba(0, 0, 0, 0.5) -28.96%,
-        rgba(196, 196, 196, 0) 131.82%
-      ),
-      url('~static/images/white_wine.jpg');
+    background-image: url('~static/images/white_wine_small.jpeg');
   }
 }
 
@@ -335,6 +325,8 @@ p {
 
   @media screen and (max-width: $second-incr) {
     height: 95vh;
+
+    background-position: bottom right;
   }
 
   .sectionContent {
@@ -345,9 +337,9 @@ p {
     @media screen and (max-width: $second-incr) {
       right: 0;
       left: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto;
+      top: 30px;
+      margin-left: auto;
+      margin-right: auto;
       width: 80vw;
       height: 90%;
       text-align: left;
@@ -364,7 +356,7 @@ p {
     p {
       margin-right: 0px;
       display: block;
-      max-width: 660px;
+      max-width: 700px;
       margin-top: 30px;
     }
   }
