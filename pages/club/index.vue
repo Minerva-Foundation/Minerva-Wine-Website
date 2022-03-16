@@ -10,7 +10,7 @@
       class="linkWrapper"
       :style="{
         'grid-template-columns':
-          'repeat(auto-fill, minmax(max(610px, 100%/' +
+          'repeat(auto-fill, minmax(max(665px, 100%/' +
           articleCount +
           '), 1fr))',
       }"
@@ -65,9 +65,9 @@ export default Vue.extend({
 .webp .clubHeader {
   background-image: url('~static/images/cork.webp'); /* fallback */
   background-image: linear-gradient(
-      68.77deg,
-      rgba(0, 0, 0, 0.553) 18.51%,
-      rgba(196, 196, 196, 0) 63.79%
+      70.34deg,
+      rgba(60, 60, 60, 0.76) -6.08%,
+      rgba(255, 255, 255, 0) 110.14%
     ),
     url('~static/images/cork.webp');
 }
@@ -83,18 +83,18 @@ export default Vue.extend({
 }
 
 .clubHeader {
-  background-position: center bottom;
+  background-position: left center;
   background-size: cover;
   background-repeat: no-repeat;
   max-height: 622px;
   min-height: 400px;
   height: 40vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   .headerContent {
     margin-left: 3vw;
-    margin-top: 50px;
+    margin-bottom: 30px;
   }
 }
 
