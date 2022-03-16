@@ -21,7 +21,7 @@
       />
     </svg>
 
-    <div class="wrapper" :class="{ collapsedWrapper: !expanded }">
+    <div class="wrapper">
       <div class="iteration">
         <h4 class="customh4" @click="expanded = !expanded">{{ iteration }}</h4>
       </div>
@@ -144,18 +144,31 @@ export default Vue.extend({
       flex-shrink: 0;
       width: 210px;
 
+      @media screen and (max-width: $second-incr) {
+        width: 170px;
+      }
+
       h4 {
         cursor: pointer;
+
+        @media screen and (max-width: $second-incr) {
+          font-size: 3em;
+        }
       }
     }
 
     .main {
       color: $bright-font;
 
+      * {
+        z-index: 1;
+      }
+
       p {
         padding: 30px 15% 40px 0px;
         opacity: 0;
         overflow: hidden;
+        display: none;
       }
 
       h3 {
@@ -164,8 +177,10 @@ export default Vue.extend({
       }
 
       .expandedp {
+        position: relative;
         opacity: 1;
         transition: opacity ease 0.5s;
+        display: block;
       }
     }
 
@@ -187,11 +202,6 @@ export default Vue.extend({
     .collapsedClassVert {
       transform: rotate(-90deg);
     }
-  }
-
-  .collapsedWrapper {
-    max-height: 70px;
-    transition: max-height ease-in 0.3s;
   }
 }
 </style>

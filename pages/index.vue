@@ -174,6 +174,12 @@ p {
   }
 }
 
+@media screen and (max-width: $first-incr) {
+  .customh1 {
+    font-size: 5.9em;
+  }
+}
+
 .barrels {
   z-index: 0;
 }
@@ -217,6 +223,11 @@ p {
     position: absolute;
     left: 10%;
     bottom: 30%;
+    padding-right: 10%;
+
+    @media screen and (max-width: $first-incr) {
+      bottom: 10%;
+    }
   }
 }
 
@@ -251,6 +262,10 @@ p {
     align-items: center;
     height: 900px;
 
+    @media screen and (max-width: 800px) {
+      height: 1100px;
+    }
+
     .pwrapper {
       margin-top: 30px;
       max-width: min(70vw, 1200px);
@@ -259,6 +274,15 @@ p {
 
       & * {
         width: 45%;
+      }
+
+      @media screen and (max-width: $second-incr) {
+        flex-direction: column;
+        max-width: 80vw;
+
+        & * {
+          width: 100%;
+        }
       }
     }
 
@@ -276,37 +300,72 @@ p {
 
 .webp .slide3 {
   background-image: url('~static/images/white_wine.webp');
+
+  @media screen and (max-width: $second-incr) {
+    background-image: linear-gradient(
+        166.28deg,
+        rgba(0, 0, 0, 0.5) -28.96%,
+        rgba(196, 196, 196, 0) 131.82%
+      ),
+      url('~static/images/white_wine.webp');
+  }
 }
 
 .no-webp .slide3 {
   background-image: url('~static/images/white_wine.jpg');
+
+  @media screen and (max-width: $second-incr) {
+    background-image: linear-gradient(
+        166.28deg,
+        rgba(0, 0, 0, 0.5) -28.96%,
+        rgba(196, 196, 196, 0) 131.82%
+      ),
+      url('~static/images/white_wine.jpg');
+  }
 }
 
 .slide3 {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center left;
+  background-position: top center;
   height: 100vh;
   position: relative;
   max-height: 2000px;
+  text-align: right;
+
+  @media screen and (max-width: $second-incr) {
+    height: 95vh;
+  }
 
   .sectionContent {
     position: absolute;
     right: 5%;
     bottom: 12%;
 
-    h1 {
-      margin-bottom: 40px;
+    @media screen and (max-width: $second-incr) {
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 80vw;
+      height: 90%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     button {
-      margin-top: 10px;
+      margin-top: 30px;
+      margin-right: 10px;
     }
 
     p {
       margin-right: 0px;
       display: block;
-      max-width: 600px;
+      max-width: 660px;
+      margin-top: 30px;
     }
   }
 }
@@ -321,8 +380,18 @@ p {
     left: 10%;
     top: 30%;
 
+    @media screen and (max-width: $second-incr) {
+      width: 80vw;
+    }
+
     p {
       max-width: 700px;
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    .button {
+      margin-top: 30px;
     }
   }
 
@@ -368,6 +437,7 @@ p {
     top: 100px;
     right: 75px;
     width: 45%;
+    min-width: 500px;
   }
 }
 
@@ -384,10 +454,10 @@ p {
 
   .sectionContent {
     width: 60%;
-    padding-top: 200px;
+    padding-top: 300px;
     padding-bottom: 200px;
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: $first-incr) {
       width: 82%;
     }
   }
@@ -397,6 +467,7 @@ p {
     top: -30px;
     left: 20px;
     width: 45%;
+    min-width: 500px;
   }
 }
 </style>

@@ -150,6 +150,18 @@ footer {
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: $first-incr) {
+      left: 40px;
+      align-items: center;
+      right: initial;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @media screen and (max-width: 690px) {
+      display: none;
+    }
+
     .torch {
       width: 15px;
     }
