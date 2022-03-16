@@ -1,5 +1,76 @@
 @import './vars.scss';
 
+@media screen and (max-width: $first-incr) {
+  .customh1 {
+    font-size: 5.9em !important;
+  }
+}
+
+@media screen and (max-width: 707px) {
+  html {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: $third-incr) {
+  html {
+    font-size: 0.8em;
+  }
+
+  .customh1 {
+    font-size: 5em !important;
+  }
+}
+
+@media screen and (max-width: $fourth-incr) {
+  html {
+    font-size: 0.7em;
+  }
+
+  .customh2 {
+    font-size: 5.5em !important;
+  }
+
+  p {
+    line-height: 1.7em !important;
+  }
+}
+
+@media screen and (max-width: $fifth-incr) {
+  html {
+    font-size: 0.6em;
+  }
+
+  .customh1 {
+    font-size: 4em !important;
+  }
+
+  .customh2 {
+    font-size: 5em !important;
+  }
+
+  .button {
+    min-width: 120px !important;
+    height: 40px !important;
+  }
+
+  p {
+    line-height: 1.5em !important;
+  }
+}
+
+@media screen and (max-width: $sixth-incr) {
+  h1 {
+    line-height: 0.9em;
+    margin-bottom: -10px;
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.3em !important;
+  }
+}
+
 html {
   overflow-y: scroll;
 }
@@ -89,7 +160,8 @@ a {
 }
 
 .customh3 {
-  @extend .customh1;
+  @extend .rosStretch;
+  font-weight: normal;
   font-size: 3.75rem;
 }
 

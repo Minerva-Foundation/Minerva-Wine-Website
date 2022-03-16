@@ -15,6 +15,6 @@
 }
 .main {
   z-index: 1;
-  margin-bottom: 200px;
+  margin-bottom: 199px;
 }
 </style>

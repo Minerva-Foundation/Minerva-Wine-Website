@@ -84,6 +84,16 @@ footer {
     justify-content: space-between;
     filter: invert(100%) sepia(58%) saturate(427%) hue-rotate(223deg)
       brightness(121%) contrast(71%);
+    padding-left: 30px;
+
+    @media screen and (max-width: 275px) {
+      bottom: 0;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      width: 80%;
+    }
 
     .docLink {
       cursor: pointer;
@@ -91,6 +101,7 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 16px;
 
       img {
         width: 30px;
@@ -114,6 +125,10 @@ footer {
     }
 
     .socialsLinks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
       .socialLink {
         width: 30px;
         margin-left: 10px;
@@ -158,16 +173,20 @@ footer {
       justify-content: space-between;
     }
 
-    @media screen and (max-width: 690px) {
-      display: none;
-    }
-
     .torch {
       width: 15px;
+
+      @media screen and (max-width: $fifth-incr) {
+        display: none;
+      }
     }
 
     .logoText {
       width: 170px;
+
+      @media screen and (max-width: 690px) {
+        display: none;
+      }
     }
   }
 }

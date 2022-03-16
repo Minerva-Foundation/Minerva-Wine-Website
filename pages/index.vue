@@ -174,12 +174,6 @@ p {
   }
 }
 
-@media screen and (max-width: $first-incr) {
-  .customh1 {
-    font-size: 5.9em;
-  }
-}
-
 .barrels {
   z-index: 0;
 }
@@ -189,9 +183,18 @@ p {
   background-image: linear-gradient(
       78.98deg,
       rgba(0, 0, 0, 0.5) 0.33%,
-      rgba(196, 196, 196, 0) 88.83%
+      rgba(196, 196, 196, 0.075) 88.83%
     ),
     url('~static/images/vines_cropped.webp');
+
+  @media screen and (max-width: $third-incr) {
+    background-image: linear-gradient(
+        78.98deg,
+        rgba(0, 0, 0, 0.5) 0.33%,
+        rgba(180, 180, 180, 0.192) 120.83%
+      ),
+      url('~static/images/vines_cropped.webp');
+  }
 }
 
 .no-webp .slide1 {
@@ -202,6 +205,15 @@ p {
       rgba(196, 196, 196, 0) 88.83%
     ),
     url('~static/images/vines_cropped.jpg');
+
+  @media screen and (max-width: $third-incr) {
+    background-image: linear-gradient(
+        78.98deg,
+        rgba(0, 0, 0, 0.5) 0.33%,
+        rgba(180, 180, 180, 0.192) 120.83%
+      ),
+      url('~static/images/vines_cropped.jpg');
+  }
 }
 
 .slide1 {
@@ -213,10 +225,24 @@ p {
   position: relative;
   z-index: 2;
 
+  @media screen and (max-width: $third-incr) {
+    height: 600px;
+  }
+
+  h1 {
+    @media screen and (max-width: $sixth-incr) {
+      line-height: 0.8em;
+      margin-bottom: 10px;
+    }
+  }
   h3 {
     margin-bottom: 50px;
     font-family: Helvetica;
     font-size: 2em;
+
+    @media screen and (max-width: $fifth-incr) {
+      margin-bottom: 15px;
+    }
   }
 
   .sectionContent {
@@ -262,8 +288,26 @@ p {
     align-items: center;
     height: 1000px;
 
-    @media screen and (max-width: 800px) {
-      height: 1100px;
+    @media screen and (max-width: 900px) {
+      height: 100vh;
+      min-height: 1000px;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      height: 80vh;
+      min-height: 900px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      height: 65vh;
+      min-height: 750px;
+    }
+
+    @media screen and (max-width: $sixth-incr) {
+      align-items: flex-start;
+      padding-left: 30px;
+      height: 75vh;
+      min-height: 800px;
     }
 
     .pwrapper {
@@ -288,11 +332,26 @@ p {
 
     .btnwrapper {
       margin-top: 30px;
-      & button {
-        width: 198px;
-      }
+      margin-bottom: 30px;
+
       & :first-child {
         margin-right: 20px;
+      }
+
+      @media screen and (max-width: $fourth-incr) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 135px;
+
+        & :first-child {
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width: $fifth-incr) {
+        height: 100px;
       }
     }
   }
@@ -322,11 +381,27 @@ p {
   position: relative;
   max-height: 2000px;
   text-align: right;
+  min-height: 1060px;
 
   @media screen and (max-width: $second-incr) {
     height: 95vh;
-
     background-position: bottom right;
+    min-height: 900px;
+  }
+
+  @media screen and (max-width: $fourth-incr) {
+    height: 80vh;
+    min-height: 800px;
+  }
+
+  @media screen and (max-width: $fifth-incr) {
+    height: 65vh;
+    min-height: 700px;
+  }
+
+  @media screen and (max-width: 300px) {
+    height: 65vh;
+    min-height: 800px;
   }
 
   .sectionContent {
@@ -351,6 +426,10 @@ p {
     button {
       margin-top: 30px;
       margin-right: 10px;
+
+      @media screen and (max-width: $fifth-incr) {
+        margin-top: 0px;
+      }
     }
 
     p {
@@ -365,7 +444,20 @@ p {
 .slide4 {
   position: relative;
   height: 100vh;
-  min-height: 1000px;
+  min-height: 1240px;
+  overflow: hidden;
+
+  @media screen and (max-width: $fourth-incr) {
+    height: 80vh;
+  }
+  @media screen and (max-width: $fifth-incr) {
+    height: 65vh;
+    min-height: 850px;
+  }
+
+  @media screen and (max-width: $sixth-incr) {
+    height: 870px;
+  }
 
   .sectionContent {
     position: absolute;
@@ -374,6 +466,11 @@ p {
 
     @media screen and (max-width: $second-incr) {
       width: 80vw;
+      top: 20%;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      top: 14%;
     }
 
     p {
@@ -384,6 +481,10 @@ p {
 
     .button {
       margin-top: 30px;
+
+      @media screen and (max-width: $fifth-incr) {
+        margin-top: 0px;
+      }
     }
   }
 
@@ -430,6 +531,12 @@ p {
     right: 75px;
     width: 45%;
     min-width: 500px;
+
+    @media screen and (max-width: 712px) {
+      min-width: 0;
+      width: 100vw;
+      right: -30vw;
+    }
   }
 }
 
@@ -452,6 +559,14 @@ p {
     @media screen and (max-width: $first-incr) {
       width: 82%;
     }
+
+    @media screen and (max-width: $second-incr) {
+      padding-top: 150px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      padding-top: 50px;
+    }
   }
 
   .barrels {
@@ -460,6 +575,12 @@ p {
     left: 20px;
     width: 45%;
     min-width: 500px;
+
+    @media screen and (max-width: $fourth-incr) {
+      min-width: 0;
+      left: -130px;
+      width: 100vw;
+    }
   }
 }
 </style>

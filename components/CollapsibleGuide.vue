@@ -148,6 +148,10 @@ export default Vue.extend({
         width: 170px;
       }
 
+      @media screen and (max-width: $fourth-incr) {
+        display: none;
+      }
+
       h4 {
         cursor: pointer;
 
@@ -174,6 +178,14 @@ export default Vue.extend({
       h3 {
         padding-right: 70px;
         cursor: pointer;
+
+        @media screen and (max-width: $third-incr) {
+          font-size: 3.1em !important;
+        }
+
+        @media screen and (max-width: $fifth-incr) {
+          font-size: 2.5em !important;
+        }
       }
 
       .expandedp {
@@ -191,6 +203,10 @@ export default Vue.extend({
       height: 40px;
       width: 40px;
       cursor: pointer;
+
+      @media screen and (max-width: $third-incr) {
+        top: 53px;
+      }
 
       .expandLines {
         position: absolute;
