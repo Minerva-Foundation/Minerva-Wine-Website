@@ -87,10 +87,24 @@ export default Vue.extend({
   background-size: cover;
   background-repeat: no-repeat;
   max-height: 622px;
-  min-height: 400px;
+  min-height: 500px;
   height: 40vh;
   display: flex;
   align-items: flex-end;
+
+  @media screen and (max-width: 1000px) {
+    height: 400px;
+    min-height: 0;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 300px;
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: $fourth-incr) {
+    display: none;
+  }
 
   .headerContent {
     margin-left: 3vw;
@@ -104,7 +118,16 @@ export default Vue.extend({
   padding: 0;
   position: relative;
   display: grid;
-  overflow-x: hidden;
+  overflow: hidden;
+
+  @media screen and (max-width: 665px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  * {
+    font-size: 16px;
+  }
 
   a {
     display: flex;
@@ -114,6 +137,26 @@ export default Vue.extend({
     height: 670px;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
+
+    @media screen and (max-width: 570px) {
+      height: 580px;
+    }
+
+    @media screen and (max-width: 430px) {
+      height: 500px;
+
+      * {
+        font-size: 14px;
+      }
+    }
+
+    @media screen and (max-width: 370px) {
+      height: 470px;
+    }
+
+    @media screen and (max-width: 270px) {
+      height: 400px;
+    }
   }
 
   .borderhiderR {

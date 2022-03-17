@@ -49,18 +49,33 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+$defWidth: 547px;
+
 .wrapperArticleCard {
   display: flex;
   flex-direction: column;
   height: 573px;
   padding-top: 35px;
 
+  @media screen and (max-width: 665px) {
+    justify-content: center;
+    padding-top: 0px;
+
+    * {
+      max-width: 90vw !important;
+    }
+
+    .image {
+      height: 60vw !important;
+    }
+  }
+
   * {
-    max-width: 547px;
+    max-width: $defWidth;
   }
 
   .image {
-    width: 547px;
+    width: $defWidth;
     height: 378px;
     margin-bottom: 10px;
 
@@ -80,6 +95,10 @@ export default Vue.extend({
       font-weight: 100;
       font-size: 2.05em;
       margin-bottom: 3px;
+
+      @media screen and (max-width: 270px) {
+        font-size: 1.6em;
+      }
     }
 
     .by {
@@ -89,6 +108,10 @@ export default Vue.extend({
     .author {
       font-size: 1.1em;
       color: #333;
+
+      @media screen and (max-width: 270px) {
+        font-size: 0.9em;
+      }
     }
 
     .date {
@@ -103,7 +126,7 @@ export default Vue.extend({
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-height: 1.15em;
+    line-height: 1.15em !important;
     overflow: hidden;
     color: #777;
   }

@@ -23,10 +23,14 @@
 
     <div class="wrapper">
       <div class="iteration">
-        <h4 class="customh4" @click="expanded = !expanded">{{ iteration }}</h4>
+        <h4 class="customh4 noselect" @click="expanded = !expanded">
+          {{ iteration }}
+        </h4>
       </div>
       <div class="main">
-        <h3 class="customh3" @click="expanded = !expanded">{{ header }}</h3>
+        <h3 class="customh3 noselect" @click="expanded = !expanded">
+          {{ header }}
+        </h3>
         <p ref="para" class="mainText" :class="{ expandedp: expanded }">
           {{ mainText }}
           <br /><br />
@@ -148,6 +152,10 @@ export default Vue.extend({
         width: 170px;
       }
 
+      @media screen and (max-width: $third-incr) {
+        width: 140px;
+      }
+
       @media screen and (max-width: $fourth-incr) {
         display: none;
       }
@@ -176,7 +184,7 @@ export default Vue.extend({
       }
 
       h3 {
-        padding-right: 70px;
+        padding-right: 90px;
         cursor: pointer;
 
         @media screen and (max-width: $third-incr) {

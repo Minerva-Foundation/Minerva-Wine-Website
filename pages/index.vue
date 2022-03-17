@@ -222,11 +222,17 @@ p {
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
   max-height: 2000px;
+  min-height: 720px;
   position: relative;
   z-index: 2;
 
   @media screen and (max-width: $third-incr) {
     height: 600px;
+    min-height: 0px;
+  }
+
+  @media screen and (max-width: $fifth-incr) {
+    height: 400px;
   }
 
   h1 {
@@ -386,7 +392,6 @@ p {
   @media screen and (max-width: $second-incr) {
     height: 95vh;
     background-position: bottom right;
-    min-height: 900px;
   }
 
   @media screen and (max-width: $fourth-incr) {
@@ -469,8 +474,12 @@ p {
       top: 20%;
     }
 
-    @media screen and (max-width: $fifth-incr) {
+    @media screen and (max-width: $third-incr) {
       top: 14%;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      top: 16%;
     }
 
     p {
@@ -506,7 +515,7 @@ p {
       right: 0;
       width: 80%;
 
-      @media screen and (max-width: 1600px) {
+      @media screen and (max-width: 1700px) {
         width: 70%;
         top: 100px;
       }
@@ -518,7 +527,7 @@ p {
       left: 0;
       width: 65%;
 
-      @media screen and (max-width: 1600px) {
+      @media screen and (max-width: 1700px) {
         left: 90px;
         width: 55%;
       }
@@ -565,7 +574,7 @@ p {
     }
 
     @media screen and (max-width: $fifth-incr) {
-      padding-top: 50px;
+      padding-top: 10px;
     }
   }
 

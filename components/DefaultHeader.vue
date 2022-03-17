@@ -113,7 +113,7 @@ header {
   .btnWrapper {
     width: 220px;
 
-    @media screen and (max-width: $second-incr) {
+    @media screen and (max-width: 750px) {
       display: none;
     }
   }
@@ -143,7 +143,7 @@ header {
     font-family: 'Roslindale';
   }
 
-  @media screen and (max-width: $second-incr) {
+  @media screen and (max-width: 1050px) {
     display: none;
   }
 }
