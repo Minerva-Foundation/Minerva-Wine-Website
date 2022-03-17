@@ -51,7 +51,7 @@
 
   .button {
     min-width: 120px !important;
-    height: 40px !important;
+    height: auto !important;
   }
 
   p {
@@ -193,7 +193,7 @@ p {
   letter-spacing: 0.06rem;
   text-decoration: none;
   padding: 15px 20px 15px 20px;
-  line-height: 0.8;
+  line-height: 1;
   background-color: $secondary;
   font-size: 1rem;
   color: $bright-font;
