@@ -1,7 +1,7 @@
 <template>
   <main class="wrapper cursiveBig">
     <section class="slide1">
-      <article class="sectionContent">
+      <article class="sectionContent slide-in from-left appear">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">A new era of wine.</h1>
         <h3 class="customh3">Exciting Wines Directly from the Vineyard</h3>
@@ -10,16 +10,16 @@
     </section>
     <section class="slide2">
       <article class="sectionContent">
-        <h2 class="customh2">About</h2>
-        <h1 class="customh1">What Is Minerva?</h1>
+        <h2 class="customh2 fade-in appear">About</h2>
+        <h1 class="customh1 fade-in appear">What Is Minerva?</h1>
         <div class="pwrapper">
-          <p>
+          <p class="slide-in from-left appear">
             Minerva is an international community of individuals who are
             passionate about wine. We work with select producers from across the
             world who have unique stories to tell and whose dedication to the
             art of winemaking set them apart in the wine industry.
           </p>
-          <p>
+          <p class="slide-in from-right appear">
             Minerva allows customers to buy en primeur wine directly from
             producers, with confirmation of sale stored safely on the
             blockchain. Our wines are carefully-selected for their quality and
@@ -28,10 +28,14 @@
         </div>
         <div class="btnwrapper">
           <a href="https://docs.minerva.market/" target="_blank"
-            ><button class="button">MORE INFO</button></a
+            ><button class="button slide-in from-left appear">
+              MORE INFO
+            </button></a
           >
           <a href="mailto:contact@minerva.market"
-            ><button class="buttonLight">CONTACT US</button></a
+            ><button class="buttonLight slide-in from-right appear">
+              CONTACT US
+            </button></a
           >
         </div>
       </article>
@@ -42,7 +46,7 @@
       />
     </section>
     <section class="slide3">
-      <article class="sectionContent">
+      <article class="sectionContent slide-in from-right appear">
         <h2 class="customh2">Curated</h2>
         <h1 class="customh1">Quality Wines</h1>
         <p>
@@ -64,7 +68,7 @@
       </article>
     </section>
     <section class="slide4">
-      <article class="sectionContent">
+      <article class="sectionContent slide-in from-left appear">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">Minerva Club</h1>
         <p>
@@ -90,7 +94,7 @@
           ><button class="button">EXPLORE THE CLUB</button></NuxtLink
         >
       </article>
-      <div class="imgwrapper">
+      <div class="imgwrapper slide-in from-right appear">
         <img
           src="~static/images/wine_shelf.webp"
           alt="Wine shelf"
@@ -110,26 +114,30 @@
     </section>
     <section class="slide5">
       <article class="sectionContent">
-        <h2 class="customh2">Learn</h2>
-        <h1 class="customh1">How It Works</h1>
+        <h2 class="customh2 fade-in appear">Learn</h2>
+        <h1 class="customh1 fade-in appear">How It Works</h1>
         <CollapsibleGuide
+          class="fade-in appear"
           iteration="Stage 01"
           header="Select your wine."
           main-text="Browse through the selection of fine wine listed. Once you have selected your wine of choice, you will be able to purchase using your blockchain wallet. The Minerva community funds new vintages and bespoke wines, with discounts offered for the early stage of purchase. Be sure to note the delivery guidance and take note of the producer’s delivery date."
           :first="true"
         />
         <CollapsibleGuide
+          class="fade-in appear"
           iteration="Stage 02"
           header="View your wine online."
           main-text="Once you have purchased your wine you will be able to see it on ‘My Wines’. Each purchase is accompanied by a unique piece of artwork which are in themselves a desirable asset. At this point, you will be able to access exclusive material in ‘Minerva Club’; this includes a space where you can discuss with the producer directly. "
         />
         <CollapsibleGuide
+          class="fade-in appear"
           iteration="Stage 03"
           header="Wait & appreciate."
           main-text="Minerva sells wine as it enters production, meaning that customers can see their bottle progress from the vine onwards. As your wine matures, you can enjoy Minerva Club material, display your wine and artwork proudly in a number of different ways online, and enjoy access to additional yield opportunities through your purchase."
           secondary-text="If you desire, you would also be able to sell your blockchain receipt online. This passes ownership of the wine to other individuals. In that regard, your NFT receipt can be viewed as a tradable asset."
         />
         <CollapsibleGuide
+          class="fade-in appear"
           iteration="Stage 04"
           header="Receive your wine."
           main-text="Once your wine has matured in production, the winemaker will deliver directly to all addresses holding the NFT receipt at the specified delivery time. There will still be a record of your purchase and you will retain the unique artwork in your blockchain wallet. "
@@ -145,14 +153,60 @@
   </main>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+  name: 'HomepageMain',
+  mounted() {
+    this.addScrollAnim();
+  },
+  methods: {
+    addScrollAnim() {
+      const faders = this.$el.querySelectorAll('.fade-in');
+      const sliders = this.$el.querySelectorAll('.slide-in');
+
+      faders.forEach((el) => {
+        el.classList.remove('appear');
+      });
+      sliders.forEach((el) => {
+        el.classList.remove('appear');
+      });
+
+      const appearOptions = {
+        threshold: 0,
+        rootMargin: '0px 0px -250px 0px',
+      };
+
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      sliders.forEach((slider) => {
+        appearOnScroll.observe(slider);
+      });
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
   color: $bright-font;
   background-color: $main;
+  overflow-x: hidden;
 }
 
 p {
@@ -178,6 +232,49 @@ p {
 
 .barrels {
   z-index: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
+
+.from-left {
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.from-right {
+  -webkit-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.from-left,
+.from-right {
+  transition: opacity 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in,
+    -webkit-transform 0.3s ease-in;
+  opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media screen and (max-width: $second-incr) {
+  .from-left,
+  .from-right {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 }
 
 .webp .slide1 {
