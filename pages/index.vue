@@ -236,7 +236,8 @@ p {
   }
 
   h1 {
-    @media screen and (max-width: $sixth-incr) {
+    @media screen and (max-width: $fifth-incr) {
+      font-family: Helvetica;
       line-height: 0.8em;
       margin-bottom: 10px;
     }

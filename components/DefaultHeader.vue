@@ -4,11 +4,14 @@
       <NuxtLink class="homeMain" to="/">
         <div class="home">
           <img src="~static/images/torch.svg" alt="Homepage" class="torch" />
-          <img
-            src="~static/images/minervaText.svg"
-            alt="Homepage"
-            class="homeText"
-          />
+          <div class="textWrapper">
+            <img
+              src="~static/images/minervaText.svg"
+              alt="Homepage"
+              class="homeText"
+            />
+            <span class="siteName">{{ currentPath }}</span>
+          </div>
         </div>
       </NuxtLink>
       <ul class="mainLinks rosStretch">
@@ -90,6 +93,24 @@ export default Vue.extend({
     mobileMenuVis: false,
     mobileConnectWalletVis: false,
   }),
+  computed: {
+    currentPath() {
+      const regexp = /\/(.*)\//g;
+      let arr: RegExpExecArray | null = regexp.exec(this.$nuxt.$route.path);
+
+      if (arr) {
+        return arr[1].toUpperCase();
+      } else {
+        const regexp = /\/(.*)/g;
+        arr = regexp.exec(this.$nuxt.$route.path);
+        if (arr && arr[1] !== '') {
+          return arr[1].toUpperCase();
+        } else {
+          return 'HOME';
+        }
+      }
+    },
+  },
 });
 </script>
 
@@ -116,15 +137,40 @@ export default Vue.extend({
       justify-content: space-between;
       width: 220px;
 
+      @media screen and (max-width: 370px) {
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+
       @media screen and (max-width: 295px) {
         width: 100%;
       }
 
-      .homeText {
-        height: 30px;
+      .textWrapper {
+        margin-left: 10px;
+        margin-top: 5px;
 
-        @media screen and (max-width: 370px) {
+        .homeText {
+          height: 30px;
+
+          @media screen and (max-width: 370px) {
+            display: none;
+          }
+        }
+
+        .siteName {
+          color: $bright-font;
+          font-size: 16px;
+          line-height: 0.9;
           display: none;
+
+          @media screen and (max-width: 1050px) {
+            display: block;
+          }
+
+          @media screen and (max-width: 370px) {
+            display: none;
+          }
         }
       }
     }
