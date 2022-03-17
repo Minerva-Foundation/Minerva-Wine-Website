@@ -30,7 +30,9 @@
           <a href="https://docs.minerva.market/" target="_blank"
             ><button class="button">MORE INFO</button></a
           >
-          <button class="buttonLight">CONTACT US</button>
+          <a href="mailto:contact@minerva.market"
+            ><button class="buttonLight">CONTACT US</button></a
+          >
         </div>
       </article>
       <img
