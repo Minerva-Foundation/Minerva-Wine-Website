@@ -37,17 +37,21 @@
         src="~static/images/menu.svg"
         alt="Open Mobile Menu"
         class="mobileMenuBtn"
-        @click="mobileMenuVis = !mobileMenuVis"
+        @click.stop="mobileMenuVis = !mobileMenuVis"
       />
     </nav>
-    <nav :class="{ vis: mobileMenuVis }" class="mobileNav">
+    <nav
+      v-click-outside="hideMobileNav"
+      :class="{ vis: mobileMenuVis }"
+      class="mobileNav"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
         class="closeMobileMenuBtn"
-        @click="mobileMenuVis = false"
+        @click.stop="mobileMenuVis = false"
       >
         <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
       </svg>
@@ -111,6 +115,11 @@ export default Vue.extend({
           return 'HOME';
         }
       }
+    },
+  },
+  methods: {
+    hideMobileNav() {
+      if (this.mobileMenuVis) this.mobileMenuVis = false;
     },
   },
 });
