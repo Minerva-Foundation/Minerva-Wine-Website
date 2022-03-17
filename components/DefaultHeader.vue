@@ -30,8 +30,24 @@
       <div class="btnWrapper">
         <InputsConnectWallet />
       </div>
+      <img
+        src="~static/images/menu.svg"
+        alt="Open Mobile Menu"
+        class="mobileMenuBtn"
+        @click="mobileMenuVis = !mobileMenuVis"
+      />
     </nav>
-    <nav class="mobileNav">
+    <nav :class="{ vis: mobileMenuVis }" class="mobileNav">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        class="closeMobileMenuBtn"
+        @click="mobileMenuVis = false"
+      >
+        <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
+      </svg>
       <div class="btnWrapper">
         <InputsConnectWallet />
       </div>
@@ -65,11 +81,15 @@
   </header>
 </template>
 
-<script"ts">
+<script lang="ts">
 import Vue from 'vue';
 
 export default Vue.extend({
   name: 'DefaultHeader',
+  data: () => ({
+    mobileMenuVis: false,
+    mobileConnectWalletVis: false,
+  }),
 });
 </script>
 
@@ -113,7 +133,30 @@ header {
   .btnWrapper {
     width: 220px;
 
+    @media screen and (max-width: 1050px) {
+      margin-right: 60px;
+    }
+
     @media screen and (max-width: 750px) {
+      display: none;
+    }
+  }
+
+  .mobileMenuBtn {
+    filter: $white-filter;
+    height: 40px;
+    position: absolute;
+    right: 40px;
+    display: none;
+    cursor: pointer;
+
+    @media screen and (max-width: 1050px) {
+      display: block;
+    }
+  }
+
+  .mainLinks {
+    @media screen and (max-width: 1050px) {
       display: none;
     }
   }
@@ -142,34 +185,54 @@ header {
     color: $bright-font;
     font-family: 'Roslindale';
   }
-
-  @media screen and (max-width: 1050px) {
-    display: none;
-  }
 }
 
 .mobileNav {
   background-color: $main;
-  position: absolute;
-  height: 100vh;
-  width: 300px;
+  display: inline-block;
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  max-width: 50vw;
+  width: 0;
   z-index: 10;
   right: 0;
   top: 0;
-  padding: 3.5% 0 10% 0;
-  display: none;
+  transition: width 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -webkit-box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
+
+  .closeMobileMenuBtn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    filter: $white-filter;
+    cursor: pointer;
+  }
 
   .btnWrapper {
-    display: flex;
     align-items: center;
     flex-direction: column;
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: 750px) {
+      display: flex;
+    }
   }
 
   .mainLinks {
     height: 100%;
     flex-direction: column;
     align-items: center;
-    padding: 15% 0 15% 0;
+    padding: 25% 0 15% 0;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 
     li {
       margin-top: 20px;
@@ -195,6 +258,14 @@ header {
         }
       }
     }
+  }
+}
+
+.vis {
+  width: 350px;
+
+  .mainLinks {
+    opacity: 1;
   }
 }
 </style>

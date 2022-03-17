@@ -3,7 +3,7 @@
     <portableImage
       class="image"
       :asset="article.mainImage.asset"
-      :new-height="378"
+      new-height="378"
     />
     <span class="taa"
       ><h3 class="title">{{ article.title }}</h3>
@@ -93,7 +93,7 @@ $defWidth: 547px;
     .title {
       font-family: 'Roslindale';
       font-weight: 100;
-      font-size: 2.05em;
+      font-size: 2.25em;
       margin-bottom: 3px;
 
       @media screen and (max-width: 270px) {

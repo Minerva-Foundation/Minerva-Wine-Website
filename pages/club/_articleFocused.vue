@@ -13,7 +13,7 @@
             <portableImage
               class="authorImage"
               :asset="currentArticle.author.image.asset"
-              :new-height="100"
+              new-height="100"
             />
             {{ currentArticle.author.name }}
             <SanityContent
