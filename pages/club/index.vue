@@ -4,6 +4,7 @@
       <div class="headerContent">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">Minerva Club</h1>
+        <InputsConnectWallet class="walletComp" />
       </div>
     </aside>
     <ul
@@ -63,23 +64,43 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .webp .clubHeader {
-  background-image: url('~static/images/cork.webp'); /* fallback */
+  background-image: url('~static/images/cork_crop.webp'); /* fallback */
   background-image: linear-gradient(
       70.34deg,
       rgba(60, 60, 60, 0.76) -6.08%,
-      rgba(255, 255, 255, 0) 110.14%
+      rgba(255, 255, 255, 0.062) 110.14%
     ),
-    url('~static/images/cork.webp');
+    url('~static/images/cork_crop.webp');
+
+  @media screen and (max-width: 1325px) {
+    background-image: url('~static/images/cork_small.webp'); /* fallback */
+    background-image: linear-gradient(
+        70.34deg,
+        rgba(60, 60, 60, 0.76) -6.08%,
+        rgba(255, 255, 255, 0) 110.14%
+      ),
+      url('~static/images/cork_small.webp');
+  }
 }
 
 .no-webp .clubHeader {
-  background-image: url('~static/images/cork.jpg'); /* fallback */
+  background-image: url('~static/images/cork_crop.jpg'); /* fallback */
   background-image: linear-gradient(
       68.77deg,
       rgba(0, 0, 0, 0.553) 18.51%,
       rgba(196, 196, 196, 0) 63.79%
     ),
-    url('~static/images/cork.jpg');
+    url('~static/images/cork_crop.jpg');
+
+  @media screen and (max-width: 1325px) {
+    background-image: url('~static/images/cork_small.jpg'); /* fallback */
+    background-image: linear-gradient(
+        70.34deg,
+        rgba(60, 60, 60, 0.76) -6.08%,
+        rgba(255, 255, 255, 0) 110.14%
+      ),
+      url('~static/images/cork_small.jpg');
+  }
 }
 
 .clubHeader {
@@ -90,7 +111,7 @@ export default Vue.extend({
   min-height: 500px;
   height: 40vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
   @media screen and (max-width: 1000px) {
     height: 400px;
@@ -108,7 +129,12 @@ export default Vue.extend({
 
   .headerContent {
     margin-left: 3vw;
-    margin-bottom: 30px;
+
+    .walletComp {
+      @media screen and (max-width: 750px) {
+        display: none;
+      }
+    }
   }
 }
 

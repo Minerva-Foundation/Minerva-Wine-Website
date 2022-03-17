@@ -51,7 +51,7 @@
         height="24"
         viewBox="0 0 24 24"
         class="closeMobileMenuBtn"
-        @click.stop="mobileMenuVis = false"
+        @click="mobileMenuVis = false"
       >
         <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
       </svg>
@@ -59,7 +59,7 @@
         <InputsConnectWallet />
       </div>
       <ul class="mainLinks rosStretch">
-        <li>
+        <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/"
             class="linkHover underline"
@@ -67,7 +67,7 @@
             >Home</NuxtLink
           >
         </li>
-        <li>
+        <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/wine"
             class="linkHover"
@@ -75,7 +75,7 @@
             >Wine</NuxtLink
           >
         </li>
-        <li>
+        <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/club"
             class="linkHover"
