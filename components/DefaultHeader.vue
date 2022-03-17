@@ -75,7 +75,9 @@
           <NuxtLink
             to="/club"
             class="linkHover"
-            :class="{ underline: $nuxt.$route.path === '/club' }"
+            :class="{
+              underline: currentPath === 'CLUB',
+            }"
             >Club</NuxtLink
           >
         </li>
@@ -244,8 +246,6 @@ export default Vue.extend({
     right: 0;
     top: 0;
     transition: width 0.2s ease;
-    -webkit-box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
-    box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
 
     @media screen and (max-width: 310px) {
       max-width: 100vw;
@@ -270,6 +270,10 @@ export default Vue.extend({
       margin-left: auto;
       margin-right: auto;
 
+      @media screen and (max-height: 340px) {
+        bottom: 30px;
+      }
+
       @media screen and (max-width: 750px) {
         display: flex;
       }
@@ -290,6 +294,14 @@ export default Vue.extend({
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;
+
+      @media screen and (max-height: 400px) {
+        padding-top: 40px;
+      }
+
+      @media screen and (max-height: 340px) {
+        padding-top: 20px;
+      }
 
       li {
         margin-top: 20px;
@@ -320,6 +332,8 @@ export default Vue.extend({
 
   .vis {
     width: 350px;
+    -webkit-box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
 
     .mainLinks {
       opacity: 1;

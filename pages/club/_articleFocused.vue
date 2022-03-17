@@ -39,6 +39,26 @@
           :blocks="currentArticle.body"
           :serializers="serializers"
         />
+
+        <address class="authorBottom">
+          <span class="sectionTitle">Author</span>
+          <div class="sectionWrapper">
+            <portableImage
+              class="authorImage"
+              :asset="currentArticle.author.image.asset"
+              new-height="100"
+            />
+            <div class="detailWrapper">
+              <span class="name">
+                {{ currentArticle.author.name }}
+              </span>
+              <SanityContent
+                :blocks="currentArticle.author.bio"
+                :serializers="serializers"
+              />
+            </div>
+          </div>
+        </address>
       </article>
     </div>
   </div>
@@ -105,8 +125,20 @@ export default Vue.extend({
   grid-template-columns: [aside] min(400px, 20vw) [content] auto;
   padding-top: $header-height;
 
+  @media screen and (max-width: $first-incr) {
+    grid-template-columns: [content] 100%;
+  }
+
+  @media screen and (max-width: 370px), screen and (max-height: 1000px) {
+    padding-top: 0px;
+  }
+
   .extraInfo {
     border-right: #d8d8d8 1px solid;
+
+    @media screen and (max-width: $first-incr) {
+      display: none;
+    }
 
     .wrapperFixed {
       position: fixed;
@@ -181,13 +213,97 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
+    @media screen and (max-width: $fourth-incr) {
+      padding-top: 50px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      padding-bottom: 50px;
+    }
+
+    .authorBottom {
+      font-style: normal;
+      color: #333;
+      width: 100%;
+      margin-top: 50px;
+      display: none;
+
+      @media screen and (max-width: $first-incr) {
+        display: block;
+      }
+
+      .sectionTitle {
+        padding-top: 4vh;
+        margin-left: 10px;
+        padding-left: 20px;
+        width: 90%;
+        text-align: left;
+        border-bottom: #d8d8d8 1px solid;
+        padding-bottom: 5px;
+        color: #777;
+        display: inline-block;
+
+        @media screen and (max-width: $fourth-incr) {
+          margin-left: 0;
+        }
+      }
+
+      .sectionWrapper {
+        margin-top: -20px;
+        width: 90%;
+        font-size: 2em;
+        display: flex;
+        align-items: center;
+
+        .name {
+          font-family: 'Roslindale';
+        }
+
+        .authorImage {
+          margin-bottom: 10px;
+
+          img {
+            max-width: 100px;
+            width: 14vw;
+            min-width: 60px;
+            border-radius: 50%;
+          }
+        }
+
+        .detailWrapper {
+          margin-left: 40px;
+
+          @media screen and (max-width: $fourth-incr) {
+            margin-left: 20px;
+          }
+
+          p {
+            margin-top: 10px;
+            color: rgb(95, 95, 95);
+            letter-spacing: 0.01em;
+            font-size: 1.3rem;
+            line-height: 1.4rem;
+          }
+        }
+      }
+    }
 
     .contentwrapperSanity {
       max-width: 55em;
 
+      @media screen and (max-width: 1050px) {
+        max-width: 86%;
+      }
+
       h1 {
         color: $dark-font;
         font-size: 5em;
+
+        @media screen and (max-width: $sixth-incr) {
+          margin-bottom: 10px;
+        }
       }
 
       .aad {
@@ -239,10 +355,6 @@ export default Vue.extend({
         h3,
         h4 {
           margin-bottom: 25px;
-        }
-
-        iframe {
-          margin: 50px 50px 50px 50px;
         }
 
         ul {

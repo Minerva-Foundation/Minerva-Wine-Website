@@ -10,6 +10,10 @@
 .header {
   position: fixed;
   width: 100%;
+
+  @media screen and (max-width: 370px), screen and (max-height: 1000px) {
+    position: relative;
+  }
 }
 .main {
   z-index: 1;
