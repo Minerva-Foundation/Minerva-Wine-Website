@@ -350,7 +350,7 @@ p {
   }
 
   h1 {
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
 
     @media screen and (max-width: $fifth-incr) {
       font-family: Helvetica;
@@ -647,6 +647,8 @@ p {
     width: 37vw;
     height: 40vw;
     z-index: 1;
+    max-width: 760px;
+    max-height: 823px;
 
     @media screen and (max-width: 1500px) {
       display: none;
@@ -725,6 +727,7 @@ p {
     }
 
     .scrollToTop {
+      align-self: flex-start;
       max-width: 320px;
       z-index: 3;
       cursor: pointer;
