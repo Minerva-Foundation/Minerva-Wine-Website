@@ -1,14 +1,5 @@
 <template>
   <main class="wrapper cursiveBig">
-    <svg
-      class="scrollToTop"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="white"
-      @click="scrollToTop()"
-    >
-      <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
-    </svg>
     <section class="slide1">
       <article class="sectionContent slide-in from-left">
         <h2 class="customh2">Welcome to</h2>
@@ -157,6 +148,16 @@
             secondary-text="After delivery, all unclaimed yield earned during this time period will be ready to be withdrawn or to lead to greater discounts on your next Minerva purchase."
           />
         </div>
+        <div class="scrollToTop" @click="scrollToTop()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
+          </svg>
+          <span class="text">BACK TO TOP</span>
+        </div>
       </article>
       <img
         src="~static/images/wine_barrels.png"
@@ -221,16 +222,6 @@ export default Vue.extend({
   background-color: $main;
   overflow-x: hidden;
   position: relative;
-
-  .scrollToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 30px;
-    z-index: 3;
-    cursor: pointer;
-    transform: rotate(-90deg);
-  }
 }
 
 p {
@@ -707,6 +698,7 @@ p {
   flex-direction: row;
   text-align: center;
   position: relative;
+  width: 100%;
 
   h1 {
     margin-bottom: 40px;
@@ -715,7 +707,6 @@ p {
   .sectionContent {
     width: 60%;
     padding-top: 150px;
-    padding-bottom: 200px;
 
     @media screen and (max-width: $first-incr) {
       width: 82%;
@@ -727,6 +718,29 @@ p {
 
     @media screen and (max-width: $fifth-incr) {
       padding-top: 10px;
+    }
+
+    .scrollToTop {
+      width: 320px;
+      z-index: 3;
+      cursor: pointer;
+      margin-top: 180px;
+      margin-bottom: 120px;
+      display: inline-flex;
+
+      svg {
+        transform: rotate(-90deg);
+        width: 50px;
+      }
+
+      .text {
+        text-align: right;
+        margin-top: 7px;
+        width: 210px;
+        font-size: 2em;
+        color: $bright-font;
+        font-family: $standard-big-font;
+      }
     }
   }
 
