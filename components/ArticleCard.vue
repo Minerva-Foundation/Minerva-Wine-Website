@@ -91,10 +91,24 @@ $defWidth: 547px;
     font-size: 1.1em;
 
     .title {
-      font-family: 'Roslindale';
+      font-family: $standard-big-font;
       font-weight: 100;
       font-size: 2.25em;
-      margin-bottom: 3px;
+      line-height: 0.85 !important;
+      margin-top: 10px;
+      margin-bottom: 5px;
+
+      @media screen and (max-width: 570px) {
+        font-size: 2em;
+      }
+
+      @media screen and (max-width: 430px) {
+        font-size: 1.9em;
+      }
+
+      @media screen and (max-width: 370px) {
+        font-size: 1.7em;
+      }
 
       @media screen and (max-width: 270px) {
         font-size: 1.6em;
@@ -109,8 +123,20 @@ $defWidth: 547px;
       font-size: 1.1em;
       color: #333;
 
-      @media screen and (max-width: 270px) {
+      @media screen and (max-width: 570px) {
+        font-size: 1em;
+      }
+
+      @media screen and (max-width: 430px) {
+        font-size: 1em;
+      }
+
+      @media screen and (max-width: 370px) {
         font-size: 0.9em;
+      }
+
+      @media screen and (max-width: 270px) {
+        font-size: 0.8em;
       }
     }
 
@@ -134,7 +160,6 @@ $defWidth: 547px;
   .rm {
     color: $secondary;
     font-weight: 600;
-    margin-bottom: 10px;
   }
 }
 </style>

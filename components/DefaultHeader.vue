@@ -128,6 +128,7 @@ export default Vue.extend({
 <style lang="scss">
 .headerMain {
   position: relative;
+  z-index: 4;
 
   .mainNav {
     height: $header-height;
@@ -239,7 +240,7 @@ export default Vue.extend({
     list-style: none;
     li a {
       color: $bright-font;
-      font-family: 'Roslindale';
+      font-family: $standard-big-font;
     }
   }
 
@@ -256,7 +257,11 @@ export default Vue.extend({
     top: 0;
     transition: width 0.2s ease;
 
-    @media screen and (max-width: 310px) {
+    @media screen and (max-width: 500px) {
+      max-width: 70vw;
+    }
+
+    @media screen and (max-width: 370px) {
       max-width: 100vw;
     }
 

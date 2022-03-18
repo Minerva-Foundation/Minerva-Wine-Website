@@ -164,7 +164,7 @@ export default Vue.extend({
         cursor: pointer;
 
         @media screen and (max-width: $second-incr) {
-          font-size: 3em;
+          font-size: 3em !important;
         }
       }
     }
@@ -188,11 +188,11 @@ export default Vue.extend({
         cursor: pointer;
 
         @media screen and (max-width: $third-incr) {
-          font-size: 3.1em !important;
+          font-size: 2.5em !important;
         }
 
         @media screen and (max-width: $fifth-incr) {
-          font-size: 2.5em !important;
+          font-size: 2em !important;
         }
       }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperClubArticle">
     <aside class="extraInfo">
-      <div class="wrapperFixed">
+      <div class="wrapperFixed sticky">
         <div class="authorWrapper">
           <NuxtLink to="/club">
             <button class="button">
@@ -125,25 +125,33 @@ export default Vue.extend({
   grid-template-columns: [aside] min(400px, 20vw) [content] auto;
   padding-top: $header-height;
 
-  @media screen and (max-width: $first-incr) {
+  @media screen and (max-width: $first-incr), screen and (max-height: 700px) {
     grid-template-columns: [content] 100%;
   }
 
-  @media screen and (max-width: 370px), screen and (max-height: 1000px) {
+  @media screen and (max-width: 370px), screen and (max-height: 760px) {
     padding-top: 0px;
   }
 
   .extraInfo {
     border-right: #d8d8d8 1px solid;
+    position: relative;
+    height: 100%;
 
-    @media screen and (max-width: $first-incr) {
+    @media screen and (max-width: $first-incr), screen and (max-height: 700px) {
       display: none;
     }
 
     .wrapperFixed {
       position: fixed;
       width: min(400px, 20vw);
-      height: 100%;
+      height: 100px;
+
+      @media screen and (max-height: 760px) {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+      }
 
       .authorWrapper {
         display: flex;
@@ -183,7 +191,7 @@ export default Vue.extend({
           color: #333;
           width: 70%;
           font-size: 2em;
-          font-family: 'Roslindale';
+          font-family: $standard-big-font;
 
           .authorImage {
             margin-bottom: 10px;
@@ -230,7 +238,8 @@ export default Vue.extend({
       margin-top: 50px;
       display: none;
 
-      @media screen and (max-width: $first-incr) {
+      @media screen and (max-width: $first-incr),
+        screen and (max-height: 700px) {
         display: block;
       }
 
@@ -258,7 +267,7 @@ export default Vue.extend({
         align-items: center;
 
         .name {
-          font-family: 'Roslindale';
+          font-family: $standard-big-font;
         }
 
         .authorImage {
@@ -302,7 +311,7 @@ export default Vue.extend({
         font-size: 5em;
 
         @media screen and (max-width: $sixth-incr) {
-          margin-bottom: 10px;
+          margin-bottom: 14px;
         }
       }
 

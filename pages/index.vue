@@ -359,10 +359,19 @@ p {
   }
 
   h1 {
+    letter-spacing: -0.04em;
+
     @media screen and (max-width: $fifth-incr) {
       font-family: Helvetica;
-      line-height: 0.8em;
       margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 358px) {
+      font-size: 3.5em !important;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 3.1em !important;
     }
   }
   h3 {
@@ -372,6 +381,7 @@ p {
 
     @media screen and (max-width: $fifth-incr) {
       margin-bottom: 15px;
+      font-size: 16px;
     }
   }
 
@@ -458,6 +468,10 @@ p {
           width: 100%;
         }
       }
+
+      @media screen and (max-width: $fifth-incr) {
+        margin-top: 0px;
+      }
     }
 
     .btnwrapper {
@@ -482,6 +496,7 @@ p {
 
       @media screen and (max-width: $fifth-incr) {
         height: 100px;
+        margin-top: 10px;
       }
     }
   }
@@ -566,6 +581,10 @@ p {
       display: block;
       max-width: 700px;
       margin-top: 30px;
+
+      @media screen and (max-width: $fifth-incr) {
+        margin-top: 9px;
+      }
     }
   }
 }
@@ -576,9 +595,14 @@ p {
   min-height: 1240px;
   overflow: hidden;
 
+  @media screen and (max-width: $third-incr) {
+    min-height: 950px;
+  }
+
   @media screen and (max-width: $fourth-incr) {
     height: 80vh;
   }
+
   @media screen and (max-width: $fifth-incr) {
     height: 65vh;
     min-height: 850px;
@@ -610,6 +634,10 @@ p {
       max-width: 700px;
       text-align: left;
       margin-top: 30px;
+
+      @media screen and (max-width: $fifth-incr) {
+        margin-top: 15px;
+      }
     }
 
     .button {

@@ -15,6 +15,6 @@
 }
 .main {
   z-index: 1;
-  margin-bottom: 199px;
+  margin-bottom: calc(#{$footer-height} - 1px);
 }
 </style>

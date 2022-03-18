@@ -1,14 +1,18 @@
 @import './vars.scss';
 
-@media screen and (max-width: $first-incr) {
-  .customh1 {
-    font-size: 5.9em !important;
-  }
-}
-
 @media screen and (max-width: 707px) {
   html {
     font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: $second-incr) {
+  .customh1 {
+    font-size: 4.6em !important;
+  }
+
+  .customh2 {
+    font-size: 5.5em !important;
   }
 }
 
@@ -18,7 +22,7 @@
   }
 
   .customh1 {
-    font-size: 5em !important;
+    font-size: 4em !important;
   }
 }
 
@@ -41,10 +45,6 @@
     font-size: 0.6em;
   }
 
-  .customh1 {
-    font-size: 4em !important;
-  }
-
   .customh2 {
     font-size: 5em !important;
   }
@@ -56,16 +56,31 @@
 
   p {
     line-height: 1.5em !important;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 358px) {
+  .customh1 {
+    font-size: 3.5em !important;
+  }
+
+  .customh2 {
+    font-size: 4em !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .customh1 {
+    font-size: 3.1em !important;
+  }
+
+  .customh2 {
+    font-size: 3.5em !important;
   }
 }
 
 @media screen and (max-width: $sixth-incr) {
-  h1 {
-    line-height: 0.9em;
-    margin-bottom: -10px;
-    margin-top: 10px;
-  }
-
   p {
     line-height: 1.3em !important;
   }
@@ -144,29 +159,33 @@ a {
   text-decoration: none;
 }
 
-.rosStretch {
-  font-family: 'Roslindale';
+.mainFontStlyeBig {
+  font-family: 'Glacial-Indifference';
+  letter-spacing: -0em;
   color: $bright-font;
 }
 
 .customh1 {
-  @extend .rosStretch;
-  font-size: 7.6em;
+  @extend .mainFontStlyeBig;
+  font-size: 5.5em;
   font-weight: normal;
+  margin-bottom: 9px;
+  line-height: 1;
 }
 
 .customh2 {
   font-family: 'Sabiya-Regular';
   color: $secondary;
-  font-size: 6.7rem;
+  font-size: 6.3rem;
   font-weight: normal;
   margin-bottom: -10px;
 }
 
 .customh3 {
-  @extend .rosStretch;
+  @extend .mainFontStlyeBig;
+  letter-spacing: -0.01em;
   font-weight: normal;
-  font-size: 3.75rem;
+  font-size: 3rem;
 }
 
 .customh4 {

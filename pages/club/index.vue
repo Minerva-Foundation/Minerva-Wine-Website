@@ -165,11 +165,11 @@ export default Vue.extend({
     border-bottom: 1px solid #cccccc;
 
     @media screen and (max-width: 570px) {
-      height: 580px;
+      height: 650px;
     }
 
     @media screen and (max-width: 430px) {
-      height: 500px;
+      height: 530px;
 
       * {
         font-size: 14px;
@@ -177,7 +177,7 @@ export default Vue.extend({
     }
 
     @media screen and (max-width: 370px) {
-      height: 470px;
+      height: 490px;
     }
 
     @media screen and (max-width: 270px) {
