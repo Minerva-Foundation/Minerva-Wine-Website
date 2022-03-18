@@ -714,7 +714,7 @@ p {
 
   .sectionContent {
     width: 60%;
-    padding-top: 300px;
+    padding-top: 150px;
     padding-bottom: 200px;
 
     @media screen and (max-width: $first-incr) {
@@ -722,7 +722,7 @@ p {
     }
 
     @media screen and (max-width: $second-incr) {
-      padding-top: 150px;
+      padding-top: 50px;
     }
 
     @media screen and (max-width: $fifth-incr) {
@@ -732,12 +732,16 @@ p {
 
   .barrels {
     position: absolute;
-    top: -30px;
+    top: -80px;
     left: 20px;
     width: 45%;
     min-width: 500px;
 
-    @media screen and (max-width: $fourth-incr) {
+    @media screen and (max-width: $second-incr) {
+      top: -120px;
+    }
+
+    @media screen and (max-width: $third-incr) {
       min-width: 0;
       left: -130px;
       width: 100vw;
