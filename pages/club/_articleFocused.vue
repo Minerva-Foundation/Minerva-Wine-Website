@@ -302,8 +302,9 @@ export default Vue.extend({
     .contentwrapperSanity {
       max-width: 55em;
 
-      @media screen and (max-width: 1050px) {
-        max-width: 86%;
+      @media screen and (max-width: 1050px) and (min-height: 950px),
+        screen and (max-width: 930px) {
+        max-width: 84%;
       }
 
       h1 {

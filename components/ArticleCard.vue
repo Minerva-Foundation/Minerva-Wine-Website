@@ -87,7 +87,7 @@ $defWidth: 547px;
   }
 
   .taa {
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     font-size: 1.1em;
 
     .title {
