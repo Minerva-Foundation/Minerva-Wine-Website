@@ -587,7 +587,7 @@ p {
   overflow: hidden;
 
   @media screen and (max-width: $third-incr) {
-    min-height: 950px;
+    min-height: 1013px;
   }
 
   @media screen and (max-width: $fourth-incr) {
@@ -713,31 +713,44 @@ p {
     }
 
     @media screen and (max-width: $second-incr) {
-      padding-top: 50px;
+      padding-top: 100px;
     }
 
     @media screen and (max-width: $fifth-incr) {
       padding-top: 10px;
     }
 
+    @media screen and (max-width: 236px) {
+      margin-top: 50px;
+    }
+
     .scrollToTop {
-      width: 320px;
+      max-width: 320px;
       z-index: 3;
       cursor: pointer;
       margin-top: 180px;
       margin-bottom: 120px;
       display: inline-flex;
 
+      @media screen and (max-width: $third-incr) {
+        margin-top: 120px;
+      }
+
+      @media screen and (max-width: 570px) {
+        margin-bottom: 80px;
+      }
+
       svg {
         transform: rotate(-90deg);
-        width: 50px;
+        width: 3em;
       }
 
       .text {
         text-align: right;
         margin-top: 7px;
-        width: 210px;
-        font-size: 2em;
+        max-width: 210px;
+        padding-left: 2em;
+        font-size: 1.5em;
         color: $bright-font;
         font-family: $standard-big-font;
       }
