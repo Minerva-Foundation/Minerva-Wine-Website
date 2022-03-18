@@ -15,3 +15,11 @@
   font-weight: 300;
   font-display: fallback;
 }
+
+@font-face {
+  font-family: 'Glacial-Indifference';
+  src: url('~static/fonts/GI/Glacial-Indifference-Regular.ttf.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

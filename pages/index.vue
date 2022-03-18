@@ -1,5 +1,14 @@
 <template>
   <main class="wrapper cursiveBig">
+    <svg
+      class="scrollToTop"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="white"
+      @click="scrollToTop()"
+    >
+      <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
+    </svg>
     <section class="slide1">
       <article class="sectionContent slide-in from-left">
         <h2 class="customh2">Welcome to</h2>
@@ -31,7 +40,10 @@
             ><button class="button slide-in from-left">MORE INFO</button></a
           >
           <a href="mailto:contact@minerva.market"
-            ><button class="buttonLight slide-in from-right">
+            ><button
+              class="buttonLight slide-in from-right"
+              title="Send us a Mail"
+            >
               CONTACT US
             </button></a
           >
@@ -193,6 +205,12 @@ export default Vue.extend({
         appearOnScroll.observe(slider);
       });
     },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    },
   },
 });
 </script>
@@ -202,6 +220,17 @@ export default Vue.extend({
   color: $bright-font;
   background-color: $main;
   overflow-x: hidden;
+  position: relative;
+
+  .scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 30px;
+    z-index: 3;
+    cursor: pointer;
+    transform: rotate(-90deg);
+  }
 }
 
 p {
