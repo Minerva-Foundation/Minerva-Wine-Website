@@ -119,7 +119,7 @@ export default Vue.extend({
     overflow: hidden;
 
     .barrels {
-      width: 1030px;
+      width: 1060px;
       bottom: -350px;
       right: -50px;
       position: relative;
@@ -132,9 +132,12 @@ export default Vue.extend({
         bottom: -400px;
       }
 
+      @media screen and (max-width: 1650px) {
+        width: 1000px;
+      }
+
       @media screen and (max-width: 1400px) {
         right: -150px;
-        width: 1000px;
       }
 
       @media screen and (max-width: 1200px) {
@@ -165,8 +168,8 @@ export default Vue.extend({
     flex-direction: column;
   }
 
-  @media screen and (min-height: 1242px) {
-    min-height: calc(100vh - (#{$header-height} + 440px));
+  @media screen and (min-height: 1168px) {
+    min-height: calc(100vh - (#{$header-height} + 368px));
   }
 
   * {
@@ -182,7 +185,7 @@ export default Vue.extend({
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
 
-    @media screen and (min-height: 1242px) {
+    @media screen and (min-height: 1168px) {
       min-height: 100%;
     }
 
