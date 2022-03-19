@@ -708,7 +708,7 @@ p {
 
   .sectionContent {
     width: 60%;
-    padding-top: 150px;
+    padding-top: 230px;
 
     @media screen and (max-width: $first-incr) {
       width: 82%;

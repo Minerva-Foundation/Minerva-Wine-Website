@@ -258,7 +258,7 @@ li {
       content: '   ·   ';
       white-space: pre;
       color: $bright-font;
-      font-size: 27px;
+      font-size: 24px;
     }
 
     .mainLinks :last-child::after {
