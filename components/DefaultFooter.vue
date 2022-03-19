@@ -155,7 +155,7 @@ footer {
     height: 105px;
     left: 40px;
     right: initial;
-    top: 0;
+    top: 10px;
     bottom: 0;
     margin: auto;
     display: flex;
