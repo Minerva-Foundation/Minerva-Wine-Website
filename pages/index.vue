@@ -3,8 +3,7 @@
     <section class="slide1">
       <article class="sectionContent slide-in from-left">
         <h2 class="customh2">Welcome to</h2>
-        <h1 class="customh1">A new era of wine.</h1>
-        <h3 class="customh3">Exciting Wines Directly from the Vineyard</h3>
+        <h1 class="customh1">A new era of Wine.</h1>
         <InputsConnectWallet />
       </article>
     </section>
@@ -182,7 +181,7 @@ export default Vue.extend({
 
       const appearOptions = {
         threshold: 0,
-        rootMargin: '0px 0px -150px 0px',
+        rootMargin: '0px 0px -180px 0px',
       };
 
       const appearOnScroll = new IntersectionObserver(function (

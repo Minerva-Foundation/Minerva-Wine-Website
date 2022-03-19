@@ -63,50 +63,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.webp .clubHeader {
-  background-image: url('~static/images/cork_crop.webp'); /* fallback */
-  background-image: linear-gradient(
-      70.34deg,
-      rgba(60, 60, 60, 0.76) -6.08%,
-      rgba(255, 255, 255, 0.062) 110.14%
-    ),
-    url('~static/images/cork_crop.webp');
-
-  @media screen and (max-width: 1325px) {
-    background-image: url('~static/images/cork_small.webp'); /* fallback */
-    background-image: linear-gradient(
-        70.34deg,
-        rgba(60, 60, 60, 0.76) -6.08%,
-        rgba(255, 255, 255, 0) 110.14%
-      ),
-      url('~static/images/cork_small.webp');
-  }
-}
-
-.no-webp .clubHeader {
-  background-image: url('~static/images/cork_crop.jpg'); /* fallback */
-  background-image: linear-gradient(
-      68.77deg,
-      rgba(0, 0, 0, 0.553) 18.51%,
-      rgba(196, 196, 196, 0) 63.79%
-    ),
-    url('~static/images/cork_crop.jpg');
-
-  @media screen and (max-width: 1325px) {
-    background-image: url('~static/images/cork_small.jpg'); /* fallback */
-    background-image: linear-gradient(
-        70.34deg,
-        rgba(60, 60, 60, 0.76) -6.08%,
-        rgba(255, 255, 255, 0) 110.14%
-      ),
-      url('~static/images/cork_small.jpg');
-  }
-}
-
 .clubHeader {
-  background-position: left center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: $main;
   max-height: 622px;
   min-height: 500px;
   height: 40vh;

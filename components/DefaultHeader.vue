@@ -19,15 +19,27 @@
           <NuxtLink
             to="/"
             class="linkHover"
-            :class="{ homeMain: $nuxt.$route.path !== '/' }"
+            :class="{ underline: $nuxt.$route.path === '/' }"
             >Home</NuxtLink
           >
         </li>
         <li>
-          <NuxtLink to="/wine" class="linkHover">Wine</NuxtLink>
+          <NuxtLink
+            to="/wine"
+            class="linkHover"
+            :class="{ underline: $nuxt.$route.path === '/wine' }"
+            >Wine</NuxtLink
+          >
         </li>
         <li>
-          <NuxtLink to="/club" class="linkHover">Club</NuxtLink>
+          <NuxtLink
+            to="/club"
+            class="linkHover"
+            :class="{
+              underline: currentPath === 'CLUB',
+            }"
+            >Club</NuxtLink
+          >
         </li>
       </ul>
       <div class="btnWrapper">
@@ -62,8 +74,8 @@
         <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/"
-            class="linkHover underline"
-            :class="{ homeMain: $nuxt.$route.path !== '/' }"
+            class="linkHover"
+            :class="{ underline: $nuxt.$route.path === '/' }"
             >Home</NuxtLink
           >
         </li>
@@ -126,6 +138,29 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+li {
+  .underline {
+    position: relative;
+
+    &::before {
+      content: '';
+      background: $secondary;
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      height: 2px;
+    }
+
+    &.homeMain::before {
+      content: none;
+    }
+  }
+}
+
 .headerMain {
   position: relative;
   z-index: 4;
@@ -319,27 +354,6 @@ export default Vue.extend({
 
       li {
         margin-top: 20px;
-
-        .underline {
-          position: relative;
-
-          &::before {
-            content: '';
-            background: $secondary;
-            position: absolute;
-            bottom: -4px;
-            right: 0;
-            left: 0;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-            height: 2px;
-          }
-
-          &.homeMain::before {
-            content: none;
-          }
-        }
       }
     }
   }

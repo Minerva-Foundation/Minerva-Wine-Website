@@ -159,13 +159,13 @@ img {
   }
 }
 
-.mainNav .nuxt-link-active {
-  @extend .underline;
+// .mainNav .nuxt-link-active {
+//   @extend .underline;
 
-  &.homeMain::before {
-    content: none;
-  }
-}
+//   &.homeMain::before {
+//     content: none;
+//   }
+// }
 
 a {
   text-decoration: none;
