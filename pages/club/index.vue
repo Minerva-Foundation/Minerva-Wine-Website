@@ -178,6 +178,10 @@ export default Vue.extend({
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
 
+    @media screen and (min-height: 1242px) {
+      min-height: 100%;
+    }
+
     @media screen and (max-width: 570px) {
       height: 650px;
     }
