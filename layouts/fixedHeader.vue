@@ -10,6 +10,7 @@
 .header {
   position: fixed;
   width: 100%;
+  background-color: $main;
 
   @media screen and (max-width: 370px), screen and (max-height: 760px) {
     position: relative;

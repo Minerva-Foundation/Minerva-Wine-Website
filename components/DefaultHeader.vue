@@ -163,12 +163,11 @@ li {
 
 .headerMain {
   position: relative;
-  z-index: 4;
+  z-index: 10;
 
   .mainNav {
     height: $header-height;
     color: $bright-font;
-    background-color: $main;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -271,8 +270,9 @@ li {
   .mainLinks {
     height: 40px;
     display: flex;
-    font-size: 1.474em;
+    font-size: 24px !important;
     list-style: none;
+
     li a {
       color: $bright-font;
       font-family: $standard-big-font;
@@ -287,7 +287,7 @@ li {
     height: 100%;
     max-width: 50vw;
     width: 0;
-    z-index: 10;
+    z-index: 20;
     right: 0;
     top: 0;
     transition: width 0.2s ease;

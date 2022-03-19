@@ -6,6 +6,13 @@
         <h1 class="customh1">Minerva Club</h1>
         <InputsConnectWallet class="walletComp" />
       </div>
+      <div class="barrelWrapper">
+        <img
+          src="~static/images/wine_barrels.png"
+          alt="Wine Barrels"
+          class="barrels"
+        />
+      </div>
     </aside>
     <ul
       class="linkWrapper"
@@ -64,12 +71,14 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .clubHeader {
+  position: relative;
   background-color: $main;
   max-height: 622px;
   min-height: 500px;
   height: 40vh;
   display: flex;
   align-items: center;
+  margin-top: -1px;
 
   @media screen and (max-width: 1000px) {
     height: 400px;
@@ -85,12 +94,55 @@ export default Vue.extend({
     display: none;
   }
 
+  @media screen and (max-height: 950px) {
+    height: 400px;
+    min-height: 0;
+  }
+
+  @media screen and (max-height: 900px) {
+    height: 350px;
+  }
+
   .headerContent {
     margin-left: 3vw;
+    z-index: 7;
 
     .walletComp {
       @media screen and (max-width: 750px) {
         display: none;
+      }
+    }
+  }
+
+  .barrelWrapper {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+
+    .barrels {
+      width: 100vw;
+      max-width: 1160px;
+      min-width: 870px;
+      bottom: -300px;
+      right: -50px;
+      position: relative;
+
+      @media screen and (max-height: 950px) and (min-width: 1000px) {
+        bottom: -380px;
+      }
+
+      @media screen and (max-height: 900px) and (min-width: 1000px) {
+        bottom: -450px;
+      }
+
+      @media screen and (max-width: 1400px) {
+        right: -150px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        right: -250px;
       }
     }
   }

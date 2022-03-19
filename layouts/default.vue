@@ -9,6 +9,7 @@
 <style lang="scss" scoped>
 .app {
   width: 100%;
+  background-color: $main;
 }
 .header {
   width: 100%;
