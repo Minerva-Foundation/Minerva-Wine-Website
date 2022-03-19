@@ -223,9 +223,11 @@ li {
 
     .btnWrapper {
       width: 220px;
+      display: flex;
+      justify-content: flex-end;
 
       @media screen and (max-width: 1050px) {
-        margin-right: 60px;
+        margin-right: 80px;
       }
 
       @media screen and (max-width: 750px) {

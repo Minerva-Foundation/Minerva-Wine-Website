@@ -73,17 +73,11 @@ export default Vue.extend({
 .clubHeader {
   position: relative;
   background-color: $main;
-  max-height: 622px;
-  min-height: 500px;
-  height: 40vh;
+  height: 400px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: 50px;
   margin-top: -1px;
-
-  @media screen and (max-width: 1000px) {
-    height: 400px;
-    min-height: 0;
-  }
 
   @media screen and (max-width: 700px) {
     height: 300px;
@@ -92,11 +86,6 @@ export default Vue.extend({
 
   @media screen and (max-width: $fourth-incr) {
     display: none;
-  }
-
-  @media screen and (max-height: 950px) {
-    height: 400px;
-    min-height: 0;
   }
 
   @media screen and (max-height: 900px) {
@@ -126,10 +115,8 @@ export default Vue.extend({
     overflow: hidden;
 
     .barrels {
-      width: 100vw;
-      max-width: 1160px;
-      min-width: 870px;
-      bottom: -300px;
+      width: 1160px;
+      bottom: -350px;
       right: -50px;
       position: relative;
 
@@ -143,10 +130,19 @@ export default Vue.extend({
 
       @media screen and (max-width: 1400px) {
         right: -150px;
+        width: 1100px;
       }
 
       @media screen and (max-width: 1200px) {
         right: -250px;
+      }
+
+      @media screen and (max-width: $second-incr) {
+        width: 970px;
+      }
+
+      @media screen and (max-width: 750px) {
+        right: -350px;
       }
     }
   }
@@ -163,6 +159,10 @@ export default Vue.extend({
   @media screen and (max-width: 665px) {
     display: flex;
     flex-direction: column;
+  }
+
+  @media screen and (min-height: 1242px) {
+    min-height: calc(100vh - (#{$header-height} + 440px));
   }
 
   * {
