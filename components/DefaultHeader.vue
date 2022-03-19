@@ -298,6 +298,7 @@ li {
 
     @media screen and (max-width: 370px) {
       max-width: 100vw;
+      width: 100vw !important;
     }
 
     .closeMobileMenuBtn {

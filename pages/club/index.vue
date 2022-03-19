@@ -112,6 +112,10 @@ export default Vue.extend({
         display: none;
       }
     }
+
+    h1 {
+      margin-bottom: 25px;
+    }
   }
 
   .barrelWrapper {

@@ -86,13 +86,18 @@
   }
 }
 
-@media screen and (max-height: 950px) {
+@media screen and (max-height: 950px) and (min-width: $third-incr) {
   html {
     font-size: 0.9em;
   }
+
+  .button {
+    min-width: 120px !important;
+    height: auto !important;
+  }
 }
 
-@media screen and (max-height: 900px) {
+@media screen and (max-height: 900px) and (min-width: $fourth-incr) {
   html {
     font-size: 0.8em;
   }

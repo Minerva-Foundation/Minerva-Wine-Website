@@ -151,27 +151,19 @@ footer {
 
   .logo {
     position: absolute;
-    width: 200px;
+    width: 210px;
     height: 105px;
-    left: 0;
-    right: 0;
+    left: 40px;
+    right: initial;
     top: 0;
     bottom: 0;
     margin: auto;
     display: flex;
     flex-grow: 0;
     flex: 0;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-
-    @media screen and (max-width: $first-incr) {
-      left: 40px;
-      align-items: center;
-      right: initial;
-      flex-direction: row;
-      justify-content: space-between;
-    }
+    flex-direction: row;
+    justify-content: space-between;
 
     .torch {
       width: 15px;

@@ -350,6 +350,7 @@ p {
 
   h1 {
     letter-spacing: -0.02em;
+    margin-bottom: 25px;
 
     @media screen and (max-width: $fifth-incr) {
       font-family: Helvetica;
