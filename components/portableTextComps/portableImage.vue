@@ -4,6 +4,7 @@
       class="cover"
       :src="urlFor(asset._ref).url() + newHeightString"
       quality="85"
+      :alt="keyword"
     />
   </div>
 </template>
@@ -23,12 +24,25 @@ export default Vue.extend({
       required: false,
       default: '',
     },
+    alt: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   computed: {
     newHeightString() {
       if (this.newHeight !== '') return '?h=' + this.newHeight;
       else return '';
     },
+    keyword() {
+      if (this.$accessor && this.alt === '')
+        return this.$accessor.currentArticleKeyword;
+      else return this.alt;
+    },
+  },
+  mounted() {
+    console.log(this.$store.state);
   },
   methods: {
     urlFor(src) {

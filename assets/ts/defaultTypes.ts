@@ -101,6 +101,11 @@ export interface Seo {
     _type: string;
     focus_keyword: string;
     seo_title: string;
+    meta_description: string;
+}
+
+export interface CondensedSeo {
+    focus_keyword: string;
 }
 
 export interface Slug2 {
@@ -135,4 +140,5 @@ export interface CondensedArticle {
     mainImage: MainImage;
     slug: Slug;
     title: string;
+    seo: CondensedSeo;
 }
