@@ -14,6 +14,7 @@
               class="authorImage"
               :asset="currentArticle.author.image.asset"
               new-height="100"
+              :alt="currentArticle.author.name + ' Profile picture'"
             />
             {{ currentArticle.author.name }}
             <SanityContent
@@ -33,7 +34,10 @@
           ><i class="date"> {{ formatDate }}</i></span
         >
         <p class="abstract">{{ currentArticle.abstract }}</p>
-        <portableImage :asset="currentArticle.mainImage.asset" />
+        <portableImage
+          :asset="currentArticle.mainImage.asset"
+          :alt="currentArticle.seo.focus_keyword + ' main article image'"
+        />
         <SanityContent
           class="bodySanity"
           :blocks="currentArticle.body"
@@ -47,6 +51,7 @@
               class="authorImage"
               :asset="currentArticle.author.image.asset"
               new-height="100"
+              :alt="currentArticle.author.name + ' Profile picture'"
             />
             <div class="detailWrapper">
               <span class="name">
@@ -97,7 +102,19 @@ export default Vue.extend({
   }),
   head() {
     return {
-      title: this.currentArticle.title,
+      title: this.currentArticle.seo.seo_title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.currentArticle.seo.meta_description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.currentArticle.seo.focus_keyword,
+        },
+      ],
     };
   },
   computed: {
@@ -115,6 +132,11 @@ export default Vue.extend({
         raw.substring(0, 4);
       return temp;
     },
+  },
+  mounted() {
+    this.$accessor.SET_currentArticleKeyword(
+      this.currentArticle.seo.focus_keyword
+    );
   },
 });
 </script>

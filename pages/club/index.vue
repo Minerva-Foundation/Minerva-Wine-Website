@@ -63,9 +63,6 @@ export default Vue.extend({
       return this.articles.length;
     },
   },
-  // mounted() {
-  //   this.$accessor.SET_ARTICLES(this.articles);
-  // },
 });
 </script>
 

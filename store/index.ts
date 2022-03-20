@@ -1,19 +1,20 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { getAccessorType } from 'typed-vuex'
-import * as defTypes from '../assets/ts/defaultTypes'
+// import * as defTypes from '../assets/ts/defaultTypes'
 
 export const state = () => ({
-  articles: [] as defTypes.Article[],
+  currentArticleKeyword: '' as String,
 })
 
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
-  articleBySlug: (state) => (slug: String) => state.articles.find(el => el.slug.current === slug),
+  // articleBySlug: (state) => (slug: String) => state.articles.find(el => el.slug.current === slug),
+  currentArticleKeyword: (state) => state.currentArticleKeyword,
 }
 
 export const mutations: MutationTree<RootState> = {
-  SET_ARTICLES: (state, newArticles: defTypes.Article[]) => (state.articles = newArticles),
+  SET_currentArticleKeyword: (state, newArticleKeyword: String) => (state.currentArticleKeyword = newArticleKeyword),
 }
 
 export const actions: ActionTree<RootState, RootState> = {

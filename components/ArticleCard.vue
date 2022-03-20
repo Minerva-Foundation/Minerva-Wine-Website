@@ -4,6 +4,7 @@
       class="image"
       :asset="article.mainImage.asset"
       new-height="378"
+      :alt="article.seo.focus_keyword + ' main article image'"
     />
     <span class="taa"
       ><h3 class="title">{{ article.title }}</h3>

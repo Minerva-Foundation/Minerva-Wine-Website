@@ -10,7 +10,7 @@ export async function getArticleBySlug(slug: String, sanity: any ):  Promise<def
 }
 
 export async function getBaseArticleInfo(sanity: any ):  Promise<defTypes.Article[]> {
-    const query = groq`*[_type == "post"]{_createdAt, author->{name}, categories, slug, title, mainImage, abstract }  | order(_createdAt desc)`;
+    const query = groq`*[_type == "post"]{_createdAt, author->{name}, seo{focus_keyword}, categories, slug, title, mainImage, abstract }  | order(_createdAt desc)`;
     const articles: defTypes.Article[] = await sanity.fetch(query) as defTypes.Article[];
     return articles;
 }
