@@ -368,7 +368,7 @@ p {
   @media screen and (max-width: $fifth-incr) {
     height: 55vh;
     max-height: 500px;
-    min-height: 430px;
+    min-height: 470px;
   }
 
   .bottle {
