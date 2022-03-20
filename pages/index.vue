@@ -171,6 +171,18 @@
 import Vue from 'vue';
 export default Vue.extend({
   name: 'HomepageMain',
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on blockchain. Wine makers from across the world are hand picked by our community for their unique narrative, quality and innovation.",
+        },
+      ],
+    };
+  },
   mounted() {
     this.addScrollAnim();
   },

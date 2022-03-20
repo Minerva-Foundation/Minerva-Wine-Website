@@ -56,6 +56,14 @@ export default Vue.extend({
   head() {
     return {
       title: 'Minerva Club',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            "The hub for the world where Blockchain technology and wine meet. Exclusive articles, interviews and material directly from winemakers and the Minerva community. Interact with your favourite producers, follow your wine through it's jurney and take part in personal events, like tastings.",
+        },
+      ],
     };
   },
   computed: {
@@ -159,6 +167,10 @@ export default Vue.extend({
   position: relative;
   display: grid;
   overflow: hidden;
+
+  @media screen and (min-width: 1200px) and (max-width: 1332px) {
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)) !important;
+  }
 
   @media screen and (max-width: 665px) {
     display: flex;
