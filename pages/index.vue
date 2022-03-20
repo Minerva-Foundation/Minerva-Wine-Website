@@ -3,7 +3,9 @@
     <section class="slide1">
       <article class="sectionContent slide-in from-left">
         <h2 class="customh2">Welcome to</h2>
-        <h1 class="customh1">A new era of Wine.</h1>
+        <h1 class="customh1">
+          <span class="Minerva">MINERVA <br /></span> A new era of Wine.
+        </h1>
         <InputsConnectWallet />
       </article>
       <img
@@ -373,6 +375,7 @@ p {
 
   .bottle {
     display: none;
+    z-index: 0;
 
     @media screen and (max-width: $third-incr) {
       display: block;
@@ -416,22 +419,29 @@ p {
       margin-bottom: 10px;
     }
 
-    @media screen and (max-width: 358px) {
+    @media screen and (max-width: 386px) {
       font-size: 3.5em !important;
     }
 
     @media screen and (max-width: 320px) {
       font-size: 3.1em !important;
     }
-  }
-  h3 {
-    margin-bottom: 50px;
-    font-family: Helvetica;
-    font-size: 2em;
 
-    @media screen and (max-width: $fifth-incr) {
-      margin-bottom: 15px;
-      font-size: 16px;
+    .Minerva {
+      color: inherit;
+      letter-spacing: 0.05em;
+      display: none;
+      font-family: $standard-big-font;
+
+      @media screen and (max-width: 370px) {
+        display: block;
+      }
+    }
+  }
+
+  h2 {
+    @media screen and (max-width: 370px) {
+      font-size: 3.5em !important;
     }
   }
 
@@ -440,6 +450,7 @@ p {
     left: 10%;
     bottom: 30%;
     padding-right: 10%;
+    z-index: 1;
 
     @media screen and (max-width: $first-incr) {
       bottom: 10%;
@@ -614,6 +625,7 @@ p {
     right: -50px;
     top: 120px;
     display: none;
+    z-index: 0;
 
     @media screen and (max-width: $third-incr) {
       display: block;
@@ -635,6 +647,7 @@ p {
     position: absolute;
     right: 5%;
     bottom: 12%;
+    z-index: 1;
 
     @media screen and (max-width: $second-incr) {
       right: 0;
