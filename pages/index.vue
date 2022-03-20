@@ -491,28 +491,20 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 1000px;
-
-    @media screen and (max-width: 900px) {
-      height: 100vh;
-      min-height: 1000px;
-    }
+    height: 1080px;
 
     @media screen and (max-width: $fourth-incr) {
-      height: 80vh;
-      min-height: 900px;
+      height: 900px;
     }
 
     @media screen and (max-width: $fifth-incr) {
-      height: 65vh;
-      min-height: 750px;
+      height: 750px;
     }
 
     @media screen and (max-width: $sixth-incr) {
       align-items: flex-start;
       padding-left: 30px;
-      height: 75vh;
-      min-height: 800px;
+      height: 800px;
     }
 
     .pwrapper {
@@ -605,18 +597,16 @@ p {
   }
 
   @media screen and (max-width: $fourth-incr) {
-    height: 80vh;
-    min-height: 800px;
+    height: 800px;
+    min-height: 0;
   }
 
   @media screen and (max-width: $fifth-incr) {
-    height: 65vh;
-    min-height: 700px;
+    height: 700px;
   }
 
   @media screen and (max-width: 300px) {
-    height: 65vh;
-    min-height: 800px;
+    height: 800px;
   }
 
   .globe {
