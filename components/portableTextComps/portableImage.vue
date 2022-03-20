@@ -41,9 +41,6 @@ export default Vue.extend({
       else return this.alt;
     },
   },
-  mounted() {
-    console.log(this.$store.state);
-  },
   methods: {
     urlFor(src) {
       const builder = imageUrlBuilder(this.$sanity.config);
