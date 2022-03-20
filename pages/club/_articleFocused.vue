@@ -395,7 +395,7 @@ export default Vue.extend({
 
           li {
             margin-bottom: 12px;
-            width: 30em;
+            max-width: min(30em, 65vw);
           }
         }
       }
