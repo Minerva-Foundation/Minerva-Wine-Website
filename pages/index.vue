@@ -6,6 +6,11 @@
         <h1 class="customh1">A new era of Wine.</h1>
         <InputsConnectWallet />
       </article>
+      <img
+        src="~static/images/wine_bottle.png"
+        alt="Wine Bottle"
+        class="bottle"
+      />
     </section>
     <section class="slide2">
       <article class="sectionContent">
@@ -66,6 +71,7 @@
           ><button class="button">FIND YOUR WINE</button></NuxtLink
         >
       </article>
+      <img src="~static/images/globe.png" alt="Globe" class="globe" />
     </section>
     <section class="slide4">
       <article class="sectionContent slide-in from-left">
@@ -159,9 +165,9 @@
         </div>
       </article>
       <img
-        src="~static/images/wine_barrels.png"
-        alt="Wine Barrels"
-        class="barrels"
+        src="~static/images/wine_bottle.png"
+        alt="Wine Bottle"
+        class="bottle"
       />
     </section>
   </main>
@@ -193,7 +199,7 @@ export default Vue.extend({
 
       const appearOptions = {
         threshold: 0,
-        rootMargin: '0px 0px -180px 0px',
+        rootMargin: '0px 0px -120px 0px',
       };
 
       const appearOnScroll = new IntersectionObserver(function (
@@ -350,14 +356,55 @@ p {
   min-height: 720px;
   position: relative;
   z-index: 2;
+  overflow: hidden;
 
   @media screen and (max-width: $third-incr) {
     height: 600px;
     min-height: 0px;
+    background-color: $main-darker;
+    background-image: none !important;
   }
 
   @media screen and (max-width: $fifth-incr) {
-    height: 400px;
+    height: 55vh;
+    max-height: 500px;
+    min-height: 430px;
+  }
+
+  .bottle {
+    display: none;
+
+    @media screen and (max-width: $third-incr) {
+      display: block;
+      position: absolute;
+      bottom: -140px;
+      right: 20px;
+      -webkit-transform: rotate(-5deg) scale(-1);
+      -ms-transform: rotate(-5deg) scale(-1);
+      transform: rotate(-5deg) scaleX(-1);
+      width: 420px;
+      filter: brightness(200%);
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      right: -50px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      width: 380px;
+    }
+
+    @media screen and (max-width: 390px) {
+      right: -90px;
+    }
+
+    @media screen and (max-width: 330px) {
+      right: -120px;
+    }
+
+    @media screen and (max-width: 330px) {
+      width: 350px;
+    }
   }
 
   h1 {
@@ -418,6 +465,21 @@ p {
     margin-left: auto;
     margin-right: auto;
     z-index: 0;
+
+    @media screen and (max-width: $third-incr) {
+      -webkit-transform: scale(-1);
+      -ms-transform: scale(-1);
+      transform: scaleX(-1);
+      right: 35vw;
+      left: auto;
+      top: auto;
+      bottom: -100px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      width: 800px;
+      bottom: -50px;
+    }
   }
 
   h2 {
@@ -530,10 +592,16 @@ p {
   max-height: 2000px;
   text-align: right;
   min-height: 1060px;
+  overflow: hidden;
 
   @media screen and (max-width: $second-incr) {
     height: 95vh;
     background-position: bottom right;
+  }
+
+  @media screen and (max-width: $third-incr) {
+    background-image: none !important;
+    background-color: $main-darker;
   }
 
   @media screen and (max-width: $fourth-incr) {
@@ -549,6 +617,28 @@ p {
   @media screen and (max-width: 300px) {
     height: 65vh;
     min-height: 800px;
+  }
+
+  .globe {
+    position: absolute;
+    right: -50px;
+    top: 120px;
+    display: none;
+
+    @media screen and (max-width: $third-incr) {
+      display: block;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      right: -100px;
+      top: auto;
+      bottom: -150px;
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      width: 300px;
+      bottom: -80px;
+    }
   }
 
   .sectionContent {
@@ -772,21 +862,26 @@ p {
     }
   }
 
-  .barrels {
+  .bottle {
     position: absolute;
-    top: -80px;
-    left: 20px;
-    width: 45%;
+    top: 80px;
+    left: 80px;
+    width: 35%;
     min-width: 500px;
+    max-width: 650px;
+
+    @media screen and (max-width: $first-incr) {
+      left: -130px;
+    }
 
     @media screen and (max-width: $second-incr) {
-      top: -120px;
+      top: -100px;
     }
 
     @media screen and (max-width: $third-incr) {
       min-width: 0;
       left: -130px;
-      width: 100vw;
+      width: 90vw;
     }
   }
 }

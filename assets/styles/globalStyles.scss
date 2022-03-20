@@ -52,6 +52,7 @@
   .button {
     min-width: 120px !important;
     height: auto !important;
+    padding: 0px 5px 0px 5px;
   }
 
   p {
@@ -73,10 +74,6 @@
 @media screen and (max-width: 320px) {
   .customh1 {
     font-size: 3.1em !important;
-  }
-
-  .customh2 {
-    font-size: 3.5em !important;
   }
 }
 
