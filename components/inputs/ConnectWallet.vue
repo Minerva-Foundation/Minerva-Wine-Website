@@ -8,5 +8,9 @@
 .button {
   cursor: default;
   font-size: 0.9em;
+
+  @media screen and (max-height: 800px) {
+    line-height: 0.7;
+  }
 }
 </style>

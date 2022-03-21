@@ -355,10 +355,14 @@ p {
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
   max-height: 2000px;
-  min-height: 720px;
+  min-height: 420px;
   position: relative;
   z-index: 2;
   overflow: hidden;
+
+  @media screen and (max-height: 800px) {
+    height: calc(100vh - 100px);
+  }
 
   @media screen and (max-width: $third-incr) {
     height: 600px;

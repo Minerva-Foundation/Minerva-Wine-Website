@@ -10,7 +10,7 @@
               alt="Homepage"
               class="homeText"
             />
-            <span class="siteName">{{ currentPath }}</span>
+            <span v-if="$nuxt.$route.path !== '/'" class="siteName">{{ currentPath }}</span>
           </div>
         </div>
       </NuxtLink>
@@ -173,6 +173,10 @@ li {
     justify-content: space-between;
     padding: 0px 40px 0px 40px;
 
+    @media screen and (max-height: 800px) {
+      height: 100px;
+    }
+
     @media screen and (max-width: 295px) {
       justify-content: flex-start;
     }
@@ -192,6 +196,12 @@ li {
         width: 100%;
       }
 
+      .torch {
+        @media screen and (max-height: 800px) {
+            height: 45px;
+          }
+      }
+
       .textWrapper {
         margin-left: 10px;
         margin-top: 5px;
@@ -201,6 +211,11 @@ li {
 
           @media screen and (max-width: 370px) {
             display: none;
+          }
+
+          @media screen and (max-height: 800px) {
+            height: 25px;
+            padding-right: 30px;
           }
         }
 
@@ -252,6 +267,10 @@ li {
       @media screen and (max-width: 1050px) {
         display: none;
       }
+
+      @media screen and (max-height: 800px) {
+        font-size: 20px !important;
+      }
     }
 
     .mainLinks *::after {
@@ -272,7 +291,7 @@ li {
   .mainLinks {
     height: 40px;
     display: flex;
-    font-size: 24px !important;
+    font-size: 24px;
     list-style: none;
 
     li a {
