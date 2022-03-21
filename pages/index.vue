@@ -186,7 +186,7 @@ export default Vue.extend({
           hid: 'description',
           name: 'description',
           content:
-            "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the Terra blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation.",
+            "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation.",
         },
       ],
     };
