@@ -177,18 +177,15 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import meta from '~/assets/ts/helpers';
+
+const metadata = meta();
+
 export default Vue.extend({
   name: 'HomepageMain',
   head() {
     return {
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation.",
-        },
-      ],
+      meta: metadata as [],
     };
   },
   mounted() {
