@@ -71,11 +71,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import imageUrlBuilder from '@sanity/image-url';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getArticleBySlug } from '~/assets/ts/apiFuctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';
+import meta from '~/assets/ts/helpers';
 
 export default Vue.extend({
   name: 'FocusedArticle',
@@ -99,22 +101,12 @@ export default Vue.extend({
       },
     },
     currentArticle: {} as defTypes.Article,
+    metadata: [],
   }),
   head() {
     return {
       title: this.currentArticle.seo.seo_title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.currentArticle.seo.meta_description,
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: this.currentArticle.seo.focus_keyword,
-        },
-      ],
+      meta: this.metadata,
     };
   },
   computed: {
@@ -137,6 +129,20 @@ export default Vue.extend({
     this.$accessor.SET_currentArticleKeyword(
       this.currentArticle.seo.focus_keyword
     );
+
+    this.metadata = meta(
+      this.currentArticle.seo.seo_title,
+      this.currentArticle.seo.meta_description,
+      'Minerva',
+      this.currentArticle.seo.focus_keyword,
+      this.urlFor(this.currentArticle.author.image.asset._ref).url()
+    );
+  },
+  methods: {
+    urlFor(src) {
+      const builder: any = imageUrlBuilder(this.$sanity.config);
+      return builder.image(src);
+    },
   },
 });
 </script>

@@ -17,11 +17,36 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
-      { hid: 'og:title', name: 'og:title', content: 'Minerva' },
+      { hid: 'og:title', name: 'og:title', content: 'Minerva - A new era of Wine' },
       { hid: 'og:description', name: 'og:description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation."},
-      { hid: 'og:image', name: 'og:image', content: '/Minerva_Banner.jpg' },  
+      { hid: 'og:image', name: 'og:image', content: '/images/Minerva_Banner.jpg' },  
+      { hid: 'og:site_name', name: "og:site_name", content: "Minerva" },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: 'Minerva - A new era of Wine',
+      },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation.",
+      },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: '/images/Minerva_Banner.jpg',
+      },{ name: "twitter:site", content: "@Minerva_NFT" },
+      { name: "twitter:card", content: "summary_large_image" },{
+        hid: "twitter:url",
+        name: "twitter:url",
+        content: "https://www.minerva.market",
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, {
+      hid: "canonical",
+      rel: "canonical",
+      href: "https://minerva.market",
+    },],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

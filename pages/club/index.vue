@@ -42,6 +42,10 @@
 import Vue from 'vue';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getBaseArticleInfo } from '~/assets/ts/apiFuctions';
+import meta from '~/assets/ts/helpers';
+
+
+const metadata = meta('Minerva Club', "The hub for the world where Blockchain technology and wine meet. Exclusive articles, interviews and material directly from winemakers and the Minerva community. Interact with your favourite producers, follow your wine through it's jurney and take part in personal events, like tastings.", 'Minerva Club');
 
 export default Vue.extend({
   name: 'ClubsArticles',
@@ -56,14 +60,7 @@ export default Vue.extend({
   head() {
     return {
       title: 'Minerva Club',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            "The hub for the world where Blockchain technology and wine meet. Exclusive articles, interviews and material directly from winemakers and the Minerva community. Interact with your favourite producers, follow your wine through it's jurney and take part in personal events, like tastings.",
-        },
-      ],
+      metadata
     };
   },
   computed: {
