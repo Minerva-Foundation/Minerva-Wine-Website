@@ -144,9 +144,14 @@ export default Vue.extend({
       'Minerva',
       this.currentArticle.seo.focus_keyword,
       imageUrlBuilder(this.$sanity.config as any)
-        .image(this.currentArticle.author.image.asset._ref)
-        .url()
+        .image(this.currentArticle.mainImage.asset._ref)
+        .url() + '?w=500&h=250&fit=crop&crop=center'
     );
+    this.metadata.push({
+      hid: 'twitter:card',
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
   },
 });
 </script>

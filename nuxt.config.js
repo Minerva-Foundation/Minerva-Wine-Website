@@ -36,7 +36,7 @@ export default {
         name: "twitter:image",
         content: '/images/torch.jpg',
       },{ name: "twitter:site", content: "@Minerva_NFT" },
-      { name: "twitter:card", content: "summary" },{
+      { hid: "twitter:card", name: "twitter:card", content: "summary" },{
         hid: "twitter:url",
         name: "twitter:url",
         content: "https://www.minerva.market",
