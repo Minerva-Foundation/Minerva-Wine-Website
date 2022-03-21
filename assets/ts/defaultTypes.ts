@@ -147,4 +147,5 @@ export interface metadata {
     hid: String;
     name: String;
     content: String;
+    property?: String,
 }

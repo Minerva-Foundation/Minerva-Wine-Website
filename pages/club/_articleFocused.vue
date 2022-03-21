@@ -150,6 +150,7 @@ export default Vue.extend({
     this.metadata.push({
       hid: 'twitter:card',
       name: 'twitter:card',
+      property: 'twitter:card',
       content: 'summary_large_image',
     });
   },
