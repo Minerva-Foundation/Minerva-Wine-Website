@@ -15,7 +15,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation." },
       { name: 'format-detection', content: 'telephone=no' },
       { hid: 'og:title', name: 'og:title', content: 'Minerva - A new era of Wine' },
       { hid: 'og:description', name: 'og:description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation."},
@@ -26,7 +26,6 @@ export default {
         name: "twitter:title",
         content: 'Minerva - A new era of Wine',
       },
-      { name: "twitter:card", content: "summary_large_image" },
       {
         hid: "twitter:description",
         name: "twitter:description",
@@ -37,7 +36,7 @@ export default {
         name: "twitter:image",
         content: '/images/Minerva_Banner.jpg',
       },{ name: "twitter:site", content: "@Minerva_NFT" },
-      { name: "twitter:card", content: "summary_large_image" },{
+      { name: "twitter:card", content: "summary" },{
         hid: "twitter:url",
         name: "twitter:url",
         content: "https://www.minerva.market",
