@@ -21,8 +21,8 @@ export default function meta(title: String = 'Minerva - A new era of Wine', des:
             hid: "twitter:image",
             name: "twitter:image",
             content: img,
-          },{ name: "twitter:site", content: "@Minerva_NFT" },
-          { name: "twitter:card", content: "summary_large_image" },{
+          },{hid: "twitter:site", name: "twitter:site", content: "@Minerva_NFT" },
+          {hid: "twitter:site", name: "twitter:site", content: "summary_large_image" },{
             hid: "twitter:url",
             name: "twitter:url",
             content: "https://www.minerva.market",

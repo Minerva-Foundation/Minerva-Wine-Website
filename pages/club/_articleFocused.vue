@@ -101,12 +101,20 @@ export default Vue.extend({
       },
     },
     currentArticle: {} as defTypes.Article,
-    metadata: [],
+    metadata: [] as defTypes.metadata[],
   }),
   head() {
     return {
       title: this.currentArticle.seo.seo_title,
-      meta: this.metadata,
+      meta: this.metadata as [],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href:
+            'https://minerva.market/club/' + this.currentArticle.slug.current,
+        },
+      ],
     };
   },
   computed: {
@@ -135,14 +143,10 @@ export default Vue.extend({
       this.currentArticle.seo.meta_description,
       'Minerva',
       this.currentArticle.seo.focus_keyword,
-      this.urlFor(this.currentArticle.author.image.asset._ref).url()
+      imageUrlBuilder(this.$sanity.config as any)
+        .image(this.currentArticle.author.image.asset._ref)
+        .url()
     );
-  },
-  methods: {
-    urlFor(src) {
-      const builder: any = imageUrlBuilder(this.$sanity.config);
-      return builder.image(src);
-    },
   },
 });
 </script>

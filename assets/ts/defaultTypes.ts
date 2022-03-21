@@ -142,3 +142,9 @@ export interface CondensedArticle {
     title: string;
     seo: CondensedSeo;
 }
+
+export interface metadata {
+    hid: String;
+    name: String;
+    content: String;
+}
