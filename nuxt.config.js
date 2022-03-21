@@ -18,7 +18,7 @@ export default {
       { hid: 'description', name: 'description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation." },
       { name: 'format-detection', content: 'telephone=no' },
       { hid: 'og:title', name: 'og:title', content: 'Minerva - A new era of Wine' },
-      { hid: 'og:description', name: 'og:description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation."},
+      { hid: 'og:description', name: 'og:description', content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork."},
       { hid: 'og:image', name: 'og:image', content: '/images/Minerva_Banner.jpg' },  
       { hid: 'og:site_name', name: "og:site_name", content: "Minerva" },
       {
@@ -29,12 +29,12 @@ export default {
       {
         hid: "twitter:description",
         name: "twitter:description",
-        content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork for each sale phase, while earning yield on it until delivery. Winemakers from across the world are hand-picked by our community for their unique narrative, quality, and innovation.",
+        content: "Purchase 'en primeur' wine sourced directly from producers with confirmation of sale stored safely on the blockchain, accompanied by a unique artwork and earn yield on top.",
       },
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: '/images/Minerva_Banner.jpg',
+        content: '/images/torch.jpg',
       },{ name: "twitter:site", content: "@Minerva_NFT" },
       { name: "twitter:card", content: "summary" },{
         hid: "twitter:url",

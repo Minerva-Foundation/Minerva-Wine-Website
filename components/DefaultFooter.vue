@@ -102,6 +102,7 @@ footer {
       justify-content: space-between;
       align-items: center;
       font-size: 16px;
+      color: $dark-font;
 
       img {
         width: 30px;

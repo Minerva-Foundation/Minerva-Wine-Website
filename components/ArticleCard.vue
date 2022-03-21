@@ -90,6 +90,7 @@ $defWidth: 547px;
   .taa {
     margin-bottom: 1px;
     font-size: 1.1em;
+    color: $dark-font;
 
     .title {
       font-family: $standard-big-font;

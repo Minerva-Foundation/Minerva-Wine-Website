@@ -44,11 +44,11 @@ import * as defTypes from '~/assets/ts/defaultTypes';
 import { getBaseArticleInfo } from '~/assets/ts/apiFuctions';
 import meta from '~/assets/ts/helpers';
 
-// const metadata = meta(
-//   'Minerva Club',
-//   "The hub for the world where Blockchain technology and wine meet. Exclusive articles, interviews and material directly from winemakers and the Minerva community. Interact with your favourite producers, follow your wine through it's jurney and take part in personal events, like tastings.",
-//   'Minerva Club'
-// );
+const metadata = meta(
+  'Minerva Club',
+  "Exclusive articles, interviews and material directly from winemakers and the Minerva community. Interact with your favourite producers and follow your wine through it's journey.",
+  'Minerva Club'
+);
 
 export default Vue.extend({
   name: 'ClubsArticles',
@@ -63,54 +63,7 @@ export default Vue.extend({
   head() {
     return {
       title: 'Minerva Club',
-      meta: [
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: 'Minerva - Clubs of Wine',
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: 'Clubs of Minerva',
-        },
-        {
-          hid: 'og:image',
-          name: 'og:image',
-          content: '/images/Minerva_Banner.jpg',
-        },
-        { hid: 'description', name: 'description', content: 'Purchase Clups' },
-        { hid: 'og:site_name', name: 'og:site_name', content: 'Minerva' },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: 'Minerva Clubs',
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: 'Clubs of Minerva',
-        },
-        {
-          hid: 'twitter:image',
-          name: 'twitter:image',
-          content: '/images/Minerva_Banner.jpg',
-        },
-        { name: 'twitter:site', content: '@Minerva_NFT' },
-        { name: 'twitter:card', content: 'summary' },
-        {
-          hid: 'twitter:url',
-          name: 'twitter:url',
-          content: 'https://www.minerva.market',
-        },
-      ],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: 'https://minerva.market/club',
-        },
-      ],
+      meta: metadata as [],
     };
   },
   computed: {
