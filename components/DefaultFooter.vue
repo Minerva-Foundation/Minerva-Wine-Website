@@ -15,7 +15,7 @@
       /></a>
       <div class="socialsLinks">
         <a
-          href="https://twitter.com/Minerva_NFT"
+          href="https://twitter.com/Minerva_wine"
           target="_blank"
           class="socialLink"
           ><img src="~static/images/socials/twitter.svg" alt="Twitter Link" />
