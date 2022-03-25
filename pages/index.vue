@@ -732,7 +732,7 @@ p {
   overflow: hidden;
 
   @media screen and (max-width: $third-incr) {
-    min-height: 1013px;
+    min-height: 1123px;
   }
 
   @media screen and (max-width: $fourth-incr) {
