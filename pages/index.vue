@@ -413,16 +413,18 @@ p {
   }
 
   h1 {
-    letter-spacing: -0.02em;
     margin-bottom: 25px;
 
     @media screen and (max-width: $fifth-incr) {
-      font-family: Helvetica;
       margin-bottom: 10px;
     }
 
     @media screen and (max-width: 386px) {
       font-size: 3.5em !important;
+    }
+
+    @media screen and (max-width: 370px) {
+      font-family: $secondary-big-font;
     }
 
     @media screen and (max-width: 320px) {
@@ -433,7 +435,7 @@ p {
       color: inherit;
       letter-spacing: 0.05em;
       display: none;
-      font-family: $standard-big-font;
+      font-family: $secondary-big-font;
 
       @media screen and (max-width: 370px) {
         display: block;
@@ -610,7 +612,7 @@ p {
   }
 
   @media screen and (max-width: $fourth-incr) {
-    height: 800px;
+    height: 900px;
     min-height: 0;
   }
 
@@ -862,7 +864,7 @@ p {
         padding-left: 2em;
         font-size: 1.5em;
         color: $bright-font;
-        font-family: $standard-big-font;
+        font-family: $secondary-big-font;
       }
     }
   }

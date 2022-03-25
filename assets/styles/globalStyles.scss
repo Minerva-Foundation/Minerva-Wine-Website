@@ -8,7 +8,7 @@
 
 @media screen and (max-width: $second-incr) {
   .customh1 {
-    font-size: 4.6em !important;
+    font-size: 5.9em !important;
   }
 
   .customh2 {
@@ -22,7 +22,7 @@
   }
 
   .customh1 {
-    font-size: 4em !important;
+    font-size: 5em !important;
   }
 }
 
@@ -172,14 +172,13 @@ a {
 }
 
 .mainFontStlyeBig {
-  font-family: 'Glacial-Indifference';
-  letter-spacing: -0em;
+  font-family: $standard-big-font;
   color: $bright-font;
 }
 
 .customh1 {
   @extend .mainFontStlyeBig;
-  font-size: 5.5em;
+  font-size: 7.56em;
   font-weight: normal;
   margin-bottom: 9px;
   margin-top: 15px;
@@ -196,7 +195,6 @@ a {
 
 .customh3 {
   @extend .mainFontStlyeBig;
-  letter-spacing: -0.01em;
   font-weight: normal;
   font-size: 3rem;
 }

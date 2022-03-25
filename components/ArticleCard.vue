@@ -93,7 +93,7 @@ $defWidth: 547px;
     color: $dark-font;
 
     .title {
-      font-family: $standard-big-font;
+      font-family: $secondary-big-font;
       font-weight: 100;
       font-size: 2.25em;
       line-height: 0.85 !important;

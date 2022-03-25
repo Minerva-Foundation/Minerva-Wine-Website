@@ -10,7 +10,9 @@
               alt="Homepage"
               class="homeText"
             />
-            <span v-if="$nuxt.$route.path !== '/'" class="siteName">{{ currentPath }}</span>
+            <span v-if="$nuxt.$route.path !== '/'" class="siteName">{{
+              currentPath
+            }}</span>
           </div>
         </div>
       </NuxtLink>
@@ -159,6 +161,10 @@ li {
       content: none;
     }
   }
+
+  a {
+    letter-spacing: 0.01em;
+  }
 }
 
 .headerMain {
@@ -198,8 +204,8 @@ li {
 
       .torch {
         @media screen and (max-height: 800px) {
-            height: 45px;
-          }
+          height: 45px;
+        }
       }
 
       .textWrapper {
@@ -374,7 +380,7 @@ li {
       }
 
       li {
-        margin-top: 20px;
+        margin-top: 25px;
       }
     }
   }

@@ -27,7 +27,7 @@
     </aside>
     <div class="wrapperSanity">
       <article class="contentwrapperSanity">
-        <h1 class="customh1">{{ currentArticle.title }}</h1>
+        <h1 class="articleh1">{{ currentArticle.title }}</h1>
         <span class="aad"
           ><i class="by">by</i>
           <span class="author">{{ currentArticle.author.name }},</span
@@ -229,7 +229,7 @@ export default Vue.extend({
           color: #333;
           width: 70%;
           font-size: 2em;
-          font-family: $standard-big-font;
+          font-family: $secondary-big-font;
 
           .authorImage {
             margin-bottom: 10px;
@@ -305,7 +305,7 @@ export default Vue.extend({
         align-items: center;
 
         .name {
-          font-family: $standard-big-font;
+          font-family: $secondary-big-font;
         }
 
         .authorImage {
@@ -345,9 +345,14 @@ export default Vue.extend({
         max-width: 84%;
       }
 
-      h1 {
+      .articleh1 {
         color: $dark-font;
+        font-weight: normal;
+        margin-bottom: 9px;
+        margin-top: 15px;
+        line-height: 1;
         font-size: 5em;
+        font-family: $secondary-big-font;
 
         @media screen and (max-width: $sixth-incr) {
           margin-bottom: 14px;

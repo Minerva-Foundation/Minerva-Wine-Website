@@ -78,7 +78,7 @@ export default Vue.extend({
 .clubHeader {
   position: relative;
   background-color: $main;
-  height: 320px;
+  height: 370px;
   display: flex;
   align-items: flex-end;
   padding-bottom: 50px;
@@ -94,11 +94,11 @@ export default Vue.extend({
   }
 
   @media screen and (max-height: 950px) {
-    height: 300px;
+    height: 330px;
   }
 
   @media screen and (max-height: 900px) {
-    height: 260px;
+    height: 300px;
   }
 
   .headerContent {
@@ -124,7 +124,7 @@ export default Vue.extend({
     overflow: hidden;
 
     .barrels {
-      width: 1060px;
+      width: 1100px;
       bottom: -350px;
       right: -50px;
       position: relative;
@@ -138,7 +138,8 @@ export default Vue.extend({
       }
 
       @media screen and (max-width: 1650px) {
-        width: 1000px;
+        width: 1060px;
+        right: -70px;
       }
 
       @media screen and (max-width: 1400px) {
