@@ -2,7 +2,7 @@
   <div class="clubWrapper">
     <aside class="clubHeader">
       <div class="headerContent">
-        <h2 class="customh2">Welcome to</h2>
+        <div class="customh2">Welcome to</div>
         <h1 class="customh1">Minerva Club</h1>
         <InputsConnectWallet class="walletComp" />
       </div>

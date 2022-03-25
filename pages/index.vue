@@ -417,7 +417,7 @@ p {
     margin-bottom: 25px;
 
     @media screen and (max-width: $fifth-incr) {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     @media screen and (max-width: 386px) {
@@ -457,7 +457,7 @@ p {
     z-index: 1;
 
     @media screen and (max-width: $first-incr) {
-      bottom: 10%;
+      bottom: 14%;
     }
   }
 }
@@ -569,6 +569,25 @@ p {
       @media screen and (max-width: $fifth-incr) {
         height: 100px;
         margin-top: 10px;
+        flex-direction: row;
+        margin-bottom: 0px;
+
+        & :first-child {
+          margin-right: 10px;
+        }
+      }
+
+      @media screen and (max-width: 370px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+
+        & :first-child {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
       }
     }
   }
