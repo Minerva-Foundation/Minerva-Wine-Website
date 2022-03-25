@@ -318,7 +318,7 @@ p {
       rgba(0, 0, 0, 0.5) 0.33%,
       rgba(196, 196, 196, 0.075) 88.83%
     ),
-    url('~static/images/vines_cropped.webp');
+    url('~static/images/vines_cropped.webp'); /* Rectangle 32 */
 
   @media screen and (max-width: $third-incr) {
     background-image: linear-gradient(
@@ -350,7 +350,7 @@ p {
 }
 
 .slide1 {
-  background-position: center bottom;
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});

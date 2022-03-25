@@ -162,6 +162,7 @@ export default Vue.extend({
 
       h4 {
         cursor: pointer;
+        line-height: 100% !important;
 
         @media screen and (max-width: $second-incr) {
           font-size: 3em !important;
@@ -186,7 +187,7 @@ export default Vue.extend({
       h3 {
         padding-right: 90px;
         cursor: pointer;
-        margin-top: 10px;
+        margin-top: 4px;
 
         @media screen and (max-width: $third-incr) {
           font-size: 2.5em !important;
