@@ -247,7 +247,7 @@ p {
   margin-top: 10px;
   margin-bottom: 22px;
   line-height: 33.5px;
-  font-size: 1.375rem;
+  font-size: max(1.375rem, 16px);
 }
 
 .highlight {
@@ -511,17 +511,28 @@ p {
     height: 1080px;
 
     @media screen and (max-width: $fourth-incr) {
-      height: 900px;
+      height: 950px;
     }
 
     @media screen and (max-width: $fifth-incr) {
-      height: 750px;
+      height: 790px;
+    }
+
+    @media screen and (max-width: 370px) {
+      height: 800px;
+    }
+
+    @media screen and (max-width: 340px) {
+      height: 850px;
     }
 
     @media screen and (max-width: $sixth-incr) {
       align-items: flex-start;
       padding-left: 30px;
-      height: 800px;
+    }
+
+    @media screen and (max-width: 260px) {
+      height: 950px;
     }
 
     .pwrapper {
@@ -633,16 +644,20 @@ p {
   }
 
   @media screen and (max-width: $fourth-incr) {
-    height: 900px;
     min-height: 0;
+    height: 960px;
   }
 
   @media screen and (max-width: $fifth-incr) {
-    height: 700px;
+    height: 900px;
   }
 
-  @media screen and (max-width: 300px) {
-    height: 800px;
+  @media screen and (max-width: 340px) {
+    height: 930px;
+  }
+
+  @media screen and (max-width: 260px) {
+    height: 1000px;
   }
 
   .globe {
@@ -722,11 +737,11 @@ p {
 
   @media screen and (max-width: $fourth-incr) {
     height: 80vh;
+    min-height: 1100px;
   }
 
   @media screen and (max-width: $fifth-incr) {
     height: 65vh;
-    min-height: 850px;
   }
 
   @media screen and (max-width: $sixth-incr) {
@@ -749,6 +764,10 @@ p {
 
     @media screen and (max-width: $fifth-incr) {
       top: 16%;
+    }
+
+    @media screen and (max-width: 340px) {
+      top: 10%;
     }
 
     p {

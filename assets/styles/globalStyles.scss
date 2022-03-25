@@ -1,105 +1,5 @@
 @import './vars.scss';
 
-@media screen and (max-width: 707px) {
-  html {
-    font-size: 0.9em;
-  }
-}
-
-@media screen and (max-width: $second-incr) {
-  .customh1 {
-    font-size: 5.9em !important;
-  }
-
-  .customh2 {
-    font-size: 5.5em !important;
-  }
-}
-
-@media screen and (max-width: $third-incr) {
-  html {
-    font-size: 0.8em;
-  }
-
-  .customh1 {
-    font-size: 5em !important;
-  }
-
-  .customh2 {
-    line-height: 70% !important;
-  }
-}
-
-@media screen and (max-width: $fourth-incr) {
-  html {
-    font-size: 0.7em;
-  }
-
-  .customh2 {
-    font-size: 5.5em !important;
-  }
-
-  p {
-    line-height: 1.7em !important;
-  }
-}
-
-@media screen and (max-width: $fifth-incr) {
-  html {
-    font-size: 0.6em;
-  }
-
-  .customh2 {
-    font-size: 5em !important;
-  }
-
-  .button {
-    min-width: 120px !important;
-    height: auto !important;
-    min-height: 45px;
-    padding: 0px 5px 0px 5px;
-  }
-
-  p {
-    line-height: 1.5em !important;
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .customh1 {
-    font-size: 3.5em !important;
-  }
-
-  .customh2 {
-    font-size: 4em !important;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .customh1 {
-    font-size: 3.1em !important;
-  }
-}
-
-@media screen and (max-width: $sixth-incr) {
-  p {
-    line-height: 1.3em !important;
-  }
-}
-
-@media screen and (max-height: 950px) and (min-width: $third-incr) {
-  html {
-    font-size: 0.9em;
-  }
-}
-
-@media screen and (max-height: 900px) and (min-width: $fourth-incr) {
-  html {
-    font-size: 0.8em;
-  }
-}
-
 html {
   overflow-y: scroll;
 }
@@ -301,4 +201,104 @@ p {
 .smaller {
   font-size: 0.6em;
   color: inherit;
+}
+
+@media screen and (max-width: 707px) {
+  html {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: $second-incr) {
+  .customh1 {
+    font-size: 5.9em !important;
+  }
+
+  .customh2 {
+    font-size: 5.5em !important;
+  }
+}
+
+@media screen and (max-width: $third-incr) {
+  html {
+    font-size: 0.8em;
+  }
+
+  .customh1 {
+    font-size: 5em !important;
+  }
+
+  .customh2 {
+    line-height: 70% !important;
+  }
+}
+
+@media screen and (max-width: $fourth-incr) {
+  html {
+    font-size: 0.7em;
+  }
+
+  .customh2 {
+    font-size: 5.5em !important;
+  }
+
+  p {
+    line-height: 1.6em !important;
+  }
+}
+
+@media screen and (max-width: $fifth-incr) {
+  html {
+    font-size: 0.6em;
+  }
+
+  .customh2 {
+    font-size: 5em !important;
+  }
+
+  .button {
+    min-width: 120px !important;
+    height: auto !important;
+    min-height: 45px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  p {
+    line-height: 1.5em !important;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .customh1 {
+    font-size: 3.9em !important;
+  }
+
+  .customh2 {
+    font-size: 4em !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .customh1 {
+    font-size: 3.5em !important;
+  }
+}
+
+@media screen and (max-width: $sixth-incr) {
+  p {
+    line-height: 1.3em !important;
+  }
+}
+
+@media screen and (max-height: 950px) and (min-width: $third-incr) {
+  html {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-height: 900px) and (min-width: $fourth-incr) {
+  html {
+    font-size: 0.8em;
+  }
 }

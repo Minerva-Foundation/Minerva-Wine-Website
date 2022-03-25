@@ -163,7 +163,7 @@ li {
   }
 
   a {
-    letter-spacing: 0.01em;
+    letter-spacing: 0.05em;
   }
 }
 

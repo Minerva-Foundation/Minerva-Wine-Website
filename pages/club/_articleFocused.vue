@@ -342,7 +342,7 @@ export default Vue.extend({
 
       @media screen and (max-width: 1050px) and (min-height: 950px),
         screen and (max-width: 930px) {
-        max-width: 84%;
+        max-width: 87%;
       }
 
       .articleh1 {
@@ -395,7 +395,7 @@ export default Vue.extend({
           -moz-font-smoothing: antialiased !important;
           text-rendering: optimizelegibility !important;
           letter-spacing: 0.05em;
-          font-size: 1.5em;
+          font-size: max(1.5em, 16px);
           line-height: 1.4;
         }
 
