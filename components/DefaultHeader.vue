@@ -179,7 +179,7 @@ li {
     justify-content: space-between;
     padding: 0px 40px 0px 40px;
 
-    @media screen and (max-height: 800px) {
+    @media screen and (max-height: 855px) {
       height: 100px;
     }
 

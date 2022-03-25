@@ -4,7 +4,7 @@
       <article class="sectionContent slide-in from-left">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">
-          <span class="Minerva">MINERVA <br /></span> A new era of Wine.
+          <span class="Minerva">MINERVA <br /></span> A new era of wine.
         </h1>
         <InputsConnectWallet />
       </article>
@@ -415,12 +415,14 @@ p {
 
   h1 {
     margin-bottom: 25px;
+    font-size: 8.7em;
+
+    @media screen and (max-width: 1140px) {
+      font-size: 7em;
+    }
 
     @media screen and (max-width: $fifth-incr) {
       margin-bottom: 15px;
-    }
-
-    @media screen and (max-width: 386px) {
     }
 
     @media screen and (max-width: 370px) {
