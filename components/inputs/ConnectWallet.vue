@@ -9,6 +9,11 @@
   cursor: default;
   font-size: 0.9em;
 
+  @media screen and (max-height: 950px) and (min-width: $third-incr) {
+    min-width: 120px !important;
+    height: auto !important;
+  }
+
   @media screen and (max-height: 800px) {
     line-height: 0.7;
   }

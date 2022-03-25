@@ -365,14 +365,15 @@ p {
   }
 
   @media screen and (max-width: $third-incr) {
-    height: 600px;
-    min-height: 0px;
+    min-height: 600px;
+    max-height: 750px;
     background-color: $main-darker;
     background-image: none !important;
   }
 
   @media screen and (max-width: $fifth-incr) {
-    height: 500px;
+    min-height: 500px;
+    max-height: 600px;
   }
 
   .bottle {
@@ -420,7 +421,6 @@ p {
     }
 
     @media screen and (max-width: 386px) {
-      font-size: 3.5em !important;
     }
 
     @media screen and (max-width: 370px) {

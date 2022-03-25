@@ -87,11 +87,6 @@
   html {
     font-size: 0.9em;
   }
-
-  .button {
-    min-width: 120px !important;
-    height: auto !important;
-  }
 }
 
 @media screen and (max-height: 900px) and (min-width: $fourth-incr) {
@@ -191,6 +186,7 @@ a {
   font-size: 6.3rem;
   font-weight: normal;
   margin-bottom: -10px;
+  line-height: 70%;
 }
 
 .customh3 {
