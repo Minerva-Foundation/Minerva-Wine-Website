@@ -357,6 +357,10 @@ export default Vue.extend({
         @media screen and (max-width: $sixth-incr) {
           margin-bottom: 14px;
         }
+
+        @media screen and (max-width: 490px) {
+          font-size: 4em;
+        }
       }
 
       .aad {
