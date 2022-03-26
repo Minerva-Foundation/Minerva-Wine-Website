@@ -520,27 +520,6 @@ p {
       padding: 110px 0 100px 0;
     }
 
-    // @media screen and (max-width: $fifth-incr) {
-    //   height: 790px;
-    // }
-
-    // @media screen and (max-width: 370px) {
-    //   height: 800px;
-    // }
-
-    // @media screen and (max-width: 340px) {
-    //   height: 850px;
-    // }
-
-    // @media screen and (max-width: $sixth-incr) {
-    //   align-items: flex-start;
-    //   padding-left: 30px;
-    // }
-
-    // @media screen and (max-width: 260px) {
-    //   height: 950px;
-    // }
-
     .pwrapper {
       margin-top: 30px;
       max-width: min(70vw, 1200px);
@@ -631,7 +610,7 @@ p {
 .slide3 {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: right bottom;
   height: 100vh;
   position: relative;
   max-height: 2000px;
@@ -658,18 +637,6 @@ p {
   @media screen and (max-width: $fourth-incr) {
     padding: 110px 0 110px 0;
   }
-
-  // @media screen and (max-width: $fifth-incr) {
-  //   height: 900px;
-  // }
-
-  // @media screen and (max-width: 340px) {
-  //   height: 930px;
-  // }
-
-  // @media screen and (max-width: 260px) {
-  //   height: 1000px;
-  // }
 
   .globe {
     position: absolute;
@@ -701,17 +668,8 @@ p {
     z-index: 1;
 
     @media screen and (max-width: $second-incr) {
-      // right: 0;
-      // left: 0;
-      // top: 30px;
-      // margin-left: auto;
-      // margin-right: auto;
       width: 80vw;
-      // height: 90%;
       text-align: left;
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: center;
       position: relative;
       right: auto;
       bottom: auto;
@@ -763,23 +721,6 @@ p {
     padding: 110px 0 110px 0;
   }
 
-  // @media screen and (max-width: $third-incr) {
-  //   min-height: 1123px;
-  // }
-
-  // @media screen and (max-width: $fourth-incr) {
-  //   height: 80vh;
-  //   min-height: 1100px;
-  // }
-
-  // @media screen and (max-width: $fifth-incr) {
-  //   height: 65vh;
-  // }
-
-  // @media screen and (max-width: $sixth-incr) {
-  //   height: 870px;
-  // }
-
   .sectionContent {
     position: absolute;
     left: 10%;
@@ -797,18 +738,6 @@ p {
       position: relative;
       left: auto;
     }
-
-    // @media screen and (max-width: $third-incr) {
-    //   top: 14%;
-    // }
-
-    // @media screen and (max-width: $fifth-incr) {
-    //   top: 16%;
-    // }
-
-    // @media screen and (max-width: 340px) {
-    //   top: 10%;
-    // }
 
     p {
       max-width: 700px;
@@ -926,17 +855,8 @@ p {
     }
 
     @media screen and (max-width: $second-incr) {
-      // padding-top: 100px;
       padding-top: 0;
     }
-
-    // @media screen and (max-width: $fifth-incr) {
-    //   padding-top: 10px;
-    // }
-
-    // @media screen and (max-width: 236px) {
-    //   margin-top: 50px;
-    // }
 
     .scrollToTop {
       align-self: flex-start;
