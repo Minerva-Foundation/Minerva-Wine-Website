@@ -875,10 +875,6 @@ p {
         margin-top: 120px;
       }
 
-      @media screen and (max-width: 570px) {
-        margin-bottom: 80px;
-      }
-
       svg {
         transform: rotate(-90deg);
         width: 3em;
