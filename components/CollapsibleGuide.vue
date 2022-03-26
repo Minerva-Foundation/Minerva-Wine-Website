@@ -21,14 +21,14 @@
       />
     </svg>
 
-    <div class="wrapper">
+    <div class="wrapper" @click="expanded = !expanded">
       <div class="iteration">
-        <h4 class="customh4 noselect" @click="expanded = !expanded">
+        <h4 class="customh4 noselect">
           {{ iteration }}
         </h4>
       </div>
       <div class="main">
-        <h3 class="customh3 noselect" @click="expanded = !expanded">
+        <h3 class="customh3 noselect">
           {{ header }}
         </h3>
         <p ref="para" class="mainText" :class="{ expandedp: expanded }">
@@ -37,7 +37,7 @@
           {{ secondaryText }}
         </p>
       </div>
-      <div class="expandBtnWrapper" @click="expanded = !expanded">
+      <div class="expandBtnWrapper">
         <svg
           class="expandLines"
           :class="{ collapsedClassHor: !expanded }"
@@ -143,6 +143,7 @@ export default Vue.extend({
     position: relative;
     background-color: transparent !important;
     padding: 50px 0px 50px 0px;
+    cursor: pointer;
 
     .iteration {
       flex-shrink: 0;
@@ -161,7 +162,6 @@ export default Vue.extend({
       }
 
       h4 {
-        cursor: pointer;
         line-height: 100% !important;
 
         @media screen and (max-width: $second-incr) {
@@ -186,7 +186,6 @@ export default Vue.extend({
 
       h3 {
         padding-right: 90px;
-        cursor: pointer;
         margin-top: 4px;
 
         @media screen and (max-width: $third-incr) {
@@ -194,7 +193,7 @@ export default Vue.extend({
         }
 
         @media screen and (max-width: $fifth-incr) {
-          font-size: 2em !important;
+          font-size: 2.3em !important;
         }
       }
 
@@ -212,7 +211,6 @@ export default Vue.extend({
       right: 20px;
       height: 40px;
       width: 40px;
-      cursor: pointer;
 
       @media screen and (max-width: $third-incr) {
         top: 53px;

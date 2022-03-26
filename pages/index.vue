@@ -510,30 +510,36 @@ p {
     align-items: center;
     height: 1080px;
 
+    @media screen and (max-width: $second-incr) {
+      height: auto;
+      padding: 160px 0 150px 0;
+    }
+
     @media screen and (max-width: $fourth-incr) {
-      height: 950px;
+      height: auto;
+      padding: 110px 0 100px 0;
     }
 
-    @media screen and (max-width: $fifth-incr) {
-      height: 790px;
-    }
+    // @media screen and (max-width: $fifth-incr) {
+    //   height: 790px;
+    // }
 
-    @media screen and (max-width: 370px) {
-      height: 800px;
-    }
+    // @media screen and (max-width: 370px) {
+    //   height: 800px;
+    // }
 
-    @media screen and (max-width: 340px) {
-      height: 850px;
-    }
+    // @media screen and (max-width: 340px) {
+    //   height: 850px;
+    // }
 
-    @media screen and (max-width: $sixth-incr) {
-      align-items: flex-start;
-      padding-left: 30px;
-    }
+    // @media screen and (max-width: $sixth-incr) {
+    //   align-items: flex-start;
+    //   padding-left: 30px;
+    // }
 
-    @media screen and (max-width: 260px) {
-      height: 950px;
-    }
+    // @media screen and (max-width: 260px) {
+    //   height: 950px;
+    // }
 
     .pwrapper {
       margin-top: 30px;
@@ -634,8 +640,14 @@ p {
   overflow: hidden;
 
   @media screen and (max-width: $second-incr) {
-    height: 95vh;
+    min-height: 0;
+    height: auto;
+    padding: 160px 0 160px 0;
     background-position: bottom right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: $third-incr) {
@@ -644,21 +656,20 @@ p {
   }
 
   @media screen and (max-width: $fourth-incr) {
-    min-height: 0;
-    height: 960px;
+    padding: 110px 0 110px 0;
   }
 
-  @media screen and (max-width: $fifth-incr) {
-    height: 900px;
-  }
+  // @media screen and (max-width: $fifth-incr) {
+  //   height: 900px;
+  // }
 
-  @media screen and (max-width: 340px) {
-    height: 930px;
-  }
+  // @media screen and (max-width: 340px) {
+  //   height: 930px;
+  // }
 
-  @media screen and (max-width: 260px) {
-    height: 1000px;
-  }
+  // @media screen and (max-width: 260px) {
+  //   height: 1000px;
+  // }
 
   .globe {
     position: absolute;
@@ -690,17 +701,20 @@ p {
     z-index: 1;
 
     @media screen and (max-width: $second-incr) {
-      right: 0;
-      left: 0;
-      top: 30px;
-      margin-left: auto;
-      margin-right: auto;
+      // right: 0;
+      // left: 0;
+      // top: 30px;
+      // margin-left: auto;
+      // margin-right: auto;
       width: 80vw;
-      height: 90%;
+      // height: 90%;
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      position: relative;
+      right: auto;
+      bottom: auto;
     }
 
     button {
@@ -731,44 +745,70 @@ p {
   min-height: 1240px;
   overflow: hidden;
 
-  @media screen and (max-width: $third-incr) {
-    min-height: 1123px;
+  @media screen and (max-width: 1500px) {
+    min-height: 1000px;
+  }
+
+  @media screen and (max-width: $second-incr) {
+    min-height: 0;
+    height: auto;
+    padding: 160px 0 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: $fourth-incr) {
-    height: 80vh;
-    min-height: 1100px;
+    padding: 110px 0 110px 0;
   }
 
-  @media screen and (max-width: $fifth-incr) {
-    height: 65vh;
-  }
+  // @media screen and (max-width: $third-incr) {
+  //   min-height: 1123px;
+  // }
 
-  @media screen and (max-width: $sixth-incr) {
-    height: 870px;
-  }
+  // @media screen and (max-width: $fourth-incr) {
+  //   height: 80vh;
+  //   min-height: 1100px;
+  // }
+
+  // @media screen and (max-width: $fifth-incr) {
+  //   height: 65vh;
+  // }
+
+  // @media screen and (max-width: $sixth-incr) {
+  //   height: 870px;
+  // }
 
   .sectionContent {
     position: absolute;
     left: 10%;
     top: 30%;
 
+    @media screen and (max-width: 1500px) {
+      top: auto;
+      margin-top: 180px;
+    }
+
     @media screen and (max-width: $second-incr) {
+      margin-top: 0;
       width: 80vw;
-      top: 20%;
+      top: auto;
+      position: relative;
+      left: auto;
     }
 
-    @media screen and (max-width: $third-incr) {
-      top: 14%;
-    }
+    // @media screen and (max-width: $third-incr) {
+    //   top: 14%;
+    // }
 
-    @media screen and (max-width: $fifth-incr) {
-      top: 16%;
-    }
+    // @media screen and (max-width: $fifth-incr) {
+    //   top: 16%;
+    // }
 
-    @media screen and (max-width: 340px) {
-      top: 10%;
-    }
+    // @media screen and (max-width: 340px) {
+    //   top: 10%;
+    // }
 
     p {
       max-width: 700px;
@@ -830,15 +870,29 @@ p {
 
   .barrels {
     position: absolute;
-    top: 100px;
-    right: 75px;
+    top: calc(50% - 10vw - 100px);
+    right: calc(5% + 50px);
     width: 45%;
     min-width: 500px;
 
+    @media screen and (max-width: 1700px) {
+      right: 2%;
+    }
+
+    @media screen and (max-width: 1500px) {
+      width: 70%;
+      right: -150px;
+      top: 100px;
+      min-width: 800px;
+    }
+
     @media screen and (max-width: 712px) {
-      min-width: 0;
-      width: 100vw;
-      right: -30vw;
+      min-width: 600px;
+    }
+
+    @media screen and (max-width: 530px) {
+      right: -230px;
+      top: 50px;
     }
   }
 }
@@ -855,25 +909,34 @@ p {
     margin-bottom: 40px;
   }
 
+  @media screen and (max-width: $second-incr) {
+    padding: 160px 0 160px 0;
+  }
+
+  @media screen and (max-width: $fourth-incr) {
+    padding: 110px 0 110px 0;
+  }
+
   .sectionContent {
     width: 60%;
-    padding-top: 230px;
+    padding-top: 290px;
 
     @media screen and (max-width: $first-incr) {
       width: 82%;
     }
 
     @media screen and (max-width: $second-incr) {
-      padding-top: 100px;
+      // padding-top: 100px;
+      padding-top: 0;
     }
 
-    @media screen and (max-width: $fifth-incr) {
-      padding-top: 10px;
-    }
+    // @media screen and (max-width: $fifth-incr) {
+    //   padding-top: 10px;
+    // }
 
-    @media screen and (max-width: 236px) {
-      margin-top: 50px;
-    }
+    // @media screen and (max-width: 236px) {
+    //   margin-top: 50px;
+    // }
 
     .scrollToTop {
       align-self: flex-start;
@@ -883,6 +946,10 @@ p {
       margin-top: 180px;
       margin-bottom: 120px;
       display: inline-flex;
+
+      @media screen and (max-width: $second-incr) {
+        margin-bottom: 0;
+      }
 
       @media screen and (max-width: $third-incr) {
         margin-top: 120px;
@@ -911,24 +978,32 @@ p {
 
   .bottle {
     position: absolute;
-    top: 80px;
+    top: 140px;
     left: 80px;
     width: 35%;
     min-width: 500px;
     max-width: 650px;
 
     @media screen and (max-width: $first-incr) {
-      left: -130px;
+      left: -110px;
+      top: 200px;
     }
 
     @media screen and (max-width: $second-incr) {
-      top: -100px;
+      top: 0px;
     }
 
     @media screen and (max-width: $third-incr) {
       min-width: 0;
-      left: -130px;
+      left: -140px;
       width: 90vw;
+      max-width: 500px;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      transform: rotate(-15deg);
+      top: 50px;
+      left: -150px;
     }
   }
 }
