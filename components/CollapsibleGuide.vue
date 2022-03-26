@@ -189,11 +189,7 @@ export default Vue.extend({
         margin-top: 4px;
 
         @media screen and (max-width: $third-incr) {
-          font-size: 2.5em !important;
-        }
-
-        @media screen and (max-width: $fifth-incr) {
-          font-size: 2.3em !important;
+          font-size: 2.7em !important;
         }
       }
 

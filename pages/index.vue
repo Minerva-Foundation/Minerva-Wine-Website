@@ -512,12 +512,12 @@ p {
 
     @media screen and (max-width: $second-incr) {
       height: auto;
-      padding: 160px 0 150px 0;
+      padding: 190px 0 180px 0;
     }
 
     @media screen and (max-width: $fourth-incr) {
       height: auto;
-      padding: 110px 0 100px 0;
+      padding: 130px 0 120px 0;
     }
 
     .pwrapper {
@@ -621,7 +621,7 @@ p {
   @media screen and (max-width: $second-incr) {
     min-height: 0;
     height: auto;
-    padding: 160px 0 160px 0;
+    padding: 190px 0 190px 0;
     background-position: bottom right;
     display: flex;
     flex-direction: column;
@@ -635,7 +635,7 @@ p {
   }
 
   @media screen and (max-width: $fourth-incr) {
-    padding: 110px 0 110px 0;
+    padding: 130px 0 130px 0;
   }
 
   .globe {
@@ -704,21 +704,21 @@ p {
   overflow: hidden;
 
   @media screen and (max-width: 1500px) {
-    min-height: 1000px;
-  }
-
-  @media screen and (max-width: $second-incr) {
     min-height: 0;
     height: auto;
-    padding: 160px 0 160px 0;
+    padding: 190px 0 0px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
+  @media screen and (max-width: $second-incr) {
+    padding: 190px 0 190px 0;
+  }
+
   @media screen and (max-width: $fourth-incr) {
-    padding: 110px 0 110px 0;
+    padding: 130px 0 130px 0;
   }
 
   .sectionContent {
@@ -727,16 +727,14 @@ p {
     top: 30%;
 
     @media screen and (max-width: 1500px) {
-      top: auto;
-      margin-top: 180px;
-    }
-
-    @media screen and (max-width: $second-incr) {
       margin-top: 0;
       width: 80vw;
       top: auto;
       position: relative;
       left: auto;
+    }
+
+    @media screen and (max-width: $second-incr) {
     }
 
     p {
@@ -839,11 +837,11 @@ p {
   }
 
   @media screen and (max-width: $second-incr) {
-    padding: 160px 0 160px 0;
+    padding: 190px 0 190px 0;
   }
 
   @media screen and (max-width: $fourth-incr) {
-    padding: 110px 0 110px 0;
+    padding: 130px 0 130px 0;
   }
 
   .sectionContent {
@@ -894,7 +892,7 @@ p {
 
   .bottle {
     position: absolute;
-    top: 140px;
+    top: 170px;
     left: 80px;
     width: 35%;
     min-width: 500px;
@@ -902,11 +900,11 @@ p {
 
     @media screen and (max-width: $first-incr) {
       left: -110px;
-      top: 200px;
+      top: 230px;
     }
 
     @media screen and (max-width: $second-incr) {
-      top: 0px;
+      top: 30px;
     }
 
     @media screen and (max-width: $third-incr) {
@@ -918,7 +916,7 @@ p {
 
     @media screen and (max-width: $fourth-incr) {
       transform: rotate(-15deg);
-      top: 50px;
+      top: 70px;
       left: -150px;
     }
   }
