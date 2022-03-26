@@ -610,7 +610,7 @@ p {
 .slide3 {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right bottom;
+  background-position: top center;
   height: 100vh;
   position: relative;
   max-height: 2000px;
