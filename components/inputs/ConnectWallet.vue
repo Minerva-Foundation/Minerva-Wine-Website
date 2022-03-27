@@ -8,6 +8,7 @@
 .button {
   cursor: default;
   font-size: 0.9em;
+  height: 56px;
 
   @media screen and (max-height: 950px) and (min-width: $third-incr) {
     min-width: 120px !important;

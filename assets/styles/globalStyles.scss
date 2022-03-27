@@ -125,7 +125,6 @@ p {
   padding: 15px 20px 15px 20px;
   line-height: 1;
   background-color: $secondary;
-  font-size: 1rem;
   color: $bright-font;
   border: none;
   border-radius: 7px;
@@ -135,6 +134,7 @@ p {
   position: relative;
   z-index: 1;
   min-width: 198px;
+  font-size: 1rem;
 
   &:after {
     content: '';

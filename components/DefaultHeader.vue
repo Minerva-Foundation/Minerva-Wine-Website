@@ -203,7 +203,7 @@ li {
       }
 
       .torch {
-        @media screen and (max-height: 800px) {
+        @media screen and (max-height: 855px) {
           height: 45px;
         }
       }
@@ -219,7 +219,7 @@ li {
             display: none;
           }
 
-          @media screen and (max-height: 800px) {
+          @media screen and (max-height: 855px) {
             height: 25px;
             padding-right: 30px;
           }
@@ -274,7 +274,7 @@ li {
         display: none;
       }
 
-      @media screen and (max-height: 800px) {
+      @media screen and (max-height: 855px) {
         font-size: 20px !important;
       }
     }

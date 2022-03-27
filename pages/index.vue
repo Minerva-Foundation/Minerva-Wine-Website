@@ -6,7 +6,7 @@
         <h1 class="customh1">
           <span class="Minerva">MINERVA <br /></span> A new era of wine.
         </h1>
-        <InputsConnectWallet />
+        <InputsNewsletterSubscribe />
       </article>
       <img
         src="~static/images/wine_bottle.png"
@@ -403,10 +403,14 @@ p {
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
   max-height: 2000px;
-  min-height: 420px;
+  min-height: calc(22vw + 344px - #{$header-height});
   position: relative;
   z-index: 2;
   overflow: hidden;
+
+  @media screen and (max-width: 1140px) {
+    min-height: max(45vw, 420px);
+  }
 
   @media screen and (max-height: 855px) {
     height: calc(100vh - 100px);
@@ -465,6 +469,10 @@ p {
     margin-bottom: 25px;
     font-size: 8.7em;
 
+    @media screen and (max-height: 950px) and (max-width: 1500px) {
+      font-size: 7.8em;
+    }
+
     @media screen and (max-width: 1140px) {
       font-size: 7em;
     }
@@ -496,6 +504,10 @@ p {
   h2 {
     font-size: 7em;
 
+    @media screen and (max-height: 950px) and (max-width: 1500px) {
+      font-size: 6.4em;
+    }
+
     @media screen and (max-width: 370px) {
       font-size: 3.5em !important;
     }
@@ -504,9 +516,13 @@ p {
   .sectionContent {
     position: absolute;
     left: 10%;
-    bottom: 10vw;
+    bottom: 11vw;
     padding-right: 10%;
     z-index: 1;
+
+    @media screen and (max-width: $second-incr) {
+      bottom: 15vw;
+    }
   }
 }
 
