@@ -314,17 +314,41 @@ p {
 .webp .slide1 {
   background-image: url('~static/images/vines_cropped.webp'); /* fallback */
   background-image: linear-gradient(
-      78.98deg,
-      rgba(0, 0, 0, 0.5) 0.33%,
-      rgba(196, 196, 196, 0.075) 88.83%
+      146.28deg,
+      rgba(68, 68, 68, 0.507) -28.96%,
+      rgba(196, 196, 196, 0) 121.82%
+    ),
+    linear-gradient(
+      85deg,
+      rgba(68, 68, 68, 0.514) -28.96%,
+      rgba(196, 196, 196, 0) 61.82%
     ),
     url('~static/images/vines_cropped.webp'); /* Rectangle 32 */
 
-  @media screen and (max-width: $third-incr) {
+  @media screen and (max-width: 1050px) {
     background-image: linear-gradient(
-        78.98deg,
-        rgba(0, 0, 0, 0.5) 0.33%,
-        rgba(180, 180, 180, 0.192) 120.83%
+        146.28deg,
+        rgba(68, 68, 68, 0.507) -28.96%,
+        rgba(196, 196, 196, 0) 121.82%
+      ),
+      linear-gradient(
+        55deg,
+        rgba(68, 68, 68, 0.712) -28.96%,
+        rgba(196, 196, 196, 0) 71.82%
+      ),
+      url('~static/images/vines_cropped.webp');
+  }
+
+  @media screen and (max-width: $second-incr) {
+    background-image: linear-gradient(
+        146.28deg,
+        rgba(68, 68, 68, 0.507) -28.96%,
+        rgba(196, 196, 196, 0) 121.82%
+      ),
+      linear-gradient(
+        55deg,
+        rgba(34, 34, 34, 0.712) -28.96%,
+        rgba(196, 196, 196, 0) 71.82%
       ),
       url('~static/images/vines_cropped.webp');
   }
@@ -333,17 +357,41 @@ p {
 .no-webp .slide1 {
   background-image: url('~static/images/vines_cropped.jpg'); /* fallback */
   background-image: linear-gradient(
-      78.98deg,
-      rgba(0, 0, 0, 0.5) 0.33%,
-      rgba(196, 196, 196, 0) 88.83%
+      166.28deg,
+      rgba(68, 68, 68, 0.507) -28.96%,
+      rgba(196, 196, 196, 0) 121.82%
     ),
-    url('~static/images/vines_cropped.jpg');
+    linear-gradient(
+      85deg,
+      rgba(68, 68, 68, 0.507) -28.96%,
+      rgba(196, 196, 196, 0) 61.82%
+    ),
+    url('~static/images/vines_cropped.jpg'); /* Rectangle 32 */
 
-  @media screen and (max-width: $third-incr) {
+  @media screen and (max-width: 1050px) {
     background-image: linear-gradient(
-        78.98deg,
-        rgba(0, 0, 0, 0.5) 0.33%,
-        rgba(180, 180, 180, 0.192) 120.83%
+        166.28deg,
+        rgba(68, 68, 68, 0.507) -28.96%,
+        rgba(196, 196, 196, 0) 121.82%
+      ),
+      linear-gradient(
+        55deg,
+        rgba(68, 68, 68, 0.712) -28.96%,
+        rgba(196, 196, 196, 0) 71.82%
+      ),
+      url('~static/images/vines_cropped.jpg');
+  }
+
+  @media screen and (max-width: $second-incr) {
+    background-image: linear-gradient(
+        166.28deg,
+        rgba(68, 68, 68, 0.507) -28.96%,
+        rgba(196, 196, 196, 0) 121.82%
+      ),
+      linear-gradient(
+        55deg,
+        rgba(34, 34, 34, 0.712) -28.96%,
+        rgba(196, 196, 196, 0) 71.82%
       ),
       url('~static/images/vines_cropped.jpg');
   }
@@ -360,7 +408,7 @@ p {
   z-index: 2;
   overflow: hidden;
 
-  @media screen and (max-height: 800px) {
+  @media screen and (max-height: 855px) {
     height: calc(100vh - 100px);
   }
 
@@ -446,6 +494,8 @@ p {
   }
 
   h2 {
+    font-size: 7em;
+
     @media screen and (max-width: 370px) {
       font-size: 3.5em !important;
     }
@@ -454,13 +504,9 @@ p {
   .sectionContent {
     position: absolute;
     left: 10%;
-    bottom: 30%;
+    bottom: 10vw;
     padding-right: 10%;
     z-index: 1;
-
-    @media screen and (max-width: $first-incr) {
-      bottom: 14%;
-    }
   }
 }
 
