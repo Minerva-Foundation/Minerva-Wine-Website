@@ -403,7 +403,7 @@ p {
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
   max-height: 2000px;
-  min-height: calc(22vw + 344px - #{$header-height});
+  min-height: calc(22vw + 353px - #{$header-height});
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -466,7 +466,7 @@ p {
   }
 
   h1 {
-    margin-bottom: 25px;
+    margin-bottom: 34px;
     font-size: 8.7em;
 
     @media screen and (max-height: 950px) and (max-width: 1500px) {

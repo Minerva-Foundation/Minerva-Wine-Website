@@ -80,7 +80,7 @@ export default Vue.extend({
     text-transform: uppercase;
 
     @media screen and (max-width: $fifth-incr) {
-      min-width: 100px !important;
+      font-size: 11px;
     }
   }
 }
