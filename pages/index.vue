@@ -420,6 +420,7 @@ p {
     min-height: 600px;
     background-color: $main-darker;
     background-image: none !important;
+    max-height: -webkit-fill-available;
   }
 
   @media screen and (max-width: $fifth-incr) {
