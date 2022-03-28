@@ -145,6 +145,10 @@ export default Vue.extend({
     padding: 50px 0px 50px 0px;
     cursor: pointer;
 
+    @media screen and (max-width: $fourth-incr) {
+      padding: 40px 0px 40px 0px;
+    }
+
     .iteration {
       flex-shrink: 0;
       width: 210px;
@@ -210,6 +214,10 @@ export default Vue.extend({
 
       @media screen and (max-width: $third-incr) {
         top: 53px;
+      }
+
+      @media screen and (max-width: $fourth-incr) {
+        top: 39px;
       }
 
       .expandLines {
