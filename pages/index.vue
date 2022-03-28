@@ -194,6 +194,15 @@ export default Vue.extend({
   mounted() {
     this.addScrollAnim();
   },
+  beforeMount() {
+    const vh = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
+  },
   methods: {
     addScrollAnim() {
       const faders = this.$el.querySelectorAll('.fade-in');
@@ -230,6 +239,10 @@ export default Vue.extend({
         top: 0,
         behavior: 'smooth',
       });
+    },
+    handleResize() {
+      const vh = window.innerHeight;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     },
   },
 });
@@ -418,9 +431,9 @@ p {
 
   @media screen and (max-width: $third-incr) {
     min-height: 600px;
+    height: calc(var(--vh) - 100px);
     background-color: $main-darker;
     background-image: none !important;
-    max-height: -webkit-fill-available;
   }
 
   @media screen and (max-width: $fifth-incr) {
