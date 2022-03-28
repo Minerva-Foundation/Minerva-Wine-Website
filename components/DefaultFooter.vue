@@ -54,6 +54,13 @@
           ><img src="~static/images/socials/telegram.svg" alt="Telegram Link" />
         </a>
       </div>
+      <a
+        href="https://docs.minerva.market/legal-documents/minerva-privacy-policy"
+        target="_blank"
+        class="privPol"
+      >
+        <span>Privacy Policy</span>
+      </a>
     </div>
   </footer>
 </template>
@@ -78,13 +85,18 @@ footer {
     bottom: 50px;
     right: 60px;
     display: flex;
-    height: 80px;
+    height: 95px;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
     filter: invert(100%) sepia(58%) saturate(427%) hue-rotate(223deg)
       brightness(121%) contrast(71%);
     padding-left: 30px;
+
+    @media screen and (max-width: 369px) {
+      height: 120px;
+      bottom: 35px;
+    }
 
     @media screen and (max-width: 275px) {
       bottom: 0;
@@ -148,6 +160,11 @@ footer {
         }
       }
     }
+
+    .privPol {
+      color: $dark-font;
+      font-size: 14px !important;
+    }
   }
 
   .logo {
@@ -169,7 +186,7 @@ footer {
     .torch {
       width: 15px;
 
-      @media screen and (max-width: $fifth-incr) {
+      @media screen and (max-width: 470px) {
         display: none;
       }
     }
