@@ -48,7 +48,11 @@ export default Vue.extend({
   }
 
   @media screen and (max-width: $fifth-incr) {
-    height: calc(#{$btn-height} - 14px) !important;
+    height: calc(#{$btn-height} - 16px) !important;
+  }
+
+  @media screen and (max-height: 855px) and (max-width: $fourth-incr) {
+    height: calc(#{$btn-height} - 16px) !important;
   }
 
   .mail {

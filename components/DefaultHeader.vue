@@ -179,7 +179,7 @@ li {
     justify-content: space-between;
     padding: 0px 40px 0px 40px;
 
-    @media screen and (max-height: 855px) {
+    @media screen and (max-height: 855px), screen and (max-width: $fifth-incr) {
       height: 100px;
     }
 
@@ -203,7 +203,8 @@ li {
       }
 
       .torch {
-        @media screen and (max-height: 855px) {
+        @media screen and (max-height: 855px),
+          screen and (max-width: $fifth-incr) {
           height: 45px;
         }
       }
@@ -219,7 +220,8 @@ li {
             display: none;
           }
 
-          @media screen and (max-height: 855px) {
+          @media screen and (max-height: 855px),
+            screen and (max-width: $fifth-incr) {
             height: 25px;
             padding-right: 30px;
           }
@@ -267,6 +269,11 @@ li {
       @media screen and (max-width: 1050px) {
         display: block;
       }
+
+      @media screen and (max-height: 855px),
+        screen and (max-width: $fifth-incr) {
+        height: 37px;
+      }
     }
 
     .mainLinks {
@@ -274,7 +281,8 @@ li {
         display: none;
       }
 
-      @media screen and (max-height: 855px) {
+      @media screen and (max-height: 855px),
+        screen and (max-width: $fifth-incr) {
         font-size: 20px !important;
       }
     }

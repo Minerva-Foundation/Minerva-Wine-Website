@@ -9,10 +9,11 @@
         <InputsNewsletterSubscribe />
       </article>
       <img
-        src="~static/images/wine_bottle.png"
+        src="~static/images/wine_bottle_filled.png"
         alt="Wine Bottle"
         class="bottle"
       />
+      <img src="~static/images/globe.png" alt="Wine Glass" class="glass" />
     </section>
     <section class="slide2">
       <article class="sectionContent">
@@ -197,11 +198,6 @@ export default Vue.extend({
   beforeMount() {
     const vh = window.innerHeight;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-    window.addEventListener('resize', this.handleResize);
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     addScrollAnim() {
@@ -239,10 +235,6 @@ export default Vue.extend({
         top: 0,
         behavior: 'smooth',
       });
-    },
-    handleResize() {
-      const vh = window.innerHeight;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
     },
   },
 });
@@ -430,14 +422,67 @@ p {
   }
 
   @media screen and (max-width: $third-incr) {
-    min-height: 600px;
+    min-height: 450px;
     height: calc(var(--vh) - 100px);
     background-color: $main-darker;
     background-image: none !important;
+
+    @media screen and (min-height: 855px) and (min-width: $fifth-incr) {
+      height: calc(var(--vh) - 127px);
+    }
+
+    @media screen and (min-height: 955px) and (min-width: $fifth-incr) and (max-width: $fourth-incr) {
+      height: 670px;
+    }
+
+    @media screen and (min-height: 902px) and (max-width: $fifth-incr) {
+      height: 670px;
+    }
   }
 
   @media screen and (max-width: $fifth-incr) {
     min-height: 500px;
+  }
+
+  .glass {
+    display: none;
+    z-index: -1;
+
+    @media screen and (max-width: $third-incr) {
+      display: block;
+      position: absolute;
+      bottom: 30px;
+      right: -90px;
+      width: 400px;
+      -webkit-transform: scale(-1);
+      -ms-transform: scale(-1);
+      transform: scaleX(-1);
+
+      @media screen and (max-height: 780px) and (min-width: $fourth-incr) {
+        top: 45px;
+        bottom: auto;
+      }
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      width: 350px;
+
+      @media screen and (max-height: 700px) and (min-width: $fifth-incr) {
+        top: 40px;
+        bottom: auto;
+      }
+    }
+
+    @media screen and (max-width: $fifth-incr) {
+      width: 310px;
+    }
+
+    @media screen and (max-width: 390px) {
+      bottom: -20px;
+    }
+
+    @media screen and (max-width: 330px) {
+    }
   }
 
   .bottle {
@@ -447,33 +492,39 @@ p {
     @media screen and (max-width: $third-incr) {
       display: block;
       position: absolute;
-      bottom: -140px;
-      right: 20px;
+      bottom: -60px;
+      right: -50px;
       -webkit-transform: rotate(-5deg) scale(-1);
       -ms-transform: rotate(-5deg) scale(-1);
       transform: rotate(-5deg) scaleX(-1);
-      width: 420px;
-      filter: brightness(200%);
+      width: 450px;
+
+      @media screen and (max-height: 780px) and (min-width: $fourth-incr) {
+        top: 40px;
+        bottom: auto;
+      }
     }
 
     @media screen and (max-width: $fourth-incr) {
-      right: -50px;
+      width: 400px;
+
+      @media screen and (max-height: 700px) and (min-width: $fifth-incr) {
+        top: 35px;
+        bottom: auto;
+      }
     }
 
     @media screen and (max-width: $fifth-incr) {
-      width: 380px;
+      width: 350px;
     }
 
     @media screen and (max-width: 390px) {
       right: -90px;
+      bottom: -100px;
     }
 
     @media screen and (max-width: 330px) {
-      right: -120px;
-    }
-
-    @media screen and (max-width: 330px) {
-      width: 350px;
+      width: 330px;
     }
   }
 
