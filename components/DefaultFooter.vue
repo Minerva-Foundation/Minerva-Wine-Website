@@ -44,12 +44,6 @@
           class="socialLink"
           ><img src="~static/images/socials/insta.svg" alt="Instagram Link" />
         </a>
-        <a
-          href="https://www.youtube.com/channel/UCXIMmkeZnaxlI1aUZSV1T7w"
-          target="_blank"
-          class="socialLink"
-          ><img src="~static/images/socials/youtube.svg" alt="YouTube Link" />
-        </a>
         <a href="http://t.me/MinervaNFT" target="_blank" class="socialLink"
           ><img src="~static/images/socials/telegram.svg" alt="Telegram Link" />
         </a>
@@ -93,7 +87,7 @@ footer {
       brightness(121%) contrast(71%);
     padding-left: 30px;
 
-    @media screen and (max-width: 369px) {
+    @media screen and (max-width: 329px) {
       height: 120px;
       bottom: 35px;
     }
