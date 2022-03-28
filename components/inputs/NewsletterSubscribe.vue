@@ -43,6 +43,11 @@ export default Vue.extend({
   }
 
   @media screen and (max-width: $fourth-incr) {
+    height: calc(#{$btn-height} - 10px) !important;
+    width: 100%;
+  }
+
+  @media screen and (max-width: $fifth-incr) {
     height: calc(#{$btn-height} - 14px) !important;
   }
 
@@ -51,7 +56,7 @@ export default Vue.extend({
     border-top-left-radius: 7px;
     width: 75%;
     border: none;
-    padding: 15px 20px 15px 20px;
+    padding: 17px 20px 15px 20px;
     background-color: rgb(230, 230, 230);
     font-size: 1.2em;
     color: #333;
@@ -76,8 +81,15 @@ export default Vue.extend({
     width: 25%;
     min-width: 14em;
     height: 100%;
-    font-size: max(1rem, 12px);
+    font-size: max(0.95rem, 12px);
     text-transform: uppercase;
+
+    @media screen and (max-width: $fourth-incr) {
+      min-width: 120px !important;
+      height: auto !important;
+      min-height: 45px;
+      padding: 0px 5px 0px 5px;
+    }
 
     @media screen and (max-width: $fifth-incr) {
       font-size: 11px;

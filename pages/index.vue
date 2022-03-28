@@ -418,14 +418,12 @@ p {
 
   @media screen and (max-width: $third-incr) {
     min-height: 600px;
-    max-height: 750px;
     background-color: $main-darker;
     background-image: none !important;
   }
 
   @media screen and (max-width: $fifth-incr) {
     min-height: 500px;
-    max-height: 600px;
   }
 
   .bottle {
@@ -478,7 +476,7 @@ p {
     }
 
     @media screen and (max-width: $fifth-incr) {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     @media screen and (max-width: 370px) {
@@ -584,7 +582,7 @@ p {
 
     .pwrapper {
       margin-top: 30px;
-      max-width: min(70vw, 1200px);
+      max-width: min(77vw, 1200px);
       display: flex;
       justify-content: space-between;
 
@@ -656,7 +654,7 @@ p {
 .webp .slide3 {
   background-image: url('~static/images/white_wine.webp');
 
-  @media screen and (max-width: $second-incr) {
+  @media screen and (max-width: 1100px) {
     background-image: url('~static/images/white_wine_small.webp');
   }
 }
@@ -664,7 +662,7 @@ p {
 .no-webp .slide3 {
   background-image: url('~static/images/white_wine.jpg');
 
-  @media screen and (max-width: $second-incr) {
+  @media screen and (max-width: 1100px) {
     background-image: url('~static/images/white_wine_small.jpeg');
   }
 }
@@ -680,7 +678,7 @@ p {
   min-height: 1060px;
   overflow: hidden;
 
-  @media screen and (max-width: $second-incr) {
+  @media screen and (max-width: 1100px) {
     min-height: 0;
     height: auto;
     padding: 190px 0 190px 0;
@@ -725,11 +723,11 @@ p {
 
   .sectionContent {
     position: absolute;
-    right: 5%;
+    right: 7%;
     bottom: 12%;
     z-index: 1;
 
-    @media screen and (max-width: $second-incr) {
+    @media screen and (max-width: 1100px) {
       width: 80vw;
       text-align: left;
       position: relative;
@@ -785,7 +783,7 @@ p {
 
   .sectionContent {
     position: absolute;
-    left: 10%;
+    left: 8%;
     top: 30%;
 
     @media screen and (max-width: 1500px) {
