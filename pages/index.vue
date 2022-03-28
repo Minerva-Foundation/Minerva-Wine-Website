@@ -161,10 +161,11 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="white"
+            class="noselect"
           >
             <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
           </svg>
-          <span class="text">BACK TO TOP</span>
+          <span class="text noselect">BACK TO TOP</span>
         </div>
       </article>
       <img
