@@ -1,22 +1,72 @@
 <template>
-  <div class="wrapperNewsletter">
+  <form class="wrapperNewsletter" @submit.prevent="submitForm">
     <input
       v-model="currentEmail"
-      type="text"
+      type="email"
       class="mail"
+      name="fields[email]"
       placeholder="Email"
+      autocomplete="email"
     />
-    <button class="button">receive updates</button>
-  </div>
+    <button type="submit" class="button">{{ btnText }}</button>
+    <div v-if="result !== ''" class="result">
+      {{ result }}
+    </div>
+  </form>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+
 export default Vue.extend({
   name: 'NewsletterSubscribe',
   data: () => ({
     currentEmail: '',
+    waitingResult: false,
+    result: '',
   }),
+  computed: {
+    btnText() {
+      return this.waitingResult ? '•••' : 'receive updates';
+    },
+  },
+  methods: {
+    submitForm() {
+      const formData = new FormData();
+      formData.append('fields[email]', this.currentEmail);
+      this.waitingResult = true;
+
+      fetch(
+        'https://dashboard.mailerlite.com/jsonp/3681/forms/50479370766124647/subscribe',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      )
+        .then(async (response) => {
+          const data = await response.json();
+
+          if (!data.success) {
+            this.waitingResult = false;
+            return Promise.reject(data.errors.fields.email[0]);
+          }
+
+          this.waitingResult = false;
+          this.result = 'We sent you a confirmation email!';
+        })
+        .catch((error) => {
+          this.result = error;
+          console.error('There was an error!', error);
+        })
+        .then(() => {
+          setTimeout(() => {
+            this.result = '';
+            this.waitingResult = false;
+            this.currentEmail = '';
+          }, 5000);
+        });
+    },
+  },
 });
 </script>
 
@@ -27,6 +77,7 @@ export default Vue.extend({
   display: flex;
   width: 70%;
   min-width: 500px;
+  position: relative;
 
   @media screen and (max-height: 950px) {
     height: calc(#{$btn-height} - 5px);
@@ -53,6 +104,27 @@ export default Vue.extend({
 
   @media screen and (max-height: 855px) and (max-width: $fourth-incr) {
     height: calc(#{$btn-height} - 16px) !important;
+  }
+
+  .result {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    height: 100%;
+    border-radius: 7px;
+    z-index: 2;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    background-color: $secondary;
+    padding: 0px 10px 0px 10px;
+
+    @media screen and (max-width: $fifth-incr) {
+      font-size: 14px;
+    }
   }
 
   .mail {
