@@ -37,10 +37,9 @@ export default Vue.extend({
       this.waitingResult = true;
 
       fetch(
-        'https://dashboard.mailerlite.com/jsonp/3681/forms/50479370766124647/subscribe',
+        'https://assets.mailerlite.com/jsonp/3681/forms/50479370766124647/subscribe?fields%5Bemail%5D='+this.currentEmail,
         {
-          method: 'POST',
-          body: formData,
+          method: 'GET',
         }
       )
         .then(async (response) => {
