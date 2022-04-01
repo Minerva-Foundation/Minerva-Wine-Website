@@ -112,7 +112,6 @@ export default Vue.extend({
     height: 100%;
     border-radius: 7px;
     z-index: 2;
-    text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
