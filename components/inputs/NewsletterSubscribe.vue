@@ -8,7 +8,10 @@
       placeholder="Email"
       autocomplete="email"
     />
-    <button type="submit" class="button">{{ btnText }}</button>
+    <button type="submit" class="button">
+      <div v-if="waitingResult" class="dot-pulse"></div>
+      <span v-if="!waitingResult" class="btnText">Receive updates</span>
+    </button>
     <div v-if="result !== ''" class="result">
       {{ result }}
     </div>
@@ -25,11 +28,6 @@ export default Vue.extend({
     waitingResult: false,
     result: '',
   }),
-  computed: {
-    btnText() {
-      return this.waitingResult ? '•••' : 'receive updates';
-    },
-  },
   methods: {
     submitForm() {
       const formData = new FormData();
@@ -37,7 +35,8 @@ export default Vue.extend({
       this.waitingResult = true;
 
       fetch(
-        'https://assets.mailerlite.com/jsonp/3681/forms/50479370766124647/subscribe?fields%5Bemail%5D='+this.currentEmail,
+        'https://assets.mailerlite.com/jsonp/3681/forms/50479370766124647/subscribe?fields%5Bemail%5D=' +
+          this.currentEmail,
         {
           method: 'GET',
         }
@@ -51,7 +50,7 @@ export default Vue.extend({
           }
 
           this.waitingResult = false;
-          this.result = 'We sent you a confirmation email!';
+          this.result = 'Check your inbox to confirm';
         })
         .catch((error) => {
           this.result = error;
@@ -158,6 +157,10 @@ export default Vue.extend({
     height: 100%;
     font-size: max(0.95rem, 12px);
     text-transform: uppercase;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (max-width: $fourth-incr) {
       min-width: 120px !important;
@@ -169,6 +172,83 @@ export default Vue.extend({
     @media screen and (max-width: $fifth-incr) {
       font-size: 11px;
     }
+  }
+}
+
+.dot-pulse {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 9999px 0 0 -5px #ffffff;
+  animation: dotPulse 1.5s infinite linear;
+  animation-delay: 0.25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+.dot-pulse::before {
+  box-shadow: 9980px 0 0 -5px #ffffff;
+  animation: dotPulseBefore 1.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  box-shadow: 10008px 0 0 -5px #ffffff;
+  animation: dotPulseAfter 1.5s infinite linear;
+  animation-delay: 0.5s;
+}
+
+@keyframes dotPulseBefore {
+  0% {
+    box-shadow: 9980px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 9980px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 9980px 0 0 -5px #ffffff;
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 9999px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 9999px 0 0 -5px #ffffff;
+  }
+}
+
+@keyframes dotPulseAfter {
+  0% {
+    box-shadow: 10008px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 10008px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 10008px 0 0 -5px #ffffff;
   }
 }
 </style>
