@@ -587,6 +587,11 @@ p {
     @media screen and (max-width: $second-incr) {
       bottom: 15vw;
     }
+
+    @media screen and (max-height: 730px) and (min-width: 1050px) {
+      bottom: 8vw;
+      left: 12%;
+    }
   }
 }
 

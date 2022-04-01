@@ -166,10 +166,11 @@ export default Vue.extend({
       }
 
       h4 {
-        line-height: 100% !important;
+        line-height: 80% !important;
 
         @media screen and (max-width: $second-incr) {
           font-size: 3em !important;
+          line-height: 110% !important;
         }
       }
     }
