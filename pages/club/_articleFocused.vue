@@ -404,7 +404,15 @@ export default Vue.extend({
         }
 
         h4 {
+          font-size: 1.7em;
+        }
+
+        h3 {
           font-size: 2em;
+        }
+
+        h4 {
+          font-size: 2.2em;
         }
 
         h1,
