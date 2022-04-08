@@ -56,11 +56,12 @@ $defWidth: 547px;
   display: flex;
   flex-direction: column;
   height: 573px;
-  padding-top: 35px;
+  padding-top: 25px;
 
   @media screen and (max-width: 665px) {
     justify-content: center;
     padding-top: 0px;
+    height: auto;
 
     * {
       max-width: 90vw !important;
@@ -74,12 +75,30 @@ $defWidth: 547px;
 
   * {
     max-width: $defWidth;
+
+    @media screen and (max-height: 1150px) {
+      max-width: calc(#{$defWidth} - 50px);
+    }
+
+    @media screen and (max-height: 1050px) {
+      max-width: calc(#{$defWidth} - 90px);
+    }
   }
 
   .image {
     width: $defWidth;
     height: 378px;
     margin-bottom: 10px;
+
+    @media screen and (max-height: 1150px) {
+      width: calc(#{$defWidth} - 50px);
+      height: 343px;
+    }
+
+    @media screen and (max-height: 1050px) {
+      width: calc(#{$defWidth} - 90px);
+      height: 316px;
+    }
 
     img {
       width: 100%;
@@ -95,11 +114,20 @@ $defWidth: 547px;
 
     .title {
       font-family: $secondary-big-font;
+      overflow: hidden;
       font-weight: 100;
       font-size: 2.25em;
       line-height: 0.85 !important;
       margin-top: 10px;
-      margin-bottom: 5px;
+      padding-bottom: 5px;
+
+      @media screen and (max-height: 1150px) {
+        font-size: 2.05em;
+      }
+
+      @media screen and (max-height: 1050px) {
+        font-size: 1.9em;
+      }
 
       @media screen and (max-width: 570px) {
         font-size: 2em;
