@@ -95,7 +95,7 @@ export default Vue.extend({
     display: none;
   }
 
-  @media screen and (max-height: 1000px) {
+  @media screen and (max-height: 1000px) and (min-width: 700px) {
     height: 330px;
   }
 
@@ -191,7 +191,9 @@ export default Vue.extend({
     grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)) !important;
   }
 
-  @media screen and (max-width: 665px) {
+  @media screen and (max-width: 645px) and (min-height: 1150px),
+    screen and (max-width: 600px) and (min-height: 1050px),
+    screen and (max-width: 550px) {
     display: flex;
     flex-direction: column;
   }
@@ -227,7 +229,9 @@ export default Vue.extend({
       padding-top: 40px;
     }
 
-    @media screen and (max-width: 665px) {
+    @media screen and (max-width: 645px) and (min-height: 1150px),
+      screen and (max-width: 600px) and (min-height: 1050px),
+      screen and (max-width: 550px) {
       height: auto;
       margin-top: 50px;
       padding-bottom: 50px;
@@ -235,13 +239,19 @@ export default Vue.extend({
     }
 
     @media screen and (max-width: $fourth-incr) {
-      margin-top: 34px;
-      padding-bottom: 34px;
+      margin-top: 40px;
+      padding-bottom: 40px;
     }
 
     &:nth-last-child(5) {
       @media screen and (max-width: $fourth-incr) {
         padding-bottom: 80px;
+      }
+    }
+
+    &:first-child {
+      @media screen and (max-width: $fourth-incr) {
+        padding-top: 10px;
       }
     }
   }

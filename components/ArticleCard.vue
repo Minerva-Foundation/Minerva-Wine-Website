@@ -58,7 +58,9 @@ $defWidth: 547px;
   height: 573px;
   padding-top: 25px;
 
-  @media screen and (max-width: 665px) {
+  @media screen and (max-width: 645px) and (min-height: 1150px),
+    screen and (max-width: 600px) and (min-height: 1050px),
+    screen and (max-width: 550px) {
     justify-content: center;
     padding-top: 0px;
     height: auto;
@@ -100,12 +102,14 @@ $defWidth: 547px;
       height: 316px;
     }
 
-    @media screen and (max-width: 665px) {
+    @media screen and (max-width: 645px) and (min-height: 1150px),
+      screen and (max-width: 600px) and (min-height: 1050px),
+      screen and (max-width: 550px) {
       height: 45vw !important;
     }
 
     @media screen and (max-width: $fourth-incr) {
-      height: 40vw !important;
+      height: 43vw !important;
     }
 
     img {
@@ -210,6 +214,10 @@ $defWidth: 547px;
     line-height: 1.15em !important;
     overflow: hidden;
     color: #777;
+
+    @media screen and (max-width: $fifth-incr) {
+      font-size: 0.9em;
+    }
   }
 
   .rm {
