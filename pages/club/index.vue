@@ -200,9 +200,6 @@ export default Vue.extend({
     min-height: calc(100vh - (#{$header-height} + 368px));
   }
 
-  @media screen and (max-width: $fourth-incr) {
-  }
-
   * {
     font-size: 16px;
   }
@@ -243,7 +240,9 @@ export default Vue.extend({
     }
 
     &:nth-last-child(5) {
-      padding-bottom: 80px;
+      @media screen and (max-width: $fourth-incr) {
+        padding-bottom: 80px;
+      }
     }
   }
 
