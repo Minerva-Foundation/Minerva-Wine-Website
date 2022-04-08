@@ -68,6 +68,7 @@ $defWidth: 547px;
 
     .image {
       height: 60vw !important;
+      width: 90vw !important;
     }
   }
 

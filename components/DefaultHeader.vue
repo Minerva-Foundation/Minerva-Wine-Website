@@ -54,6 +54,7 @@
         @click.stop="mobileMenuVis = !mobileMenuVis"
       />
     </nav>
+    <div v-if="mobileMenuVis" class="overlayBlocker"></div>
     <nav
       v-click-outside="hideMobileNav"
       :class="{ vis: mobileMenuVis }"
@@ -312,6 +313,15 @@ li {
       color: $bright-font;
       font-family: $standard-big-font;
     }
+  }
+
+  .overlayBlocker {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    z-index: 19;
   }
 
   .mobileNav {
