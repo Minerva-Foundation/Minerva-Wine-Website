@@ -101,11 +101,11 @@ $defWidth: 547px;
     }
 
     @media screen and (max-width: 665px) {
-      height: 300px !important;
+      height: 45vw !important;
     }
 
     @media screen and (max-width: $fourth-incr) {
-      height: 230px !important;
+      height: 40vw !important;
     }
 
     img {

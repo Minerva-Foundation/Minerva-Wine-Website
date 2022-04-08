@@ -107,6 +107,14 @@ export default Vue.extend({
     margin-left: 3vw;
     z-index: 7;
 
+    @media screen and (max-width: 1300px) {
+      margin-left: 50px;
+    }
+
+    @media screen and (max-width: 750px) {
+      margin-left: 30px;
+    }
+
     .walletComp {
       @media screen and (max-width: 750px) {
         display: none;
@@ -192,6 +200,9 @@ export default Vue.extend({
     min-height: calc(100vh - (#{$header-height} + 368px));
   }
 
+  @media screen and (max-width: $fourth-incr) {
+  }
+
   * {
     font-size: 16px;
   }
@@ -224,6 +235,15 @@ export default Vue.extend({
       margin-top: 50px;
       padding-bottom: 50px;
       padding-top: 0;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      margin-top: 34px;
+      padding-bottom: 34px;
+    }
+
+    &:nth-last-child(5) {
+      padding-bottom: 80px;
     }
   }
 
