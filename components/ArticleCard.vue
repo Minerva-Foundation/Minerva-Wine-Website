@@ -100,6 +100,14 @@ $defWidth: 547px;
       height: 316px;
     }
 
+    @media screen and (max-width: 665px) {
+      height: 300px !important;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      height: 230px !important;
+    }
+
     img {
       width: 100%;
       height: 100%;
@@ -130,19 +138,19 @@ $defWidth: 547px;
       }
 
       @media screen and (max-width: 570px) {
-        font-size: 2em;
-      }
-
-      @media screen and (max-width: 430px) {
-        font-size: 1.9em;
-      }
-
-      @media screen and (max-width: 370px) {
         font-size: 1.7em;
       }
 
+      @media screen and (max-width: 430px) {
+        font-size: 1.5em;
+      }
+
+      @media screen and (max-width: 370px) {
+        font-size: 1.4em;
+      }
+
       @media screen and (max-width: 270px) {
-        font-size: 1.6em;
+        font-size: 1.3em;
       }
     }
 
@@ -155,25 +163,41 @@ $defWidth: 547px;
       color: #333;
 
       @media screen and (max-width: 570px) {
-        font-size: 1em;
-      }
-
-      @media screen and (max-width: 430px) {
-        font-size: 1em;
-      }
-
-      @media screen and (max-width: 370px) {
         font-size: 0.9em;
       }
 
-      @media screen and (max-width: 270px) {
+      @media screen and (max-width: 430px) {
         font-size: 0.8em;
+      }
+
+      @media screen and (max-width: 370px) {
+        font-size: 0.7em;
+      }
+
+      @media screen and (max-width: 270px) {
+        font-size: 0.65em;
       }
     }
 
     .date {
       margin-left: 0.3em;
       color: #333;
+
+      @media screen and (max-width: 570px) {
+        font-size: 0.9em;
+      }
+
+      @media screen and (max-width: 430px) {
+        font-size: 0.8em;
+      }
+
+      @media screen and (max-width: 370px) {
+        font-size: 0.7em;
+      }
+
+      @media screen and (max-width: 270px) {
+        font-size: 0.65em;
+      }
     }
   }
 

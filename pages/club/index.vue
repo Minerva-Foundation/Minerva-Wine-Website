@@ -223,6 +223,7 @@ export default Vue.extend({
       height: auto;
       margin-top: 50px;
       padding-bottom: 50px;
+      padding-top: 0;
     }
   }
 
