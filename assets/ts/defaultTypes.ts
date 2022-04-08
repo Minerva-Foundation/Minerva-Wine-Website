@@ -114,7 +114,7 @@ export interface Slug2 {
 }
 
 export interface Article {
-    _createdAt: Date;
+    publishedAt: string;
     abstract: string;
     author: Author;
     body: Body[];
@@ -134,10 +134,10 @@ export interface CondensedImage {
 }
 
 export interface CondensedArticle {
-    _createdAt: Date;
     author: Author;
     categories: Category[];
     mainImage: MainImage;
+    publishedAt: string;
     slug: Slug;
     title: string;
     seo: CondensedSeo;

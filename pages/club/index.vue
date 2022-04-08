@@ -54,7 +54,9 @@ export default Vue.extend({
   name: 'ClubsArticles',
   components: {},
   async asyncData({ app: { $sanity } }) {
-    const articles: defTypes.Article[] = await getBaseArticleInfo($sanity);
+    const articles: defTypes.CondensedArticle[] = await getBaseArticleInfo(
+      $sanity
+    );
     return { articles };
   },
   data: () => ({

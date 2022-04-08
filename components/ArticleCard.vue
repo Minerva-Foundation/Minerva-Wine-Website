@@ -33,8 +33,8 @@ export default Vue.extend({
   },
   computed: {
     formatDate() {
-      const raw: String = this.article._createdAt
-        .substring(0, this.article._createdAt.indexOf('T'))
+      const raw: String = this.article.publishedAt
+        .substring(0, this.article.publishedAt.indexOf('T'))
         .replaceAll('-', '');
 
       const temp: String =
