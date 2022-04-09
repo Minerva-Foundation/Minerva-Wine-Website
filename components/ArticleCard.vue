@@ -124,7 +124,7 @@ $defWidth: 547px;
     color: $dark-font;
 
     .aa {
-      top: -5px;
+      top: -3px;
       position: relative;
 
       @media screen and (max-width: 570px) {
