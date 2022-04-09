@@ -335,7 +335,7 @@ export default Vue.extend({
 
     .contentwrapperSanity {
       max-width: 55em;
-      padding-top: 100px;
+      padding-top: 130px;
 
       @media screen and (max-width: 1050px) and (min-height: 950px),
         screen and (max-width: 930px) {
@@ -347,13 +347,21 @@ export default Vue.extend({
         padding-top: 60px;
       }
 
+      @media screen and (max-width: $fourth-incr) {
+        padding-top: 100px;
+      }
+
+      @media screen and (max-width: $fifth-incr) {
+        padding-top: 50px;
+      }
+
       .articleh1 {
         color: $dark-font;
         font-weight: normal;
         margin-bottom: 9px;
         margin-top: 15px;
         line-height: 1;
-        font-size: 3.8em;
+        font-size: 3.9em;
 
         @media screen and (max-width: $sixth-incr) {
           margin-bottom: 14px;
@@ -366,6 +374,7 @@ export default Vue.extend({
 
       .aad {
         font-size: 1.2em;
+
         .by {
           color: #777;
         }
