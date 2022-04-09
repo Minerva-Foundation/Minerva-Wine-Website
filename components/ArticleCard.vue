@@ -145,7 +145,7 @@ $defWidth: 547px;
     }
 
     .title {
-      font-weight: 500;
+      font-weight: 300;
       font-size: 2em;
       line-height: 1 !important;
       margin-top: 2px;
