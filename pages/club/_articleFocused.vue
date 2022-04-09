@@ -353,19 +353,19 @@ export default Vue.extend({
         margin-bottom: 9px;
         margin-top: 15px;
         line-height: 1;
-        font-size: 4.5em;
-        font-family: $secondary-big-font;
+        font-size: 3.8em;
 
         @media screen and (max-width: $sixth-incr) {
           margin-bottom: 14px;
         }
 
         @media screen and (max-width: 490px) {
-          font-size: 4em;
+          font-size: 3.5em;
         }
       }
 
       .aad {
+        font-size: 1.2em;
         .by {
           color: #777;
         }

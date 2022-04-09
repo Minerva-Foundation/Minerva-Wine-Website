@@ -121,36 +121,34 @@ $defWidth: 547px;
     color: $dark-font;
 
     .title {
-      font-family: $secondary-big-font;
-      overflow: hidden;
       font-weight: 100;
-      font-size: 2.25em;
-      line-height: 0.85 !important;
+      font-size: 2em;
+      line-height: 0.93 !important;
       margin-top: 10px;
       padding-bottom: 5px;
 
       @media screen and (max-height: 1150px) {
-        font-size: 2.05em;
+        font-size: 1.8em;
       }
 
       @media screen and (max-height: 1050px) {
-        font-size: 1.9em;
+        font-size: 1.65em;
       }
 
       @media screen and (max-width: 570px) {
-        font-size: 1.7em;
+        font-size: 1.65em;
       }
 
       @media screen and (max-width: 430px) {
-        font-size: 1.5em;
+        font-size: 1.45em;
       }
 
       @media screen and (max-width: 370px) {
-        font-size: 1.4em;
+        font-size: 1.35em;
       }
 
       @media screen and (max-width: 270px) {
-        font-size: 1.3em;
+        font-size: 1.25em;
       }
     }
 
