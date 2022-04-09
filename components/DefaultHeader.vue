@@ -329,7 +329,7 @@ li {
     display: inline-block;
     position: fixed;
     overflow: hidden;
-    height: 100%;
+    height: 100vh;
     max-width: 50vw;
     width: 0;
     z-index: 20;
