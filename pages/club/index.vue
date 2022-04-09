@@ -224,13 +224,13 @@ export default Vue.extend({
     }
 
     @media screen and (max-height: 1150px) {
-      height: 610px;
-      padding-top: 20px;
+      height: 570px;
+      padding-top: 40px;
     }
 
     @media screen and (max-height: 1050px) {
-      height: 575px;
-      padding-top: 40px;
+      height: 505px;
+      padding-top: 70px;
     }
 
     @media screen and (max-width: 645px) and (min-height: 1150px),

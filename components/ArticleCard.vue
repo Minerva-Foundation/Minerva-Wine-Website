@@ -59,7 +59,7 @@ $defWidth: 547px;
   display: flex;
   flex-direction: column;
   height: 573px;
-  padding-top: 25px;
+  padding-top: 22px;
 
   @media screen and (max-width: 645px) and (min-height: 1150px),
     screen and (max-width: 600px) and (min-height: 1050px),
