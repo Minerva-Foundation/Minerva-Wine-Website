@@ -342,7 +342,8 @@ export default Vue.extend({
         max-width: 87%;
       }
 
-      @media screen and (max-height: 855px) {
+      @media screen and (max-height: 855px),
+        screen and (max-width: $fifth-incr) {
         padding-top: 60px;
       }
 

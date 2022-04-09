@@ -40,10 +40,6 @@ export default Vue.extend({
   position: fixed;
   width: 100%;
   background-color: $main;
-
-  @media screen and (max-width: 370px), screen and (max-height: 630px) {
-    position: relative;
-  }
 }
 .main {
   z-index: 1;
