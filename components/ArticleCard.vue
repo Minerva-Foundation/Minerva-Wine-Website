@@ -105,11 +105,7 @@ $defWidth: 547px;
     @media screen and (max-width: 645px) and (min-height: 1150px),
       screen and (max-width: 600px) and (min-height: 1050px),
       screen and (max-width: 550px) {
-      height: 45vw !important;
-    }
-
-    @media screen and (max-width: $fourth-incr) {
-      height: 43vw !important;
+      height: 48vw !important;
     }
 
     img {

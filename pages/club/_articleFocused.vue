@@ -161,20 +161,20 @@ export default Vue.extend({
 .wrapperClubArticle {
   display: grid;
   grid-template-columns: [aside] min(400px, 20vw) [content] auto;
-  padding-top: $header-height;
 
   @media screen and (max-width: $first-incr), screen and (max-height: 700px) {
     grid-template-columns: [content] 100%;
   }
 
-  @media screen and (max-width: 370px), screen and (max-height: 760px) {
+  @media screen and (max-width: 370px), screen and (max-height: 630px) {
     padding-top: 0px;
   }
 
   .extraInfo {
     border-right: #d8d8d8 1px solid;
     position: relative;
-    height: 100%;
+    height: calc(100% - #{$header-height});
+    padding-top: $header-height;
 
     @media screen and (max-width: $first-incr), screen and (max-height: 700px) {
       display: none;
@@ -261,10 +261,6 @@ export default Vue.extend({
     align-items: center;
     width: 100%;
 
-    @media screen and (max-width: $fourth-incr) {
-      padding-top: 50px;
-    }
-
     @media screen and (max-width: $fifth-incr) {
       padding-bottom: 50px;
     }
@@ -339,10 +335,15 @@ export default Vue.extend({
 
     .contentwrapperSanity {
       max-width: 55em;
+      padding-top: 100px;
 
       @media screen and (max-width: 1050px) and (min-height: 950px),
         screen and (max-width: 930px) {
         max-width: 87%;
+      }
+
+      @media screen and (max-height: 855px) {
+        padding-top: 60px;
       }
 
       .articleh1 {
@@ -351,7 +352,7 @@ export default Vue.extend({
         margin-bottom: 9px;
         margin-top: 15px;
         line-height: 1;
-        font-size: 5em;
+        font-size: 4.5em;
         font-family: $secondary-big-font;
 
         @media screen and (max-width: $sixth-incr) {

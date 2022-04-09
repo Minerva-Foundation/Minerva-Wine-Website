@@ -139,12 +139,16 @@ export default Vue.extend({
       right: -50px;
       position: relative;
 
-      @media screen and (max-height: 950px) and (min-width: 1000px) {
-        bottom: -350px;
+      @media screen and (max-height: 1000px) {
+        bottom: -390px;
       }
 
       @media screen and (max-height: 900px) and (min-width: 1000px) {
-        bottom: -400px;
+        bottom: -420px;
+      }
+
+      @media screen and (max-height: 855px) {
+        bottom: -430px;
       }
 
       @media screen and (max-width: 1650px) {
