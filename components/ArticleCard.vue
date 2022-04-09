@@ -8,8 +8,11 @@
     />
     <span class="taa"
       ><h3 class="title">{{ article.title }}</h3>
-      <i class="by">by</i> <span class="author">{{ article.author.name }},</span
-      ><i class="date"> {{ formatDate }}</i>
+      <span class="aa"
+        ><i class="by">by</i>
+        <span class="author">{{ article.author.name }},</span
+        ><i class="date"> {{ formatDate }}</i></span
+      >
     </span>
     <p class="abstract">
       {{ article.abstract }}
@@ -120,12 +123,33 @@ $defWidth: 547px;
     font-size: 1.1em;
     color: $dark-font;
 
+    .aa {
+      top: -5px;
+      position: relative;
+
+      @media screen and (max-width: 570px) {
+        font-size: 0.9em;
+      }
+
+      @media screen and (max-width: 430px) {
+        font-size: 0.8em;
+      }
+
+      @media screen and (max-width: 370px) {
+        font-size: 0.7em;
+      }
+
+      @media screen and (max-width: 270px) {
+        font-size: 0.65em;
+      }
+    }
+
     .title {
       font-weight: 100;
       font-size: 2em;
-      line-height: 0.93 !important;
-      margin-top: 10px;
-      padding-bottom: 5px;
+      line-height: 1 !important;
+      margin-top: 2px;
+      margin-bottom: 5px;
 
       @media screen and (max-height: 1150px) {
         font-size: 1.8em;
@@ -157,45 +181,12 @@ $defWidth: 547px;
     }
 
     .author {
-      font-size: 1.1em;
       color: #333;
-
-      @media screen and (max-width: 570px) {
-        font-size: 0.9em;
-      }
-
-      @media screen and (max-width: 430px) {
-        font-size: 0.8em;
-      }
-
-      @media screen and (max-width: 370px) {
-        font-size: 0.7em;
-      }
-
-      @media screen and (max-width: 270px) {
-        font-size: 0.65em;
-      }
     }
 
     .date {
       margin-left: 0.3em;
       color: #333;
-
-      @media screen and (max-width: 570px) {
-        font-size: 0.9em;
-      }
-
-      @media screen and (max-width: 430px) {
-        font-size: 0.8em;
-      }
-
-      @media screen and (max-width: 370px) {
-        font-size: 0.7em;
-      }
-
-      @media screen and (max-width: 270px) {
-        font-size: 0.65em;
-      }
     }
   }
 
@@ -208,6 +199,7 @@ $defWidth: 547px;
     line-height: 1.15em !important;
     overflow: hidden;
     color: #777;
+    margin-top: 2px;
 
     @media screen and (max-width: $fifth-incr) {
       font-size: 0.9em;
@@ -217,6 +209,11 @@ $defWidth: 547px;
   .rm {
     color: $secondary;
     font-weight: 600;
+    margin-top: 2px;
+
+    @media screen and (max-width: $fourth-incr) {
+      font-size: 0.9em;
+    }
   }
 }
 </style>
