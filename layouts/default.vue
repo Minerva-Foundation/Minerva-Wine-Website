@@ -12,7 +12,7 @@ export default Vue.extend({
   data: () => ({
     scrolled: false,
   }),
-  created() {
+  mounted() {
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed() {

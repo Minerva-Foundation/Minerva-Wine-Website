@@ -132,10 +132,6 @@ export default Vue.extend({
       }
     },
   },
-  beforeMount() {
-    const vh = window.innerHeight;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  },
   methods: {
     hideMobileNav() {
       if (this.mobileMenuVis) this.mobileMenuVis = false;
@@ -333,7 +329,7 @@ li {
     display: inline-block;
     position: fixed;
     overflow: hidden;
-    height: var(--vh);
+    height: 100vh;
     max-width: 50vw;
     width: 0;
     z-index: 20;
