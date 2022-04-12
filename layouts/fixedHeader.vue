@@ -8,10 +8,23 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { WalletController } from '@terra-money/wallet-controller';
+import { initController, getController } from '~/assets/ts/walletController';
+
 export default Vue.extend({
   data: () => ({
     scrolled: false,
+    walletController: {},
   }),
+  created() {
+    if (getController() === undefined) {
+      initController().then(() => {
+        this.walletController = getController() as WalletController;
+      });
+    } else {
+      this.walletController = getController() as WalletController;
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
   },

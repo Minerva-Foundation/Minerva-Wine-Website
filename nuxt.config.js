@@ -40,7 +40,8 @@ export default {
         hid: "twitter:url", property:"twitter:url",
         name: "twitter:url",
         content: "https://www.minerva.market",
-      }
+      },
+      { name: "terra-wallet" }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, {
       hid: "canonical",
