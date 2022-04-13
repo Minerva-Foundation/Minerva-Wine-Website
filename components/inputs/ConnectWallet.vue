@@ -1,22 +1,17 @@
 <template>
-  <button class="button">
-    CONNECT WALLET<br /><span class="smaller">Coming Soon</span>
-  </button>
+  <button class="button">CONNECT WALLET</button>
 </template>
 
 <style lang="scss" scoped>
 .button {
   cursor: default;
-  font-size: 0.9em;
+  font-size: 14px !important;
   height: 56px;
 
-  @media screen and (max-height: 950px) and (min-width: $third-incr) {
-    min-width: 120px !important;
-    height: auto !important;
-  }
-
-  @media screen and (max-height: 800px) {
-    line-height: 0.7;
+  @media screen and (max-height: 855px) {
+    height: 50px;
+    font-size: 13px !important;
+    min-width: 180px;
   }
 }
 </style>
