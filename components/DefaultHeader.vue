@@ -107,12 +107,29 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import {
+  WalletController,
+  Connection,
+  ConnectType,
+  WalletStates,
+  WalletStatus,
+} from '@terra-money/wallet-controller';
+import { Subscription, combineLatest } from 'rxjs';
+import { initController, getController } from '~/assets/ts/walletController';
 
 export default Vue.extend({
   name: 'DefaultHeader',
   data: () => ({
     mobileMenuVis: false,
     mobileConnectWalletVis: false,
+    scrolled: false,
+    walletController: {} as WalletController,
+    availableInstallTypes: [] as ConnectType[],
+    availableConnectTypes: [] as ConnectType[],
+    availableConnections: [] as Connection[],
+    states: {} as WalletStates,
+    supportFeatures: [] as String[],
+    subscription: {} as Subscription | null,
   }),
   computed: {
     currentPath() {
@@ -132,9 +149,48 @@ export default Vue.extend({
       }
     },
   },
+  created() {
+    if (getController() === undefined) {
+      initController().then(() => {
+        this.walletController = getController() as WalletController;
+        this.subscribeWallet();
+      });
+    } else {
+      this.walletController = getController() as WalletController;
+      this.subscribeWallet();
+    }
+  },
+
+  beforeDestroy() {
+    this.subscription?.unsubscribe();
+  },
   methods: {
     hideMobileNav() {
       if (this.mobileMenuVis) this.mobileMenuVis = false;
+    },
+    subscribeWallet() {
+      this.subscription = combineLatest([
+        this.walletController.availableConnectTypes(),
+        this.walletController.availableInstallTypes(),
+        this.walletController.availableConnections(),
+        this.walletController.states(),
+      ]).subscribe(
+        ([
+          _availableConnectTypes,
+          _availableInstallTypes,
+          _availableConnections,
+          _states,
+        ]) => {
+          this.availableInstallTypes = _availableInstallTypes;
+          this.availableConnectTypes = _availableConnectTypes;
+          this.availableConnections = _availableConnections;
+          this.states = _states;
+          this.supportFeatures =
+            _states.status === WalletStatus.WALLET_CONNECTED
+              ? Array.from(_states.supportFeatures)
+              : [];
+        }
+      );
     },
   },
 });
