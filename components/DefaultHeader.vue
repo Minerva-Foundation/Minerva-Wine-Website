@@ -290,7 +290,7 @@ li {
           line-height: 0.9;
           display: none;
 
-          @media screen and (max-width: 1050px) {
+          @media screen and (max-width: $fourth-incr) {
             display: block;
           }
 

@@ -13,7 +13,7 @@
         alt="Wine Bottle"
         class="bottle"
       />
-      <img src="~static/images/globe.png" alt="Wine Glass" class="glass" />
+      <img src="~static/images/globe.png" alt="Globe" class="globe" />
     </section>
     <section class="slide2">
       <article class="sectionContent">
@@ -446,7 +446,7 @@ p {
     min-height: 500px;
   }
 
-  .glass {
+  .globe {
     display: none;
     z-index: -1;
 
