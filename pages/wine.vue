@@ -15,9 +15,25 @@
       </div>
     </aside>
     <div class="mainCont">
-      <aside class="filter">
-        <div class="clearFilters" @click="removeFilters()">
-          <span>CLEAR FILTERS</span
+      <div
+        class="overlay"
+        :class="{ overlayVis: mobileFilterVis }"
+        @click="mobileFilterVis = false"
+      ></div>
+      <aside class="filter" :class="{ mobileFilterVis: mobileFilterVis }">
+        <div
+          class="openMobileFilterWrapper"
+          @click="mobileFilterVis = !mobileFilterVis"
+        >
+          <div class="whitebar"></div>
+          <img
+            src="~static/images/filter.svg"
+            alt="Filter"
+            class="openMobileFilter"
+          />
+        </div>
+        <div class="clearFilters">
+          <span class="text" @click="removeFilters()">CLEAR FILTERS</span
           ><span class="hm">{{ stringFilterCount }}</span>
         </div>
         <span class="filterTitle">Type</span>
@@ -75,6 +91,7 @@ export default Vue.extend({
     countryFilters: [],
     vintageFilters: [],
     appliedFilterCount: 0,
+    mobileFilterVis: false,
   }),
   computed: {
     stringFilterCount() {
@@ -115,6 +132,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+$incr: 1050px;
+
 .wrapper {
   .clubHeader {
     position: relative;
@@ -143,12 +162,8 @@ export default Vue.extend({
     }
 
     .headerContent {
-      margin-left: 3vw;
+      margin-left: 50px;
       z-index: 7;
-
-      @media screen and (max-width: 1300px) {
-        margin-left: 50px;
-      }
 
       @media screen and (max-width: 750px) {
         margin-left: 30px;
@@ -169,20 +184,20 @@ export default Vue.extend({
       position: absolute;
       z-index: 5;
       bottom: 0;
-      left: 290px;
+      left: 300px;
       overflow: hidden;
       width: 715px;
 
-      @media screen and (max-width: 1005px) {
+      @media screen and (max-width: $incr) {
         right: 0;
         left: auto;
       }
 
-      @media screen and (max-height: 950px) and (min-width: 1005px) {
+      @media screen and (max-height: 950px) and (min-width: $incr) {
         left: 260px;
       }
 
-      @media screen and (max-height: 900px) and (min-width: 1005px) {
+      @media screen and (max-height: 900px) and (min-width: $incr) {
         left: 215px;
       }
 
@@ -206,7 +221,7 @@ export default Vue.extend({
           bottom: -250px;
         }
 
-        @media screen and (max-width: 1005px) {
+        @media screen and (max-width: $incr) {
           width: 350px;
           bottom: -250px;
           right: -100px;
@@ -240,7 +255,7 @@ export default Vue.extend({
           bottom: -140px;
         }
 
-        @media screen and (max-width: 1005px) {
+        @media screen and (max-width: $incr) {
           width: 290px;
           bottom: -148px;
           right: -310px;
@@ -258,20 +273,94 @@ export default Vue.extend({
     height: 100vh;
     background-color: white;
     display: flex;
+    overflow: hidden;
+    position: relative;
+
+    .overlay {
+      display: none;
+      position: absolute;
+      z-index: 8;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    @media screen and (max-width: $incr) {
+      .overlayVis {
+        display: block;
+      }
+    }
+
+    .mobileFilterVis {
+      @media screen and (max-width: $incr) {
+        left: 0px !important;
+        -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.07);
+        box-shadow: 5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+      }
+    }
 
     .filter {
       background-color: #fcfcfc;
       max-width: 370px;
       min-width: 370px;
       display: flex;
+      box-sizing: border-box;
       flex-direction: column;
       align-items: center;
-      padding-top: 30px;
-      border-right: #b5b5b5 solid 1px;
+      padding-top: 53px;
+      border-right: rgba(0, 0, 0, 0.2) solid 1px;
 
       & > * {
         width: 294px;
         margin-bottom: 23px;
+      }
+
+      @media screen and (max-width: $incr) {
+        position: absolute;
+        transition: left 0.2s ease;
+        z-index: 12;
+        top: 0;
+        left: -370px;
+        height: 100%;
+      }
+
+      .openMobileFilterWrapper {
+        position: absolute;
+        top: 23px;
+        right: -70px;
+        display: none;
+        width: 70px;
+        height: 60px;
+        border-bottom-right-radius: 12px;
+        border-top-right-radius: 12px;
+        background-color: #fcfcfc;
+        z-index: 10;
+        box-sizing: border-box;
+        border: rgba(0, 0, 0, 0.2) solid 1px;
+        border-left: 1px solid #fcfcfc;
+        -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.07);
+        box-shadow: 5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+
+        @media screen and (max-width: $incr) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .whitebar {
+          position: absolute;
+          left: -4px;
+          top: 0;
+          height: 99%;
+          width: 9px;
+          background-color: #fcfcfc;
+        }
+
+        .openMobileFilter {
+          width: 45px;
+        }
       }
 
       .clearFilters {
@@ -281,7 +370,10 @@ export default Vue.extend({
         justify-content: space-between;
         padding: 0 26px 11px 26px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        cursor: pointer;
+
+        .text {
+          cursor: pointer;
+        }
 
         .hm {
           color: #a5a5a5;
@@ -329,7 +421,7 @@ export default Vue.extend({
     }
 
     .wineCardWrapper {
-      width: calc(100vw - 350px);
+      width: 100%;
     }
   }
 }
