@@ -206,6 +206,7 @@ export default Vue.extend({
           .button {
             min-width: 0px;
             width: 140px;
+            height: 59px;
 
             .larger {
               font-size: 1.3em;

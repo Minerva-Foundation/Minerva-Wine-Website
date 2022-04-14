@@ -32,47 +32,61 @@
             class="openMobileFilter"
           />
         </div>
-        <div class="clearFilters">
-          <span class="text" @click="removeFilters()">CLEAR FILTERS</span
-          ><span class="hm">{{ stringFilterCount }}</span>
+        <div class="filterContWrapper">
+          <div class="clearFilters">
+            <span class="text" @click="removeFilters()">CLEAR FILTERS</span
+            ><span class="hm">{{ stringFilterCount }}</span>
+          </div>
+          <span class="filterTitle">Type</span>
+          <div class="filterCardWrapper">
+            <div
+              class="filtercard filterType"
+              :class="{ selected: typeFilters.includes('red') }"
+              @click="filterClick(typeFilters, 'red')"
+            >
+              <img src="~static/images/red_type.jpg" alt="Red Wine" />
+              RED
+            </div>
+            <div
+              class="filtercard filterType"
+              :class="{ selected: typeFilters.includes('white') }"
+              @click="filterClick(typeFilters, 'white')"
+            >
+              <img src="~static/images/white_type.jpg" alt="White Wine" />
+              WHITE
+            </div>
+            <div
+              class="filtercard filterType"
+              :class="{ selected: typeFilters.includes('champ') }"
+              @click="filterClick(typeFilters, 'champ')"
+            >
+              <img src="~static/images/champ_type.jpg" alt="Champagne" />
+              CHAMPAGNE
+            </div>
+            <div
+              class="filtercard filterType"
+              :class="{ selected: typeFilters.includes('port') }"
+              @click="filterClick(typeFilters, 'port')"
+            >
+              <img src="~static/images/port_type.jpg" alt="Port Wine" />
+              PORT
+            </div>
+          </div>
+          <span class="filterTitle">Country</span>
+          <inputsFilterSelect
+            name="Country"
+            placeholder="Select countries ..."
+            :options="countryFiltersUsable"
+            @selectionChecked="selectionEventParserCountry"
+          />
+          <span class="filterTitle">Vintage</span>
+          <inputsFilterSelect
+            name="Vintage"
+            placeholder="Select vintages ..."
+            :options="vintageFiltersUsable"
+            @selectionChecked="selectionEventParserVintage"
+          />
         </div>
-        <span class="filterTitle">Type</span>
-        <div class="filterCardWrapper">
-          <div
-            class="filtercard filterType"
-            :class="{ selected: typeFilters.includes('red') }"
-            @click="filterClick(typeFilters, 'red')"
-          >
-            <img src="~static/images/red_type.jpg" alt="Red Wine" />
-            RED
-          </div>
-          <div
-            class="filtercard filterType"
-            :class="{ selected: typeFilters.includes('white') }"
-            @click="filterClick(typeFilters, 'white')"
-          >
-            <img src="~static/images/white_type.jpg" alt="White Wine" />
-            WHITE
-          </div>
-          <div
-            class="filtercard filterType"
-            :class="{ selected: typeFilters.includes('champ') }"
-            @click="filterClick(typeFilters, 'champ')"
-          >
-            <img src="~static/images/champ_type.jpg" alt="Champagne" />
-            CHAMPAGNE
-          </div>
-          <div
-            class="filtercard filterType"
-            :class="{ selected: typeFilters.includes('port') }"
-            @click="filterClick(typeFilters, 'port')"
-          >
-            <img src="~static/images/port_type.jpg" alt="Port Wine" />
-            PORT
-          </div>
-        </div>
-        <span class="filterTitle">Country</span>
-        <span class="filterTitle">Vintage</span>
       </aside>
       <main class="wineCardWrapper"></main>
     </div>
@@ -87,17 +101,33 @@ import { initController, getController } from '~/assets/ts/walletController';
 export default Vue.extend({
   data: () => ({
     walletController: {} as WalletController,
-    typeFilters: [],
-    countryFilters: [],
-    vintageFilters: [],
+    typeFilters: [] as string[],
+    countryFilters: [] as string[],
+    vintageFilters: [] as string[],
     appliedFilterCount: 0,
     mobileFilterVis: false,
+    countries: ['Spain', 'Italy', 'Portugal'],
+    vintages: ['2023', '2024', '2025'],
   }),
   computed: {
     stringFilterCount() {
       return this.appliedFilterCount >= 10
         ? this.appliedFilterCount.toString()
         : '0' + this.appliedFilterCount.toString();
+    },
+    countryFiltersUsable() {
+      const temp: { [k: string]: boolean } = {};
+      for (const country of this.countries) {
+        temp[country] = this.countryFilters.includes(country);
+      }
+      return temp;
+    },
+    vintageFiltersUsable() {
+      const temp: { [k: string]: boolean } = {};
+      for (const vintage of this.vintages) {
+        temp[vintage] = this.vintageFilters.includes(vintage);
+      }
+      return temp;
     },
   },
   created() {
@@ -126,6 +156,12 @@ export default Vue.extend({
       this.countryFilters = [];
       this.vintageFilters = [];
       this.appliedFilterCount = 0;
+    },
+    selectionEventParserCountry(event: { option: string; checked: Boolean }) {
+      this.filterClick(this.countryFilters, event.option);
+    },
+    selectionEventParserVintage(event: { option: string; checked: Boolean }) {
+      this.filterClick(this.vintageFilters, event.option);
     },
   },
 });
@@ -279,7 +315,7 @@ $incr: 1050px;
     .overlay {
       display: none;
       position: absolute;
-      z-index: 8;
+      z-index: 2;
       left: 0;
       top: 0;
       width: 100%;
@@ -302,25 +338,12 @@ $incr: 1050px;
     }
 
     .filter {
-      background-color: #fcfcfc;
-      max-width: 370px;
-      min-width: 370px;
-      display: flex;
-      box-sizing: border-box;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 53px;
-      border-right: rgba(0, 0, 0, 0.2) solid 1px;
-
-      & > * {
-        width: 294px;
-        margin-bottom: 23px;
-      }
+      position: relative;
 
       @media screen and (max-width: $incr) {
         position: absolute;
         transition: left 0.2s ease;
-        z-index: 12;
+        z-index: 5;
         top: 0;
         left: -370px;
         height: 100%;
@@ -329,14 +352,14 @@ $incr: 1050px;
       .openMobileFilterWrapper {
         position: absolute;
         top: 23px;
-        right: -70px;
+        right: -69px;
         display: none;
         width: 70px;
         height: 60px;
         border-bottom-right-radius: 12px;
         border-top-right-radius: 12px;
         background-color: #fcfcfc;
-        z-index: 10;
+        z-index: 5;
         box-sizing: border-box;
         border: rgba(0, 0, 0, 0.2) solid 1px;
         border-left: 1px solid #fcfcfc;
@@ -352,8 +375,8 @@ $incr: 1050px;
         .whitebar {
           position: absolute;
           left: -4px;
-          top: 0;
-          height: 99%;
+          top: 0px;
+          height: 58px;
           width: 9px;
           background-color: #fcfcfc;
         }
@@ -363,58 +386,97 @@ $incr: 1050px;
         }
       }
 
-      .clearFilters {
-        width: 100%;
+      .filterContWrapper {
+        background-color: #fcfcfc;
+        max-width: 370px;
+        min-width: 370px;
         display: flex;
         box-sizing: border-box;
-        justify-content: space-between;
-        padding: 0 26px 11px 26px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 53px;
+        padding-bottom: 20px;
+        border-right: rgba(0, 0, 0, 0.2) solid 1px;
+        overflow-y: scroll;
+        height: 100vh;
+        direction: rtl;
 
-        .text {
-          cursor: pointer;
+        &::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background-color: #fcfcfc;
         }
 
-        .hm {
-          color: #a5a5a5;
-        }
-      }
-
-      .filterTitle {
-        font-family: $standard-big-font;
-        font-size: 2.5em;
-      }
-
-      .filterCardWrapper {
-        display: grid;
-        grid-template-columns: repeat(2, 137px);
-        row-gap: 23px;
-        column-gap: 20px;
-
-        .filtercard {
-          background-color: white;
-          padding: 16px 0 11px 0;
-          border-radius: 12px;
-          box-sizing: border-box;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          font-size: 14.5px !important;
-          cursor: pointer;
+        &::-webkit-scrollbar {
+          width: 5px;
+          background-color: #f5f5f5;
         }
 
-        .selected {
-          border: 1px solid rgba(0, 0, 0, 0.75);
+        &::-webkit-scrollbar-thumb {
+          border-radius: 20px;
+          background-color: rgba(0, 0, 0, 0.2);
         }
 
-        .filterType {
-          min-width: 137px;
-          max-width: 137px;
+        & > * {
+          width: 294px;
+          margin-bottom: 23px;
+          direction: ltr;
+          scrollbar-gutter: stable both-edges;
+        }
+
+        .clearFilters {
+          width: 100%;
           display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: center;
+          box-sizing: border-box;
+          justify-content: space-between;
+          padding: 0 26px 11px 26px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-          img {
-            margin-bottom: 10px;
+          .text {
+            cursor: pointer;
+            font-size: 16px !important;
+          }
+
+          .hm {
+            color: #a5a5a5;
+          }
+        }
+
+        .filterTitle {
+          font-family: $standard-big-font;
+          font-size: 2.5em;
+        }
+
+        .filterCardWrapper {
+          display: grid;
+          grid-template-columns: repeat(2, 137px);
+          row-gap: 23px;
+          column-gap: 20px;
+
+          .filtercard {
+            background-color: white;
+            padding: 16px 0 11px 0;
+            border-radius: 12px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            font-size: 14.5px !important;
+            cursor: pointer;
+          }
+
+          .selected {
+            border: 1px solid rgba(0, 0, 0, 0.75);
+          }
+
+          .filterType {
+            min-width: 137px;
+            max-width: 137px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+
+            img {
+              margin-bottom: 10px;
+            }
           }
         }
       }
@@ -422,6 +484,7 @@ $incr: 1050px;
 
     .wineCardWrapper {
       width: 100%;
+      z-index: 0;
     }
   }
 }
