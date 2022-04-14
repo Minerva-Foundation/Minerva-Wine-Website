@@ -41,7 +41,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import * as defTypes from '~/assets/ts/defaultTypes';
-import { getBaseArticleInfo } from '~/assets/ts/apiFuctions';
+import { getBaseArticleInfo } from '~/assets/ts/articleApiFunctions';
 import meta from '~/assets/ts/helpers';
 
 const metadata = meta(

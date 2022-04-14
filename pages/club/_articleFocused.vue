@@ -73,7 +73,7 @@
 import Vue from 'vue';
 import imageUrlBuilder from '@sanity/image-url';
 import * as defTypes from '~/assets/ts/defaultTypes';
-import { getArticleBySlug } from '~/assets/ts/apiFuctions';
+import { getArticleBySlug } from '~/assets/ts/articleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';

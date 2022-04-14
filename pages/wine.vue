@@ -102,7 +102,28 @@
           />
         </div>
       </aside>
-      <main class="wineCardWrapper"></main>
+      <main class="wineCardMain">
+        <div
+          class="wineCardWrapper"
+          :style="{
+            'grid-template-columns':
+              'repeat(auto-fill, minmax(max(665px, 100%/' +
+              crowdfundCount +
+              '), 1fr))',
+          }"
+        >
+          <CrowdCard
+            v-for="crowdF in crowdfunds"
+            :key="crowdF.slug.current"
+            :crowd-f="crowdF"
+          />
+
+          <div class="borderhiderR"></div>
+          <div class="borderhiderB"></div>
+          <div class="borderhiderL"></div>
+          <div class="borderhiderT"></div>
+        </div>
+      </main>
     </div>
   </div>
 </template>
@@ -110,9 +131,17 @@
 <script lang="ts">
 import Vue from 'vue';
 import { WalletController } from '@terra-money/wallet-controller';
+import * as defTypes from '~/assets/ts/defaultTypes';
 import { initController, getController } from '~/assets/ts/walletController';
+import { getBaseCrowdfundInfo } from '~/assets/ts/saleApiFunctions';
 
 export default Vue.extend({
+  async asyncData({ app: { $sanity } }) {
+    const crowdfunds: defTypes.CrowdfundBase[] = await getBaseCrowdfundInfo(
+      $sanity
+    );
+    return { crowdfunds };
+  },
   data: () => ({
     walletController: {} as WalletController,
     typeFilters: [] as string[],
@@ -122,6 +151,7 @@ export default Vue.extend({
     mobileFilterVis: false,
     countries: ['Spain', 'Italy', 'Portugal'],
     vintages: ['2023', '2024', '2025'],
+    crowdfunds: [] as defTypes.CrowdfundBase[],
   }),
   computed: {
     stringFilterCount() {
@@ -142,6 +172,9 @@ export default Vue.extend({
         temp[vintage] = this.vintageFilters.includes(vintage);
       }
       return temp;
+    },
+    crowdfundCount() {
+      return this.crowdfunds.length;
     },
   },
   created() {
@@ -553,9 +586,46 @@ $incr: 1050px;
       }
     }
 
-    .wineCardWrapper {
+    .wineCardMain {
       width: 100%;
       z-index: 0;
+
+      .wineCardWrapper {
+        display: grid;
+      }
+
+      .borderhiderR {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        background-color: white;
+        right: 0;
+        top: 0;
+      }
+      .borderhiderT {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        left: 0;
+        top: 0;
+      }
+      .borderhiderB {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        left: 0;
+        bottom: 0;
+      }
+      .borderhiderL {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        background-color: white;
+        left: 0;
+        top: 0;
+      }
     }
   }
 }

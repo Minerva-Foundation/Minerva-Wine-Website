@@ -149,3 +149,35 @@ export interface metadata {
     content: String;
     property?: String,
 }
+
+
+export interface CardImage {
+    _type: string;
+    asset: Asset;
+}
+
+export interface Flag {
+    _type: string;
+    asset: Asset2;
+}
+
+export interface Merchant {
+    flag: Flag;
+    title: string;
+}
+
+export interface CrowdfundBase {
+    cardImage: CardImage;
+    contract: string;
+    country: string;
+    date: string;
+    merchant: Merchant;
+    shortInfo: string;
+    slug: Slug;
+    start: Date;
+    tc: string;
+    type: string;
+    variety: string;
+    vintage: string;
+}
+
