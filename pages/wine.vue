@@ -23,6 +23,7 @@
       <aside class="filter" :class="{ mobileFilterVis: mobileFilterVis }">
         <div
           class="openMobileFilterWrapper"
+          :class="{ menuBtnClicked: mobileFilterVis }"
           @click="mobileFilterVis = !mobileFilterVis"
         >
           <div class="whitebar"></div>
@@ -36,6 +37,19 @@
           <div class="clearFilters">
             <span class="text" @click="removeFilters()">CLEAR FILTERS</span
             ><span class="hm">{{ stringFilterCount }}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="closeMobileFilter"
+              @click="mobileFilterVis = false"
+            >
+              <path
+                fill="#777"
+                d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z"
+              />
+            </svg>
           </div>
           <span class="filterTitle">Type</span>
           <div class="filterCardWrapper">
@@ -349,10 +363,22 @@ $incr: 1050px;
         height: 100%;
       }
 
+      @media screen and (max-width: 465px) {
+        left: -100vw;
+      }
+
+      @media screen and (max-width: 465px) {
+        .menuBtnClicked {
+          opacity: 0 !important;
+        }
+      }
+
       .openMobileFilterWrapper {
         position: absolute;
         top: 23px;
         right: -69px;
+        transition: 0.15s ease opacity;
+        opacity: 1;
         display: none;
         width: 70px;
         height: 60px;
@@ -421,6 +447,15 @@ $incr: 1050px;
           margin-bottom: 23px;
           direction: ltr;
           scrollbar-gutter: stable both-edges;
+
+          @media screen and (max-width: 325px) {
+            width: 95%;
+          }
+        }
+
+        @media screen and (max-width: 465px) {
+          max-width: 100vw;
+          min-width: 100vw;
         }
 
         .clearFilters {
@@ -428,8 +463,10 @@ $incr: 1050px;
           display: flex;
           box-sizing: border-box;
           justify-content: space-between;
+          align-items: flex-end;
           padding: 0 26px 11px 26px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          position: relative;
 
           .text {
             cursor: pointer;
@@ -437,7 +474,29 @@ $incr: 1050px;
           }
 
           .hm {
-            color: #a5a5a5;
+            font-size: 16px !important;
+            box-sizing: border-box;
+            color: #777;
+
+            @media screen and (max-width: 465px) {
+              margin-left: 20px;
+            }
+          }
+
+          @media screen and (max-width: 465px) {
+            justify-content: start;
+          }
+
+          .closeMobileFilter {
+            display: none;
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            transform: rotate(180deg);
+
+            @media screen and (max-width: 465px) {
+              display: block;
+            }
           }
         }
 
@@ -452,6 +511,12 @@ $incr: 1050px;
           row-gap: 23px;
           column-gap: 20px;
 
+          @media screen and (max-width: 325px) {
+            grid-template-columns: repeat(2, calc(46vw - 10px));
+            row-gap: 15px;
+            column-gap: 15px;
+          }
+
           .filtercard {
             background-color: white;
             padding: 16px 0 11px 0;
@@ -460,6 +525,7 @@ $incr: 1050px;
             border: 1px solid rgba(0, 0, 0, 0.2);
             font-size: 14.5px !important;
             cursor: pointer;
+            overflow: hidden;
           }
 
           .selected {
@@ -473,6 +539,11 @@ $incr: 1050px;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
+
+            @media screen and (max-width: 325px) {
+              min-width: calc(46vw - 10px);
+              max-width: calc(46vw - 10px);
+            }
 
             img {
               margin-bottom: 10px;
