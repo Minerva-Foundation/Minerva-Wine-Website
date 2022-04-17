@@ -14,7 +14,7 @@
         />
         <span class="countryName">{{ crowdF.country }}</span>
       </div>
-      <span class="shortInfo">{{ crowdF.shortInfo }}</span>
+      <span class="shortInfo"></span>
       <div class="variety meta">
         <span class="catName">Variety:</span
         ><span class="infoItem">{{ crowdF.variety }}</span>
@@ -59,7 +59,7 @@
           </div>
           <span class="disclaimer">
             <input id="tc" type="checkbox" /><label for="tc"
-              >By buying I agree to the
+              >By buying you agree to the
               <a
                 href="https://docs.minerva.market/legal-documents/minerva-privacy-policy"
                 target="_blank"
@@ -69,7 +69,27 @@
           </span>
         </div>
       </div>
-      <div class="progress"><progress max="100" value="40" /></div>
+      <div class="progress">
+        FUNDED
+        <div class="progressBar">
+          <span
+            class="value"
+            :style="{
+              width: Math.floor((cfbInfo.current / cfbInfo.max) * 100) + '%',
+            }"
+          >
+            <span
+              class="label"
+              :style="{
+                left:
+                  Math.floor((cfbInfo.current / cfbInfo.max) * 100) - 1.5 + '%',
+              }"
+              >{{ cfbInfo.current }}</span
+            >
+            <span class="labelMimax max">MAX: {{ cfbInfo.max }} Cases</span>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
   <div v-else class="wrapperCrowdCard filler"></div>
@@ -116,6 +136,7 @@ export default Vue.extend({
   .info {
     display: flex;
     flex-direction: column;
+    margin-right: 10px;
 
     & > * {
       margin-bottom: 10px;
@@ -183,16 +204,15 @@ export default Vue.extend({
   }
 
   .image {
+    margin-left: 20px;
+
     .thumbnail {
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
 
       img {
         width: 100%;
-        height: 100%;
+        max-height: 100%;
         object-fit: contain;
       }
     }
@@ -221,10 +241,11 @@ export default Vue.extend({
 
         .price {
           font-family: $standard-big-font;
-          font-size: 3em;
+          font-size: 3.5em;
 
           .smaller {
             font-family: $standard-big-font;
+            font-size: 0.5em;
           }
         }
       }
@@ -253,7 +274,7 @@ export default Vue.extend({
         }
 
         .disclaimer {
-          font-size: 0.85em;
+          font-size: 0.81em;
           display: flex;
           align-items: center;
 
@@ -275,21 +296,54 @@ export default Vue.extend({
     }
 
     .progress {
-      progress {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: 0.875em;
+      margin-top: 30px;
+      margin-bottom: 5px;
+      position: relative;
+      color: #777;
+
+      .progressBar {
+        margin-top: 5px;
         width: 100%;
         border-radius: 0;
         height: 5px;
-        color: $secondary;
+        position: relative;
         background-color: #e9e9e9;
+        display: flex;
+
+        .value {
+          height: 100%;
+          background-color: $secondary;
+          display: inline-block;
+        }
+
+        .label {
+          position: absolute;
+          bottom: 10px;
+          color: #777;
+        }
+
+        .labelMimax {
+          position: absolute;
+          top: 10px;
+          color: #777;
+        }
+
+        .max {
+          right: 0;
+        }
       }
 
-      progress::-webkit-progress-bar {
+      .progress::-webkit-progress-bar {
         background-color: #e9e9e9;
       }
-      progress::-webkit-progress-value {
+      .progress::-webkit-progress-value {
         background-color: $secondary !important;
       }
-      progress::-moz-progress-bar {
+      .progress::-moz-progress-bar {
         background-color: $secondary !important;
       }
     }

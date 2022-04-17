@@ -190,11 +190,6 @@ export default Vue.extend({
             if (this.visibleWithFilters(x)) {
               temp.push(x);
             }
-
-            if (this.filterFullyInView) {
-              const winecards = this.$el.querySelector('.wineCardWrapper');
-              if (winecards) winecards.scrollIntoView();
-            }
           }
         }
       }
@@ -240,6 +235,11 @@ export default Vue.extend({
       } else {
         filter.push(item);
         this.appliedFilterCount++;
+      }
+
+      if (this.filterFullyInView) {
+        const winecards = this.$el.querySelector('.wineCardWrapper');
+        if (winecards) winecards.scrollIntoView();
       }
     },
     removeFilters() {
