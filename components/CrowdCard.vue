@@ -73,6 +73,7 @@
         FUNDED
         <div class="progressBar">
           <span
+            v-if="cfbInfo.current / cfbInfo.max > 0.1"
             class="value"
             :style="{
               width: Math.floor((cfbInfo.current / cfbInfo.max) * 100) + '%',

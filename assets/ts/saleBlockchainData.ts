@@ -3,13 +3,15 @@ import * as defTypes from "./defaultTypes";
 export async function getCrowdfundBlockchainData(contract: string): Promise<defTypes.CrowdfundBlockchain> {
     
     console.log(contract);
+    const rand = Math.random() * 200 + 80;
+    const randmax = Math.random() * 100 + 20;
     
     const cfbInfo: defTypes.CrowdfundBlockchain = {
         running: true,
-        price: 150,
-        min: 30,
-        max: 100,
-        current: 35,
+        price: Math.floor(rand),
+        min: Math.floor(randmax/Math.random() * 10),
+        max: Math.floor(randmax),
+        current: Math.floor(randmax - (randmax / (Math.random() * 7 + 1))),
         timeLeft: 600,
         maxBuy: 5
     }
