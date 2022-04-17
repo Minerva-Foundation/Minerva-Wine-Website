@@ -181,3 +181,12 @@ export interface CrowdfundBase {
     vintage: string;
 }
 
+export interface CrowdfundBlockchain {
+    running: boolean,
+    price: Number,
+    min: Number,
+    max: Number,
+    current: Number,
+    timeLeft: Number,
+    maxBuy: Number
+}
