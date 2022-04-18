@@ -481,7 +481,7 @@ $filerMobile: 1700px;
           top: $header-height;
         }
 
-        @media screen and (max-width: 855px) {
+        @media screen and (max-height: 855px) {
           top: 100px;
         }
 
