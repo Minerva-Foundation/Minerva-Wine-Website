@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapperWinePage">
     <aside class="clubHeader">
       <div class="headerContent">
         <div class="customh2">Curated</div>
@@ -159,6 +159,7 @@ export default Vue.extend({
         : '0' + this.appliedFilterCount.toString();
     },
     countryFiltersUsable() {
+      // To map if an item is selected
       const temp: { [k: string]: boolean } = {};
       for (const country of this.countries) {
         temp[country] = this.countryFilters.includes(country);
@@ -166,6 +167,7 @@ export default Vue.extend({
       return temp;
     },
     vintageFiltersUsable() {
+      // To map if an item is selected
       const temp: { [k: string]: boolean } = {};
       for (const vintage of this.vintages) {
         temp[vintage] = this.vintageFilters.includes(vintage);
@@ -176,9 +178,26 @@ export default Vue.extend({
       const temp: Array<Object | undefined> = [];
       let arrayIndex: number = 0;
 
+      // Considitons for when fillers should be used based on device width = panels per row
+      const viewportWidth: number = window.innerWidth;
+      const realThis = this;
+      function fillerConditions(i: number) {
+        if (viewportWidth < 2365) {
+          return i % 3 === 0 && arrayIndex < realThis.crowdfunds.length - 1;
+        } else {
+          // 3 9 15 21
+          // 2 4 9 11 17 19 24 26 32 34 39 41 47 49 54 56 62 64 69 71 77 79 84 86 92 94 99 101
+          return (
+            ((i + 3) % 6 === 0 || (i + 2) % 6 === 0) &&
+            arrayIndex < realThis.crowdfunds.length - 3
+          );
+        }
+      }
+
+      // Fill up with filler panels that are transparent and test for current applied filters
       for (let i = 1; arrayIndex < this.crowdfunds.length; i++) {
-        if (i % 3 === 0 && arrayIndex <= this.crowdfunds.length - 3) {
-          temp.push({ slug: { current: 'filler' } });
+        if (fillerConditions(i)) {
+          temp.push({ slug: { current: 'filler' + i } });
         } else {
           const x = this.crowdfunds[arrayIndex++];
 
@@ -194,6 +213,7 @@ export default Vue.extend({
     },
   },
   created() {
+    // Init WalletController if not done yet
     if (getController() === undefined) {
       initController().then(() => {
         this.walletController = getController() as WalletController;
@@ -201,26 +221,6 @@ export default Vue.extend({
     } else {
       this.walletController = getController() as WalletController;
     }
-  },
-  mounted() {
-    const options = {
-      threshold: 0.99,
-    };
-
-    const realThis = this;
-
-    const testFullViewFilter = new IntersectionObserver(function (entries) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          realThis.filterFullyInView = true;
-        } else {
-          realThis.filterFullyInView = false;
-        }
-      });
-    }, options);
-
-    const x = this.$el.querySelector('.wrapperSticky');
-    if (x) testFullViewFilter.observe(x);
   },
   methods: {
     filterClick(filter: Array<string>, item: string) {
@@ -271,7 +271,15 @@ export default Vue.extend({
 $incr: 1050px;
 $filerMobile: 1700px;
 
-.wrapper {
+.wrapperWinePage {
+  @media screen and (max-width: 1330px) {
+    font-size: 0.9em;
+  }
+
+  @media screen and (max-width: 1180px) {
+    font-size: 0.8em;
+  }
+
   .clubHeader {
     position: relative;
     background-color: $main;
@@ -454,7 +462,7 @@ $filerMobile: 1700px;
       }
 
       @media screen and (max-width: 465px) {
-        left: -100vw;
+        right: -100vw;
       }
 
       @media screen and (max-width: 465px) {
@@ -468,6 +476,14 @@ $filerMobile: 1700px;
         position: sticky;
         position: -webkit-sticky;
         top: 0;
+
+        @media screen and (max-width: $fourth-incr) {
+          top: $header-height;
+        }
+
+        @media screen and (max-width: 855px) {
+          top: 100px;
+        }
 
         .openMobileFilterWrapper {
           position: absolute;
@@ -593,7 +609,6 @@ $filerMobile: 1700px;
               position: absolute;
               top: -20px;
               right: 30px;
-              transform: rotate(180deg);
 
               @media screen and (max-width: 465px) {
                 display: block;
@@ -627,6 +642,10 @@ $filerMobile: 1700px;
               font-size: 14.5px !important;
               cursor: pointer;
               overflow: hidden;
+
+              @media screen and (max-width: $fourth-incr) {
+                padding: 21px 0 21px 0;
+              }
             }
 
             .selected {
@@ -648,6 +667,10 @@ $filerMobile: 1700px;
 
               img {
                 margin-bottom: 10px;
+
+                @media screen and (max-width: $fourth-incr) {
+                  display: none;
+                }
               }
             }
           }
@@ -663,9 +686,29 @@ $filerMobile: 1700px;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: left bottom;
+      min-height: 100vh;
 
       .wineCardWrapper {
         display: grid;
+
+        @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(max(577px, 50%), 1fr)
+          ) !important;
+        }
+
+        @media screen and (max-width: 1180px), screen and (max-height: 900px) {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(max(543px, 50%), 1fr)
+          ) !important;
+        }
+
+        @media screen and (max-width: 1085px) {
+          display: flex;
+          flex-direction: column;
+        }
 
         .borderhiderL {
           width: 1px;
@@ -674,6 +717,10 @@ $filerMobile: 1700px;
           background-color: #c1c6cb;
           left: 370px;
           top: 0;
+
+          @media screen and (max-width: $filerMobile) {
+            left: 0;
+          }
         }
       }
     }

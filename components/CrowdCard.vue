@@ -1,5 +1,8 @@
 <template>
-  <div v-if="crowdF.slug.current !== 'filler'" class="wrapperCrowdCard">
+  <div
+    v-if="crowdF.slug.current.substring(0, 6) !== 'filler'"
+    class="wrapperCrowdCard"
+  >
     <div class="info">
       <div class="title">
         <span class="titleText">{{ crowdF.merchant.title }}</span
@@ -196,6 +199,18 @@ export default Vue.extend({
   color: #333;
   background-color: white;
 
+  @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+    height: 680px;
+  }
+
+  @media screen and (max-width: 1180px), screen and (max-height: 900px) {
+    height: 630px;
+  }
+
+  @media screen and (max-width: 1085px) {
+    height: auto;
+  }
+
   .info {
     display: flex;
     flex-direction: column;
@@ -210,7 +225,7 @@ export default Vue.extend({
       margin-bottom: 5px;
 
       .titleText {
-        font-size: 2.875em;
+        font-size: max(2.875em, 32px);
         font-family: $standard-big-font;
       }
       .linkArrow {
@@ -226,6 +241,11 @@ export default Vue.extend({
       margin-top: 10px;
       margin-bottom: 20px;
       color: #777;
+
+      @media screen and (max-width: $third-incr) {
+        margin-top: 0px;
+        margin-bottom: 15px;
+      }
 
       .time {
         font-size: 1.2em;
@@ -262,7 +282,7 @@ export default Vue.extend({
         text-transform: uppercase;
         color: $secondary;
         margin-left: 15px;
-        font-size: 1.125em;
+        font-size: max(1.125em, 14px);
       }
 
       .flag {
@@ -271,6 +291,11 @@ export default Vue.extend({
           max-width: 39px;
           height: 39px;
           border-radius: 50%;
+
+          @media screen and (max-width: $third-incr) {
+            height: 25px;
+            max-width: 25px;
+          }
         }
       }
     }
@@ -282,6 +307,10 @@ export default Vue.extend({
     .thumbnail {
       width: 100%;
       height: 100%;
+
+      @media screen and (max-width: 1085px) {
+        max-height: 275px;
+      }
 
       img {
         width: 100%;
@@ -297,13 +326,17 @@ export default Vue.extend({
     flex-direction: column;
     justify-content: flex-end;
 
+    @media screen and (max-width: 1085px) {
+      margin-top: 40px;
+    }
+
     .rest {
       display: flex;
 
       .purchaseInfo {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-start;
         margin-right: 40px;
 
         .case {
@@ -332,6 +365,21 @@ export default Vue.extend({
             padding-left: 26px;
             padding-right: 26px;
             height: 59px;
+            font-size: 1em;
+
+            @media screen and (max-width: 1330px),
+              screen and (max-height: 950px) {
+              height: 52px;
+            }
+
+            @media screen and (max-width: 1180px),
+              screen and (max-height: 900px) {
+              height: 49px;
+            }
+
+            @media screen and (max-width: $third-incr) {
+              height: 42px;
+            }
           }
 
           .buttonLight {
@@ -377,9 +425,15 @@ export default Vue.extend({
           align-items: flex-start;
 
           input {
+            margin-top: 1px;
             margin-right: 8px;
             filter: saturate(0%);
             cursor: pointer;
+
+            @media screen and (max-width: 1180px),
+              screen and (max-height: 900px) {
+              margin-top: 0;
+            }
           }
 
           label {
@@ -398,7 +452,7 @@ export default Vue.extend({
       flex-direction: column;
       justify-content: flex-end;
       font-size: 0.875em;
-      margin-top: 30px;
+      margin-top: 20px;
       margin-bottom: 5px;
       position: relative;
       color: #777;
@@ -451,5 +505,10 @@ export default Vue.extend({
 .filler {
   background-color: transparent;
   border: none;
+
+  @media screen and (max-width: 1085px) {
+    height: 0px;
+    padding: 0px;
+  }
 }
 </style>

@@ -68,6 +68,10 @@ export default Vue.extend({
     overflow: hidden;
     text-transform: uppercase;
 
+    @media screen and (max-width: $fourth-incr) {
+      height: 60px;
+    }
+
     * {
       font-size: 14.5px;
     }
@@ -80,6 +84,10 @@ export default Vue.extend({
       align-items: center;
       cursor: pointer;
       padding-right: 60px;
+
+      @media screen and (max-width: $fourth-incr) {
+        height: 60px;
+      }
     }
 
     .option {
@@ -115,6 +123,10 @@ export default Vue.extend({
       transform: rotate(43.5deg);
       -webkit-transform: rotate(43.5deg);
       cursor: pointer;
+
+      @media screen and (max-width: $fourth-incr) {
+        top: 17px;
+      }
     }
 
     .sel:hover ~ .arrow {
@@ -134,6 +146,10 @@ export default Vue.extend({
       transform: rotate(-135deg);
       -webkit-transform: rotate(-135deg);
       top: 30px;
+
+      @media screen and (max-width: $fourth-incr) {
+        top: 27px;
+      }
     }
   }
 }
