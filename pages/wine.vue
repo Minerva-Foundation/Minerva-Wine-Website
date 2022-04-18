@@ -119,11 +119,7 @@
             :key="crowdF.slug.current"
             :crowd-f="crowdF"
           />
-
-          <div class="borderhiderR"></div>
-          <div class="borderhiderB"></div>
           <div class="borderhiderL"></div>
-          <div class="borderhiderT"></div>
         </div>
       </main>
     </div>
@@ -522,7 +518,6 @@ $filerMobile: 1700px;
           align-items: center;
           padding-top: 53px;
           padding-bottom: 20px;
-          border-right: rgba(0, 0, 0, 0.2) solid 1px;
           overflow-y: scroll;
           height: 100%;
           direction: rtl;
@@ -671,39 +666,15 @@ $filerMobile: 1700px;
 
       .wineCardWrapper {
         display: grid;
-      }
 
-      .borderhiderR {
-        width: 1px;
-        height: 100%;
-        position: absolute;
-        background-color: white;
-        right: 0;
-        top: 0;
-      }
-      .borderhiderT {
-        height: 1px;
-        width: 100%;
-        position: absolute;
-        background-color: white;
-        left: 0;
-        top: 0;
-      }
-      .borderhiderB {
-        height: 1px;
-        width: 100%;
-        position: absolute;
-        background-color: white;
-        left: 0;
-        bottom: 0;
-      }
-      .borderhiderL {
-        width: 1px;
-        height: 100%;
-        position: absolute;
-        background-color: white;
-        left: 0;
-        top: 0;
+        .borderhiderL {
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          background-color: #c1c6cb;
+          left: 370px;
+          top: 0;
+        }
       }
     }
   }

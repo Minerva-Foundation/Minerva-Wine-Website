@@ -3,20 +3,17 @@
     <aside class="extraInfo">
       <div class="wrapperFixed sticky">
         <div class="authorWrapper">
-          <NuxtLink to="/club">
-            <button class="button">
-              <span class="larger">&#8249; </span> GO BACK
-            </button>
-          </NuxtLink>
           <span class="sectionTitle">Author</span>
           <address class="author">
-            <portableImage
-              class="authorImage"
-              :asset="currentArticle.author.image.asset"
-              new-height="100"
-              :alt="currentArticle.author.name + ' Profile picture'"
-            />
-            {{ currentArticle.author.name }}
+            <div class="row">
+              <portableImage
+                class="authorImage"
+                :asset="currentArticle.author.image.asset"
+                new-height="100"
+                :alt="currentArticle.author.name + ' Profile picture'"
+              />
+              {{ currentArticle.author.name }}
+            </div>
             <SanityContent
               :blocks="currentArticle.author.bio"
               :serializers="serializers"
@@ -171,19 +168,23 @@ export default Vue.extend({
   }
 
   .extraInfo {
-    border-right: #d8d8d8 1px solid;
+    border-right: rgba(0, 0, 0, 0.2) solid 1px;
     position: relative;
-    height: calc(100% - #{$header-height});
-    padding-top: $header-height;
+    height: 100%;
+    background-color: #fcfcfc;
 
     @media screen and (max-width: $first-incr), screen and (max-height: 700px) {
       display: none;
     }
 
     .wrapperFixed {
-      position: fixed;
+      position: sticky;
+      position: -webkit-sticky;
       width: min(400px, 20vw);
-      height: 100px;
+      padding-top: $header-height;
+      box-sizing: border-box;
+      height: 100vh;
+      top: 0;
 
       @media screen and (max-height: 760px) {
         position: sticky;
@@ -217,10 +218,12 @@ export default Vue.extend({
 
         .sectionTitle {
           padding-top: 4vh;
-          width: 70%;
+          width: 100%;
           text-align: left;
-          border-bottom: #d8d8d8 1px solid;
+          border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
           padding-bottom: 5px;
+          box-sizing: border-box;
+          padding-left: 5%;
           margin-bottom: 20px;
           color: #777;
         }
@@ -231,19 +234,26 @@ export default Vue.extend({
           width: 70%;
           font-size: 2em;
           font-family: $secondary-big-font;
+          margin-top: 10px;
 
-          .authorImage {
-            margin-bottom: 10px;
+          .row {
+            display: flex;
+            align-items: center;
+            padding-bottom: 5px;
 
-            img {
-              width: 100px;
-              border-radius: 50%;
+            .authorImage {
+              margin-right: 10px;
+
+              img {
+                width: 80px;
+                border-radius: 50%;
+              }
             }
           }
 
           p {
             margin-top: 10px;
-            color: rgb(95, 95, 95);
+            color: #777;
             letter-spacing: 0.01em;
             font-size: 1.3rem;
             line-height: 1.4rem;

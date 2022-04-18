@@ -69,14 +69,14 @@
             <button class="buttonLight">MORE INFO</button>
           </div>
           <span class="disclaimer">
-            <input id="tc" type="checkbox" /><label for="tc"
+            <input :id="crowdF.slug.current" type="checkbox" /><label
+              :for="crowdF.slug.current"
               >By buying you agree to the
               <a
                 href="https://docs.minerva.market/legal-documents/minerva-privacy-policy"
                 target="_blank"
                 >Terms and Conditions</a
-              >.<br />Digital receipt received after Crowdfund is
-              finished</label
+              >.<br />Delivery included in price</label
             >
           </span>
         </div>
@@ -191,7 +191,8 @@ export default Vue.extend({
     'crowdInfo crowdInfo';
   padding: 45px 45px 45px 45px;
   box-sizing: border-box;
-  border: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
   color: #333;
   background-color: white;
 
