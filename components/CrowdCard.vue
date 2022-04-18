@@ -14,7 +14,15 @@
         />
         <span class="countryName">{{ crowdF.country }}</span>
       </div>
-      <span class="shortInfo"></span>
+      <div class="timer">
+        <span class="timerLabel">{{
+          ended ? 'ENDED' : started ? 'TIME LEFT:' : 'STARTS IN:'
+        }}</span
+        ><span class="time">
+          {{ ended ? '' : started ? timeLeft : timeToStart }}</span
+        >
+      </div>
+      <!-- <span class="shortInfo"> </span> -->
       <div class="variety meta">
         <span class="catName">Variety:</span
         ><span class="infoItem">{{ crowdF.variety }}</span>
@@ -54,7 +62,10 @@
         </div>
         <div class="buy">
           <div class="btns">
-            <button class="button">BUY NOW</button>
+            <form class="purchase">
+              <input v-model="amount" type="text" class="amount" />
+              <button class="button">BUY NOW</button>
+            </form>
             <button class="buttonLight">MORE INFO</button>
           </div>
           <span class="disclaimer">
@@ -64,7 +75,8 @@
                 href="https://docs.minerva.market/legal-documents/minerva-privacy-policy"
                 target="_blank"
                 >Terms and Conditions</a
-              ></label
+              >.<br />Digital receipt received after Crowdfund is
+              finished</label
             >
           </span>
         </div>
@@ -76,14 +88,13 @@
             v-if="cfbInfo.current / cfbInfo.max > 0.1"
             class="value"
             :style="{
-              width: Math.floor((cfbInfo.current / cfbInfo.max) * 100) + '%',
+              width: (cfbInfo.current / cfbInfo.max) * 100 + '%',
             }"
           >
             <span
               class="label"
               :style="{
-                left:
-                  Math.floor((cfbInfo.current / cfbInfo.max) * 100) - 1.5 + '%',
+                right: 99 - (cfbInfo.current / cfbInfo.max) * 100 + '%',
               }"
               >{{ cfbInfo.current }}</span
             >
@@ -111,10 +122,60 @@ export default Vue.extend({
   },
   data: () => ({
     cfbInfo: {} as defTypes.CrowdfundBlockchain,
+    amount: 1,
+    timeLeft: '' as string,
+    timeToStart: '' as string,
+    started: false,
+    ended: true,
   }),
   async fetch() {
     const temp = await getCrowdfundBlockchainData('asdasd');
     this.cfbInfo = temp;
+  },
+  mounted() {
+    this.getTimeLeft();
+  },
+  methods: {
+    getTimeLeft() {
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distanceStart = Date.parse(this.crowdF.start) - now;
+        const distanceEnd = Date.parse(this.crowdF.end) - now;
+
+        if (distanceStart > 0) {
+          this.ended = false;
+
+          const days = Math.floor(distanceStart / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distanceStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distanceStart % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distanceStart % (1000 * 60)) / 1000);
+
+          this.timeToStart =
+            days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+        } else if (distanceEnd > 0) {
+          this.started = true;
+          this.ended = false;
+
+          const days = Math.floor(distanceEnd / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distanceEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distanceEnd % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distanceEnd % (1000 * 60)) / 1000);
+
+          this.timeLeft =
+            days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+        } else {
+          this.ended = true;
+        }
+      }, 1000);
+    },
   },
 });
 </script>
@@ -124,7 +185,7 @@ export default Vue.extend({
   height: 730px;
   display: grid;
   grid-template-columns: 55% 45%;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 65% 35%;
   grid-template-areas:
     'info image'
     'crowdInfo crowdInfo';
@@ -157,6 +218,16 @@ export default Vue.extend({
         top: 15px;
         margin-left: 5px;
         color: #777;
+      }
+    }
+
+    .timer {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      color: #777;
+
+      .time {
+        font-size: 1.2em;
       }
     }
 
@@ -253,6 +324,7 @@ export default Vue.extend({
       .buy {
         .btns {
           padding-bottom: 10px;
+          display: flex;
 
           button {
             min-width: 0;
@@ -272,12 +344,36 @@ export default Vue.extend({
               border-color: white;
             }
           }
+
+          .purchase {
+            display: flex;
+
+            .amount {
+              border-top-left-radius: 7px;
+              border-bottom-left-radius: 7px;
+              border: #adadad 1px solid;
+              width: 40px;
+              color: #777;
+              font-size: 1.5em;
+              text-align: center;
+
+              &:focus {
+                border: 1px solid #8b8b8b;
+                outline: none;
+              }
+            }
+
+            .button {
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+          }
         }
 
         .disclaimer {
           font-size: 0.81em;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
 
           input {
             margin-right: 8px;

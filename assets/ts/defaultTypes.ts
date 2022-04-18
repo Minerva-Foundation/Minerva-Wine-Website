@@ -179,6 +179,7 @@ export interface CrowdfundBase {
     type: string;
     variety: string;
     vintage: string;
+    end: Date;
 }
 
 export interface CrowdfundBlockchain {
@@ -187,6 +188,5 @@ export interface CrowdfundBlockchain {
     min: Number,
     max: Number,
     current: Number,
-    timeLeft: Number,
     maxBuy: Number
 }

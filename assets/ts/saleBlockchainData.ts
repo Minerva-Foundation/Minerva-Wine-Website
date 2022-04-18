@@ -12,7 +12,6 @@ export async function getCrowdfundBlockchainData(contract: string): Promise<defT
         min: Math.floor(randmax/Math.random() * 10),
         max: Math.floor(randmax),
         current: Math.floor(randmax - (randmax / (Math.random() * 7 + 1))),
-        timeLeft: 600,
         maxBuy: 5
     }
 
