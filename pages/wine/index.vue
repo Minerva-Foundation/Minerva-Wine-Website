@@ -726,7 +726,6 @@ $filerMobile: 1700px;
     .wineCardMain {
       width: 100%;
       z-index: 0;
-      background-image: url('~/static/images/vines_full.webp');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -739,7 +738,7 @@ $filerMobile: 1700px;
         @media screen and (max-width: 1330px), screen and (max-height: 950px) {
           grid-template-columns: repeat(
             auto-fill,
-            minmax(max(577px, 50%), 1fr)
+            minmax(577px, 1fr)
           ) !important;
         }
 
@@ -770,5 +769,13 @@ $filerMobile: 1700px;
       }
     }
   }
+}
+
+.webp .wineCardMain {
+  background-image: url('~/static/images/vines_full.webp');
+}
+
+.no-webp .wineCardMain {
+  background-image: url('~/static/images/vines_full.jpg');
 }
 </style>

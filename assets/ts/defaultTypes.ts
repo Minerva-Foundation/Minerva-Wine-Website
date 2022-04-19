@@ -47,12 +47,6 @@ export interface Child2 {
     marks: string[];
     text: string;
 }
-
-export interface Asset2 {
-    _ref: string;
-    _type: string;
-}
-
 export interface Crop {
     _type: string;
     bottom: number;
@@ -76,7 +70,7 @@ export interface Body {
     markDefs: any[];
     style: string;
     url: string;
-    asset: Asset2;
+    asset: Asset;
     crop: Crop;
     hotspot: Hotspot;
 }
@@ -87,14 +81,9 @@ export interface Category {
     _type: string;
 }
 
-export interface Asset3 {
-    _ref: string;
-    _type: string;
-}
-
 export interface MainImage {
     _type: string;
-    asset: Asset3;
+    asset: Asset;
 }
 
 export interface Seo {
@@ -158,12 +147,13 @@ export interface CardImage {
 
 export interface Flag {
     _type: string;
-    asset: Asset2;
+    asset: Asset;
 }
 
 export interface Merchant {
     flag: Flag;
     title: string;
+    slug: Slug;
 }
 
 export interface CrowdfundBase {
@@ -189,4 +179,34 @@ export interface CrowdfundBlockchain {
     max: Number,
     current: Number,
     maxBuy: Number
+}
+
+export interface LargeFirstImage {
+    _type: string;
+    asset: Asset;
+}
+
+export interface LargeSecondImage {
+    _type: string;
+    asset: Asset;
+}
+
+export interface Map {
+    _type: string;
+    asset: Asset;
+}
+
+export interface MerchantDetails {
+    country: string;
+    description: Body[];
+    description2: Body[];
+    description3: Body[];
+    flag: Flag;
+    largeFirstImage: LargeFirstImage;
+    largeSecondImage: LargeSecondImage;
+    map: Map;
+    quote: string;
+    seo: Seo;
+    slug: Slug;
+    title: string;
 }

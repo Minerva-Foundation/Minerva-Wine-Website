@@ -17,14 +17,6 @@
         />
         <span class="countryName">{{ crowdF.country }}</span>
       </div>
-      <div class="timer">
-        <span class="timerLabel">{{
-          ended ? 'ENDED' : started ? 'TIME LEFT:' : 'STARTS IN:'
-        }}</span
-        ><span class="time">
-          {{ ended ? '' : started ? timeLeft : timeToStart }}</span
-        >
-      </div>
       <!-- <span class="shortInfo"> </span> -->
       <div class="variety meta">
         <span class="catName">Variety:</span
@@ -45,6 +37,14 @@
       <div class="tc meta">
         <span class="catName">Delivery Information:</span
         ><span class="infoItem">{{ crowdF.tc }}</span>
+      </div>
+      <div class="timer">
+        <span class="timerLabel">{{
+          ended ? 'ENDED' : started ? 'TIME LEFT:' : 'STARTS IN:'
+        }}</span
+        ><span class="time">
+          {{ ended ? '' : started ? timeLeft : timeToStart }}</span
+        >
       </div>
     </div>
     <div class="image">
@@ -69,7 +69,9 @@
               <input v-model="amount" type="text" class="amount" />
               <button class="button">BUY NOW</button>
             </form>
-            <button class="buttonLight"></button>
+            <NuxtLink :to="`/wine/${crowdF.merchant.slug.current}`">
+              <button class="buttonLight"></button>
+            </NuxtLink>
           </div>
           <span class="disclaimer">
             <input :id="crowdF.slug.current" type="checkbox" /><label
@@ -152,13 +154,13 @@ export default Vue.extend({
           const hours = Math.floor(
             (distanceStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
           );
-          const minutes = Math.floor(
-            (distanceStart % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((distanceStart % (1000 * 60)) / 1000);
 
-          this.timeToStart =
-            days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+          // + 1 to round up
+          const minutes =
+            Math.floor((distanceStart % (1000 * 60 * 60)) / (1000 * 60)) + 1;
+          // const seconds = Math.floor((distanceStart % (1000 * 60)) / 1000);
+
+          this.timeToStart = days + 'd ' + hours + 'h ' + minutes + 'm ';
         } else if (distanceEnd > 0) {
           this.started = true;
           this.ended = false;
@@ -167,13 +169,13 @@ export default Vue.extend({
           const hours = Math.floor(
             (distanceEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
           );
-          const minutes = Math.floor(
-            (distanceEnd % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((distanceEnd % (1000 * 60)) / 1000);
 
-          this.timeLeft =
-            days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+          // + 1 to round up
+          const minutes =
+            Math.floor((distanceEnd % (1000 * 60 * 60)) / (1000 * 60)) + 1;
+          // const seconds = Math.floor((distanceEnd % (1000 * 60)) / 1000);
+
+          this.timeLeft = days + 'd ' + hours + 'h ' + minutes + 'm ';
         } else {
           this.ended = true;
         }
@@ -250,6 +252,7 @@ export default Vue.extend({
       margin-top: 10px;
       margin-bottom: 20px;
       color: #777;
+      font-size: 1.2em;
 
       @media screen and (max-width: $third-incr) {
         margin-top: 0px;
@@ -257,7 +260,8 @@ export default Vue.extend({
       }
 
       .time {
-        font-size: 1.2em;
+        font-size: 1.1em;
+        color: #333;
       }
     }
 
@@ -286,6 +290,7 @@ export default Vue.extend({
     .country {
       display: flex;
       align-items: center;
+      margin-bottom: 20px;
 
       .countryName {
         text-transform: uppercase;
