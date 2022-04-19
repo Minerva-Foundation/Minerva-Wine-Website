@@ -183,7 +183,11 @@ export default Vue.extend({
       const realThis = this;
       function fillerConditions(i: number) {
         if (viewportWidth < 2365) {
-          return i % 3 === 0 && arrayIndex < realThis.crowdfunds.length - 1;
+          return (
+            i >= 4 &&
+            (i - 1) % 3 === 0 &&
+            arrayIndex < realThis.crowdfunds.length - 1
+          );
         } else {
           // 3 9 15 21
           // 2 4 9 11 17 19 24 26 32 34 39 41 47 49 54 56 62 64 69 71 77 79 84 86 92 94 99 101
@@ -481,7 +485,8 @@ $filerMobile: 1700px;
           top: $header-height;
         }
 
-        @media screen and (max-height: 855px) {
+        @media screen and (max-height: 855px) and (max-width: $fourth-incr),
+          screen and (max-width: $fifth-incr) {
           top: 100px;
         }
 
@@ -566,13 +571,17 @@ $filerMobile: 1700px;
             direction: ltr;
 
             @media screen and (max-width: 325px) {
-              width: 95%;
+              width: 90%;
             }
           }
 
           @media screen and (max-width: 465px) {
             max-width: 100vw;
             min-width: 100vw;
+          }
+
+          @media screen and (max-width: $fourth-incr) {
+            padding-bottom: $header-height;
           }
 
           .clearFilters {

@@ -20,7 +20,7 @@ export async function getBaseCrowdfundInfo(sanity: any ):  Promise<defTypes.Crow
       }
     }
 
-    crowdfund.push(...temp)
+    crowdfund.push(...temp.reverse())
 
     return crowdfund;
 }

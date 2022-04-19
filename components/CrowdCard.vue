@@ -69,7 +69,7 @@
               <input v-model="amount" type="text" class="amount" />
               <button class="button">BUY NOW</button>
             </form>
-            <button class="buttonLight">MORE INFO</button>
+            <button class="buttonLight"></button>
           </div>
           <span class="disclaimer">
             <input :id="crowdF.slug.current" type="checkbox" /><label
@@ -211,6 +211,14 @@ export default Vue.extend({
     height: auto;
   }
 
+  @media screen and (max-width: 475px) {
+    padding: 39px 39px 39px 39px;
+  }
+
+  @media screen and (max-width: 390px) {
+    padding: 30px 30px 30px 30px;
+  }
+
   .info {
     display: flex;
     flex-direction: column;
@@ -339,6 +347,10 @@ export default Vue.extend({
         justify-content: flex-start;
         margin-right: 40px;
 
+        @media screen and (max-width: 390px) {
+          margin-right: 20px;
+        }
+
         .case {
           font-size: 0.875em;
           color: #777;
@@ -348,6 +360,11 @@ export default Vue.extend({
         .price {
           font-family: $standard-big-font;
           font-size: 3.5em;
+
+          @media screen and (max-width: 310px) {
+            line-height: 0.7;
+            margin-top: 5px;
+          }
 
           .smaller {
             font-family: $standard-big-font;
@@ -380,6 +397,14 @@ export default Vue.extend({
             @media screen and (max-width: $third-incr) {
               height: 42px;
             }
+
+            @media screen and (max-width: 475px) {
+              height: 39px !important;
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+              min-width: 0 !important;
+              min-height: 0 !important;
+            }
           }
 
           .buttonLight {
@@ -388,9 +413,32 @@ export default Vue.extend({
             border-width: 1px;
             margin-left: 12px;
 
+            &::after {
+              content: 'MORE INFO';
+              position: relative;
+              bottom: auto;
+              left: auto;
+              width: auto;
+              background-color: transparent;
+
+              @media screen and (max-width: 475px) {
+                content: 'MORE';
+              }
+
+              @media screen and (max-width: 390px) {
+                content: '\2139';
+                font-size: 1.6em;
+              }
+            }
+
             &:hover {
               color: white;
               border-color: white;
+            }
+
+            @media screen and (max-width: 390px) {
+              padding: 0 !important;
+              width: 39px;
             }
           }
 
@@ -409,6 +457,11 @@ export default Vue.extend({
               &:focus {
                 border: 1px solid #8b8b8b;
                 outline: none;
+              }
+
+              @media screen and (max-width: 475px) {
+                width: 30px;
+                font-size: 1.2em;
               }
             }
 
