@@ -216,6 +216,26 @@ export default Vue.extend({
       return temp;
     },
   },
+  mounted() {
+    const options = {
+      threshold: 0.99,
+    };
+
+    const realThis = this;
+
+    const testFullViewFilter = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          realThis.filterFullyInView = true;
+        } else {
+          realThis.filterFullyInView = false;
+        }
+      });
+    }, options);
+
+    const x = this.$el.querySelector('.wrapperSticky');
+    if (x) testFullViewFilter.observe(x);
+  },
   created() {
     // Init WalletController if not done yet
     if (getController() === undefined) {
@@ -508,6 +528,7 @@ $filerMobile: 1700px;
           border-right: 1px solid #fcfcfc;
           -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.07);
           box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+          cursor: pointer;
 
           @media screen and (max-width: $filerMobile) {
             display: flex;
