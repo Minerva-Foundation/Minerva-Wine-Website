@@ -198,6 +198,7 @@ export default Vue.extend({
   border-bottom: 1px solid #cccccc;
   color: #333;
   background-color: white;
+  font-size: max(1em, 12px);
 
   @media screen and (max-width: 1330px), screen and (max-height: 950px) {
     height: 680px;
@@ -211,12 +212,12 @@ export default Vue.extend({
     height: auto;
   }
 
-  @media screen and (max-width: 475px) {
-    padding: 39px 39px 39px 39px;
+  @media screen and (max-width: 525px) {
+    padding: 32px 32px 35px 32px;
   }
 
-  @media screen and (max-width: 390px) {
-    padding: 30px 30px 30px 30px;
+  @media screen and (max-width: 435px) {
+    padding: 25px 25px 27px 25px;
   }
 
   .info {
@@ -268,7 +269,7 @@ export default Vue.extend({
 
     .infoItem {
       font-size: 1.05em;
-      color: #777;
+      color: #333;
     }
 
     .meta {
@@ -277,7 +278,7 @@ export default Vue.extend({
     }
 
     .catName {
-      color: #333;
+      color: #777;
       text-transform: uppercase;
       font-size: 1.05em;
     }
@@ -347,21 +348,25 @@ export default Vue.extend({
         justify-content: flex-start;
         margin-right: 40px;
 
-        @media screen and (max-width: 390px) {
-          margin-right: 20px;
+        @media screen and (max-width: 435px) {
+          margin-right: 0px;
+          padding-right: 20px;
+          box-sizing: border-box;
         }
 
         .case {
           font-size: 0.875em;
           color: #777;
           padding-bottom: 5px;
+          padding-right: 10px;
+          box-sizing: border-box;
         }
 
         .price {
           font-family: $standard-big-font;
           font-size: 3.5em;
 
-          @media screen and (max-width: 310px) {
+          @media screen and (max-width: 400px) {
             line-height: 0.7;
             margin-top: 5px;
           }
@@ -381,25 +386,24 @@ export default Vue.extend({
             min-width: 0;
             padding-left: 26px;
             padding-right: 26px;
-            height: 59px;
+            height: 59px !important;
             font-size: 1em;
 
             @media screen and (max-width: 1330px),
               screen and (max-height: 950px) {
-              height: 52px;
+              height: 52px !important;
             }
 
             @media screen and (max-width: 1180px),
               screen and (max-height: 900px) {
-              height: 49px;
+              height: 49px !important;
             }
 
             @media screen and (max-width: $third-incr) {
-              height: 42px;
+              height: 42px !important;
             }
 
-            @media screen and (max-width: 475px) {
-              height: 39px !important;
+            @media screen and (max-width: 525px) {
               padding-left: 20px !important;
               padding-right: 20px !important;
               min-width: 0 !important;
@@ -421,11 +425,11 @@ export default Vue.extend({
               width: auto;
               background-color: transparent;
 
-              @media screen and (max-width: 475px) {
+              @media screen and (max-width: 525px) {
                 content: 'MORE';
               }
 
-              @media screen and (max-width: 390px) {
+              @media screen and (max-width: 435px) {
                 content: '\2139';
                 font-size: 1.6em;
               }
@@ -436,7 +440,7 @@ export default Vue.extend({
               border-color: white;
             }
 
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 435px) {
               padding: 0 !important;
               width: 39px;
             }
@@ -459,7 +463,7 @@ export default Vue.extend({
                 outline: none;
               }
 
-              @media screen and (max-width: 475px) {
+              @media screen and (max-width: 525px) {
                 width: 30px;
                 font-size: 1.2em;
               }
@@ -509,6 +513,10 @@ export default Vue.extend({
       margin-bottom: 5px;
       position: relative;
       color: #777;
+
+      @media screen and (max-width: 400px) {
+        margin-top: 35px;
+      }
 
       .progressBar {
         margin-top: 5px;

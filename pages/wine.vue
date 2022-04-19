@@ -536,6 +536,13 @@ $filerMobile: 1700px;
             align-items: center;
           }
 
+          @media screen and (max-width: 435px) {
+            width: 55px;
+            height: 50px;
+            top: 33px;
+            left: -54px;
+          }
+
           .whitebar {
             position: absolute;
             right: -4px;
@@ -543,10 +550,18 @@ $filerMobile: 1700px;
             height: 58px;
             width: 9px;
             background-color: #fcfcfc;
+
+            @media screen and (max-width: 435px) {
+              height: 48px;
+            }
           }
 
           .openMobileFilter {
             width: 45px;
+
+            @media screen and (max-width: 435px) {
+              width: 35px;
+            }
           }
         }
 
