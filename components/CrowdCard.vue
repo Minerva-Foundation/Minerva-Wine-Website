@@ -5,8 +5,10 @@
   >
     <div class="info">
       <div class="title">
-        <span class="titleText">{{ crowdF.merchant.title }}</span
-        ><span class="linkArrow">&#x2197;</span>
+        <NuxtLink :to="`/wine/${crowdF.merchant.slug.current}`">
+          <span class="titleText">{{ crowdF.merchant.title }}</span
+          ><span class="linkArrow">&#x2197;</span>
+        </NuxtLink>
       </div>
       <div class="country">
         <portableImage
@@ -234,6 +236,11 @@ export default Vue.extend({
     .title {
       position: relative;
       margin-bottom: 5px;
+
+      a {
+        text-decoration: none;
+        color: #333;
+      }
 
       .titleText {
         font-size: max(2.875em, 32px);

@@ -197,6 +197,7 @@ export interface Map {
 }
 
 export interface MerchantDetails {
+    _id: string,
     country: string;
     description: Body[];
     description2: Body[];

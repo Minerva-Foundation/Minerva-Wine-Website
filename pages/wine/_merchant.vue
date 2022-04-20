@@ -28,6 +28,12 @@
         </div>
       </div>
     </div>
+    <div class="wheelWrapper">
+      <CrowdWheel :cfs="cfs" />
+    </div>
+    <div class="quote">
+      <span class="customh1">{{ merch.quote }}</span>
+    </div>
     <portableImage class="secondLarge" :asset="merch.largeSecondImage.asset" />
   </div>
 </template>
@@ -36,6 +42,7 @@
 import Vue from 'vue';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getMerchantDetailBySlug } from '~/assets/ts/merchantApiFunctions';
+import { getBaseCrowdfundInfoForMerchant } from '~/assets/ts/saleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';
@@ -47,7 +54,13 @@ export default Vue.extend({
       route.params.merchant,
       $sanity
     );
-    return { merch };
+
+    const cfs: defTypes.CrowdfundBase[] = await getBaseCrowdfundInfoForMerchant(
+      merch._id,
+      $sanity
+    );
+
+    return { merch, cfs };
   },
   data: () => ({
     serializers: {
@@ -60,6 +73,7 @@ export default Vue.extend({
       },
     },
     merch: {} as defTypes.MerchantDetails,
+    cfs: [] as defTypes.CrowdfundBase[],
   }),
 });
 </script>
@@ -74,13 +88,12 @@ export default Vue.extend({
     img {
       height: 580px;
       object-fit: cover;
+      max-width: 100vw;
     }
   }
 
   .infoWrapper {
     padding: calc(84px + 3vw) 108px calc(84px + 3vw) 167px;
-    box-sizing: border-box;
-    width: 100vw;
     display: flex;
     justify-content: center;
 
@@ -90,13 +103,11 @@ export default Vue.extend({
 
       .mainInfo {
         display: grid;
-        grid-template-columns: calc(50% - 50px) 50%;
-        column-gap: 50px;
+        grid-template-columns: 45% 45%;
+        column-gap: 10%;
         position: relative;
 
         .textInfo {
-          padding-top: 30px;
-
           .customh1 {
             color: $main;
             margin-bottom: 40px;
@@ -127,10 +138,10 @@ export default Vue.extend({
     }
 
     .additionalInfo {
-      margin-top: 80px;
+      margin-top: 70px;
       display: grid;
-      grid-template-columns: calc(50% - 50px) 50%;
-      column-gap: 50px;
+      grid-template-columns: 45% 50%;
+      column-gap: 5%;
     }
 
     p {
@@ -169,10 +180,26 @@ export default Vue.extend({
     }
   }
 
+  .quote {
+    padding: 0px 108px calc(108px + 3vw) 108px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    .customh1 {
+      line-height: 1.2;
+      font-size: 4.5em;
+      max-width: 1500px;
+      color: #444;
+    }
+  }
+
   .secondLarge {
     img {
       height: 800px;
       object-fit: cover;
+      max-width: 100vw;
     }
   }
 }
