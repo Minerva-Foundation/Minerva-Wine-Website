@@ -470,6 +470,10 @@ export default Vue.extend({
     }
   }
 
+  .customh2 {
+    margin-bottom: 5px;
+  }
+
   .customh3 {
     color: inherit;
   }

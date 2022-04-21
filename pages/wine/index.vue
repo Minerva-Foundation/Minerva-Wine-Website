@@ -151,6 +151,7 @@ export default Vue.extend({
     vintages: ['2023', '2024', '2025'],
     crowdfunds: [] as defTypes.CrowdfundBase[],
     filterFullyInView: false,
+    visibleCrowdfunds: [] as Object[],
   }),
   computed: {
     stringFilterCount() {
@@ -174,7 +175,89 @@ export default Vue.extend({
       }
       return temp;
     },
-    visibleCrowdfunds() {
+  },
+  mounted() {
+    this.calcVisibleCrowdfunds();
+    window.addEventListener('resize', this.calcVisibleCrowdfunds);
+
+    const options = {
+      threshold: 0.99,
+    };
+
+    const realThis = this;
+
+    const testFullViewFilter = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          realThis.filterFullyInView = true;
+        } else {
+          realThis.filterFullyInView = false;
+        }
+      });
+    }, options);
+
+    const x = this.$el.querySelector('.wrapperSticky');
+    if (x) testFullViewFilter.observe(x);
+  },
+  created() {
+    // Init WalletController if not done yet
+    if (getController() === undefined) {
+      initController().then(() => {
+        this.walletController = getController() as WalletController;
+      });
+    } else {
+      this.walletController = getController() as WalletController;
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.calcVisibleCrowdfunds);
+  },
+  methods: {
+    filterClick(filter: Array<string>, item: string) {
+      const index = filter.indexOf(item);
+      if (index > -1) {
+        filter.splice(index, 1);
+        this.appliedFilterCount--;
+      } else {
+        filter.push(item);
+        this.appliedFilterCount++;
+      }
+
+      if (this.filterFullyInView) {
+        const winecards = this.$el.querySelector('.wineCardWrapper');
+        if (winecards) winecards.scrollIntoView();
+      }
+
+      this.calcVisibleCrowdfunds();
+    },
+    removeFilters() {
+      this.typeFilters = [];
+      this.countryFilters = [];
+      this.vintageFilters = [];
+      this.appliedFilterCount = 0;
+
+      this.calcVisibleCrowdfunds();
+    },
+    selectionEventParserCountry(event: { option: string; checked: Boolean }) {
+      this.filterClick(this.countryFilters, event.option);
+    },
+    selectionEventParserVintage(event: { option: string; checked: Boolean }) {
+      this.filterClick(this.vintageFilters, event.option);
+    },
+    visibleWithFilters(cf: defTypes.CrowdfundBase): Boolean {
+      return (
+        (this.typeFilters.length === 0
+          ? true
+          : this.typeFilters.includes(cf.type.toLowerCase())) &&
+        (this.countryFilters.length === 0
+          ? true
+          : this.countryFilters.includes(cf.country.toLowerCase())) &&
+        (this.vintageFilters.length === 0
+          ? true
+          : this.vintageFilters.includes(cf.vintage.toLowerCase()))
+      );
+    },
+    calcVisibleCrowdfunds() {
       const temp: Array<Object | undefined> = [];
       let arrayIndex: number = 0;
 
@@ -213,79 +296,7 @@ export default Vue.extend({
         }
       }
 
-      return temp;
-    },
-  },
-  mounted() {
-    const options = {
-      threshold: 0.99,
-    };
-
-    const realThis = this;
-
-    const testFullViewFilter = new IntersectionObserver(function (entries) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          realThis.filterFullyInView = true;
-        } else {
-          realThis.filterFullyInView = false;
-        }
-      });
-    }, options);
-
-    const x = this.$el.querySelector('.wrapperSticky');
-    if (x) testFullViewFilter.observe(x);
-  },
-  created() {
-    // Init WalletController if not done yet
-    if (getController() === undefined) {
-      initController().then(() => {
-        this.walletController = getController() as WalletController;
-      });
-    } else {
-      this.walletController = getController() as WalletController;
-    }
-  },
-  methods: {
-    filterClick(filter: Array<string>, item: string) {
-      const index = filter.indexOf(item);
-      if (index > -1) {
-        filter.splice(index, 1);
-        this.appliedFilterCount--;
-      } else {
-        filter.push(item);
-        this.appliedFilterCount++;
-      }
-
-      if (this.filterFullyInView) {
-        const winecards = this.$el.querySelector('.wineCardWrapper');
-        if (winecards) winecards.scrollIntoView();
-      }
-    },
-    removeFilters() {
-      this.typeFilters = [];
-      this.countryFilters = [];
-      this.vintageFilters = [];
-      this.appliedFilterCount = 0;
-    },
-    selectionEventParserCountry(event: { option: string; checked: Boolean }) {
-      this.filterClick(this.countryFilters, event.option);
-    },
-    selectionEventParserVintage(event: { option: string; checked: Boolean }) {
-      this.filterClick(this.vintageFilters, event.option);
-    },
-    visibleWithFilters(cf: defTypes.CrowdfundBase): Boolean {
-      return (
-        (this.typeFilters.length === 0
-          ? true
-          : this.typeFilters.includes(cf.type.toLowerCase())) &&
-        (this.countryFilters.length === 0
-          ? true
-          : this.countryFilters.includes(cf.country.toLowerCase())) &&
-        (this.vintageFilters.length === 0
-          ? true
-          : this.vintageFilters.includes(cf.vintage.toLowerCase()))
-      );
+      this.visibleCrowdfunds = temp as Object[];
     },
   },
 });

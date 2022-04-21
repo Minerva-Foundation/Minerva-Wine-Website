@@ -46,14 +46,14 @@ export default Vue.extend({
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 
   .sticky {
-    top: calc(100vh - 120px);
+    top: calc(100vh - 130px);
     height: 100px;
     position: sticky;
     z-index: 3;
-    margin-left: 25px;
+    margin-left: 35px;
     padding-left: 30px;
     padding-right: 30px;
     display: flex;

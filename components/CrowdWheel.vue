@@ -167,6 +167,11 @@ export default Vue.extend({
   position: relative;
   padding-bottom: 100px;
   padding-top: 50px;
+  z-index: 2;
+
+  @media screen and (max-width: 900px) {
+    padding-left: 0px;
+  }
 
   hr {
     height: 1px;
@@ -194,11 +199,29 @@ export default Vue.extend({
     margin-right: 20px;
     margin-left: 20px;
     transform: rotate(180deg);
+
+    @media screen and (max-width: 900px) {
+      position: absolute;
+      bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 100px;
+    }
   }
 
   .arrowRight {
     margin-left: 20px;
     margin-right: 40px;
+
+    @media screen and (max-width: 900px) {
+      position: absolute;
+      bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      left: 100px;
+      right: 0;
+    }
   }
 
   .wheel {
@@ -208,6 +231,10 @@ export default Vue.extend({
     display: grid;
     transition: 0.2s ease opacity;
     overflow: hidden;
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
 
     & > div:first-child {
       -webkit-transition: border 0.5s linear;
@@ -219,10 +246,22 @@ export default Vue.extend({
       border-left: 1px solid transparent;
       border-top: 1px solid transparent;
       border-bottom: 1px solid transparent;
+
+      @media screen and (max-width: 900px) {
+        border-bottom: 1px solid #cccccc;
+      }
     }
 
     & > * {
       border-bottom-width: 0px;
+
+      @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+        height: auto !important;
+      }
+
+      @media screen and (max-width: 550px) {
+        padding: 32px 32px 35px 32px;
+      }
     }
 
     div:last-of-type {
