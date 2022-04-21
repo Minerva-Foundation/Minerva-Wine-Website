@@ -170,6 +170,13 @@ export interface CrowdfundBase {
     variety: string;
     vintage: string;
     end: Date;
+    detail1?: Body[];
+    detail2?: Body[];
+    detail3?: Body[];
+    artwork?: Image;
+    acidity?: number;
+    body?: number;
+    fruitiness?: number;
 }
 
 export interface CrowdfundBlockchain {

@@ -71,7 +71,12 @@
               <input v-model="amount" type="text" class="amount" />
               <button class="button">BUY NOW</button>
             </form>
-            <NuxtLink :to="`/wine/${crowdF.merchant.slug.current}`">
+            <NuxtLink
+              :to="{
+                path: `/wine/${crowdF.merchant.slug.current}`,
+                hash: `#${crowdF.slug.current}details`,
+              }"
+            >
               <button class="buttonLight"></button>
             </NuxtLink>
           </div>

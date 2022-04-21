@@ -29,12 +29,99 @@
       </div>
     </div>
     <div class="wheelWrapper">
-      <CrowdWheel :cfs="cfs" />
+      <CrowdWheel id="buy" name="buy" :cfs="cfs" :new-index="newIndex" />
     </div>
     <div class="quote">
       <span class="customh1">{{ merch.quote }}</span>
     </div>
     <portableImage class="secondLarge" :asset="merch.largeSecondImage.asset" />
+    <div
+      v-for="cf in cfs"
+      :id="cf.slug.current + 'details'"
+      :key="cf.slug.current"
+      :name="cf.slug.current + 'details'"
+      class="crowdDetails"
+    >
+      <div class="wrapper">
+        <h2 class="customh2">About</h2>
+        <h1 class="customh1">{{ cf.variety }}</h1>
+        <div class="mainInfo">
+          <div class="textWrapper">
+            <div class="vintage">
+              <h3 class="customh3">{{ cf.vintage }} Vintage</h3>
+              <NuxtLink
+                :to="{
+                  path: ``,
+                  hash: `#buy`,
+                }"
+                @click.native="newIndex = cfs.indexOf(cf)"
+              >
+                <button class="button">BUY &#8599;</button>
+              </NuxtLink>
+            </div>
+            <SanityContent
+              class="detail"
+              :blocks="cf.detail1"
+              :serializers="serializers"
+            />
+            <SanityContent
+              class="detail"
+              :blocks="cf.detail2"
+              :serializers="serializers"
+            />
+            <SanityContent
+              class="detail"
+              :blocks="cf.detail3"
+              :serializers="serializers"
+            />
+          </div>
+          <div class="sideInfo">
+            <h3 class="customh3">Taste Profile</h3>
+            <div class="progressWrapper">
+              BODY
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: cf.body + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+            <div class="progressWrapper">
+              ACIDITY
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: cf.acidity + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+            <div class="progressWrapper">
+              FRUITINESS
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: cf.fruitiness + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+            <div class="artworkWrapper">
+              <portableImage class="artwork" :asset="cf.artwork.asset" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+    </div>
   </div>
 </template>
 
@@ -74,6 +161,7 @@ export default Vue.extend({
     },
     merch: {} as defTypes.MerchantDetails,
     cfs: [] as defTypes.CrowdfundBase[],
+    newIndex: 0 as Number,
   }),
 });
 </script>
@@ -83,6 +171,11 @@ export default Vue.extend({
   background-color: white;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
+
+  p {
+    font-size: 1.4em;
+  }
 
   .firstLarge {
     img {
@@ -153,7 +246,6 @@ export default Vue.extend({
       -moz-font-smoothing: antialiased !important;
       text-rendering: optimizelegibility !important;
       letter-spacing: 0.05em;
-      font-size: max(1.5em, 16px);
       line-height: 1.4;
     }
 
@@ -181,7 +273,7 @@ export default Vue.extend({
   }
 
   .quote {
-    padding: 0px 108px calc(108px + 3vw) 108px;
+    padding: 3vw 108px calc(108px + 5vw) 108px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -201,6 +293,137 @@ export default Vue.extend({
       object-fit: cover;
       max-width: 100vw;
     }
+  }
+
+  .crowdDetails {
+    color: #333;
+    padding: calc(84px + 3vw) 108px calc(84px + 3vw) 167px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    hr {
+      position: absolute;
+      bottom: 0;
+      height: 1px;
+      color: #e6e6e6;
+      background-color: #e6e6e6;
+      width: 50%;
+      border-width: 0px;
+    }
+
+    h1 {
+      font-size: 6em;
+    }
+
+    .mainInfo {
+      display: grid;
+      grid-template-columns: 45% 45%;
+      column-gap: 10%;
+      max-width: 1600px;
+
+      .textWrapper {
+        display: flex;
+        flex-direction: column;
+
+        .vintage {
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+
+          button {
+            min-width: 0;
+            padding-left: 26px;
+            padding-right: 26px;
+            height: 59px !important;
+            font-size: 1em;
+            margin-left: 30px;
+
+            @media screen and (max-width: 1330px),
+              screen and (max-height: 950px) {
+              height: 52px !important;
+            }
+
+            @media screen and (max-width: 1180px),
+              screen and (max-height: 900px) {
+              height: 49px !important;
+            }
+
+            @media screen and (max-width: $third-incr) {
+              height: 42px !important;
+            }
+
+            @media screen and (max-width: 525px) {
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+              min-width: 0 !important;
+              min-height: 0 !important;
+            }
+          }
+        }
+
+        .detail {
+          margin-top: 50px;
+        }
+      }
+
+      .sideInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h3 {
+          margin-bottom: 30px;
+          margin-top: 20px;
+        }
+
+        .progressWrapper {
+          margin-bottom: 30px;
+
+          .progressBar {
+            margin-top: 5px;
+            width: 100%;
+            border-radius: 0;
+            height: 5px;
+            position: relative;
+            background-color: #e9e9e9;
+            display: flex;
+
+            .value {
+              height: 100%;
+              background-color: $secondary;
+              display: inline-block;
+            }
+          }
+        }
+
+        .artworkWrapper {
+          width: 100%;
+          height: 70%;
+          margin-top: 20px;
+
+          .artwork {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+              object-fit: contain;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .customh3 {
+    color: inherit;
+  }
+
+  h1 {
+    color: $main;
   }
 }
 </style>

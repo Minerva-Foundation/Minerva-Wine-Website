@@ -30,7 +30,7 @@ export async function getBaseCrowdfundInfo(sanity: any ):  Promise<defTypes.Crow
 }
 
 export async function getBaseCrowdfundInfoForMerchant(id: string, sanity: any ):  Promise<defTypes.CrowdfundBase[]> {
-  const query = groq`*[_type == "crowdfund" && merchant._ref == "${id}"]{merchant->{flag,title,slug},start,end,contract,cardImage,country,date,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
+  const query = groq`*[_type == "crowdfund" && merchant._ref == "${id}"]{merchant->{flag,title,slug},detail1,detail2,detail3,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
   
   const crowdfund: defTypes.CrowdfundBase[] = (
     (await sanity.fetch(query)) as defTypes.CrowdfundBase[]

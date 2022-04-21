@@ -81,5 +81,17 @@ export default {
   styleResources: {
     scss: ['~/assets/styles/vars.scss'],
   },
+
+  router: {
+    scrollBehavior(to) {
+      if (to.hash) {
+        return window.scrollTo({
+          top: document.querySelector(to.hash).offsetTop,
+          behavior: 'smooth'
+        })
+      }
+      return window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
   
 }
