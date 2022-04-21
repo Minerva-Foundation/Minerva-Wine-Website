@@ -28,19 +28,22 @@
         </div>
       </div>
     </div>
-    <div class="wheelWrapper">
-      <CrowdWheel id="buy" name="buy" :cfs="cfs" :new-index="newIndex" />
-    </div>
-    <div class="quote">
-      <span class="customh1">{{ merch.quote }}</span>
+    <div v-if="cfs.length >= 1" class="wheelWrapper">
+      <CrowdWheel
+        id="buy"
+        name="buy"
+        :cfs="cfs"
+        :new-index="newIndex"
+        @infoClicked="scrollTo"
+      />
     </div>
     <portableImage class="secondLarge" :asset="merch.largeSecondImage.asset" />
     <div
       v-for="cf in cfs"
       :id="cf.slug.current + 'details'"
       :key="cf.slug.current"
-      :name="cf.slug.current + 'details'"
       class="crowdDetails"
+      :name="cf.slug.current + 'details'"
     >
       <div class="wrapper">
         <h2 class="customh2">About</h2>
@@ -49,15 +52,17 @@
           <div class="textWrapper">
             <div class="vintage">
               <h3 class="customh3">{{ cf.vintage }} Vintage</h3>
-              <NuxtLink
-                :to="{
-                  path: ``,
-                  hash: `#buy`,
-                }"
-                @click.native="newIndex = cfs.indexOf(cf)"
+              <button
+                class="button"
+                @click="
+                  () => {
+                    newIndex = cfs.indexOf(cf);
+                    scrollTo('buy');
+                  }
+                "
               >
-                <button class="button">BUY &#8599;</button>
-              </NuxtLink>
+                BUY &#8599;
+              </button>
             </div>
             <SanityContent
               class="detail"
@@ -161,8 +166,18 @@ export default Vue.extend({
     },
     merch: {} as defTypes.MerchantDetails,
     cfs: [] as defTypes.CrowdfundBase[],
-    newIndex: 0 as Number,
+    newIndex: -1 as Number,
   }),
+  methods: {
+    scrollTo(id: String) {
+      const el = document.querySelector('#' + id) as HTMLElement;
+
+      window.scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth',
+      });
+    },
+  },
 });
 </script>
 
@@ -297,29 +312,34 @@ export default Vue.extend({
 
   .crowdDetails {
     color: #333;
-    padding: calc(84px + 3vw) 108px calc(84px + 3vw) 167px;
+    padding: calc(34px + 3vw) 108px calc(84px + 3vw) 167px;
     display: flex;
     justify-content: center;
     position: relative;
+
+    .wrapper {
+      padding-top: 50px;
+    }
 
     hr {
       position: absolute;
       bottom: 0;
       height: 1px;
-      color: #e6e6e6;
-      background-color: #e6e6e6;
+      color: #b4b4b4;
+      background-color: #b4b4b4;
       width: 50%;
       border-width: 0px;
     }
 
     h1 {
       font-size: 6em;
+      width: 45%;
     }
 
     .mainInfo {
       display: grid;
       grid-template-columns: 45% 45%;
-      column-gap: 10%;
+      column-gap: 8vw;
       max-width: 1600px;
 
       .textWrapper {

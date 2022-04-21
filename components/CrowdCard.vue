@@ -72,6 +72,7 @@
               <button class="button">BUY NOW</button>
             </form>
             <NuxtLink
+              v-if="!onMerchantPage"
               :to="{
                 path: `/wine/${crowdF.merchant.slug.current}`,
                 hash: `#${crowdF.slug.current}details`,
@@ -79,6 +80,11 @@
             >
               <button class="buttonLight"></button>
             </NuxtLink>
+            <button
+              v-else
+              class="buttonLight"
+              @click="$emit('infoClicked', crowdF.slug.current)"
+            ></button>
           </div>
           <span class="disclaimer">
             <input :id="crowdF.slug.current" type="checkbox" /><label
@@ -130,6 +136,11 @@ export default Vue.extend({
     crowdF: {
       type: Object,
       required: true,
+    },
+    onMerchantPage: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data: () => ({

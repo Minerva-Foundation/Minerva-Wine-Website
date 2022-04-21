@@ -28,6 +28,8 @@
         v-for="cf in displayedCfs"
         :key="cf.slug.current"
         :crowd-f="cf"
+        :on-merchant-page="true"
+        @infoClicked="infoClicked"
       />
     </div>
     <div class="arrowRight" @click.prevent="scrollWheel(true)">
@@ -146,6 +148,9 @@ export default Vue.extend({
         this.arrowPressed = false;
       }, 10);
     },
+    infoClicked(slug: String) {
+      this.$emit('infoClicked', slug + 'details');
+    },
   },
 });
 </script>
@@ -155,7 +160,7 @@ export default Vue.extend({
   width: 100%;
   margin-bottom: calc(84px + 3vw);
   box-sizing: border-box;
-  padding-left: 30px;
+  padding-left: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,20 +191,20 @@ export default Vue.extend({
   }
 
   .arrowLeft {
-    margin-right: 80px;
+    margin-right: 20px;
     margin-left: 20px;
     transform: rotate(180deg);
   }
 
   .arrowRight {
-    margin-left: 80px;
+    margin-left: 20px;
     margin-right: 40px;
   }
 
   .wheel {
     width: 85%;
     opacity: 1;
-    max-width: 1600px;
+    max-width: 1640px;
     display: grid;
     transition: 0.2s ease opacity;
     overflow: hidden;
@@ -236,6 +241,7 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 20px;
 
     @media screen and (max-width: 1050px) {
       display: none;
@@ -246,8 +252,8 @@ export default Vue.extend({
       width: 10px;
       border-radius: 50%;
       background-color: #cccccc;
-      margin-left: 15px;
-      margin-right: 15px;
+      margin-left: 30px;
+      margin-right: 30px;
       cursor: pointer;
     }
 

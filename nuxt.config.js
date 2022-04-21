@@ -82,5 +82,18 @@ export default {
     scss: ['~/assets/styles/vars.scss'],
   },
 
+  // router: {
+  //   scrollBehavior(to) {
+  //     if (to.hash) {
+  //       console.log(document.querySelector(to.hash)
+  //     );
+  //       return window.scrollTo({
+  //         top: document.querySelector(to.hash).offsetTop + window.innerHeight,
+  //         behavior: 'smooth'
+  //       })
+  //     }
+  //     return window.scrollTo({ top: 0, behavior: 'smooth' })
+  //   }
+  // }
   
 }
