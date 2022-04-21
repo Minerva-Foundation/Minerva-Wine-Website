@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div v-if="cfs.length >= 1" class="wheelWrapper">
+    <div v-if="cfs.length >= 1" class="wheelWrapper fade-in">
       <CrowdWheel
         id="buy"
         name="buy"
@@ -45,7 +45,7 @@
       class="crowdDetails"
       :name="cf.slug.current + 'details'"
     >
-      <div class="wrapper">
+      <div class="wrapper fade-in">
         <h2 class="customh2">About</h2>
         <h1 class="customh1">{{ cf.variety }}</h1>
         <div class="mainInfo">
@@ -124,9 +124,9 @@
           </div>
         </div>
       </div>
-
       <hr />
     </div>
+    <ScrollTop />
   </div>
 </template>
 
@@ -168,6 +168,9 @@ export default Vue.extend({
     cfs: [] as defTypes.CrowdfundBase[],
     newIndex: -1 as Number,
   }),
+  mounted() {
+    this.addScrollAnim();
+  },
   methods: {
     scrollTo(id: String) {
       const el = document.querySelector('#' + id) as HTMLElement;
@@ -175,6 +178,36 @@ export default Vue.extend({
       window.scrollTo({
         top: el.offsetTop,
         behavior: 'smooth',
+      });
+    },
+    addScrollAnim() {
+      const faders = this.$el.querySelectorAll('.fade-in');
+      const sliders = this.$el.querySelectorAll('.slide-in');
+
+      const appearOptions = {
+        threshold: 0,
+        rootMargin: '0px 0px -120px 0px',
+      };
+
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      sliders.forEach((slider) => {
+        appearOnScroll.observe(slider);
       });
     },
   },
@@ -187,6 +220,8 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
+  height: 100%;
+  position: relative;
 
   p {
     font-size: 1.4em;

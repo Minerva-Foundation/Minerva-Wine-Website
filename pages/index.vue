@@ -275,41 +275,6 @@ p {
   z-index: 0;
 }
 
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.3s ease-in;
-}
-
-.fade-in.appear {
-  opacity: 1;
-}
-
-.from-left {
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.from-right {
-  -webkit-transform: translateX(50%);
-  transform: translateX(50%);
-}
-
-.from-left,
-.from-right {
-  transition: opacity 0.3s ease-in, -webkit-transform 0.3s ease-in;
-  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
-  transition: opacity 0.3s ease-in, transform 0.3s ease-in,
-    -webkit-transform 0.3s ease-in;
-  opacity: 0;
-}
-
-.from-left.appear,
-.from-right.appear {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  opacity: 1;
-}
-
 @media screen and (max-width: $second-incr) {
   .from-left,
   .from-right {

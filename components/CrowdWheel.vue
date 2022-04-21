@@ -107,7 +107,7 @@ export default Vue.extend({
         wheel.classList.add('highlight');
         setTimeout(() => {
           wheel.classList.remove('highlight');
-        }, 1000);
+        }, 1500);
       }
     },
   },
@@ -210,9 +210,15 @@ export default Vue.extend({
     overflow: hidden;
 
     & > div:first-child {
-      -webkit-transition: background-color 0.1s linear;
-      -ms-transition: background-color 0.1s linear;
-      transition: background-color 0.1s linear;
+      -webkit-transition: border 0.5s linear;
+      -ms-transition: border 0.5s linear;
+      transition: border 0.5s linear;
+      -webkit-transition: background-color 0.5s linear;
+      -ms-transition: background-color 0.5s linear;
+      transition: background-color 0.5s linear;
+      border-left: 1px solid transparent;
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
     }
 
     & > * {
@@ -226,7 +232,8 @@ export default Vue.extend({
 
   .highlight {
     & > div:first-child {
-      background-color: #cccccc1f !important;
+      border: 1px solid #dddddd;
+      background-color: #ececec2f;
     }
   }
 
