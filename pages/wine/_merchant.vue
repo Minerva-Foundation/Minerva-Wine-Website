@@ -404,9 +404,6 @@ export default Vue.extend({
 
           .artwork {
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
             img {
               object-fit: contain;
