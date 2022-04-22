@@ -7,19 +7,19 @@
           <div class="textInfo">
             <h2 class="customh2">Welcome to</h2>
             <h1 class="customh1">{{ merch.title }}</h1>
+            <div class="map">
+              <portableImage :asset="merch.map.asset" />
+              <ul class="links">
+                <li class="title">LINKS:</li>
+                <li v-for="link in merch.links" :key="link._key" class="link">
+                  <a :href="link.url" target="_blank">{{ link.text }}</a>
+                </li>
+              </ul>
+            </div>
             <SanityContent
               :blocks="merch.description"
               :serializers="serializers"
             />
-          </div>
-          <div class="map">
-            <portableImage :asset="merch.map.asset" />
-            <ul class="links">
-              <li class="title">LINKS:</li>
-              <li v-for="link in merch.links" :key="link._key" class="link">
-                <a :href="link.url" target="_blank">{{ link.text }}</a>
-              </li>
-            </ul>
           </div>
         </div>
         <div class="additionalInfo">
@@ -87,43 +87,46 @@
             />
           </div>
           <div class="sideInfo">
-            <h3 class="customh3">Taste Profile</h3>
-            <div class="progressWrapper">
-              BODY
-              <div class="progressBar">
-                <span
-                  class="value"
-                  :style="{
-                    width: cf.body + '%',
-                  }"
-                >
-                </span>
+            <div class="profile">
+              <h3 class="customh3">Taste Profile</h3>
+              <div class="progressWrapper">
+                BODY
+                <div class="progressBar">
+                  <span
+                    class="value"
+                    :style="{
+                      width: cf.body + '%',
+                    }"
+                  >
+                  </span>
+                </div>
+              </div>
+              <div class="progressWrapper">
+                ACIDITY
+                <div class="progressBar">
+                  <span
+                    class="value"
+                    :style="{
+                      width: cf.acidity + '%',
+                    }"
+                  >
+                  </span>
+                </div>
+              </div>
+              <div class="progressWrapper">
+                FRUITINESS
+                <div class="progressBar">
+                  <span
+                    class="value"
+                    :style="{
+                      width: cf.fruitiness + '%',
+                    }"
+                  >
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="progressWrapper">
-              ACIDITY
-              <div class="progressBar">
-                <span
-                  class="value"
-                  :style="{
-                    width: cf.acidity + '%',
-                  }"
-                >
-                </span>
-              </div>
-            </div>
-            <div class="progressWrapper">
-              FRUITINESS
-              <div class="progressBar">
-                <span
-                  class="value"
-                  :style="{
-                    width: cf.fruitiness + '%',
-                  }"
-                >
-                </span>
-              </div>
-            </div>
+
             <div class="artworkWrapper">
               <portableImage class="artwork" :asset="cf.artwork.asset" />
             </div>
@@ -238,6 +241,11 @@ export default Vue.extend({
       height: 580px;
       object-fit: cover;
       max-width: 100vw;
+
+      @media screen and (max-width: 1050px) {
+        height: 40vw;
+        min-height: 250px;
+      }
     }
   }
 
@@ -245,6 +253,12 @@ export default Vue.extend({
     padding: calc(84px + 3vw) 108px calc(84px + 3vw) 167px;
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 1300px) and (min-height: 950px),
+      screen and (max-width: 1150px) and (min-height: 901px),
+      screen and (max-width: 1100px) {
+      padding: calc(44px + 5vw) 6vw calc(24px + 3vw) 7vw;
+    }
 
     .info {
       width: 100%;
@@ -256,10 +270,29 @@ export default Vue.extend({
         column-gap: 10%;
         position: relative;
 
+        @media screen and (max-width: 1300px) and (min-height: 950px),
+          screen and (max-width: 1150px) and (min-height: 901px),
+          screen and (max-width: 1100px) {
+          display: inline-block;
+        }
+
         .textInfo {
+          @media screen and (max-width: 1000px) and (min-height: 950px),
+            screen and (max-width: 800px) and (min-height: 901px),
+            screen and (max-width: 780px) {
+            display: flex;
+            flex-direction: column;
+          }
+
           .customh1 {
             color: $main;
             margin-bottom: 40px;
+            width: 100%;
+            word-wrap: break-word;
+
+            @media screen and (max-width: $fifth-incr) {
+              margin-bottom: 5vw;
+            }
           }
         }
 
@@ -270,6 +303,35 @@ export default Vue.extend({
           left: 50%;
           right: 0;
           width: 50%;
+          overflow: hidden;
+
+          @media screen and (max-width: 1300px) and (min-height: 950px),
+            screen and (max-width: 1150px) and (min-height: 901px),
+            screen and (max-width: 1100px) {
+            position: relative;
+            float: right;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            top: auto;
+            margin-bottom: 3vw;
+            margin-left: 3vw;
+            min-width: 400px;
+          }
+
+          @media screen and (max-width: 1000px) and (min-height: 950px),
+            screen and (max-width: 800px) and (min-height: 901px),
+            screen and (max-width: 780px) {
+            float: none;
+            order: 10;
+            width: 87vw;
+            margin-left: 0;
+            margin-bottom: 20px;
+            margin-left: 0;
+            padding: 40px 10px 0 10px;
+            box-sizing: border-box;
+            min-width: 0;
+          }
 
           div {
             width: 100%;
@@ -284,6 +346,7 @@ export default Vue.extend({
           }
 
           .links {
+            width: 100%;
             height: 9%;
             background-color: #ffffff;
             border-bottom: 1px solid #e9e9e9;
@@ -291,7 +354,8 @@ export default Vue.extend({
             display: flex;
             align-items: center;
             overflow-x: scroll;
-            padding-top: 4px;
+            padding-top: 7px;
+            box-sizing: border-box;
 
             * {
               scrollbar-width: thin;
@@ -338,6 +402,20 @@ export default Vue.extend({
       display: grid;
       grid-template-columns: 45% 50%;
       column-gap: 5%;
+
+      @media screen and (max-width: 1300px) and (min-height: 950px),
+        screen and (max-width: 1150px) and (min-height: 901px),
+        screen and (max-width: 1100px) {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+      }
+
+      @media screen and (max-width: 1000px) and (min-height: 950px),
+        screen and (max-width: 800px) and (min-height: 901px),
+        screen and (max-width: 780px) {
+        margin-top: 10px;
+      }
     }
 
     p {
@@ -395,15 +473,30 @@ export default Vue.extend({
       height: 800px;
       object-fit: cover;
       max-width: 100vw;
+
+      @media screen and (max-width: 1050px) {
+        height: 60vw;
+        min-height: 350px;
+      }
     }
   }
 
   .crowdDetails {
     color: #333;
-    padding: calc(34px + 3vw) 108px calc(84px + 3vw) 167px;
+    padding: calc(34px + 3vw) 108px calc(94px + 3vw) 147px;
     display: flex;
     justify-content: center;
     position: relative;
+
+    @media screen and (max-width: 950px) and (min-height: 950px),
+      screen and (max-width: 880px) and (min-height: 901px),
+      screen and (max-width: 770px) {
+      padding: calc(34px + 3vw) 50px calc(94px + 3vw) 60px;
+    }
+
+    @media screen and (max-width: $fourth-incr) {
+      padding: calc(34px + 3vw) 20px calc(94px + 3vw) 25px;
+    }
 
     .wrapper {
       padding-top: 50px;
@@ -417,18 +510,47 @@ export default Vue.extend({
       background-color: #b4b4b4;
       width: 50%;
       border-width: 0px;
+
+      @media screen and (max-width: $fourth-incr) {
+        width: 80%;
+      }
     }
 
     h1 {
       font-size: 6em;
       width: 45%;
+
+      @media screen and (max-width: 1500px) and (min-height: 950px),
+        screen and (max-width: 1400px) and (min-height: 901px),
+        screen and (max-width: 1300px) {
+        width: 55%;
+      }
+
+      @media screen and (max-width: 1300px) and (min-height: 950px),
+        screen and (max-width: 1200px) and (min-height: 901px),
+        screen and (max-width: 1100px) {
+        width: 100%;
+      }
     }
 
     .mainInfo {
       display: grid;
-      grid-template-columns: 45% 45%;
+      grid-template-columns: 50% 40%;
       column-gap: 8vw;
       max-width: 1600px;
+
+      @media screen and (max-width: 1500px) and (min-height: 950px),
+        screen and (max-width: 1400px) and (min-height: 901px),
+        screen and (max-width: 1300px) {
+        grid-template-columns: 55% 35%;
+      }
+
+      @media screen and (max-width: 1300px) and (min-height: 950px),
+        screen and (max-width: 1200px) and (min-height: 901px),
+        screen and (max-width: 1100px) {
+        display: flex;
+        flex-direction: column;
+      }
 
       .textWrapper {
         display: flex;
@@ -472,35 +594,73 @@ export default Vue.extend({
 
         .detail {
           margin-top: 50px;
+
+          @media screen and (max-width: 700px) {
+            margin-top: 20px;
+          }
         }
       }
 
       .sideInfo {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+
+        @media screen and (max-width: 1300px) and (min-height: 950px),
+          screen and (max-width: 1200px) and (min-height: 901px),
+          screen and (max-width: 1100px) {
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 5vw;
+        }
+
+        @media screen and (max-width: $fourth-incr) {
+          flex-direction: column;
+        }
 
         h3 {
           margin-bottom: 30px;
           margin-top: 20px;
         }
 
-        .progressWrapper {
-          margin-bottom: 30px;
-
-          .progressBar {
-            margin-top: 5px;
-            width: 100%;
-            border-radius: 0;
-            height: 5px;
-            position: relative;
-            background-color: #e9e9e9;
+        .profile {
+          @media screen and (max-width: 1300px) and (min-height: 950px),
+            screen and (max-width: 1200px) and (min-height: 901px),
+            screen and (max-width: 1100px) {
+            width: 50%;
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
 
-            .value {
-              height: 100%;
-              background-color: $secondary;
-              display: inline-block;
+          @media screen and (max-width: 670px) {
+            width: 45%;
+          }
+
+          @media screen and (max-width: 600px) {
+            width: 42%;
+          }
+
+          @media screen and (max-width: $fourth-incr) {
+            width: 100%;
+          }
+
+          .progressWrapper {
+            margin-bottom: 30px;
+
+            .progressBar {
+              margin-top: 5px;
+              width: 100%;
+              border-radius: 0;
+              height: 5px;
+              position: relative;
+              background-color: #e9e9e9;
+              display: flex;
+
+              .value {
+                height: 100%;
+                background-color: $secondary;
+                display: inline-block;
+              }
             }
           }
         }
@@ -510,8 +670,32 @@ export default Vue.extend({
           height: 70%;
           margin-top: 20px;
 
+          @media screen and (max-width: 1300px) and (min-height: 950px),
+            screen and (max-width: 1200px) and (min-height: 901px),
+            screen and (max-width: 1100px) {
+            width: 40%;
+          }
+
+          @media screen and (max-width: 670px) {
+            width: 45%;
+          }
+
+          @media screen and (max-width: 600px) {
+            width: 49%;
+          }
+
+          @media screen and (max-width: $fourth-incr) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+
           .artwork {
             height: 100%;
+
+            @media screen and (max-width: $fourth-incr) {
+              width: 95%;
+            }
 
             img {
               object-fit: contain;
