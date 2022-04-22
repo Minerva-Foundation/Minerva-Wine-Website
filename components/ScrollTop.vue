@@ -70,7 +70,7 @@ export default Vue.extend({
 
   svg {
     transform: rotate(-90deg);
-    width: 3em;
+    width: 2.5em;
   }
 
   .text {

@@ -217,4 +217,5 @@ export interface MerchantDetails {
     seo: Seo;
     slug: Slug;
     title: string;
+    links: {_key: string, text: string, url: string}[];
 }

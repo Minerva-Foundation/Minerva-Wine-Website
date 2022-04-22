@@ -109,9 +109,7 @@
           class="wineCardWrapper"
           :style="{
             'grid-template-columns':
-              'repeat(auto-fill, minmax(max(665px, 100%/' +
-              visibleCrowdfunds.length +
-              '), 1fr))',
+              'repeat(auto-fill, minmax(max(665px, 100%/3), 1fr))',
           }"
         >
           <CrowdCard
@@ -147,8 +145,8 @@ export default Vue.extend({
     vintageFilters: [] as string[],
     appliedFilterCount: 0,
     mobileFilterVis: false,
-    countries: ['spain', 'italy', 'portugal', 'south africa'],
-    vintages: ['2023', '2024', '2025'],
+    countries: [] as string[],
+    vintages: [] as string[],
     crowdfunds: [] as defTypes.CrowdfundBase[],
     filterFullyInView: false,
     visibleCrowdfunds: [] as Object[],
@@ -179,6 +177,15 @@ export default Vue.extend({
   mounted() {
     this.calcVisibleCrowdfunds();
     window.addEventListener('resize', this.calcVisibleCrowdfunds);
+
+    for (const cf of this.crowdfunds) {
+      if (!this.countries.includes(cf.country.toLowerCase())) {
+        this.countries.push(cf.country.toLowerCase());
+      }
+      if (!this.vintages.includes(cf.vintage.toLowerCase())) {
+        this.vintages.push(cf.vintage.toLowerCase());
+      }
+    }
 
     const options = {
       threshold: 0.99,
@@ -265,7 +272,7 @@ export default Vue.extend({
       const viewportWidth: number = window.innerWidth;
       const realThis = this;
       function fillerConditions(i: number) {
-        if (viewportWidth < 2365) {
+        if (viewportWidth < 2380) {
           return (
             i >= 4 &&
             (i - 1) % 3 === 0 &&

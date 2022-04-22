@@ -421,7 +421,7 @@ export default Vue.extend({
           -moz-font-smoothing: antialiased !important;
           text-rendering: optimizelegibility !important;
           letter-spacing: 0.05em;
-          font-size: max(1.5em, 16px);
+          font-size: max(1.3em, 16px);
           line-height: 1.4;
         }
 

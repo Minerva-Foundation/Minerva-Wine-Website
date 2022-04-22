@@ -14,6 +14,12 @@
           </div>
           <div class="map">
             <portableImage :asset="merch.map.asset" />
+            <ul class="links">
+              <li class="title">LINKS:</li>
+              <li v-for="link in merch.links" :key="link._key" class="link">
+                <a :href="link.url" target="_blank">{{ link.text }}</a>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="additionalInfo">
@@ -267,13 +273,60 @@ export default Vue.extend({
 
           div {
             width: 100%;
-            height: 100%;
+            height: 90%;
 
             img {
               width: 100%;
               height: 100%;
               object-fit: cover;
               overflow: hidden;
+            }
+          }
+
+          .links {
+            height: 9%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9e9e9;
+            margin-top: -1px;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            padding-top: 4px;
+
+            * {
+              scrollbar-width: thin;
+              scrollbar-color: #c7c7c7 #ffffff;
+            }
+
+            &::-webkit-scrollbar-track {
+              border-radius: 10px;
+              background-color: #ffffff;
+            }
+
+            &::-webkit-scrollbar {
+              height: 4px;
+              background-color: #ffffff;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              border: 0px solid #ffffff;
+              border-radius: 20px;
+              background-color: #e9e9e9;
+            }
+
+            .title {
+              color: #777;
+            }
+
+            li {
+              list-style: none;
+              margin-right: 40px;
+              margin-bottom: 0;
+
+              a {
+                text-decoration: none;
+                color: $secondary;
+              }
             }
           }
         }
