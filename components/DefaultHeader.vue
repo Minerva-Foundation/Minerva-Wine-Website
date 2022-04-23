@@ -30,8 +30,7 @@
             to="/wine"
             class="linkHover"
             :class="{
-              underline:
-                $nuxt.$route.path === '/wine' || $nuxt.$route.path === '/wine/',
+              underline: currentPath === 'WINE',
             }"
             >Wine</NuxtLink
           >

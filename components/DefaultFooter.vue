@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="noselect">
     <div class="logo">
       <img src="~static/images/torch.svg" alt="Homepage" class="torch" />
       <img

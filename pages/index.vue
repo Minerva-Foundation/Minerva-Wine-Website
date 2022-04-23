@@ -248,6 +248,7 @@ export default Vue.extend({
   background-color: $main;
   overflow-x: hidden;
   position: relative;
+  // top: -127px;
 }
 
 p {
@@ -295,6 +296,11 @@ p {
       rgba(68, 68, 68, 0.514) -28.96%,
       rgba(196, 196, 196, 0) 61.82%
     ),
+    // linear-gradient(
+    //   180deg,
+    //   rgba(60, 60, 60, 0.651) 0%,
+    //   rgba(255, 255, 255, 0) 10%
+    // ),
     url('~static/images/vines_cropped.webp'); /* Rectangle 32 */
 
   @media screen and (max-width: 1050px) {
@@ -374,6 +380,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   height: calc(100vh - #{$header-height});
+  // height: 100vh;
   max-height: 2000px;
   min-height: calc(22vw + 353px - #{$header-height});
   position: relative;

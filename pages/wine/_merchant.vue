@@ -1,6 +1,15 @@
 <template>
   <div class="wrapperMerchantDetails">
-    <portableImage class="firstLarge" :asset="merch.largeFirstImage.asset" />
+    <div
+      class="firstLarge slowscroll"
+      :style="{
+        backgroundImage:
+          'url(' +
+          urlFor(merch.largeFirstImage.asset._ref).url() +
+          '?w=2560&min-h=1144&fit=crop' +
+          ')',
+      }"
+    ></div>
     <div class="infoWrapper">
       <div class="info">
         <div class="mainInfo">
@@ -43,7 +52,16 @@
         @infoClicked="scrollTo"
       />
     </div>
-    <portableImage class="secondLarge" :asset="merch.largeSecondImage.asset" />
+    <div
+      class="secondLarge slowscroll"
+      :style="{
+        backgroundImage:
+          'url(' +
+          urlFor(merch.largeSecondImage.asset._ref).url() +
+          '?w=2560&min-h=1144&fit=crop' +
+          ')',
+      }"
+    ></div>
     <div
       v-for="cf in cfs"
       :id="cf.slug.current + 'details'"
@@ -141,6 +159,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityProjectDetails } from '@sanity/image-url/lib/types/types';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getMerchantDetailBySlug } from '~/assets/ts/merchantApiFunctions';
 import { getBaseCrowdfundInfoForMerchant } from '~/assets/ts/saleApiFunctions';
@@ -179,8 +199,71 @@ export default Vue.extend({
   }),
   mounted() {
     this.addScrollAnim();
+    this.slowerImageSCroll();
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.slowerImageSCroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.slowerImageSCroll);
   },
   methods: {
+    slowerImageSCroll() {
+      const whenOptions = {
+        threshold: 0,
+        rootMargin: '500px 0px 500px 0px',
+      };
+
+      const slowScroll = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const scrollingEl = document.scrollingElement;
+            if (scrollingEl) {
+              const target = entry.target as HTMLElement;
+              console.log();
+
+              if (target) {
+                const offset = 1;
+                // const viewportWidth: number = window.innerWidth;
+
+                // For respecting aspect ratio between stated widths to not repeat image on top or bottom
+                // if (viewportWidth <= 1583 && viewportWidth >= 1298) {
+                //   offset = 0.0035087719298246 * viewportWidth - 4.5543859649123;
+                // }
+
+                // Between that not/hardly possible without next image bars
+                // if (viewportWidth >= 1298 || viewportWidth <= 530) {
+
+                const scrolltotop = target.getBoundingClientRect().top;
+                const xvalue = 'center';
+                const factor = 0.2;
+                let yvalue = scrolltotop * factor;
+                console.log(yvalue);
+
+                // 50% for center y-axis
+                // Somehow css doesn't like double negation
+                if (yvalue < 1 && yvalue > -1) {
+                  target.style.backgroundPosition =
+                    xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 50%)';
+                } else {
+                  yvalue = -yvalue;
+                  target.style.backgroundPosition =
+                    xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 50%)';
+                }
+                // } else {
+                //   target.style.backgroundPosition = 'center';
+                // }
+              }
+            }
+          }
+        });
+      }, whenOptions);
+
+      const slowsscrollers = this.$el.querySelectorAll('.slowscroll');
+      slowsscrollers.forEach((img) => {
+        slowScroll.observe(img);
+      });
+    },
     scrollTo(id: String) {
       const el = document.querySelector('#' + id) as HTMLElement;
 
@@ -188,6 +271,12 @@ export default Vue.extend({
         top: el.offsetTop,
         behavior: 'smooth',
       });
+    },
+    urlFor(src: string) {
+      const builder = imageUrlBuilder(
+        this.$sanity.config as SanityProjectDetails
+      );
+      return builder.image(src);
     },
     addScrollAnim() {
       const faders = this.$el.querySelectorAll('.fade-in');
@@ -237,15 +326,18 @@ export default Vue.extend({
   }
 
   .firstLarge {
-    img {
-      height: 580px;
-      object-fit: cover;
-      max-width: 100vw;
+    height: 580px;
+    background-size: auto 150%;
+    width: 100%;
+    background-attachment: scroll;
 
-      @media screen and (max-width: 1050px) {
-        height: 40vw;
-        min-height: 250px;
-      }
+    @media screen and (min-width: 1930px) {
+      background-size: cover;
+    }
+
+    @media screen and (max-width: 1050px) {
+      height: 40vw;
+      min-height: 250px;
     }
   }
 
@@ -469,15 +561,18 @@ export default Vue.extend({
   }
 
   .secondLarge {
-    img {
-      height: 800px;
-      object-fit: cover;
-      max-width: 100vw;
+    height: 600px;
+    background-size: auto 150%;
+    width: 100%;
+    background-attachment: scroll;
 
-      @media screen and (max-width: 1050px) {
-        height: 60vw;
-        min-height: 350px;
-      }
+    @media screen and (min-width: 1930px) {
+      background-size: cover;
+    }
+
+    @media screen and (max-width: 1050px) {
+      height: 60vw;
+      min-height: 350px;
     }
   }
 

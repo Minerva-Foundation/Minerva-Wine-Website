@@ -273,10 +273,16 @@ export default Vue.extend({
       const realThis = this;
       function fillerConditions(i: number) {
         if (viewportWidth < 2380) {
+          // 4 5  10 11 16 17 22 23 28
+          // 4 10 16 22 28
+          // 5 11 17 23 29
           return (
-            i >= 4 &&
-            (i - 1) % 3 === 0 &&
-            arrayIndex < realThis.crowdfunds.length - 1
+            (i >= 4 &&
+              (i + 2) % 6 === 0 &&
+              arrayIndex < realThis.crowdfunds.length - 1) ||
+            (i >= 4 &&
+              (i + 1) % 6 === 0 &&
+              arrayIndex < realThis.crowdfunds.length - 1)
           );
         } else {
           // 3 9 15 21
