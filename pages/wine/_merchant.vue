@@ -9,7 +9,9 @@
           '?w=2560&min-h=1144&fit=crop' +
           ')',
       }"
-    ></div>
+    >
+      <!-- <div class="gradient"></div> -->
+    </div>
     <div class="infoWrapper">
       <div class="info">
         <div class="mainInfo">
@@ -209,59 +211,42 @@ export default Vue.extend({
   },
   methods: {
     slowerImageSCroll() {
-      const whenOptions = {
-        threshold: 0,
-        rootMargin: '500px 0px 500px 0px',
-      };
-
-      const slowScroll = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const scrollingEl = document.scrollingElement;
-            if (scrollingEl) {
-              const target = entry.target as HTMLElement;
-              console.log();
-
-              if (target) {
-                const offset = 1;
-                // const viewportWidth: number = window.innerWidth;
-
-                // For respecting aspect ratio between stated widths to not repeat image on top or bottom
-                // if (viewportWidth <= 1583 && viewportWidth >= 1298) {
-                //   offset = 0.0035087719298246 * viewportWidth - 4.5543859649123;
-                // }
-
-                // Between that not/hardly possible without next image bars
-                // if (viewportWidth >= 1298 || viewportWidth <= 530) {
-
-                const scrolltotop = target.getBoundingClientRect().top;
-                const xvalue = 'center';
-                const factor = 0.2;
-                let yvalue = scrolltotop * factor;
-                console.log(yvalue);
-
-                // 50% for center y-axis
-                // Somehow css doesn't like double negation
-                if (yvalue < 1 && yvalue > -1) {
-                  target.style.backgroundPosition =
-                    xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 50%)';
-                } else {
-                  yvalue = -yvalue;
-                  target.style.backgroundPosition =
-                    xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 50%)';
-                }
-                // } else {
-                //   target.style.backgroundPosition = 'center';
-                // }
-              }
-            }
-          }
-        });
-      }, whenOptions);
-
       const slowsscrollers = this.$el.querySelectorAll('.slowscroll');
-      slowsscrollers.forEach((img) => {
-        slowScroll.observe(img);
+
+      slowsscrollers.forEach((entry) => {
+        const target = entry as HTMLElement;
+        if (target) {
+          const offset = 1;
+          // const viewportWidth: number = window.innerWidth;
+
+          // For respecting aspect ratio between stated widths to not repeat image on top or bottom
+          // if (viewportWidth <= 1583 && viewportWidth >= 1298) {
+          //   offset = 0.0035087719298246 * viewportWidth - 4.5543859649123;
+          // }
+
+          // Between that not/hardly possible without next image bars
+          // if (viewportWidth >= 1298 || viewportWidth <= 530) {
+
+          const scrolltotop = target.getBoundingClientRect().top;
+          const xvalue = 'center';
+          const factor = 0.2;
+          let yvalue = scrolltotop * factor;
+          console.log(yvalue);
+
+          // 50% for center y-axis
+          // Somehow css doesn't like double negation
+          if (yvalue < 1 && yvalue > -1) {
+            target.style.backgroundPosition =
+              xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 50%)';
+          } else {
+            yvalue = -yvalue;
+            target.style.backgroundPosition =
+              xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 50%)';
+          }
+          // } else {
+          //   target.style.backgroundPosition = 'center';
+          // }
+        }
       });
     },
     scrollTo(id: String) {
@@ -320,6 +305,7 @@ export default Vue.extend({
   scroll-behavior: smooth;
   height: 100%;
   position: relative;
+  // top: -127px;
 
   p {
     font-size: 1.4em;
@@ -339,6 +325,16 @@ export default Vue.extend({
       height: 40vw;
       min-height: 250px;
     }
+
+    // .gradient {
+    //   height: 100%;
+    //   width: 100%;
+    //   background-image: linear-gradient(
+    //     180deg,
+    //     rgba(60, 60, 60, 0.623) 0%,
+    //     rgba(255, 255, 255, 0) 30%
+    //   );
+    // }
   }
 
   .infoWrapper {
