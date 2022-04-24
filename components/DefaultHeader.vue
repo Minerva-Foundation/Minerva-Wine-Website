@@ -16,7 +16,7 @@
           </div>
         </div>
       </NuxtLink>
-      <ul class="mainLinks rosStretch">
+      <ul class="mainLinks default rosStretch">
         <li>
           <NuxtLink
             to="/"
@@ -25,25 +25,68 @@
             >Home</NuxtLink
           >
         </li>
-        <li>
+        <li class="linkHoverParent">
           <NuxtLink
             to="/wine"
-            class="linkHover"
             :class="{
               underline: currentPath === 'WINE',
             }"
             >Wine</NuxtLink
           >
+          <div class="subLinksWrapper">
+            <ul class="subLinks">
+              <li class="linkHoverParent">
+                <NuxtLink
+                  to="/wine"
+                  :class="{ underline: $nuxt.$route.path === '/wine' }"
+                  >Buy Wine</NuxtLink
+                >
+              </li>
+              <li class="linkHoverParent">
+                <NuxtLink
+                  to="/wine/winemakers"
+                  :class="{
+                    underline: $nuxt.$route.path === '/wine/winemakers',
+                  }"
+                  >Winemakers</NuxtLink
+                >
+              </li>
+            </ul>
+          </div>
         </li>
-        <li>
+        <li class="linkHoverParent">
           <NuxtLink
             to="/club"
-            class="linkHover"
             :class="{
               underline: currentPath === 'CLUB',
             }"
             >Club</NuxtLink
           >
+          <div class="subLinksWrapper">
+            <ul class="subLinks">
+              <li class="linkHoverParent">
+                <NuxtLink
+                  to="/club"
+                  :class="{ underline: $nuxt.$route.path === '/club' }"
+                  >Articles</NuxtLink
+                >
+              </li>
+              <li class="linkHoverParent">
+                <NuxtLink
+                  to="/club/myWine"
+                  :class="{ underline: $nuxt.$route.path === '/club/myWine' }"
+                  >My Wine</NuxtLink
+                >
+              </li>
+              <li class="linkHoverParent">
+                <NuxtLink
+                  to="/club/events"
+                  :class="{ underline: $nuxt.$route.path === '/club/events' }"
+                  >Events</NuxtLink
+                >
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <div class="btnWrapper">
@@ -75,7 +118,7 @@
       <div class="btnWrapper">
         <InputsConnectWallet />
       </div>
-      <ul class="mainLinks rosStretch">
+      <ul class="mainLinks mobile rosStretch">
         <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/"
@@ -346,14 +389,91 @@ li {
       }
     }
 
-    .mainLinks *::after {
+    .default {
+      li {
+        position: relative;
+        z-index: 2;
+
+        * {
+          padding: 0;
+        }
+
+        .subLinksWrapper {
+          position: absolute;
+          padding-top: 25px;
+          z-index: 1;
+          display: none;
+
+          .subLinks {
+            list-style: none;
+            width: auto;
+            background-color: $main-darker;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 21px;
+            padding-bottom: 14px;
+            border-radius: 1px;
+            white-space: nowrap;
+
+            &:after {
+              bottom: calc(100% - 25px);
+              left: 20px;
+              border: solid transparent;
+              content: '';
+              height: 0;
+              width: 0;
+              position: absolute;
+              pointer-events: none;
+              border-bottom-color: $main-darker;
+              border-width: 12px;
+              margin-left: -12px;
+            }
+
+            li {
+              width: 100%;
+              font-size: 0.9em;
+              margin-bottom: 16px;
+              padding-left: 30px;
+              padding-right: 30px;
+              box-sizing: border-box;
+              cursor: pointer;
+
+              a {
+                width: 100%;
+              }
+
+              .underline {
+                &::before {
+                  width: 90%;
+                }
+              }
+
+              &:hover {
+                & > a {
+                  &:before {
+                    width: 80%;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &:hover .subLinksWrapper {
+          display: block;
+        }
+      }
+    }
+
+    .mainLinks > li::after {
       content: '   ·   ';
       white-space: pre;
       color: $bright-font;
       font-size: 24px;
     }
 
-    .mainLinks :last-child::after {
+    .mainLinks > li:last-of-type::after {
       content: '';
       white-space: pre;
       color: $bright-font;

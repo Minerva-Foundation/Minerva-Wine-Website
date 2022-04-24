@@ -6,7 +6,7 @@
 .button {
   cursor: default;
   font-size: 14px !important;
-  height: 56px;
+  height: 54px;
 
   @media screen and (max-height: 855px) {
     height: 50px;

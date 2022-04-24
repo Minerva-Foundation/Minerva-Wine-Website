@@ -321,6 +321,8 @@ $incr: 1050px;
 $filerMobile: 1700px;
 
 .wrapperWinePage {
+  position: relative;
+
   @media screen and (max-width: 1330px) {
     font-size: 0.9em;
   }

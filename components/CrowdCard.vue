@@ -122,7 +122,7 @@
               :style="{
                 left: (cfbInfo.min / cfbInfo.max) * 100 + '%',
               }"
-              ><span class="minText">Min</span></span
+              ><span class="minText">MIN</span></span
             >
             <span class="labelMimax max">MAX: {{ cfbInfo.max }} Cases</span>
           </span>

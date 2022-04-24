@@ -59,6 +59,34 @@ img {
   }
 }
 
+.linkHoverParent {
+  & > a {
+    position: relative;
+
+    &::before {
+      content: '';
+      background: $secondary;
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      height: 2px;
+      width: 0%;
+    }
+  }
+
+  &:hover {
+    & > a {
+      &:before {
+        transition: width ease 0.2s;
+        width: 50%;
+      }
+    }
+  }
+}
+
 // .mainNav .nuxt-link-active {
 //   @extend .underline;
 

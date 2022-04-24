@@ -50,7 +50,8 @@ export default Vue.extend({
 
       if (scrollElm && scrollElm >= 2 * windowHeight) {
         this.sttVis = true;
-        window.removeEventListener('scroll', this.sttVisObs);
+      } else {
+        this.sttVis = false;
       }
     },
   },
@@ -89,7 +90,9 @@ export default Vue.extend({
     box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     visibility: hidden;
     opacity: 0;
-    transition: ease 0.1s opacity, ease 0.2s width;
+    transition-duration: 1s;
+    transition-property: opacity width visibility;
+    transition-timing-function: ease;
 
     &:hover {
       width: 270px;
@@ -99,6 +102,7 @@ export default Vue.extend({
   .sttVis {
     visibility: visible;
     opacity: 1;
+    transition-duration: 0.2s;
   }
 
   svg {
@@ -118,14 +122,16 @@ export default Vue.extend({
     opacity: 0;
     visibility: hidden;
     transition-delay: 0s;
+    transition-duration: 0s;
+    transition-property: opacity visibility;
+    transition-timing-function: ease;
   }
 
   .textVis {
     visibility: visible;
     opacity: 1;
-    transition-timing-function: ease;
-    transition-delay: 0.3s;
-    transition-property: opacity;
+    transition-delay: 0.15s;
+    transition-duration: 0.2s;
   }
 
   @media screen and (min-width: $fourth-incr) {
