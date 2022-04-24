@@ -318,7 +318,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 $incr: 1050px;
-$filerMobile: 1700px;
+$filerMobile: 1714px;
 
 .wrapperWinePage {
   position: relative;

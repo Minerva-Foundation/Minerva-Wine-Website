@@ -67,8 +67,10 @@ export default Vue.extend({
   right: 0;
   box-sizing: border-box;
   padding-bottom: 30px;
+  pointer-events: none;
 
   .sticky {
+    pointer-events: all;
     top: calc(100vh - 130px);
     height: 100px;
     position: sticky;

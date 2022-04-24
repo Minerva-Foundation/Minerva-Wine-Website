@@ -239,7 +239,6 @@ export default Vue.extend({
           const xvalue = 'center';
           const factor = 0.2;
           let yvalue = scrolltotop * factor;
-          console.log(yvalue);
 
           // 50% for center y-axis
           // Somehow css doesn't like double negation
@@ -321,11 +320,11 @@ export default Vue.extend({
 
   .firstLarge {
     height: 580px;
-    background-size: auto 150%;
+    background-size: auto 130%;
     width: 100%;
     background-attachment: scroll;
 
-    @media screen and (min-width: 1930px) {
+    @media screen and (min-width: 1700px) {
       background-size: cover;
     }
 
@@ -587,13 +586,37 @@ export default Vue.extend({
     width: 100%;
     background-attachment: scroll;
 
-    @media screen and (min-width: 1930px) {
+    @media screen and (min-width: 1950px) {
       background-size: cover;
     }
 
     @media screen and (max-width: 1050px) {
       height: 60vw;
       min-height: 350px;
+    }
+
+    @media screen and (max-width: 800px) {
+      background-size: auto 160%;
+    }
+
+    @media screen and (max-width: 716px) {
+      background-size: auto 165%;
+    }
+
+    @media screen and (max-width: 680px) {
+      background-size: auto 170%;
+    }
+
+    @media screen and (max-width: 655px) {
+      background-size: auto 175%;
+    }
+
+    @media screen and (max-width: 625px) {
+      background-size: auto 180%;
+    }
+
+    @media screen and (max-width: 600px) {
+      background-size: auto 185%;
     }
   }
 
