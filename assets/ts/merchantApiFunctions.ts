@@ -8,3 +8,11 @@ export async function getMerchantDetailBySlug(slug: String, sanity: any ):  Prom
     )[0];
     return merchantDetail;
 }
+
+export async function getMerchantDetails(sanity: any ):  Promise<defTypes.MerchantDetailsBase[]> {
+  const query = groq`*[_type == "merchant"]{_id,country,flag,quote,seo,slug,title}`;
+  const merchantDetails: defTypes.MerchantDetailsBase[] = (
+    (await sanity.fetch(query)) as defTypes.MerchantDetailsBase[]
+  );
+  return merchantDetails;
+}

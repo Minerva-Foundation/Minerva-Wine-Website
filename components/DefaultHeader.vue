@@ -27,11 +27,19 @@
         </li>
         <li class="linkHoverParent">
           <NuxtLink
+            v-if="!isTouch"
             to="/wine"
             :class="{
               underline: currentPath === 'WINE',
             }"
             >Wine</NuxtLink
+          >
+          <a
+            v-else
+            :class="{
+              underline: currentPath === 'WINE',
+            }"
+            >Wine</a
           >
           <div class="subLinksWrapper">
             <ul class="subLinks">
@@ -56,11 +64,19 @@
         </li>
         <li class="linkHoverParent">
           <NuxtLink
+            v-if="!isTouch"
             to="/club"
             :class="{
               underline: currentPath === 'CLUB',
             }"
             >Club</NuxtLink
+          >
+          <a
+            v-else
+            :class="{
+              underline: currentPath === 'CLUB',
+            }"
+            >Club</a
           >
           <div class="subLinksWrapper">
             <ul class="subLinks">
@@ -165,6 +181,7 @@ import { initController, getController } from '~/assets/ts/walletController';
 export default Vue.extend({
   name: 'DefaultHeader',
   data: () => ({
+    isTouch: false,
     mobileMenuVis: false,
     mobileConnectWalletVis: false,
     scrolled: false,
@@ -205,7 +222,11 @@ export default Vue.extend({
       this.subscribeWallet();
     }
   },
-
+  mounted() {
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      this.isTouch = true;
+    }
+  },
   beforeDestroy() {
     this.subscription?.unsubscribe();
   },

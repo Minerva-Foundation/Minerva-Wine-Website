@@ -219,3 +219,13 @@ export interface MerchantDetails {
     title: string;
     links: {_key: string, text: string, url: string}[];
 }
+
+export interface MerchantDetailsBase {
+    _id: string,
+    country: string;
+    flag: Flag;
+    quote: string;
+    seo: Seo;
+    slug: Slug;
+    title: string;
+}
