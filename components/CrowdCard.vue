@@ -116,6 +116,14 @@
               }"
               >{{ cfbInfo.current }}</span
             >
+            <span
+              v-if="cfbInfo.min <= cfbInfo.max - cfbInfo.max / 4"
+              class="minMark"
+              :style="{
+                left: (cfbInfo.min / cfbInfo.max) * 100 + '%',
+              }"
+              ><span class="minText">Min</span></span
+            >
             <span class="labelMimax max">MAX: {{ cfbInfo.max }} Cases</span>
           </span>
         </div>
@@ -575,6 +583,19 @@ export default Vue.extend({
 
         .max {
           right: 0;
+        }
+
+        .minMark {
+          top: 5px;
+          border-right: 2px solid #999;
+          position: absolute;
+          height: 18px;
+
+          .minText {
+            position: absolute;
+            top: 5px;
+            left: 8px;
+          }
         }
       }
 

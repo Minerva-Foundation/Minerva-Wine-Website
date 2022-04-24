@@ -33,12 +33,20 @@
             />
           </div>
         </div>
-        <div class="additionalInfo">
+        <div v-if="merch.description2" class="additionalInfo">
           <SanityContent
+            v-if="merch.description2"
+            class="firstAdd"
+            :style="{
+              width: merch.description3 ? '50%' : '100%',
+              'margin-right': merch.description3 ? '3vw' : '0',
+            }"
             :blocks="merch.description2"
             :serializers="serializers"
           />
           <SanityContent
+            v-if="merch.description3"
+            class="secondAdd"
             :blocks="merch.description3"
             :serializers="serializers"
           />
@@ -354,8 +362,7 @@ export default Vue.extend({
 
       .mainInfo {
         display: grid;
-        grid-template-columns: 45% 45%;
-        column-gap: 10%;
+        grid-template-columns: 50% 50%;
         position: relative;
 
         @media screen and (max-width: 1300px) and (min-height: 950px),
@@ -365,6 +372,9 @@ export default Vue.extend({
         }
 
         .textInfo {
+          padding-right: 3vw;
+          box-sizing: border-box;
+
           @media screen and (max-width: 1000px) and (min-height: 950px),
             screen and (max-width: 800px) and (min-height: 901px),
             screen and (max-width: 780px) {
@@ -392,6 +402,8 @@ export default Vue.extend({
           right: 0;
           width: 50%;
           overflow: hidden;
+          padding-left: 3vw;
+          box-sizing: border-box;
 
           @media screen and (max-width: 1300px) and (min-height: 950px),
             screen and (max-width: 1150px) and (min-height: 901px),
@@ -487,9 +499,7 @@ export default Vue.extend({
 
     .additionalInfo {
       margin-top: 70px;
-      display: grid;
-      grid-template-columns: 45% 50%;
-      column-gap: 5%;
+      display: flex;
 
       @media screen and (max-width: 1300px) and (min-height: 950px),
         screen and (max-width: 1150px) and (min-height: 901px),
@@ -503,6 +513,21 @@ export default Vue.extend({
         screen and (max-width: 800px) and (min-height: 901px),
         screen and (max-width: 780px) {
         margin-top: 10px;
+      }
+
+      .secondAdd {
+        width: 50%;
+        margin-left: 3vw;
+      }
+
+      .firstAdd,
+      .secondAdd {
+        @media screen and (max-width: 1300px) and (min-height: 950px),
+          screen and (max-width: 1150px) and (min-height: 901px),
+          screen and (max-width: 1100px) {
+          width: 100% !important;
+          margin: 0;
+        }
       }
     }
 

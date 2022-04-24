@@ -50,6 +50,7 @@ export default Vue.extend({
 
       if (scrollElm && scrollElm >= 2 * windowHeight) {
         this.sttVis = true;
+        window.removeEventListener('scroll', this.sttVisObs);
       }
     },
   },
@@ -83,13 +84,12 @@ export default Vue.extend({
     border-bottom-left-radius: 12px;
     right: 0;
     width: 100px;
-    transition: ease 0.2s width;
     background-color: rgb(255, 255, 255);
     -webkit-box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     visibility: hidden;
     opacity: 0;
-    transition: ease 0.1s opacity;
+    transition: ease 0.1s opacity, ease 0.2s width;
 
     &:hover {
       width: 270px;
@@ -116,7 +116,6 @@ export default Vue.extend({
     color: #555;
     font-family: $secondary-big-font;
     opacity: 0;
-    transition: ease 0.1s opacity;
     visibility: hidden;
     transition-delay: 0s;
   }
@@ -124,7 +123,9 @@ export default Vue.extend({
   .textVis {
     visibility: visible;
     opacity: 1;
+    transition-timing-function: ease;
     transition-delay: 0.3s;
+    transition-property: opacity;
   }
 
   @media screen and (min-width: $fourth-incr) {

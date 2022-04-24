@@ -9,7 +9,7 @@ export async function getCrowdfundBlockchainData(contract: string): Promise<defT
     const cfbInfo: defTypes.CrowdfundBlockchain = {
         running: true,
         price: Math.floor(rand),
-        min: Math.floor(randmax/Math.random() * 10),
+        min: Math.floor(randmax/(Math.random() * 10)),
         max: Math.floor(randmax),
         current: Math.floor(randmax - (randmax / (Math.random() * 7 + 1))),
         maxBuy: 5
