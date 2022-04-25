@@ -48,7 +48,7 @@ export default Vue.extend({
       const scrollElm = document.scrollingElement?.scrollTop;
       const windowHeight = window.innerHeight;
 
-      if (scrollElm && scrollElm >= 2 * windowHeight) {
+      if (scrollElm && scrollElm >= 1 * windowHeight) {
         this.sttVis = true;
       } else {
         this.sttVis = false;
@@ -72,22 +72,22 @@ export default Vue.extend({
   .sticky {
     pointer-events: all;
     top: calc(100vh - 130px);
-    height: 100px;
+    height: 80px;
     position: sticky;
     box-sizing: border-box;
     overflow: hidden;
     z-index: 3;
     margin-left: 35px;
-    padding-left: 30px;
-    padding-right: 20px;
+    padding-left: 27px;
+    padding-right: 15px;
     display: flex;
     align-items: center;
     cursor: pointer;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     right: 0;
-    width: 100px;
-    background-color: rgb(255, 255, 255);
+    width: 80px;
+    background-color: rgb(252, 252, 252);
     -webkit-box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     visibility: hidden;
@@ -97,27 +97,27 @@ export default Vue.extend({
     transition-timing-function: ease;
 
     &:hover {
-      width: 270px;
+      width: 257px;
     }
   }
 
   .sttVis {
     visibility: visible;
     opacity: 1;
-    transition-duration: 0.2s;
+    transition-duration: 0.3s;
   }
 
   svg {
     transform: rotate(-90deg);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: absolute;
   }
 
   .text {
     text-align: right;
     max-width: 210px;
-    padding-left: 70px;
+    padding-left: 55px;
     font-size: 1.5em;
     color: #555;
     font-family: $secondary-big-font;
@@ -132,7 +132,7 @@ export default Vue.extend({
   .textVis {
     visibility: visible;
     opacity: 1;
-    transition-delay: 0.15s;
+    transition-delay: 0.2s;
     transition-duration: 0.2s;
   }
 

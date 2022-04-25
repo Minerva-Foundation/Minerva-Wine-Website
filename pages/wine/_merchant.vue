@@ -19,8 +19,11 @@
             <h2 class="customh2">Welcome to</h2>
             <h1 class="customh1">{{ merch.title }}</h1>
             <div class="map">
-              <portableImage :asset="merch.map.asset" />
-              <ul class="links">
+              <portableImage
+                :asset="merch.map.asset"
+                :style="{ height: merch.links ? '90%' : '100%' }"
+              />
+              <ul v-if="merch.links" class="links">
                 <li class="title">LINKS:</li>
                 <li v-for="link in merch.links" :key="link._key" class="link">
                   <a :href="link.url" target="_blank">{{ link.text }}</a>
@@ -359,6 +362,10 @@ export default Vue.extend({
       width: 100%;
       max-width: 1600px;
 
+      @media screen and (min-width: 2000px) {
+        max-width: 1900px;
+      }
+
       .mainInfo {
         display: grid;
         grid-template-columns: 50% 50%;
@@ -373,6 +380,10 @@ export default Vue.extend({
         .textInfo {
           padding-right: 3vw;
           box-sizing: border-box;
+
+          @media screen and (min-width: 2000px) {
+            padding-right: 6vw;
+          }
 
           @media screen and (max-width: 1000px) and (min-height: 950px),
             screen and (max-width: 800px) and (min-height: 901px),
@@ -434,7 +445,6 @@ export default Vue.extend({
 
           div {
             width: 100%;
-            height: 90%;
 
             img {
               width: 100%;
@@ -677,6 +687,12 @@ export default Vue.extend({
       grid-template-columns: 50% 40%;
       column-gap: 8vw;
       max-width: 1600px;
+
+      @media screen and (min-width: 2000px) {
+        max-width: 1900px;
+        column-gap: 12vw;
+        grid-template-columns: 48% 38%;
+      }
 
       @media screen and (max-width: 1500px) and (min-height: 950px),
         screen and (max-width: 1400px) and (min-height: 901px),

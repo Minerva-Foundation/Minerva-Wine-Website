@@ -228,4 +228,5 @@ export interface MerchantDetailsBase {
     seo: Seo;
     slug: Slug;
     title: string;
+    card: Image;
 }

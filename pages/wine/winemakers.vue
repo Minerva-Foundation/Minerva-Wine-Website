@@ -2,8 +2,8 @@
   <div class="wrapperWinePage">
     <aside class="clubHeader">
       <div class="headerContent">
-        <div class="customh2">Curated</div>
-        <h1 class="customh1">Quality Wines</h1>
+        <div class="customh2">Select</div>
+        <h1 class="customh1">Winemakers</h1>
       </div>
       <div class="barrelWrapper">
         <img
@@ -73,10 +73,11 @@
           }"
         >
           <NuxtLink
-            v-for="wm in winemakers"
+            v-for="wm in visibleWinemakers"
             :key="wm._id"
             :to="`/wine/${wm.slug.current}`"
           >
+            <MerchantCard :merchant="wm" />
           </NuxtLink>
           <div class="borderhiderR"></div>
           <div class="borderhiderB"></div>
@@ -108,6 +109,7 @@ export default Vue.extend({
     countries: [] as string[],
     filterFullyInView: false,
     winemakers: [] as defTypes.MerchantDetailsBase[],
+    visibleWinemakers: [] as defTypes.MerchantDetailsBase[],
   }),
   computed: {
     stringFilterCount() {
@@ -128,6 +130,14 @@ export default Vue.extend({
     },
   },
   mounted() {
+    this.calcVisibleWms();
+
+    for (const wm of this.winemakers) {
+      if (!this.countries.includes(wm.country.toLowerCase())) {
+        this.countries.push(wm.country.toLowerCase());
+      }
+    }
+
     const options = {
       threshold: 0.99,
     };
@@ -162,18 +172,38 @@ export default Vue.extend({
         const winecards = this.$el.querySelector('.wineCardWrapper');
         if (winecards) winecards.scrollIntoView();
       }
+
+      this.calcVisibleWms();
     },
     removeFilters() {
       this.countryFilters = [];
       this.appliedFilterCount = 0;
+
+      this.calcVisibleWms();
     },
     selectionEventParserCountry(event: { option: string; checked: Boolean }) {
       this.filterClick(this.countryFilters, event.option);
     },
-    visibleWithFilters(cf: defTypes.CrowdfundBase): Boolean {
+    visibleWithFilters(cf: defTypes.MerchantDetailsBase): Boolean {
       return this.countryFilters.length === 0
         ? true
         : this.countryFilters.includes(cf.country.toLowerCase());
+    },
+    calcVisibleWms() {
+      const temp: Array<Object | undefined> = [];
+      let arrayIndex: number = 0;
+
+      // Fill up with filler panels that are transparent and test for current applied filters
+      for (let i = 1; arrayIndex < this.wmCount; i++) {
+        const x = this.winemakers[arrayIndex++];
+        if (x) {
+          if (this.visibleWithFilters(x)) {
+            temp.push(x);
+          }
+        }
+      }
+
+      this.visibleWinemakers = temp as defTypes.MerchantDetailsBase[];
     },
   },
 });
@@ -604,6 +634,7 @@ $filerMobile: 1714px;
     .winemakersMain {
       width: 100%;
       z-index: 0;
+      min-height: calc(100vh - 420px);
 
       .linkWrapper {
         background-color: white;

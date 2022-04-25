@@ -59,16 +59,16 @@
         <h1 class="customh1">Quality Wines</h1>
         <p>
           Minerva’s team of wine investors, sommeliers, and producers understand
-          that this is a <span class="highlight">time of change</span> for the
-          industry. Our team also recognises that wine is meant to be enjoyed,
-          and that the international wine market is shifting.
+          that this is a time of change for the industry. Our team also
+          recognises that wine is meant to be enjoyed, and that the
+          international wine market is shifting.
           <br /><br />Minerva has established links directly with winemakers in
           France, the US, Australia, South Africa, Argentina, Chile, and beyond.
-          This ensures that Minerva customers will have access to
-          <span class="highlight">exciting and impactful wines</span>, delivered
-          directly to their door. All of our bottles are stored and cared for
-          within strict standards specified by the producers themselves,
-          ensuring that wines retain their character and value as intended.
+          This ensures that Minerva customers will have access to exciting and
+          impactful wines, delivered directly to their door. All of our bottles
+          are stored and cared for within strict standards specified by the
+          producers themselves, ensuring that wines retain their character and
+          value as intended.
         </p>
         <NuxtLink to="/wine"
           ><button class="button">FIND YOUR WINE</button></NuxtLink
@@ -84,20 +84,15 @@
           Minerva wines are sold on the blockchain, meaning that the receipt of
           sale is clear, permanent and indisputable. We also use this receipt as
           a key to the ‘Minerva Club’, where Minerva wine owners have access to
-          <span class="highlight"
-            >exclusive interviews, comment pieces, investment advice, wine
-            tasting notes and more</span
-          >. <br /><br />
-          Within Minerva Club, each producer will have their own space to
-          <span class="highlight">talk directly</span> with the individuals who
-          have purchased their wine. This unique two-way dynamic means that
-          producers will be able to know and understand their customers better
-          than ever. As a result, they will be able to offer their customers
-          <span class="highlight"
-            >priority access to new vintages, real-world experiences and other
-            exclusive materials</span
-          >
-          for the privilege.
+          exclusive interviews, comment pieces, investment advice, wine tasting
+          notes and more. <br /><br />
+          Within Minerva Club, each producer will have their own space to talk
+          directly with the individuals who have purchased their wine. This
+          unique two-way dynamic means that producers will be able to know and
+          understand their customers better than ever. As a result, they will be
+          able to offer their customers priority access to new vintages,
+          real-world experiences and other exclusive materials for the
+          privilege.
         </p>
         <NuxtLink to="/club"
           ><button class="button">EXPLORE THE CLUB</button></NuxtLink
@@ -248,7 +243,10 @@ export default Vue.extend({
   background-color: $main;
   overflow-x: hidden;
   position: relative;
-  // top: -127px;
+
+  // @media screen and (min-width: $third-incr) {
+  //   top: -110px;
+  // }
 }
 
 p {
@@ -298,7 +296,7 @@ p {
     ),
     // linear-gradient(
     //   180deg,
-    //   rgba(60, 60, 60, 0.651) 0%,
+    //   rgba(59, 59, 59, 0.829) 0%,
     //   rgba(255, 255, 255, 0) 10%
     // ),
     url('~static/images/vines_cropped.webp'); /* Rectangle 32 */
@@ -314,6 +312,11 @@ p {
         rgba(68, 68, 68, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
+      // linear-gradient(
+      //   180deg,
+      //   rgba(59, 59, 59, 0.829) 0%,
+      //   rgba(255, 255, 255, 0) 10%
+      // ),
       url('~static/images/vines_cropped.webp');
   }
 
@@ -328,6 +331,11 @@ p {
         rgba(34, 34, 34, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
+      // linear-gradient(
+      //   180deg,
+      //   rgba(59, 59, 59, 0.829) 0%,
+      //   rgba(255, 255, 255, 0) 10%
+      // ),
       url('~static/images/vines_cropped.webp');
   }
 }
@@ -344,6 +352,11 @@ p {
       rgba(68, 68, 68, 0.507) -28.96%,
       rgba(196, 196, 196, 0) 61.82%
     ),
+    // linear-gradient(
+    //   180deg,
+    //   rgba(59, 59, 59, 0.829) 0%,
+    //   rgba(255, 255, 255, 0) 10%
+    // ),
     url('~static/images/vines_cropped.jpg'); /* Rectangle 32 */
 
   @media screen and (max-width: 1050px) {
@@ -357,6 +370,11 @@ p {
         rgba(68, 68, 68, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
+      // linear-gradient(
+      //   180deg,
+      //   rgba(59, 59, 59, 0.829) 0%,
+      //   rgba(255, 255, 255, 0) 10%
+      // ),
       url('~static/images/vines_cropped.jpg');
   }
 
@@ -370,8 +388,13 @@ p {
         55deg,
         rgba(34, 34, 34, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
-      ),
-      url('~static/images/vines_cropped.jpg');
+      );
+    // linear-gradient(
+    //   180deg,
+    //   rgba(59, 59, 59, 0.829) 0%,
+    //   rgba(255, 255, 255, 0) 10%
+    // ),
+    // url('~static/images/vines_cropped.jpg');
   }
 }
 
@@ -402,7 +425,7 @@ p {
     background-image: none !important;
 
     @media screen and (min-height: 855px) and (min-width: $fifth-incr) {
-      height: calc(var(--vh) - 127px);
+      height: calc(var(--vh) - 110px);
     }
 
     @media screen and (min-height: 955px) and (min-width: $fifth-incr) and (max-width: $fourth-incr) {

@@ -26,16 +26,7 @@
           >
         </li>
         <li class="linkHoverParent">
-          <NuxtLink
-            v-if="!isTouch"
-            to="/wine"
-            :class="{
-              underline: currentPath === 'WINE',
-            }"
-            >Wine</NuxtLink
-          >
           <a
-            v-else
             :class="{
               underline: currentPath === 'WINE',
             }"
@@ -414,6 +405,7 @@ li {
       li {
         position: relative;
         z-index: 2;
+        cursor: pointer;
 
         * {
           padding: 0;
@@ -462,18 +454,21 @@ li {
 
               a {
                 width: 100%;
+                letter-spacing: 0.1em;
               }
 
               .underline {
                 &::before {
                   width: 90%;
+                  bottom: -3px;
                 }
               }
 
               &:hover {
                 & > a {
                   &:before {
-                    width: 80%;
+                    width: 90%;
+                    bottom: -3px;
                   }
                 }
               }

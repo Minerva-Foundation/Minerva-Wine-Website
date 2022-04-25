@@ -264,11 +264,13 @@ export default Vue.extend({
       a {
         text-decoration: none;
         color: #333;
+        overflow-wrap: break-word;
       }
 
       .titleText {
         font-size: max(2.875em, 32px);
         font-family: $standard-big-font;
+        overflow-wrap: break-word;
       }
       .linkArrow {
         font-size: 1.2em;
