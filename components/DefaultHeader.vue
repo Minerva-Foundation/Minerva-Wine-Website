@@ -18,77 +18,53 @@
       </NuxtLink>
       <ul class="mainLinks default rosStretch">
         <li>
-          <NuxtLink
-            to="/"
-            class="linkHover"
-            :class="{ underline: $nuxt.$route.path === '/' }"
+          <NuxtLink to="/" :class="{ underline: $nuxt.$route.path === '/' }"
             >Home</NuxtLink
           >
         </li>
-        <li class="linkHoverParent">
+        <li>
           <a
             :class="{
               underline: currentPath === 'WINE',
             }"
             >Wine</a
           >
-          <div class="subLinksWrapper">
-            <ul class="subLinks">
-              <li class="linkHoverParent">
-                <NuxtLink
-                  to="/wine"
-                  :class="{ underline: $nuxt.$route.path === '/wine' }"
+          <div v-if="!linkJustClicked" class="subLinksWrapper">
+            <ul class="subLinks" :class="{ subLinksTrans: transSublinks }">
+              <li>
+                <NuxtLink to="/wine" @click.native="linkClicked"
                   >Buy Wine</NuxtLink
                 >
               </li>
-              <li class="linkHoverParent">
-                <NuxtLink
-                  to="/wine/winemakers"
-                  :class="{
-                    underline: $nuxt.$route.path === '/wine/winemakers',
-                  }"
+              <li>
+                <NuxtLink to="/wine/winemakers" @click.native="linkClicked"
                   >Winemakers</NuxtLink
                 >
               </li>
             </ul>
           </div>
         </li>
-        <li class="linkHoverParent">
-          <NuxtLink
-            v-if="!isTouch"
-            to="/club"
-            :class="{
-              underline: currentPath === 'CLUB',
-            }"
-            >Club</NuxtLink
-          >
+        <li>
           <a
-            v-else
             :class="{
               underline: currentPath === 'CLUB',
             }"
             >Club</a
           >
-          <div class="subLinksWrapper">
-            <ul class="subLinks">
-              <li class="linkHoverParent">
-                <NuxtLink
-                  to="/club"
-                  :class="{ underline: $nuxt.$route.path === '/club' }"
+          <div v-if="!linkJustClicked" class="subLinksWrapper">
+            <ul class="subLinks" :class="{ subLinksTrans: transSublinks }">
+              <li>
+                <NuxtLink to="/club" @click.native="linkClicked"
                   >Articles</NuxtLink
                 >
               </li>
-              <li class="linkHoverParent">
-                <NuxtLink
-                  to="/club/myWine"
-                  :class="{ underline: $nuxt.$route.path === '/club/myWine' }"
+              <li>
+                <NuxtLink to="/club/myWine" @click.native="linkClicked"
                   >My Wine</NuxtLink
                 >
               </li>
-              <li class="linkHoverParent">
-                <NuxtLink
-                  to="/club/events"
-                  :class="{ underline: $nuxt.$route.path === '/club/events' }"
+              <li>
+                <NuxtLink to="/club/events" @click.native="linkClicked"
                   >Events</NuxtLink
                 >
               </li>
@@ -171,6 +147,13 @@ import { initController, getController } from '~/assets/ts/walletController';
 
 export default Vue.extend({
   name: 'DefaultHeader',
+  props: {
+    transSublinks: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     isTouch: false,
     mobileMenuVis: false,
@@ -183,6 +166,7 @@ export default Vue.extend({
     states: {} as WalletStates,
     supportFeatures: [] as String[],
     subscription: {} as Subscription | null,
+    linkJustClicked: false,
   }),
   computed: {
     currentPath() {
@@ -211,11 +195,6 @@ export default Vue.extend({
     } else {
       this.walletController = getController() as WalletController;
       this.subscribeWallet();
-    }
-  },
-  mounted() {
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      this.isTouch = true;
     }
   },
   beforeDestroy() {
@@ -248,6 +227,12 @@ export default Vue.extend({
               : [];
         }
       );
+    },
+    linkClicked() {
+      this.linkJustClicked = true;
+      setTimeout(() => {
+        this.linkJustClicked = false;
+      }, 100);
     },
   },
 });
@@ -413,7 +398,7 @@ li {
 
         .subLinksWrapper {
           position: absolute;
-          padding-top: 25px;
+          padding-top: 18px;
           z-index: 1;
           display: none;
 
@@ -424,14 +409,14 @@ li {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 21px;
-            padding-bottom: 14px;
+            padding-top: 14px;
+            padding-bottom: 15px;
             border-radius: 1px;
             white-space: nowrap;
 
             &:after {
-              bottom: calc(100% - 25px);
-              left: 20px;
+              bottom: calc(100% - 18px);
+              left: 23px;
               border: solid transparent;
               content: '';
               height: 0;
@@ -439,22 +424,24 @@ li {
               position: absolute;
               pointer-events: none;
               border-bottom-color: $main-darker;
-              border-width: 12px;
-              margin-left: -12px;
+              border-width: 7px;
+              margin-left: -7px;
             }
 
             li {
               width: 100%;
               font-size: 0.9em;
-              margin-bottom: 16px;
-              padding-left: 30px;
-              padding-right: 30px;
-              box-sizing: border-box;
               cursor: pointer;
 
               a {
                 width: 100%;
                 letter-spacing: 0.1em;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 30px;
+                padding-right: 30px;
+                box-sizing: border-box;
+                display: block;
               }
 
               .underline {
@@ -471,6 +458,8 @@ li {
                     bottom: -3px;
                   }
                 }
+
+                background-color: lighten($main_darker, 2%);
               }
             }
           }
@@ -607,6 +596,20 @@ li {
 
       transition: opacity 0.3s ease;
       transition-delay: 0.1s;
+    }
+  }
+}
+
+.subLinksTrans {
+  background-color: #36363671 !important;
+
+  &:after {
+    border-bottom-color: #36363671 !important;
+  }
+
+  li {
+    &:hover {
+      background-color: #3636364f !important;
     }
   }
 }

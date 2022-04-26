@@ -38,13 +38,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-$defWidth: 547px;
+$defWidth: 410px;
 
 .wrapperMerchantCard {
   display: flex;
   flex-direction: column;
-  height: 573px;
-  padding-top: 22px;
+  height: 509px;
+  padding-top: 32px;
 
   @media screen and (max-width: 645px) and (min-height: 1150px),
     screen and (max-width: 600px) and (min-height: 1050px),
@@ -65,30 +65,12 @@ $defWidth: 547px;
 
   * {
     max-width: $defWidth;
-
-    @media screen and (max-height: 1150px) {
-      max-width: calc(#{$defWidth} - 50px);
-    }
-
-    @media screen and (max-height: 1050px) {
-      max-width: calc(#{$defWidth} - 90px);
-    }
   }
 
   .image {
     width: $defWidth;
-    height: 378px;
+    height: 308px;
     margin-bottom: 10px;
-
-    @media screen and (max-height: 1150px) {
-      width: calc(#{$defWidth} - 50px);
-      height: 343px;
-    }
-
-    @media screen and (max-height: 1050px) {
-      width: calc(#{$defWidth} - 90px);
-      height: 316px;
-    }
 
     @media screen and (max-width: 645px) and (min-height: 1150px),
       screen and (max-width: 600px) and (min-height: 1050px),
@@ -110,10 +92,9 @@ $defWidth: 547px;
 
     .title {
       font-weight: 400;
-      font-size: 3.6em;
-      line-height: 0.8 !important;
+      font-size: 3em;
+      line-height: 0.95 !important;
       margin-top: 2px;
-      margin-bottom: 5px;
       font-family: $standard-big-font;
       letter-spacing: 0.02em;
       overflow-wrap: break-word;
@@ -121,30 +102,23 @@ $defWidth: 547px;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      padding-top: 10px;
-
-      @media screen and (max-height: 1150px) {
-        font-size: 3.4em;
-      }
-
-      @media screen and (max-height: 1050px) {
-        font-size: 3.1em;
-      }
+      padding-top: 5px;
+      padding-bottom: 5px;
 
       @media screen and (max-width: 570px) {
-        font-size: 3.1em;
-      }
-
-      @media screen and (max-width: 430px) {
         font-size: 2.6em;
       }
 
+      @media screen and (max-width: 430px) {
+        font-size: 2.4em;
+      }
+
       @media screen and (max-width: 370px) {
-        font-size: 2.2em;
+        font-size: 2em;
       }
 
       @media screen and (max-width: 270px) {
-        font-size: 1.6em;
+        font-size: 1.5em;
       }
     }
   }
@@ -152,21 +126,13 @@ $defWidth: 547px;
   .country {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 5px;
 
     .countryName {
       text-transform: uppercase;
       color: $secondary;
       margin-left: 15px;
       font-size: max(1.225em, 14px);
-
-      @media screen and (max-height: 1150px) {
-        font-size: max(1.125em, 14px);
-      }
-
-      @media screen and (max-height: 1050px) {
-        font-size: max(1.065em, 14px);
-      }
 
       @media screen and (max-width: 570px) {
         font-size: max(1.065em, 14px);
@@ -187,11 +153,6 @@ $defWidth: 547px;
         max-width: 39px !important;
         height: 39px;
         border-radius: 50%;
-
-        @media screen and (max-height: 1050px) {
-          height: 32px;
-          max-width: 32px !important;
-        }
 
         @media screen and (max-width: 570px) {
           height: 30px;

@@ -6,7 +6,7 @@
         backgroundImage:
           'url(' +
           urlFor(merch.largeFirstImage.asset._ref).url() +
-          '?w=2560&min-h=1144&fit=crop' +
+          '?w=2560&h=1144&fit=crop' +
           ')',
       }"
     >
@@ -71,7 +71,7 @@
         backgroundImage:
           'url(' +
           urlFor(merch.largeSecondImage.asset._ref).url() +
-          '?w=2560&min-h=1144&fit=crop' +
+          '?w=2560&h=1144&fit=crop' +
           ')',
       }"
     ></div>
@@ -247,11 +247,11 @@ export default Vue.extend({
           // Somehow css doesn't like double negation
           if (yvalue < 1 && yvalue > -1) {
             target.style.backgroundPosition =
-              xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 50%)';
+              xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 40%)';
           } else {
             yvalue = -yvalue;
             target.style.backgroundPosition =
-              xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 50%)';
+              xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 40%)';
           }
           // } else {
           //   target.style.backgroundPosition = 'center';
@@ -591,7 +591,7 @@ export default Vue.extend({
   }
 
   .secondLarge {
-    height: 600px;
+    height: 650px;
     background-size: auto 150%;
     width: 100%;
     background-attachment: scroll;

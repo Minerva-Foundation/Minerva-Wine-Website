@@ -67,7 +67,7 @@
           class="linkWrapper"
           :style="{
             'grid-template-columns':
-              'repeat(auto-fill, minmax(max(665px, 100%/' +
+              'repeat(auto-fill, minmax(max(500px, 100%/' +
               wmCount +
               '), 1fr))',
           }"
@@ -80,10 +80,10 @@
             <MerchantCard :merchant="wm" />
           </NuxtLink>
           <div class="borderhiderR"></div>
-          <div class="borderhiderB"></div>
           <div class="borderhiderL"></div>
           <div class="borderhiderT"></div>
         </ul>
+        <div class="borderhiderB"></div>
       </main>
     </div>
     <ScrollTop />
@@ -377,14 +377,18 @@ $filerMobile: 1714px;
       backdrop-filter: blur(2px);
     }
 
-    .overlayVis {
-      display: block;
+    @media screen and (max-width: $filerMobile) {
+      .overlayVis {
+        display: block;
+      }
     }
 
     .mobileFilterVis {
-      right: 0px !important;
-      -webkit-box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
-      box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+      @media screen and (max-width: $filerMobile) {
+        right: 0px !important;
+        -webkit-box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+        box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+      }
     }
 
     .filter {
@@ -392,12 +396,14 @@ $filerMobile: 1714px;
       overflow: visible !important;
       display: unset;
 
-      position: absolute;
-      transition: right 0.2s ease;
-      z-index: 5;
-      top: 0;
-      right: -370px;
-      height: 100%;
+      @media screen and (max-width: $filerMobile) {
+        position: absolute;
+        transition: right 0.2s ease;
+        z-index: 5;
+        top: 0;
+        right: -370px;
+        height: 100%;
+      }
 
       @media screen and (max-width: 465px) {
         right: -100vw;
@@ -410,10 +416,12 @@ $filerMobile: 1714px;
       }
 
       .wrapperSticky {
-        height: 100vh;
+        max-height: 100vh;
         position: sticky;
         position: -webkit-sticky;
         top: 0;
+        height: 100%;
+        min-height: calc(100vh - 420px);
 
         @media screen and (max-width: $fourth-incr) {
           top: $header-height;
@@ -430,6 +438,7 @@ $filerMobile: 1714px;
           left: -69px;
           transition: 0.15s ease opacity;
           opacity: 1;
+          display: none;
           width: 70px;
           height: 60px;
           border-bottom-left-radius: 12px;
@@ -443,9 +452,11 @@ $filerMobile: 1714px;
           box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
           cursor: pointer;
 
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          @media screen and (max-width: $filerMobile) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
 
           @media screen and (max-width: 435px) {
             width: 55px;
@@ -488,11 +499,15 @@ $filerMobile: 1714px;
           padding-bottom: 20px;
           overflow-y: scroll;
           height: 100%;
+          direction: rtl;
           color: #333;
+          border-right: rgba(0, 0, 0, 0.2) solid 1px;
 
-          direction: ltr;
-          border-right: none;
-          border-left: rgba(0, 0, 0, 0.2) solid 1px;
+          @media screen and (max-width: $filerMobile) {
+            direction: ltr;
+            border-right: none;
+            border-left: rgba(0, 0, 0, 0.2) solid 1px;
+          }
 
           &::-webkit-scrollbar-track {
             border-radius: 10px;
@@ -644,36 +659,11 @@ $filerMobile: 1714px;
         display: grid;
         overflow: hidden;
 
-        @media screen and (min-width: 1200px) and (max-width: 1332px) {
-          grid-template-columns: repeat(
-            auto-fill,
-            minmax(600px, 1fr)
-          ) !important;
-        }
-
-        @media screen and (max-height: 1150px) {
-          grid-template-columns: repeat(
-            auto-fill,
-            minmax(600px, 1fr)
-          ) !important;
-        }
-
-        @media screen and (max-height: 1050px) {
-          grid-template-columns: repeat(
-            auto-fill,
-            minmax(550px, 1fr)
-          ) !important;
-        }
-
         @media screen and (max-width: 645px) and (min-height: 1150px),
           screen and (max-width: 600px) and (min-height: 1050px),
           screen and (max-width: 550px) {
           display: flex;
           flex-direction: column;
-        }
-
-        @media screen and (min-height: 1168px) {
-          min-height: calc(100vh - (#{$header-height} + 368px));
         }
 
         * {
@@ -685,28 +675,16 @@ $filerMobile: 1714px;
           justify-content: center;
           align-items: center;
           width: 100%;
-          height: 670px;
           border-right: 1px solid #cccccc;
           border-bottom: 1px solid #cccccc;
 
-          @media screen and (min-height: 1168px) {
-            min-height: 100%;
-          }
-
-          @media screen and (max-height: 1150px) {
-            height: 570px;
-            padding-top: 40px;
-          }
-
-          @media screen and (max-height: 1050px) {
-            height: 505px;
-            padding-top: 70px;
-          }
+          // @media screen and (min-height: 1168px) {
+          //   min-height: 100%;
+          // }
 
           @media screen and (max-width: 645px) and (min-height: 1150px),
             screen and (max-width: 600px) and (min-height: 1050px),
             screen and (max-width: 550px) {
-            height: auto;
             margin-top: 50px;
             padding-bottom: 50px;
             padding-top: 0;
@@ -746,14 +724,6 @@ $filerMobile: 1714px;
           left: 0;
           top: 0;
         }
-        .borderhiderB {
-          height: 1px;
-          width: 100%;
-          position: absolute;
-          background-color: white;
-          left: 0;
-          bottom: 0;
-        }
         .borderhiderL {
           width: 1px;
           height: 100%;
@@ -762,6 +732,14 @@ $filerMobile: 1714px;
           left: 0;
           top: 0;
         }
+      }
+      .borderhiderB {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        left: 0;
+        bottom: 0;
       }
     }
   }

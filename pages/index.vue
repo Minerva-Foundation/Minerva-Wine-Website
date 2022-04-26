@@ -177,6 +177,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'HomepageMain',
+  layout: 'subTrans',
   head() {
     return {
       meta: [
@@ -244,9 +245,9 @@ export default Vue.extend({
   overflow-x: hidden;
   position: relative;
 
-  // @media screen and (min-width: $third-incr) {
-  //   top: -110px;
-  // }
+  @media screen and (min-width: $third-incr) {
+    top: -110px;
+  }
 }
 
 p {
@@ -294,11 +295,11 @@ p {
       rgba(68, 68, 68, 0.514) -28.96%,
       rgba(196, 196, 196, 0) 61.82%
     ),
-    // linear-gradient(
-    //   180deg,
-    //   rgba(59, 59, 59, 0.829) 0%,
-    //   rgba(255, 255, 255, 0) 10%
-    // ),
+    linear-gradient(
+      180deg,
+      rgba(59, 59, 59, 0.829) 0%,
+      rgba(255, 255, 255, 0) 10%
+    ),
     url('~static/images/vines_cropped.webp'); /* Rectangle 32 */
 
   @media screen and (max-width: 1050px) {
@@ -312,11 +313,11 @@ p {
         rgba(68, 68, 68, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
-      // linear-gradient(
-      //   180deg,
-      //   rgba(59, 59, 59, 0.829) 0%,
-      //   rgba(255, 255, 255, 0) 10%
-      // ),
+      linear-gradient(
+        180deg,
+        rgba(59, 59, 59, 0.829) 0%,
+        rgba(255, 255, 255, 0) 10%
+      ),
       url('~static/images/vines_cropped.webp');
   }
 
@@ -331,11 +332,11 @@ p {
         rgba(34, 34, 34, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
-      // linear-gradient(
-      //   180deg,
-      //   rgba(59, 59, 59, 0.829) 0%,
-      //   rgba(255, 255, 255, 0) 10%
-      // ),
+      linear-gradient(
+        180deg,
+        rgba(59, 59, 59, 0.829) 0%,
+        rgba(255, 255, 255, 0) 10%
+      ),
       url('~static/images/vines_cropped.webp');
   }
 }
@@ -352,11 +353,11 @@ p {
       rgba(68, 68, 68, 0.507) -28.96%,
       rgba(196, 196, 196, 0) 61.82%
     ),
-    // linear-gradient(
-    //   180deg,
-    //   rgba(59, 59, 59, 0.829) 0%,
-    //   rgba(255, 255, 255, 0) 10%
-    // ),
+    linear-gradient(
+      180deg,
+      rgba(59, 59, 59, 0.829) 0%,
+      rgba(255, 255, 255, 0) 10%
+    ),
     url('~static/images/vines_cropped.jpg'); /* Rectangle 32 */
 
   @media screen and (max-width: 1050px) {
@@ -370,11 +371,11 @@ p {
         rgba(68, 68, 68, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
       ),
-      // linear-gradient(
-      //   180deg,
-      //   rgba(59, 59, 59, 0.829) 0%,
-      //   rgba(255, 255, 255, 0) 10%
-      // ),
+      linear-gradient(
+        180deg,
+        rgba(59, 59, 59, 0.829) 0%,
+        rgba(255, 255, 255, 0) 10%
+      ),
       url('~static/images/vines_cropped.jpg');
   }
 
@@ -388,13 +389,13 @@ p {
         55deg,
         rgba(34, 34, 34, 0.712) -28.96%,
         rgba(196, 196, 196, 0) 71.82%
-      );
-    // linear-gradient(
-    //   180deg,
-    //   rgba(59, 59, 59, 0.829) 0%,
-    //   rgba(255, 255, 255, 0) 10%
-    // ),
-    // url('~static/images/vines_cropped.jpg');
+      ),
+      linear-gradient(
+        180deg,
+        rgba(59, 59, 59, 0.829) 0%,
+        rgba(255, 255, 255, 0) 10%
+      ),
+      url('~static/images/vines_cropped.jpg');
   }
 }
 
@@ -402,8 +403,8 @@ p {
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
-  height: calc(100vh - #{$header-height});
-  // height: 100vh;
+  // height: calc(100vh - #{$header-height});
+  height: 100vh;
   max-height: 2000px;
   min-height: calc(22vw + 353px - #{$header-height});
   position: relative;
