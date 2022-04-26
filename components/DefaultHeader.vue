@@ -459,7 +459,7 @@ li {
                   }
                 }
 
-                background-color: lighten($main_darker, 2%);
+                background-color: lighten($main_darker, 1%);
               }
             }
           }
@@ -601,15 +601,22 @@ li {
 }
 
 .subLinksTrans {
-  background-color: #36363671 !important;
+  background-color: #3636368a !important;
 
   &:after {
-    border-bottom-color: #36363671 !important;
+    border-bottom-color: #3636368a !important;
   }
 
   li {
     &:hover {
-      background-color: #3636364f !important;
+      background-color: transparent !important;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(54, 54, 54, 0.165703781512605) 3%,
+        rgba(54, 54, 54, 0.16850490196078427) 97%,
+        rgba(255, 255, 255, 0) 100%
+      ) !important;
     }
   }
 }
