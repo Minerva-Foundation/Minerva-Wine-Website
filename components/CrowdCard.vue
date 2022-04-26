@@ -74,8 +74,7 @@
             <NuxtLink
               v-if="!onMerchantPage"
               :to="{
-                path: `/wine/${crowdF.merchant.slug.current}`,
-                hash: `#${crowdF.slug.current}details`,
+                path: `/wine/cf/${crowdF.slug.current}`,
               }"
             >
               <button class="buttonLight"></button>

@@ -44,7 +44,7 @@ $defWidth: 410px;
   display: flex;
   flex-direction: column;
   height: 509px;
-  padding-top: 32px;
+  padding-top: 39px;
 
   @media screen and (max-width: 645px) and (min-height: 1150px),
     screen and (max-width: 600px) and (min-height: 1050px),
@@ -69,7 +69,7 @@ $defWidth: 410px;
 
   .image {
     width: $defWidth;
-    height: 308px;
+    height: 295px;
     margin-bottom: 10px;
 
     @media screen and (max-width: 645px) and (min-height: 1150px),

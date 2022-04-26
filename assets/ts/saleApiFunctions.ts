@@ -38,3 +38,13 @@ export async function getBaseCrowdfundInfoForMerchant(id: string, sanity: any ):
 
   return sortCrowdfunds(crowdfund);
 }
+
+export async function getCrowdfundInfoBySlug(slug: string, sanity: any ):  Promise<defTypes.CrowdfundBase> {
+  const query = groq`*[_type == "crowdfund" && slug.current == "${slug}"]{merchant->{flag,title,slug},detail1,detail2,detail3,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}`;
+  
+  const crowdfund: defTypes.CrowdfundBase = (
+    (await sanity.fetch(query)) as defTypes.CrowdfundBase[]
+  )[0];
+
+  return crowdfund;
+}

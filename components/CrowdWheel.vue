@@ -28,7 +28,6 @@
         v-for="cf in displayedCfs"
         :key="cf.slug.current"
         :crowd-f="cf"
-        :on-merchant-page="true"
         @infoClicked="infoClicked"
       />
     </div>

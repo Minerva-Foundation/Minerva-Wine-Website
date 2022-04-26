@@ -75,7 +75,10 @@
           ')',
       }"
     ></div>
-    <div
+    <div class="quote">
+      <span class="customh1">{{ merch.quote }}</span>
+    </div>
+    <!-- <div
       v-for="cf in cfs"
       :id="cf.slug.current + 'details'"
       :key="cf.slug.current"
@@ -165,7 +168,7 @@
         </div>
       </div>
       <hr />
-    </div>
+    </div> -->
     <ScrollTop />
   </div>
 </template>
@@ -576,7 +579,7 @@ export default Vue.extend({
   }
 
   .quote {
-    padding: 3vw 108px calc(108px + 5vw) 108px;
+    padding: 150px 108px 180px 108px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

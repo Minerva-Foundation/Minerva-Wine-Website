@@ -18,17 +18,21 @@
       </NuxtLink>
       <ul class="mainLinks default rosStretch">
         <li>
-          <NuxtLink to="/" :class="{ underline: $nuxt.$route.path === '/' }"
+          <NuxtLink
+            to="/"
+            class="linkHover"
+            :class="{ underline: $nuxt.$route.path === '/' }"
             >Home</NuxtLink
           >
         </li>
-        <li>
+        <li class="ddCat">
           <a
             :class="{
               underline: currentPath === 'WINE',
             }"
-            >Wine</a
-          >
+            >Wine
+            <div class="ddArrow"></div
+          ></a>
           <div v-if="!linkJustClicked" class="subLinksWrapper">
             <ul class="subLinks" :class="{ subLinksTrans: transSublinks }">
               <li>
@@ -44,13 +48,14 @@
             </ul>
           </div>
         </li>
-        <li>
+        <li class="ddCat">
           <a
             :class="{
               underline: currentPath === 'CLUB',
             }"
-            >Club</a
-          >
+            >Club
+            <div class="ddArrow"></div
+          ></a>
           <div v-if="!linkJustClicked" class="subLinksWrapper">
             <ul class="subLinks" :class="{ subLinksTrans: transSublinks }">
               <li>
@@ -240,6 +245,23 @@ export default Vue.extend({
 
 <style lang="scss">
 li {
+  position: relative;
+
+  .ddArrow {
+    position: absolute;
+    right: -16px;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+    display: inline;
+    transition-property: transform top;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+  }
+
   .underline {
     position: relative;
 
@@ -387,6 +409,23 @@ li {
     }
 
     .default {
+      gap: 50px;
+      position: relative;
+      padding-top: 10px;
+
+      .ddCat {
+        a {
+          margin-right: 16px !important;
+          position: relative;
+        }
+
+        &:hover {
+          a::before {
+            content: none;
+          }
+        }
+      }
+
       li {
         position: relative;
         z-index: 2;
@@ -398,14 +437,14 @@ li {
 
         .subLinksWrapper {
           position: absolute;
-          padding-top: 18px;
+          padding-top: 12px;
           z-index: 1;
           display: none;
 
           .subLinks {
             list-style: none;
             width: auto;
-            background-color: $main-darker;
+            background-color: #113042;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -413,9 +452,11 @@ li {
             padding-bottom: 15px;
             border-radius: 1px;
             white-space: nowrap;
+            -webkit-box-shadow: 5px 5px 13px 0px rgba(0, 0, 0, 0.12);
+            box-shadow: 5px 5px 13px 0px rgba(0, 0, 0, 0.12);
 
             &:after {
-              bottom: calc(100% - 18px);
+              bottom: calc(100% - 12px);
               left: 23px;
               border: solid transparent;
               content: '';
@@ -423,7 +464,7 @@ li {
               width: 0;
               position: absolute;
               pointer-events: none;
-              border-bottom-color: $main-darker;
+              border-bottom-color: #113042;
               border-width: 7px;
               margin-left: -7px;
             }
@@ -442,6 +483,7 @@ li {
                 padding-right: 30px;
                 box-sizing: border-box;
                 display: block;
+                color: rgb(238, 238, 238);
               }
 
               .underline {
@@ -453,13 +495,15 @@ li {
 
               &:hover {
                 & > a {
+                  color: white;
+
                   &:before {
                     width: 90%;
                     bottom: -3px;
                   }
                 }
 
-                background-color: lighten($main_darker, 1%);
+                background-color: #123144;
               }
             }
           }
@@ -471,19 +515,19 @@ li {
       }
     }
 
-    .mainLinks > li::after {
-      content: '   ·   ';
-      white-space: pre;
-      color: $bright-font;
-      font-size: 24px;
-    }
+    // .mainLinks > li::after {
+    //   content: '   ·   ';
+    //   white-space: pre;
+    //   color: $bright-font;
+    //   font-size: 24px;
+    // }
 
-    .mainLinks > li:last-of-type::after {
-      content: '';
-      white-space: pre;
-      color: $bright-font;
-      font-size: 30px;
-    }
+    // .mainLinks > li:last-of-type::after {
+    //   content: '';
+    //   white-space: pre;
+    //   color: $bright-font;
+    //   font-size: 30px;
+    // }
   }
 
   .mainLinks {
@@ -613,8 +657,8 @@ li {
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(54, 54, 54, 0.165703781512605) 3%,
-        rgba(54, 54, 54, 0.16850490196078427) 97%,
+        rgba(54, 54, 54, 0.08) 3%,
+        rgba(54, 54, 54, 0.08) 97%,
         rgba(255, 255, 255, 0) 100%
       ) !important;
     }
