@@ -61,8 +61,7 @@ $defWidth: 547px;
   height: 573px;
   padding-top: 22px;
 
-  @media screen and (max-width: 645px) and (min-height: 1150px),
-    screen and (max-width: 600px) and (min-height: 1050px),
+  @media screen and (max-width: 600px) and (min-height: 1050px),
     screen and (max-width: 550px) {
     justify-content: center;
     padding-top: 0px;
@@ -79,11 +78,7 @@ $defWidth: 547px;
   }
 
   * {
-    max-width: $defWidth;
-
-    @media screen and (max-height: 1150px) {
-      max-width: calc(#{$defWidth} - 50px);
-    }
+    max-width: calc(#{$defWidth} - 50px);
 
     @media screen and (max-height: 1050px) {
       max-width: calc(#{$defWidth} - 90px);
@@ -91,22 +86,16 @@ $defWidth: 547px;
   }
 
   .image {
-    width: $defWidth;
-    height: 378px;
+    width: calc(#{$defWidth} - 50px);
+    height: 343px;
     margin-bottom: 10px;
-
-    @media screen and (max-height: 1150px) {
-      width: calc(#{$defWidth} - 50px);
-      height: 343px;
-    }
 
     @media screen and (max-height: 1050px) {
       width: calc(#{$defWidth} - 90px);
       height: 316px;
     }
 
-    @media screen and (max-width: 645px) and (min-height: 1150px),
-      screen and (max-width: 600px) and (min-height: 1050px),
+    @media screen and (max-width: 600px) and (min-height: 1050px),
       screen and (max-width: 550px) {
       height: 48vw !important;
     }
@@ -146,15 +135,11 @@ $defWidth: 547px;
 
     .title {
       font-weight: 400;
-      font-size: 2em;
+      font-size: 1.8em;
       line-height: 1.05 !important;
       margin-top: 2px;
       margin-bottom: 5px;
       overflow-wrap: break-word;
-
-      @media screen and (max-height: 1150px) {
-        font-size: 1.8em;
-      }
 
       @media screen and (max-height: 1050px) {
         font-size: 1.65em;

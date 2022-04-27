@@ -18,7 +18,7 @@
       class="linkWrapper"
       :style="{
         'grid-template-columns':
-          'repeat(auto-fill, minmax(max(665px, 100%/' +
+          'repeat(auto-fill, minmax(max(600px, 100%/' +
           articleCount +
           '), 1fr))',
       }"
@@ -187,23 +187,14 @@ export default Vue.extend({
     grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)) !important;
   }
 
-  @media screen and (max-height: 1150px) {
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)) !important;
-  }
-
   @media screen and (max-height: 1050px) {
     grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)) !important;
   }
 
-  @media screen and (max-width: 645px) and (min-height: 1150px),
-    screen and (max-width: 600px) and (min-height: 1050px),
+  @media screen and (max-width: 600px) and (min-height: 1050px),
     screen and (max-width: 550px) {
     display: flex;
     flex-direction: column;
-  }
-
-  @media screen and (min-height: 1168px) {
-    min-height: calc(100vh - (#{$header-height} + 368px));
   }
 
   * {
@@ -215,26 +206,17 @@ export default Vue.extend({
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 670px;
+    height: 570px;
+    padding-top: 40px;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
-
-    @media screen and (min-height: 1168px) {
-      min-height: 100%;
-    }
-
-    @media screen and (max-height: 1150px) {
-      height: 570px;
-      padding-top: 40px;
-    }
 
     @media screen and (max-height: 1050px) {
       height: 505px;
       padding-top: 70px;
     }
 
-    @media screen and (max-width: 645px) and (min-height: 1150px),
-      screen and (max-width: 600px) and (min-height: 1050px),
+    @media screen and (max-width: 600px) and (min-height: 1050px),
       screen and (max-width: 550px) {
       height: auto;
       margin-top: 50px;
