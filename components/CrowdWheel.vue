@@ -26,7 +26,7 @@
       :style="{
         'grid-template-columns':
           'repeat(auto-fill, calc(100%/' + displayedCfs.length + '))',
-        'max-width': cfs.length <= 1 ? '1140px' : 'none',
+        'max-width': cfs.length <= 1 ? '1140px !important' : 'none',
       }"
     >
       <CrowdCard
@@ -245,7 +245,7 @@ export default Vue.extend({
   .wheel {
     width: 85%;
     opacity: 1;
-    max-width: 1640px;
+    max-width: 1640px !important;
     display: grid;
     transition: 0.2s ease opacity;
     overflow: hidden;

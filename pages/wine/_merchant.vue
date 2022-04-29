@@ -52,7 +52,7 @@
               class="firstAdd"
               :style="{
                 width: merch.description3 ? '50%' : '100%',
-                'margin-right': merch.description3 ? '3vw' : '0 !important',
+                'padding-right': merch.description3 ? '3vw' : '0 !important',
               }"
               :blocks="merch.description2"
               :serializers="serializers"
@@ -379,7 +379,7 @@ export default Vue.extend({
       max-width: 1600px;
 
       @media screen and (min-width: 2000px) {
-        max-width: 1900px;
+        max-width: 1800px;
       }
 
       .mainInfo {
@@ -396,7 +396,7 @@ export default Vue.extend({
         }
 
         .textInfo {
-          padding-right: 3vw;
+          padding-right: 3vw !important;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -404,7 +404,7 @@ export default Vue.extend({
           text-align: justify;
 
           @media screen and (min-width: 2000px) {
-            padding-right: 6vw !important;
+            padding-right: 4vw !important;
           }
 
           @media screen and (max-width: 1300px) and (min-height: 950px),
@@ -559,12 +559,21 @@ export default Vue.extend({
 
       .secondAdd {
         width: 50%;
-        margin-left: 0vw;
+        box-sizing: border-box;
+        padding-left: 3vw;
+
+        @media screen and (max-width: 1300px) and (min-height: 950px),
+          screen and (max-width: 1150px) and (min-height: 901px),
+          screen and (max-width: 1100px) {
+          padding-left: 0;
+        }
       }
 
       .firstAdd {
+        box-sizing: border-box;
+
         @media screen and (min-width: 2000px) {
-          margin-right: 6vw !important;
+          padding-right: 4vw !important;
         }
       }
 
