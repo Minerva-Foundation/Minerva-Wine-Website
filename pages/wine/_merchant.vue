@@ -394,6 +394,7 @@ export default Vue.extend({
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
+          text-align: justify;
 
           @media screen and (min-width: 2000px) {
             padding-right: 6vw;
@@ -533,6 +534,7 @@ export default Vue.extend({
     .additionalInfo {
       margin-top: 70px;
       display: flex;
+      text-align: justify;
 
       @media screen and (max-width: 1300px) and (min-height: 950px),
         screen and (max-width: 1150px) and (min-height: 901px),

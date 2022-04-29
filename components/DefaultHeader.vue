@@ -107,7 +107,7 @@
         <InputsConnectWallet />
       </div>
       <ul class="mainLinks mobile rosStretch">
-        <li @click="mobileMenuVis = false">
+        <!-- <li @click="mobileMenuVis = false">
           <NuxtLink
             to="/"
             class="linkHover"
@@ -132,6 +132,71 @@
             }"
             >Club</NuxtLink
           >
+        </li> -->
+        <li @click="mobileMenuVis = false">
+          <NuxtLink
+            to="/"
+            class="linkHover"
+            :class="{ underline: $nuxt.$route.path === '/' }"
+            >Home</NuxtLink
+          >
+        </li>
+        <li
+          class="ddCat"
+          @click="(e) => e.currentTarget.classList.toggle('subLinksWrapperVis')"
+        >
+          <a
+            :class="{
+              underline: currentPath === 'WINE',
+            }"
+            >Wine
+            <div class="ddArrow"></div
+          ></a>
+          <div v-if="!linkJustClicked" class="subLinksWrapper">
+            <ul class="subLinks">
+              <li @click="mobileMenuVis = false">
+                <NuxtLink to="/wine" @click.native="linkClicked"
+                  >Buy Wine</NuxtLink
+                >
+              </li>
+              <li @click="mobileMenuVis = false">
+                <NuxtLink to="/wine/winemakers" @click.native="linkClicked"
+                  >Winemakers</NuxtLink
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li
+          class="ddCat"
+          @click="(e) => e.currentTarget.classList.toggle('subLinksWrapperVis')"
+        >
+          <a
+            :class="{
+              underline: currentPath === 'CLUB',
+            }"
+            >Club
+            <div class="ddArrow"></div
+          ></a>
+          <div v-if="!linkJustClicked" class="subLinksWrapper">
+            <ul class="subLinks">
+              <li @click="mobileMenuVis = false">
+                <NuxtLink to="/club" @click.native="linkClicked"
+                  >Articles</NuxtLink
+                >
+              </li>
+              <li @click="mobileMenuVis = false">
+                <NuxtLink to="/club/myWine" @click.native="linkClicked"
+                  >My Wine</NuxtLink
+                >
+              </li>
+              <li @click="mobileMenuVis = false">
+                <NuxtLink to="/club/events" @click.native="linkClicked"
+                  >Events</NuxtLink
+                >
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </nav>
@@ -234,9 +299,19 @@ export default Vue.extend({
       );
     },
     linkClicked() {
-      this.linkJustClicked = true;
+      // this.linkJustClicked = true;
+      // setTimeout(() => {
+      //   this.linkJustClicked = false;
+      // }, 100);
+
       setTimeout(() => {
-        this.linkJustClicked = false;
+        const subMenus = this.$el.querySelectorAll('.ddCat');
+
+        if (subMenus) {
+          console.log(subMenus);
+
+          subMenus.forEach((e) => e.classList.remove('subLinksWrapperVis'));
+        }
       }, 100);
     },
   },
@@ -418,12 +493,6 @@ li {
           margin-right: 16px !important;
           position: relative;
         }
-
-        &:hover {
-          a::before {
-            content: none;
-          }
-        }
       }
 
       li {
@@ -557,16 +626,11 @@ li {
     position: fixed;
     overflow: hidden;
     height: 100vh;
-    max-width: 50vw;
     width: 0;
     z-index: 20;
     right: 0;
     top: 0;
     transition: width 0.2s ease;
-
-    @media screen and (max-width: 500px) {
-      max-width: 70vw;
-    }
 
     @media screen and (max-width: 370px) {
       max-width: 100vw;
@@ -610,11 +674,14 @@ li {
     .mainLinks {
       height: 100%;
       flex-direction: column;
-      align-items: center;
-      padding: 87px 0 15% 0;
+      padding: 87px 0 15% 150px;
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;
+
+      @media screen and (max-width: 370px) {
+        padding-left: 40vw;
+      }
 
       @media screen and (max-height: 400px) {
         padding-top: 40px;
@@ -626,6 +693,82 @@ li {
 
       li {
         margin-top: 25px;
+      }
+    }
+
+    .mobile {
+      .ddCat {
+        a {
+          margin-right: 16px !important;
+          position: relative;
+        }
+      }
+
+      li {
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+
+        * {
+          padding: 0;
+        }
+
+        .subLinksWrapper {
+          z-index: 1;
+          display: none;
+
+          .subLinks {
+            list-style: none;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 15px;
+            border-radius: 1px;
+            white-space: nowrap;
+
+            li {
+              width: 100%;
+              font-size: 0.8em;
+              cursor: pointer;
+              list-style: none;
+
+              a {
+                width: 100%;
+                letter-spacing: 0.1em;
+                padding-left: 15px;
+                padding-right: 30px;
+                box-sizing: border-box;
+                display: block;
+                color: rgb(238, 238, 238);
+              }
+
+              .underline {
+                &::before {
+                  width: 90%;
+                  bottom: -3px;
+                }
+              }
+
+              &:hover {
+                & > a {
+                  color: white;
+
+                  &:before {
+                    width: 90%;
+                    bottom: -3px;
+                  }
+                }
+
+                background-color: #123144;
+              }
+            }
+          }
+        }
+      }
+
+      .subLinksWrapperVis .subLinksWrapper {
+        display: block;
       }
     }
   }
