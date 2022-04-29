@@ -16,7 +16,12 @@
       <div :style="{ 'max-width': cfs.length === 1 ? '1600px' : 'none' }">
         <div class="info">
           <div class="mainInfo">
-            <div class="textInfo">
+            <div
+              class="textInfo"
+              :style="{
+                'padding-right': cfs.length === 1 ? '3vw !important' : '0',
+              }"
+            >
               <h2 class="customh2">Welcome to</h2>
               <span class="smallerH1">
                 <h1 class="customh1">
@@ -399,7 +404,7 @@ export default Vue.extend({
           text-align: justify;
 
           @media screen and (min-width: 2000px) {
-            padding-right: 6vw;
+            padding-right: 6vw !important;
           }
 
           @media screen and (max-width: 1300px) and (min-height: 950px),
