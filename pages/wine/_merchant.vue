@@ -52,7 +52,7 @@
               class="firstAdd"
               :style="{
                 width: merch.description3 ? '50%' : '100%',
-                'margin-right': merch.description3 ? '3vw' : '0',
+                'margin-right': merch.description3 ? '3vw' : '0 !important',
               }"
               :blocks="merch.description2"
               :serializers="serializers"
@@ -559,7 +559,13 @@ export default Vue.extend({
 
       .secondAdd {
         width: 50%;
-        margin-left: 3vw;
+        margin-left: 0vw;
+      }
+
+      .firstAdd {
+        @media screen and (min-width: 2000px) {
+          margin-right: 6vw !important;
+        }
       }
 
       .firstAdd,
