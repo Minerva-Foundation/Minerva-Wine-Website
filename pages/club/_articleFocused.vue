@@ -2,7 +2,7 @@
   <div class="wrapperClubArticle">
     <aside class="extraInfo">
       <div class="wrapperFixed sticky">
-        <div class="authorWrapper">
+        <div class="secWrapper">
           <span class="sectionTitle">Author</span>
           <address class="author">
             <div class="row">
@@ -25,11 +25,21 @@
     <div class="wrapperSanity">
       <article class="contentwrapperSanity">
         <h1 class="articleh1">{{ currentArticle.title }}</h1>
-        <span class="aad"
-          ><i class="by">by</i>
-          <span class="author">{{ currentArticle.author.name }},</span
-          ><i class="date"> {{ formatDate }}</i></span
-        >
+        <div class="detailsTop">
+          <span class="aad"
+            ><i class="by">by</i>
+            <span class="author">{{ currentArticle.author.name }},</span
+            ><i class="date"> {{ formatDate }}</i></span
+          >
+          <div class="cats">
+            <CategoryBar
+              v-for="cat in currentArticle.categories"
+              :key="cat._id"
+              :cat="{ name: cat.title, desciption: cat.desciption }"
+            />
+          </div>
+        </div>
+
         <p class="abstract">{{ currentArticle.abstract }}</p>
         <portableImage
           :asset="currentArticle.mainImage.asset"
@@ -41,7 +51,7 @@
           :serializers="serializers"
         />
 
-        <address class="authorBottom">
+        <address class="detailsBottom">
           <span class="sectionTitle">Author</span>
           <div class="sectionWrapper">
             <portableImage
@@ -192,41 +202,41 @@ export default Vue.extend({
         top: 0;
       }
 
-      .authorWrapper {
+      .sectionTitle {
+        padding-top: 4vh;
+        width: 100%;
+        text-align: left;
+        border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
+        padding-bottom: 5px;
+        box-sizing: border-box;
+        padding-left: 5%;
+        margin-bottom: 20px;
+        color: #777;
+      }
+
+      .secWrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         width: 100%;
 
-        a {
-          margin-bottom: 70px;
-          margin-right: calc(70% - 130px);
-          margin-top: 40px;
+        // a {
+        //   margin-bottom: 70px;
+        //   margin-right: calc(70% - 130px);
+        //   margin-top: 40px;
 
-          .button {
-            min-width: 0px;
-            width: 140px;
-            height: 59px;
+        //   .button {
+        //     min-width: 0px;
+        //     width: 140px;
+        //     height: 59px;
 
-            .larger {
-              font-size: 1.3em;
-              color: $bright-font;
-            }
-          }
-        }
-
-        .sectionTitle {
-          padding-top: 4vh;
-          width: 100%;
-          text-align: left;
-          border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
-          padding-bottom: 5px;
-          box-sizing: border-box;
-          padding-left: 5%;
-          margin-bottom: 20px;
-          color: #777;
-        }
+        //     .larger {
+        //       font-size: 1.3em;
+        //       color: $bright-font;
+        //     }
+        //   }
+        // }
 
         .author {
           font-style: normal;
@@ -276,7 +286,7 @@ export default Vue.extend({
       padding-bottom: 50px;
     }
 
-    .authorBottom {
+    .detailsBottom {
       font-style: normal;
       color: #333;
       width: 100%;
@@ -383,21 +393,33 @@ export default Vue.extend({
         }
       }
 
-      .aad {
-        font-size: 1.2em;
+      .detailsTop {
+        display: flex;
+        align-items: center;
+        padding-top: 5px;
 
-        .by {
-          color: #777;
+        .aad {
+          font-size: 1.2em;
+
+          .by {
+            color: #777;
+          }
+
+          .author {
+            font-size: 1.1em;
+            color: #333;
+          }
+
+          .date {
+            margin-left: 0.3em;
+            color: #333;
+          }
         }
 
-        .author {
-          font-size: 1.1em;
-          color: #333;
-        }
-
-        .date {
-          margin-left: 0.3em;
-          color: #333;
+        .cats {
+          margin-left: 30px;
+          display: flex;
+          gap: 8px;
         }
       }
 

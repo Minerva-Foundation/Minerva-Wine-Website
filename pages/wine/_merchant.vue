@@ -17,7 +17,11 @@
         <div class="mainInfo">
           <div class="textInfo">
             <h2 class="customh2">Welcome to</h2>
-            <h1 class="customh1">{{ merch.title }}</h1>
+            <span class="smallerH1">
+              <h1 class="customh1">
+                {{ merch.title }}
+              </h1>
+            </span>
             <div class="map">
               <portableImage
                 :asset="merch.map.asset"
@@ -76,7 +80,9 @@
       }"
     ></div>
     <div class="quote">
-      <span class="customh1">{{ merch.quote }}</span>
+      <span class="smallerH1">
+        <h1 class="customh1">{{ merch.quote }}</h1>
+      </span>
     </div>
     <!-- <div
       v-for="cf in cfs"
@@ -321,7 +327,7 @@ export default Vue.extend({
   // top: -127px;
 
   p {
-    font-size: 1.4em;
+    font-size: max(1.3em, 16px);
   }
 
   .firstLarge {
@@ -373,19 +379,30 @@ export default Vue.extend({
         display: grid;
         grid-template-columns: 50% 50%;
         position: relative;
+        min-height: 500px;
 
         @media screen and (max-width: 1300px) and (min-height: 950px),
           screen and (max-width: 1150px) and (min-height: 901px),
           screen and (max-width: 1100px) {
           display: inline-block;
+          min-height: 0px;
         }
 
         .textInfo {
           padding-right: 3vw;
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
 
           @media screen and (min-width: 2000px) {
             padding-right: 6vw;
+          }
+
+          @media screen and (max-width: 1300px) and (min-height: 950px),
+            screen and (max-width: 1150px) and (min-height: 901px),
+            screen and (max-width: 1100px) {
+            display: block;
           }
 
           @media screen and (max-width: 1000px) and (min-height: 950px),
@@ -395,14 +412,18 @@ export default Vue.extend({
             flex-direction: column;
           }
 
-          .customh1 {
-            color: $main;
-            margin-bottom: 40px;
-            width: 100%;
-            word-wrap: break-word;
+          .smallerH1 {
+            font-size: 0.9em;
 
-            @media screen and (max-width: $fifth-incr) {
-              margin-bottom: 5vw;
+            .customh1 {
+              color: $main;
+              margin-bottom: 40px;
+              width: 100%;
+              word-wrap: break-word;
+
+              @media screen and (max-width: $fifth-incr) {
+                margin-bottom: 5vw;
+              }
             }
           }
         }
@@ -579,17 +600,20 @@ export default Vue.extend({
   }
 
   .quote {
-    padding: 150px 108px 180px 108px;
+    padding: min(11vw, 180px) calc(4vw + 20px) min(11vw, 180px) calc(4vw + 20px);
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     text-align: center;
 
-    .customh1 {
-      line-height: 1.2;
-      font-size: 4.5em;
-      max-width: 1500px;
-      color: #444;
+    .smallerH1 {
+      font-size: 0.6em;
+
+      .customh1 {
+        line-height: 1.2;
+        max-width: 1500px;
+        color: #444;
+      }
     }
   }
 

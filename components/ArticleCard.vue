@@ -17,7 +17,16 @@
     <p class="abstract">
       {{ article.abstract }}
     </p>
-    <span class="rm">READ MORE</span>
+    <div class="rmcat">
+      <span class="rm">READ MORE</span>
+      <div class="cats">
+        <CategoryBar
+          v-for="cat in article.categories"
+          :key="cat._id"
+          :cat="{ name: cat.title, desciption: cat.desciption }"
+        />
+      </div>
+    </div>
   </article>
 </template>
 
@@ -192,13 +201,27 @@ $defWidth: 547px;
     }
   }
 
-  .rm {
-    color: $secondary;
-    font-weight: 600;
-    margin-top: 2px;
+  .rmcat {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
 
-    @media screen and (max-width: $fourth-incr) {
-      font-size: 0.9em;
+    .rm {
+      color: $secondary;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width: $fourth-incr) {
+        font-size: 0.9em;
+      }
+    }
+
+    .cats {
+      margin-right: 10px;
+      margin-left: 10px;
+      display: flex;
+      gap: 8px;
     }
   }
 }

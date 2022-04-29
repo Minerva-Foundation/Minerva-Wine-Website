@@ -76,9 +76,9 @@ export interface Body {
 }
 
 export interface Category {
-    _key: string;
-    _ref: string;
-    _type: string;
+    title: string,
+    description: string,
+    _id: string,
 }
 
 export interface MainImage {

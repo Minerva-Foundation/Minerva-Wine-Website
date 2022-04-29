@@ -67,7 +67,7 @@
 
           <div class="artworkWrapper">
             <CrowdCard :crowd-f="cf" />
-            <!-- <portableImage class="artwork" :asset="cf.artwork.asset" /> -->
+            <portableImage class="artwork" :asset="cf.artwork.asset" />
           </div>
         </div>
       </div>

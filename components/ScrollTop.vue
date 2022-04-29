@@ -72,21 +72,21 @@ export default Vue.extend({
   .sticky {
     pointer-events: all;
     top: calc(100vh - 130px);
-    height: 80px;
+    height: 60px;
     position: sticky;
     box-sizing: border-box;
     overflow: hidden;
     z-index: 3;
     margin-left: 35px;
-    padding-left: 27px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 5px;
     display: flex;
     align-items: center;
     cursor: pointer;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     right: 0;
-    width: 80px;
+    width: 60px;
     background-color: rgb(252, 252, 252);
     -webkit-box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
     box-shadow: -2px 2px 15px -3px rgba(0, 0, 0, 0.1);
@@ -97,7 +97,7 @@ export default Vue.extend({
     transition-timing-function: ease;
 
     &:hover {
-      width: 257px;
+      width: 210px;
     }
   }
 
@@ -109,16 +109,16 @@ export default Vue.extend({
 
   svg {
     transform: rotate(-90deg);
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     position: absolute;
   }
 
   .text {
     text-align: right;
     max-width: 210px;
-    padding-left: 55px;
-    font-size: 1.5em;
+    padding-left: 45px;
+    font-size: 1.3em;
     color: #555;
     font-family: $secondary-big-font;
     opacity: 0;

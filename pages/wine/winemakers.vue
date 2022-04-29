@@ -169,7 +169,7 @@ export default Vue.extend({
       }
 
       if (this.filterFullyInView) {
-        const winecards = this.$el.querySelector('.wineCardWrapper');
+        const winecards = this.$el.querySelector('.linkWrapper');
         if (winecards) winecards.scrollIntoView();
       }
 

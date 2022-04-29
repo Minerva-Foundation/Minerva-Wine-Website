@@ -1,6 +1,10 @@
 <template>
   <div class="wrapperWheel noselect">
-    <div class="arrowLeft" @click.prevent="scrollWheel(false)">
+    <div
+      class="arrowLeft"
+      :class="{ deactivated: cfs.length <= 1 }"
+      @click.prevent="scrollWheel(false)"
+    >
       <svg
         width="28"
         height="28"
@@ -22,6 +26,7 @@
       :style="{
         'grid-template-columns':
           'repeat(auto-fill, calc(100%/' + displayedCfs.length + '))',
+        'max-width': cfs.length <= 1 ? '1000px' : 'none',
       }"
     >
       <CrowdCard
@@ -31,7 +36,11 @@
         @infoClicked="infoClicked"
       />
     </div>
-    <div class="arrowRight" @click.prevent="scrollWheel(true)">
+    <div
+      class="arrowRight"
+      :class="{ deactivated: cfs.length <= 1 }"
+      @click.prevent="scrollWheel(true)"
+    >
       <svg
         width="28"
         height="28"
@@ -45,7 +54,7 @@
         />
       </svg>
     </div>
-    <div class="dots">
+    <div v-if="cfs.length >= 2" class="dots">
       <div
         v-for="i in cfs.length"
         :key="i"
@@ -120,7 +129,7 @@ export default Vue.extend({
   methods: {
     recalcDisplayedCfs() {
       const viewportWidth: number = window.innerWidth;
-      if (viewportWidth <= 1535 || this.cfs.length <= 1) {
+      if (viewportWidth <= 1935 || this.cfs.length <= 1) {
         this.cfsOnDisplay = 1;
       } else {
         this.cfsOnDisplay = 2;
@@ -221,6 +230,12 @@ export default Vue.extend({
       left: 100px;
       right: 0;
     }
+  }
+
+  .deactivated {
+    pointer-events: none;
+    background-color: #e2e2e2;
+    cursor: default;
   }
 
   .wheel {
