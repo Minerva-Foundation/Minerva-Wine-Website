@@ -299,10 +299,10 @@ export default Vue.extend({
       );
     },
     linkClicked() {
-      // this.linkJustClicked = true;
-      // setTimeout(() => {
-      //   this.linkJustClicked = false;
-      // }, 100);
+      this.linkJustClicked = true;
+      setTimeout(() => {
+        this.linkJustClicked = false;
+      }, 100);
 
       setTimeout(() => {
         const subMenus = this.$el.querySelectorAll('.ddCat');
@@ -492,6 +492,12 @@ li {
         a {
           margin-right: 16px !important;
           position: relative;
+        }
+
+        &:hover {
+          a::before {
+            content: none;
+          }
         }
       }
 

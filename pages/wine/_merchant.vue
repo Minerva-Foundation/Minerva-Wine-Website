@@ -13,50 +13,52 @@
       <!-- <div class="gradient"></div> -->
     </div>
     <div class="infoWrapper">
-      <div class="info">
-        <div class="mainInfo">
-          <div class="textInfo">
-            <h2 class="customh2">Welcome to</h2>
-            <span class="smallerH1">
-              <h1 class="customh1">
-                {{ merch.title }}
-              </h1>
-            </span>
-            <div class="map">
-              <portableImage
-                :asset="merch.map.asset"
-                :style="{ height: merch.links ? '90%' : '100%' }"
+      <div :style="{ 'max-width': cfs.length === 1 ? '1600px' : 'none' }">
+        <div class="info">
+          <div class="mainInfo">
+            <div class="textInfo">
+              <h2 class="customh2">Welcome to</h2>
+              <span class="smallerH1">
+                <h1 class="customh1">
+                  {{ merch.title }}
+                </h1>
+              </span>
+              <div class="map">
+                <portableImage
+                  :asset="merch.map.asset"
+                  :style="{ height: merch.links ? '90%' : '100%' }"
+                />
+                <ul v-if="merch.links" class="links">
+                  <li class="title">LINKS:</li>
+                  <li v-for="link in merch.links" :key="link._key" class="link">
+                    <a :href="link.url" target="_blank">{{ link.text }}</a>
+                  </li>
+                </ul>
+              </div>
+              <SanityContent
+                :blocks="merch.description"
+                :serializers="serializers"
               />
-              <ul v-if="merch.links" class="links">
-                <li class="title">LINKS:</li>
-                <li v-for="link in merch.links" :key="link._key" class="link">
-                  <a :href="link.url" target="_blank">{{ link.text }}</a>
-                </li>
-              </ul>
             </div>
+          </div>
+          <div v-if="merch.description2" class="additionalInfo">
             <SanityContent
-              :blocks="merch.description"
+              v-if="merch.description2"
+              class="firstAdd"
+              :style="{
+                width: merch.description3 ? '50%' : '100%',
+                'margin-right': merch.description3 ? '3vw' : '0',
+              }"
+              :blocks="merch.description2"
+              :serializers="serializers"
+            />
+            <SanityContent
+              v-if="merch.description3"
+              class="secondAdd"
+              :blocks="merch.description3"
               :serializers="serializers"
             />
           </div>
-        </div>
-        <div v-if="merch.description2" class="additionalInfo">
-          <SanityContent
-            v-if="merch.description2"
-            class="firstAdd"
-            :style="{
-              width: merch.description3 ? '50%' : '100%',
-              'margin-right': merch.description3 ? '3vw' : '0',
-            }"
-            :blocks="merch.description2"
-            :serializers="serializers"
-          />
-          <SanityContent
-            v-if="merch.description3"
-            class="secondAdd"
-            :blocks="merch.description3"
-            :serializers="serializers"
-          />
         </div>
       </div>
     </div>
