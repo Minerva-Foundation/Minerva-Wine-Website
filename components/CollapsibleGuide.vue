@@ -187,6 +187,11 @@ export default Vue.extend({
         opacity: 0;
         overflow: hidden;
         display: none;
+        text-align: justify;
+
+        @media screen and (max-width: 1500px) {
+          text-align: initial;
+        }
       }
 
       h3 {
