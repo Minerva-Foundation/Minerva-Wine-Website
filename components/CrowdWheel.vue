@@ -33,7 +33,10 @@
         v-for="cf in displayedCfs"
         :key="cf.slug.current"
         :crowd-f="cf"
-        :large="cfs.length <= 1 && windowWidth > 1400"
+        :large="
+          (cfs.length <= 1 && windowWidth > 1400) ||
+          (windowWidth < 1650 && windowWidth > 1400)
+        "
         @infoClicked="infoClicked"
       />
     </div>
@@ -133,7 +136,7 @@ export default Vue.extend({
       const viewportWidth: number = window.innerWidth;
       this.windowWidth = viewportWidth;
 
-      if (viewportWidth <= 1935 || this.cfs.length <= 1) {
+      if (viewportWidth <= 1650 || this.cfs.length <= 1) {
         this.cfsOnDisplay = 1;
       } else {
         this.cfsOnDisplay = 2;
