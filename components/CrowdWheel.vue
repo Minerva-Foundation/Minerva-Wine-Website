@@ -26,13 +26,14 @@
       :style="{
         'grid-template-columns':
           'repeat(auto-fill, calc(100%/' + displayedCfs.length + '))',
-        'max-width': cfs.length <= 1 ? '1000px' : 'none',
+        'max-width': cfs.length <= 1 ? '1140px' : 'none',
       }"
     >
       <CrowdCard
         v-for="cf in displayedCfs"
         :key="cf.slug.current"
         :crowd-f="cf"
+        :large="cfs.length <= 1 && windowWidth > 1400"
         @infoClicked="infoClicked"
       />
     </div>
@@ -92,6 +93,7 @@ export default Vue.extend({
     cfsOnDisplay: 0,
     cfIndexLeft: 0,
     arrowPressed: false,
+    windowWidth: 0,
   }),
   computed: {
     displayedCfs(): defTypes.CrowdfundBase[] {
@@ -129,6 +131,8 @@ export default Vue.extend({
   methods: {
     recalcDisplayedCfs() {
       const viewportWidth: number = window.innerWidth;
+      this.windowWidth = viewportWidth;
+
       if (viewportWidth <= 1935 || this.cfs.length <= 1) {
         this.cfsOnDisplay = 1;
       } else {

@@ -2,6 +2,7 @@
   <div
     v-if="crowdF.slug.current.substring(0, 6) !== 'filler'"
     class="wrapperCrowdCard"
+    :class="{ large: large }"
   >
     <div class="info">
       <div class="title">
@@ -72,18 +73,12 @@
               <button class="button">BUY NOW</button>
             </form>
             <NuxtLink
-              v-if="!onMerchantPage"
               :to="{
                 path: `/wine/cf/${crowdF.slug.current}`,
               }"
             >
               <button class="buttonLight"></button>
             </NuxtLink>
-            <button
-              v-else
-              class="buttonLight"
-              @click="$emit('infoClicked', crowdF.slug.current)"
-            ></button>
           </div>
           <span class="disclaimer">
             <input :id="crowdF.slug.current" type="checkbox" /><label
@@ -144,7 +139,7 @@ export default Vue.extend({
       type: Object,
       required: true,
     },
-    onMerchantPage: {
+    large: {
       type: Boolean,
       required: false,
       default: false,
@@ -280,23 +275,6 @@ export default Vue.extend({
       }
     }
 
-    .timer {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      color: #777;
-      font-size: 1.2em;
-
-      @media screen and (max-width: $third-incr) {
-        margin-top: 0px;
-        margin-bottom: 15px;
-      }
-
-      .time {
-        font-size: 1.1em;
-        color: #333;
-      }
-    }
-
     .shortInfo {
       color: #777;
       margin-bottom: 20px;
@@ -344,6 +322,23 @@ export default Vue.extend({
           }
         }
       }
+    }
+  }
+
+  .timer {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    color: #777;
+    font-size: 1.3em;
+
+    @media screen and (max-width: $third-incr) {
+      margin-top: 0px;
+      margin-bottom: 15px;
+    }
+
+    .time {
+      font-size: 1em;
+      color: #333;
     }
   }
 
@@ -620,6 +615,53 @@ export default Vue.extend({
   @media screen and (max-width: 1085px) {
     height: 0px;
     padding: 0px;
+  }
+}
+
+.large {
+  grid-template-columns: 65% 35%;
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+
+    & > * {
+      min-width: 100%;
+    }
+
+    .country {
+      position: relative;
+      top: -10px;
+    }
+
+    .meta {
+      position: relative;
+      top: -5px;
+      min-width: 40%;
+    }
+
+    .vintage,
+    .date {
+      top: -15px;
+    }
+
+    .tc {
+      top: -25px;
+    }
+  }
+
+  .rest {
+    gap: 50px;
+    position: relative;
+  }
+
+  .timer {
+    top: -30px;
+    position: relative;
   }
 }
 </style>
