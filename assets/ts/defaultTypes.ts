@@ -156,6 +156,27 @@ export interface Merchant {
     slug: Slug;
 }
 
+export interface Detail1 {
+    _key: string;
+    _type: string;
+    children: Child[];
+    markDefs: any[];
+    style: string;
+}
+
+export interface VarietyDetails {
+    _key: string;
+    acidity: number;
+    body: number;
+    bottleCount: number;
+    detail1: Detail1[];
+    detail2: Detail1[];
+    detail3: Detail1[];
+    fruitiness: number;
+    shortInfo: string;
+    variety: string;
+}
+
 export interface CrowdfundBase {
     cardImage: CardImage;
     contract: string;
@@ -177,6 +198,9 @@ export interface CrowdfundBase {
     acidity?: number;
     body?: number;
     fruitiness?: number;
+    bottleCount?: number;
+    addDetails?:  VarietyDetails[];
+    varietyFirst: string;
 }
 
 export interface CrowdfundBlockchain {

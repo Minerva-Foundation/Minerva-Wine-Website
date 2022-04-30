@@ -26,7 +26,7 @@
       :style="{
         'grid-template-columns':
           'repeat(auto-fill, calc(100%/' + displayedCfs.length + '))',
-        'max-width': cfs.length <= 1 ? '1140px !important' : 'none',
+        'max-width': cfs.length <= 1 ? '1340px !important' : 'none',
       }"
     >
       <CrowdCard
@@ -34,8 +34,8 @@
         :key="cf.slug.current"
         :crowd-f="cf"
         :large="
-          (cfs.length <= 1 && windowWidth > 1400) ||
-          (windowWidth < 1650 && windowWidth > 1400)
+          (cfs.length <= 1 && windowWidth > 1520) ||
+          (windowWidth < 1650 && windowWidth > 1520)
         "
         @infoClicked="infoClicked"
       />

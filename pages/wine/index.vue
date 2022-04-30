@@ -280,10 +280,10 @@ export default Vue.extend({
           return (
             (i >= 4 &&
               (i + 2) % 6 === 0 &&
-              arrayIndex < realThis.crowdfunds.length - 1) ||
+              arrayIndex < realThis.crowdfunds.length) ||
             (i >= 4 &&
               (i + 1) % 6 === 0 &&
-              arrayIndex < realThis.crowdfunds.length - 1)
+              arrayIndex < realThis.crowdfunds.length)
           );
         } else {
           // 3 9 15 21

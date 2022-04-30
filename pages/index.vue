@@ -677,9 +677,7 @@ p {
       }
 
       p {
-        @media screen and (max-width: 1200px) {
-          text-align: initial !important;
-        }
+        text-align: initial !important;
       }
     }
 

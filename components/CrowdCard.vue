@@ -106,7 +106,7 @@
             <span
               class="label"
               :style="{
-                right: 99 - (cfbInfo.current / cfbInfo.max) * 100 + '%',
+                right: 99.5 - (cfbInfo.current / cfbInfo.max) * 100 + '%',
               }"
               >{{ cfbInfo.current }}</span
             >
@@ -628,9 +628,14 @@ export default Vue.extend({
     align-items: flex-start;
     justify-content: flex-start;
     position: relative;
+    font-size: 1.15em;
 
     & > * {
       min-width: 100%;
+    }
+
+    .title {
+      font-size: 1.1em;
     }
 
     .country {
@@ -640,17 +645,17 @@ export default Vue.extend({
 
     .meta {
       position: relative;
-      top: -5px;
+      top: 0px;
       min-width: 40%;
     }
 
     .vintage,
     .date {
-      top: -15px;
+      top: -5px;
     }
 
     .tc {
-      top: -25px;
+      top: -10px;
     }
   }
 
@@ -660,7 +665,7 @@ export default Vue.extend({
   }
 
   .timer {
-    top: -30px;
+    top: -15px;
     position: relative;
   }
 }
