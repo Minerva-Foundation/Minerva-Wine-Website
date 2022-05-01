@@ -469,7 +469,7 @@ export default Vue.extend({
         }
 
         .shortInfo {
-          margin-top: 26px;
+          margin-top: 20px;
           margin-bottom: 30px;
         }
       }

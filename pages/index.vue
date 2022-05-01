@@ -255,7 +255,7 @@ p {
   margin-bottom: 22px;
   line-height: 33.5px;
   font-size: max(1.375rem, 16px);
-  text-align: justify !important;
+  // text-align: justify !important;
 
   @media screen and (max-width: 880px) {
     text-align: initial !important;
