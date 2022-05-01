@@ -248,7 +248,7 @@ export default Vue.extend({
   }
 
   @media screen and (max-width: 435px) {
-    padding: 25px 25px 27px 25px;
+    padding: 25px 20px 27px 20px;
   }
 
   .info {

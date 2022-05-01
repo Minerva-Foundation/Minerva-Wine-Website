@@ -1,7 +1,7 @@
 <template>
   <div class="crowdDetailsFocused">
     <CrowdCard
-      class="buyCard"
+      class="buyCard fade-in"
       :crowd-f="cf"
       :large="windowWidth > 1520"
       :on-detail-site="true"
@@ -13,7 +13,7 @@
         <!-- <h2 class="customh2">The Case</h2>
         <h1 class="customh1"></h1> -->
       </div>
-      <div class="varietyDetails">
+      <div class="varietyDetails fade-in">
         <div class="part1">
           <div class="imgWrapper">
             <img
@@ -93,7 +93,11 @@
           />
         </div>
       </div>
-      <div v-for="add in cf.addDetails" :key="add._key" class="varietyDetails">
+      <div
+        v-for="add in cf.addDetails"
+        :key="add._key"
+        class="varietyDetails fade-in"
+      >
         <div class="part1">
           <div class="imgWrapper">
             <img
@@ -282,6 +286,9 @@ export default Vue.extend({
       },
     },
   }),
+  mounted() {
+    this.addScrollAnim();
+  },
   beforeMount() {
     this.windowSizeUpdater();
     window.addEventListener('resize', this.windowSizeUpdater);
@@ -302,6 +309,36 @@ export default Vue.extend({
         behavior: 'smooth',
       });
     },
+    addScrollAnim() {
+      const faders = this.$el.querySelectorAll('.fade-in');
+      const sliders = this.$el.querySelectorAll('.slide-in');
+
+      const appearOptions = {
+        threshold: 0,
+        rootMargin: '0px 0px -120px 0px',
+      };
+
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      sliders.forEach((slider) => {
+        appearOnScroll.observe(slider);
+      });
+    },
   },
 });
 </script>
@@ -319,11 +356,7 @@ export default Vue.extend({
   @media screen and (max-width: 950px) and (min-height: 950px),
     screen and (max-width: 880px) and (min-height: 901px),
     screen and (max-width: 770px) {
-    padding: calc(34px + 3vw) 20px calc(94px + 3vw) 20px;
-  }
-
-  @media screen and (max-width: $fourth-incr) {
-    padding: calc(34px + 3vw) 0px calc(94px + 3vw) 0px;
+    padding: 3vw 0px 0 0px;
   }
 
   hr {
@@ -352,15 +385,15 @@ export default Vue.extend({
       height: auto !important;
     }
 
-    @media screen and (max-width: 1000px) and (min-height: 950px),
-      screen and (max-width: 800px) and (min-height: 901px),
-      screen and (max-width: 780px) {
-      padding: 32px 32px 35px 42px;
-    }
+    // @media screen and (max-width: 1000px) and (min-height: 950px),
+    //   screen and (max-width: 800px) and (min-height: 901px),
+    //   screen and (max-width: 780px) {
+    //   padding: 32px 32px 35px 42px;
+    // }
 
-    @media screen and (max-width: 550px) {
-      padding: 32px 32px 35px 32px;
-    }
+    // @media screen and (max-width: 550px) {
+    //   padding: 32px 32px 35px 32px;
+    // }
   }
 
   .detailsWrapper {
@@ -370,6 +403,16 @@ export default Vue.extend({
     box-sizing: border-box;
     position: relative;
     max-width: 1500px;
+
+    @media screen and (max-width: 950px) and (min-height: 950px),
+      screen and (max-width: 880px) and (min-height: 901px),
+      screen and (max-width: 770px) {
+      margin-top: 60px;
+    }
+
+    @media screen and (max-width: 565px) {
+      margin-top: 50px;
+    }
 
     .sectionTitle {
       display: flex;
@@ -398,8 +441,8 @@ export default Vue.extend({
     }
 
     @media screen and (max-width: 565px) {
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 6vw;
+      padding-right: 6vw;
       padding-bottom: 50px;
       padding-top: 70px;
     }
@@ -535,6 +578,10 @@ export default Vue.extend({
 
       p {
         text-align: justify;
+
+        @media screen and (max-width: 1060px) {
+        text-align:initial;
+        }
       }
     }
   }

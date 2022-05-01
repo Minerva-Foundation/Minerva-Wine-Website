@@ -19,7 +19,10 @@
             <div
               class="textInfo"
               :style="{
-                'padding-right': cfs.length === 1 ? '3vw !important' : '0',
+                'padding-right':
+                  cfs.length === 1 && windowWidth > 780
+                    ? '3vw !important'
+                    : '0',
               }"
             >
               <h2 class="customh2">Welcome to</h2>
@@ -52,7 +55,10 @@
               class="firstAdd"
               :style="{
                 width: merch.description3 ? '50%' : '100%',
-                'padding-right': merch.description3 ? '3vw' : '0 !important',
+                'padding-right':
+                  merch.description3 && windowWidth > 780
+                    ? '3vw'
+                    : '0 !important',
               }"
               :blocks="merch.description2"
               :serializers="serializers"
@@ -67,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div v-if="cfs.length >= 1" class="wheelWrapper fade-in">
+    <div v-if="cfs.length >= 1" class="wheelWrapper">
       <CrowdWheel
         id="buy"
         name="buy"
@@ -86,7 +92,7 @@
           ')',
       }"
     ></div>
-    <div class="quote">
+    <div class="quote fade-in">
       <span class="smallerH1">
         <h1 class="customh1">{{ merch.quote }}</h1>
       </span>
@@ -225,6 +231,7 @@ export default Vue.extend({
     merch: {} as defTypes.MerchantDetails,
     cfs: [] as defTypes.CrowdfundBase[],
     newIndex: -1 as Number,
+    windowWidth: 0,
   }),
   mounted() {
     this.addScrollAnim();
@@ -232,11 +239,17 @@ export default Vue.extend({
   },
   beforeMount() {
     window.addEventListener('scroll', this.slowerImageSCroll);
+    window.addEventListener('resize', this.windowSizeUpdater);
   },
   beforeDestroy() {
+    window.removeEventListener('resize', this.windowSizeUpdater);
     window.removeEventListener('scroll', this.slowerImageSCroll);
   },
   methods: {
+    windowSizeUpdater() {
+      const viewportWidth: number = window.innerWidth;
+      this.windowWidth = viewportWidth;
+    },
     slowerImageSCroll() {
       const slowsscrollers = this.$el.querySelectorAll('.slowscroll');
 
@@ -374,6 +387,12 @@ export default Vue.extend({
       padding: calc(44px + 5vw) 6vw calc(24px + 3vw) 7vw;
     }
 
+    @media screen and (max-width: 1000px) and (min-height: 950px),
+      screen and (max-width: 800px) and (min-height: 901px),
+      screen and (max-width: 780px) {
+      padding: calc(44px + 5vw) 6vw calc(24px + 3vw) 6vw;
+    }
+
     .info {
       width: 100%;
       max-width: 1600px;
@@ -417,6 +436,7 @@ export default Vue.extend({
             screen and (max-width: 780px) {
             display: flex;
             flex-direction: column;
+            padding-right: 0 !important;
           }
 
           .smallerH1 {
