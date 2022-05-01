@@ -37,7 +37,6 @@
           (cfs.length <= 1 && windowWidth > 1520) ||
           (windowWidth < 1650 && windowWidth > 1520)
         "
-        @infoClicked="infoClicked"
       />
     </div>
     <div

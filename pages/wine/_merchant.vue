@@ -622,7 +622,7 @@ export default Vue.extend({
   }
 
   .quote {
-    padding: min(11vw, 180px) calc(4vw + 20px) min(11vw, 180px) calc(4vw + 20px);
+    padding: min(11vw, 160px) calc(4vw + 20px) min(11vw, 180px) calc(4vw + 20px);
     box-sizing: border-box;
     display: flex;
     justify-content: center;

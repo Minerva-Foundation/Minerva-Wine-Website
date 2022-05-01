@@ -22,23 +22,23 @@
       </div>
       <!-- <span class="shortInfo"> </span> -->
       <div class="variety meta">
-        <span class="catName">Variety:</span
+        <span class="catName">Variety</span
         ><span class="infoItem">{{ crowdF.variety }}</span>
       </div>
       <div class="type meta">
-        <span class="catName">Type:</span
+        <span class="catName">Type</span
         ><span class="infoItem">{{ crowdF.type }}</span>
       </div>
       <div class="vintage meta">
-        <span class="catName">Vintage:</span
+        <span class="catName">Vintage</span
         ><span class="infoItem">{{ crowdF.vintage }}</span>
       </div>
       <div class="date meta">
-        <span class="catName">Delivery Snapshot Date:</span
+        <span class="catName">Delivery Snapshot Date</span
         ><span class="infoItem">{{ crowdF.date }}</span>
       </div>
       <div class="tc meta">
-        <span class="catName">Delivery Information:</span
+        <span class="catName">Terms & Conditions</span
         ><span class="infoItem">{{ crowdF.tc }}</span>
       </div>
       <div class="timer">
@@ -73,12 +73,16 @@
               <button class="button">BUY NOW</button>
             </form>
             <NuxtLink
+              v-if="!onDetailSite"
               :to="{
                 path: `/wine/cf/${crowdF.slug.current}`,
               }"
             >
               <button class="buttonLight"></button>
             </NuxtLink>
+            <a v-else @click="$emit('infoClicked')">
+              <button class="buttonLight"></button
+            ></a>
           </div>
           <span class="disclaimer">
             <input :id="crowdF.slug.current" type="checkbox" /><label
@@ -140,6 +144,11 @@ export default Vue.extend({
       required: true,
     },
     large: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    onDetailSite: {
       type: Boolean,
       required: false,
       default: false,

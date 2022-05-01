@@ -1,7 +1,13 @@
 <template>
   <div class="crowdDetailsFocused">
-    <CrowdCard class="buyCard" :crowd-f="cf" :large="windowWidth > 1520" />
-    <div class="detailsWrapper">
+    <CrowdCard
+      class="buyCard"
+      :crowd-f="cf"
+      :large="windowWidth > 1520"
+      :on-detail-site="true"
+      @infoClicked="scrollTo('firstDetail')"
+    />
+    <div id="firstDetail" class="detailsWrapper">
       <hr />
       <div class="sectionTitle">
         <!-- <h2 class="customh2">The Case</h2>
@@ -23,7 +29,7 @@
 
           <div class="textInfo">
             <span class="variety">{{
-              cf.bottleCount + '/6  ' + cf.varietyFirst
+              (cf.bottleCount ? cf.bottleCount : '6') + '/6  ' + cf.varietyFirst
             }}</span>
             <p class="shortInfo">{{ cf.shortInfo }}</p>
           </div>
@@ -87,87 +93,88 @@
           />
         </div>
       </div>
-    </div>
-    <div v-for="add in cf.addDetails" :key="add._key" class="varietyDetails">
-      <div class="part1">
-        <div class="imgWrapper">
-          <img
-            :src="
-              require('../../../static/images/bottles_' +
-                (add.bottleCount ? add.bottleCount : '6') +
-                '.jpg')
-            "
-            alt=""
-            class="countImg"
+      <div v-for="add in cf.addDetails" :key="add._key" class="varietyDetails">
+        <div class="part1">
+          <div class="imgWrapper">
+            <img
+              :src="
+                require('../../../static/images/bottles_' +
+                  (add.bottleCount ? add.bottleCount : '6') +
+                  '.jpg')
+              "
+              alt=""
+              class="countImg"
+            />
+          </div>
+          <div class="textInfo">
+            <span class="variety">{{
+              add.bottleCount + '/6  ' + add.variety
+            }}</span>
+            <p class="shortInfo">{{ add.shortInfo }}</p>
+          </div>
+          <div class="stats">
+            <div class="progressWrapper">
+              BODY
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: add.body + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+            <div class="progressWrapper">
+              ACIDITY
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: add.acidity + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+            <div class="progressWrapper">
+              FRUITINESS
+              <div class="progressBar">
+                <span
+                  class="value"
+                  :style="{
+                    width: add.fruitiness + '%',
+                  }"
+                >
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="part2">
+          <SanityContent
+            v-if="add.detail1"
+            class="detail"
+            :blocks="add.detail1"
+            :serializers="serializers"
+          />
+          <SanityContent
+            v-if="add.detail2"
+            class="detail"
+            :blocks="add.detail2"
+            :serializers="serializers"
+          />
+          <SanityContent
+            v-if="add.detail3"
+            class="detail"
+            :blocks="add.detail3"
+            :serializers="serializers"
           />
         </div>
-        <div class="textInfo">
-          <span class="variety">{{
-            add.bottleCount + '/6  ' + add.variety
-          }}</span>
-          <p class="shortInfo">{{ add.shortInfo }}</p>
-        </div>
-        <div class="stats">
-          <div class="progressWrapper">
-            BODY
-            <div class="progressBar">
-              <span
-                class="value"
-                :style="{
-                  width: add.body + '%',
-                }"
-              >
-              </span>
-            </div>
-          </div>
-          <div class="progressWrapper">
-            ACIDITY
-            <div class="progressBar">
-              <span
-                class="value"
-                :style="{
-                  width: add.acidity + '%',
-                }"
-              >
-              </span>
-            </div>
-          </div>
-          <div class="progressWrapper">
-            FRUITINESS
-            <div class="progressBar">
-              <span
-                class="value"
-                :style="{
-                  width: add.fruitiness + '%',
-                }"
-              >
-              </span>
-            </div>
-          </div>
-        </div>
+        <hr />
       </div>
-      <div class="part2">
-        <SanityContent
-          v-if="add.detail1"
-          class="detail"
-          :blocks="add.detail1"
-          :serializers="serializers"
-        />
-        <SanityContent
-          v-if="add.detail2"
-          class="detail"
-          :blocks="add.detail2"
-          :serializers="serializers"
-        />
-        <SanityContent
-          v-if="add.detail3"
-          class="detail"
-          :blocks="add.detail3"
-          :serializers="serializers"
-        />
-      </div>
-      <hr />
     </div>
+
     <ScrollTop />
   </div>
   <!-- <div class="wrapper">
@@ -287,6 +294,14 @@ export default Vue.extend({
       const viewportWidth: number = window.innerWidth;
       this.windowWidth = viewportWidth;
     },
+    scrollTo(id: String) {
+      const el = document.querySelector('#' + id) as HTMLElement;
+
+      window.scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth',
+      });
+    },
   },
 });
 </script>
@@ -304,23 +319,23 @@ export default Vue.extend({
   @media screen and (max-width: 950px) and (min-height: 950px),
     screen and (max-width: 880px) and (min-height: 901px),
     screen and (max-width: 770px) {
-    padding: calc(34px + 3vw) 50px calc(94px + 3vw) 60px;
+    padding: calc(34px + 3vw) 20px calc(94px + 3vw) 20px;
   }
 
   @media screen and (max-width: $fourth-incr) {
-    padding: calc(34px + 3vw) 20px calc(94px + 3vw) 25px;
+    padding: calc(34px + 3vw) 0px calc(94px + 3vw) 0px;
   }
 
   hr {
     position: absolute;
     top: 0;
     height: 1px;
-    left: 0;
+    left: 0px;
     right: 0;
     margin: auto;
     color: #dadada;
     background-color: #dadada;
-    width: 85%;
+    width: 100%;
     border-width: 0px;
 
     @media screen and (max-width: $fourth-incr) {
@@ -330,7 +345,22 @@ export default Vue.extend({
 
   .buyCard {
     max-width: 1400px;
+    width: 100%;
     border: none;
+
+    @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+      height: auto !important;
+    }
+
+    @media screen and (max-width: 1000px) and (min-height: 950px),
+      screen and (max-width: 800px) and (min-height: 901px),
+      screen and (max-width: 780px) {
+      padding: 32px 32px 35px 42px;
+    }
+
+    @media screen and (max-width: 550px) {
+      padding: 32px 32px 35px 32px;
+    }
   }
 
   .detailsWrapper {
@@ -339,6 +369,7 @@ export default Vue.extend({
     padding-top: 50px;
     box-sizing: border-box;
     position: relative;
+    max-width: 1500px;
 
     .sectionTitle {
       display: flex;
@@ -355,16 +386,39 @@ export default Vue.extend({
 
   .varietyDetails {
     padding-top: 100px;
-    padding-right: 100px;
     padding-bottom: 100px;
     box-sizing: border-box;
     position: relative;
 
+    @media screen and (max-width: 950px) and (min-height: 950px),
+      screen and (max-width: 880px) and (min-height: 901px),
+      screen and (max-width: 770px) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @media screen and (max-width: 565px) {
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+      padding-top: 70px;
+    }
+
     .part1 {
       display: grid;
-      grid-template-columns: 30% 70%;
-      grid-template-rows: 50% 50%;
-      height: 450px;
+      grid-template-columns: 405px calc(100% - 405px);
+      grid-template-rows: calc(100% - 180px) 180px;
+
+      @media screen and (max-width: 950px) and (min-height: 950px),
+        screen and (max-width: 880px) {
+        grid-column: 1;
+        grid-row: 2;
+        grid-template-columns: 200px calc(100% - 200px);
+      }
+
+      @media screen and (max-width: 450px) {
+        grid-template-columns: 140px calc(100% - 140px);
+      }
 
       .imgWrapper {
         grid-column: 1;
@@ -378,8 +432,20 @@ export default Vue.extend({
         padding-right: 50px;
         box-sizing: border-box;
 
+        @media screen and (max-width: 950px) and (min-height: 950px),
+          screen and (max-width: 880px) {
+          grid-column: 1;
+          grid-row: 2;
+          padding-right: 40px;
+        }
+
+        @media screen and (max-width: 450px) {
+          padding-right: 10px;
+        }
+
         .countImg {
-          height: 90%;
+          width: 100%;
+          height: 100%;
           object-fit: contain;
         }
       }
@@ -387,6 +453,13 @@ export default Vue.extend({
       .textInfo {
         grid-column: 2;
         grid-row: 1;
+
+        @media screen and (max-width: 950px) and (min-height: 950px),
+          screen and (max-width: 880px) {
+          grid-column-start: 1;
+          grid-column-end: span 2;
+          grid-row: 1;
+        }
 
         .variety {
           font-size: 2.875em;
@@ -397,6 +470,7 @@ export default Vue.extend({
 
         .shortInfo {
           margin-top: 26px;
+          margin-bottom: 30px;
         }
       }
 
@@ -407,8 +481,19 @@ export default Vue.extend({
         flex-direction: column;
         justify-content: space-evenly;
 
+        @media screen and (max-width: 950px) and (min-height: 950px),
+          screen and (max-width: 880px) {
+          grid-column: 2;
+          grid-row: 2;
+        }
+
         .progressWrapper {
           margin-bottom: 30px;
+
+          @media screen and (max-width: 950px) and (min-height: 950px),
+            screen and (max-width: 880px) {
+            margin-bottom: 10px;
+          }
 
           .progressBar {
             margin-top: 5px;
@@ -431,212 +516,25 @@ export default Vue.extend({
 
     .part2 {
       margin-top: 80px;
-      padding-left: calc(30% - 400px);
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 4%;
+
+      @media screen and (max-width: 565px) {
+        margin-top: 40px;
+      }
+
+      & > * {
+        flex: 1 0 max(30%, 450px);
+        margin-bottom: 30px;
+
+        @media screen and (max-width: 565px) {
+          flex: 1 0 100%;
+        }
+      }
 
       p {
         text-align: justify;
-      }
-    }
-  }
-
-  .wrapper {
-    padding-top: 50px;
-  }
-
-  h1 {
-    font-size: 6em;
-    width: 45%;
-
-    @media screen and (max-width: 1500px) and (min-height: 950px),
-      screen and (max-width: 1400px) and (min-height: 901px),
-      screen and (max-width: 1300px) {
-      width: 55%;
-    }
-
-    @media screen and (max-width: 1300px) and (min-height: 950px),
-      screen and (max-width: 1200px) and (min-height: 901px),
-      screen and (max-width: 1100px) {
-      width: 100%;
-    }
-  }
-
-  .mainInfo {
-    display: grid;
-    grid-template-columns: 50% 41%;
-    column-gap: 6vw;
-    max-width: 1600px;
-
-    @media screen and (max-width: 1500px) and (min-height: 950px),
-      screen and (max-width: 1400px) and (min-height: 901px),
-      screen and (max-width: 1300px) {
-      grid-template-columns: 55% 35%;
-    }
-
-    @media screen and (max-width: 1300px) and (min-height: 950px),
-      screen and (max-width: 1200px) and (min-height: 901px),
-      screen and (max-width: 1100px) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .textWrapper {
-      display: flex;
-      flex-direction: column;
-
-      .vintage {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-
-        button {
-          min-width: 0;
-          padding-left: 26px;
-          padding-right: 26px;
-          height: 59px !important;
-          font-size: 1em;
-          margin-left: 30px;
-
-          @media screen and (max-width: 1330px),
-            screen and (max-height: 950px) {
-            height: 52px !important;
-          }
-
-          @media screen and (max-width: 1180px),
-            screen and (max-height: 900px) {
-            height: 49px !important;
-          }
-
-          @media screen and (max-width: $third-incr) {
-            height: 42px !important;
-          }
-
-          @media screen and (max-width: 525px) {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-            min-width: 0 !important;
-            min-height: 0 !important;
-          }
-        }
-      }
-
-      .detail {
-        margin-top: 50px;
-
-        @media screen and (max-width: 700px) {
-          margin-top: 20px;
-        }
-      }
-    }
-
-    .sideInfo {
-      display: flex;
-      flex-direction: column;
-
-      @media screen and (max-width: 1300px) and (min-height: 950px),
-        screen and (max-width: 1200px) and (min-height: 901px),
-        screen and (max-width: 1100px) {
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 5vw;
-      }
-
-      @media screen and (max-width: $fourth-incr) {
-        flex-direction: column;
-      }
-
-      h3 {
-        margin-bottom: 30px;
-        margin-top: 20px;
-      }
-
-      .profile {
-        @media screen and (max-width: 1300px) and (min-height: 950px),
-          screen and (max-width: 1200px) and (min-height: 901px),
-          screen and (max-width: 1100px) {
-          width: 50%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        @media screen and (max-width: 670px) {
-          width: 45%;
-        }
-
-        @media screen and (max-width: 600px) {
-          width: 42%;
-        }
-
-        @media screen and (max-width: $fourth-incr) {
-          width: 100%;
-        }
-
-        .progressWrapper {
-          margin-bottom: 30px;
-
-          .progressBar {
-            margin-top: 5px;
-            width: 100%;
-            border-radius: 0;
-            height: 5px;
-            position: relative;
-            background-color: #e9e9e9;
-            display: flex;
-
-            .value {
-              height: 100%;
-              background-color: $secondary;
-              display: inline-block;
-            }
-          }
-        }
-      }
-
-      .artworkWrapper {
-        width: 100%;
-        height: 70%;
-        margin-top: 20px;
-
-        @media screen and (max-width: 1300px) and (min-height: 950px),
-          screen and (max-width: 1200px) and (min-height: 901px),
-          screen and (max-width: 1100px) {
-          width: 40%;
-        }
-
-        @media screen and (max-width: 670px) {
-          width: 45%;
-        }
-
-        @media screen and (max-width: 600px) {
-          width: 49%;
-        }
-
-        @media screen and (max-width: $fourth-incr) {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        }
-
-        .wrapperCrowdCard {
-          border-top: 1px solid #cccccc;
-          border-left: 1px solid #cccccc;
-        }
-
-        .artwork {
-          height: 100%;
-
-          @media screen and (max-width: $fourth-incr) {
-            width: 95%;
-          }
-
-          img {
-            object-fit: contain;
-            width: 100%;
-          }
-        }
       }
     }
   }
