@@ -369,11 +369,11 @@ export default Vue.extend({
       }
 
       @media screen and (max-width: $fourth-incr) {
-        padding-top: 100px;
+        padding-top: 50px;
       }
 
       @media screen and (max-width: $fifth-incr) {
-        padding-top: 50px;
+        padding-top: 30px;
       }
 
       .articleh1 {

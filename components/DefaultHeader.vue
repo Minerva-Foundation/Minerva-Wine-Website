@@ -240,13 +240,13 @@ export default Vue.extend({
   }),
   computed: {
     currentPath() {
-      const regexp = /\/(.*)\//g;
+      const regexp = /\/(\w*)\//g;
       let arr: RegExpExecArray | null = regexp.exec(this.$nuxt.$route.path);
 
       if (arr) {
         return arr[1].toUpperCase();
       } else {
-        const regexp = /\/(.*)/g;
+        const regexp = /\/(\w.*)/g;
         arr = regexp.exec(this.$nuxt.$route.path);
         if (arr && arr[1] !== '') {
           return arr[1].toUpperCase();
@@ -714,6 +714,7 @@ li {
         position: relative;
         z-index: 2;
         cursor: pointer;
+        width: fit-content;
 
         * {
           padding: 0;
