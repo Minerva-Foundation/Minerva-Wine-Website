@@ -28,9 +28,7 @@
           </div>
 
           <div class="textInfo">
-            <span class="variety">{{
-              (cf.bottleCount ? cf.bottleCount : '6') + '/6  ' + cf.varietyFirst
-            }}</span>
+            <span class="variety">{{ cf.varietyFirst }}</span>
             <p class="shortInfo">{{ cf.shortInfo }}</p>
           </div>
           <div class="stats">
@@ -111,9 +109,7 @@
             />
           </div>
           <div class="textInfo">
-            <span class="variety">{{
-              add.bottleCount + '/6  ' + add.variety
-            }}</span>
+            <span class="variety">{{ add.variety }}</span>
             <p class="shortInfo">{{ add.shortInfo }}</p>
           </div>
           <div class="stats">
@@ -347,7 +343,7 @@ export default Vue.extend({
 .crowdDetailsFocused {
   background-color: white;
   color: #333;
-  padding: calc(64px + 3vw) 60px calc(144px + 3vw) 60px;
+  padding: calc(64px + 3vw) 60px calc(64px + 3vw) 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,7 +373,7 @@ export default Vue.extend({
   }
 
   .buyCard {
-    max-width: 1400px;
+    max-width: 1500px;
     width: 100%;
     border: none;
 
@@ -398,8 +394,8 @@ export default Vue.extend({
 
   .detailsWrapper {
     width: 100%;
-    margin-top: 100px;
-    padding-top: 50px;
+    margin-top: 80px;
+    padding-top: 80px;
     box-sizing: border-box;
     position: relative;
     max-width: 1500px;

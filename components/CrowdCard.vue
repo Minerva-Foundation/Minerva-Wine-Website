@@ -43,7 +43,7 @@
       </div>
       <div class="timer">
         <span class="timerLabel">{{
-          ended ? 'ENDED' : started ? 'TIME LEFT:' : 'STARTS IN:'
+          ended ? 'ENDED' : started ? 'TIME LEFT' : 'STARTS IN'
         }}</span
         ><span class="time">
           {{ ended ? '' : started ? timeLeft : timeToStart }}</span
@@ -650,6 +650,7 @@ export default Vue.extend({
     .country {
       position: relative;
       top: -10px;
+      font-size: 1.1em;
     }
 
     .meta {
@@ -660,11 +661,11 @@ export default Vue.extend({
 
     .vintage,
     .date {
-      top: -5px;
+      top: 0px;
     }
 
     .tc {
-      top: -10px;
+      top: 0px;
     }
   }
 
@@ -674,8 +675,15 @@ export default Vue.extend({
   }
 
   .timer {
-    top: -15px;
+    top: 10px;
     position: relative;
+    display: flex;
+    height: 28px;
+    flex-direction: column;
+  }
+
+  .progressBar {
+    height: 6px !important;
   }
 }
 </style>

@@ -48,7 +48,7 @@ export default Vue.extend({
       const scrollElm = document.scrollingElement?.scrollTop;
       const windowHeight = window.innerHeight;
 
-      if (scrollElm && scrollElm >= 1 * windowHeight) {
+      if (scrollElm && scrollElm >= 0.7 * windowHeight) {
         this.sttVis = true;
       } else {
         this.sttVis = false;
