@@ -1,31 +1,12 @@
 <template>
   <div class="crowdDetailsFocused">
-    <!-- <CrowdCard
+    <CrowdCard
       class="buyCard"
       :crowd-f="cf"
       :large="windowWidth > 1520"
       :on-detail-site="true"
       @infoClicked="scrollTo('firstDetail')"
-    /> -->
-    <div class="buySection">
-      <CrowdCard
-        class="buyCard"
-        :crowd-f="cf"
-        :on-detail-site="true"
-        @infoClicked="scrollTo('firstDetail')"
-      />
-      <div class="detailImage">
-        <div
-          :style="{
-            backgroundImage:
-              'url(' +
-              require('../../../static/images/kumusha_detail.jpeg') +
-              ')',
-          }"
-          class="slowscroll"
-        ></div>
-      </div>
-    </div>
+    />
     <div id="firstDetail" class="detailsWrapper">
       <hr />
       <div class="sectionTitle">
@@ -47,7 +28,9 @@
           </div>
 
           <div class="textInfo">
-            <span class="variety">{{ cf.varietyFirst }}</span>
+            <span class="variety">{{
+              (cf.bottleCount ? cf.bottleCount : '6') + '/6  ' + cf.varietyFirst
+            }}</span>
             <p class="shortInfo">{{ cf.shortInfo }}</p>
           </div>
           <div class="stats">
@@ -128,7 +111,9 @@
             />
           </div>
           <div class="textInfo">
-            <span class="variety">{{ add.variety }}</span>
+            <span class="variety">{{
+              add.bottleCount + '/6  ' + add.variety
+            }}</span>
             <p class="shortInfo">{{ add.shortInfo }}</p>
           </div>
           <div class="stats">
@@ -303,16 +288,13 @@ export default Vue.extend({
   }),
   mounted() {
     this.addScrollAnim();
-    this.slowerImageSCroll();
   },
   beforeMount() {
     this.windowSizeUpdater();
     window.addEventListener('resize', this.windowSizeUpdater);
-    window.addEventListener('scroll', this.slowerImageSCroll);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.windowSizeUpdater);
-    window.removeEventListener('scroll', this.slowerImageSCroll);
   },
   methods: {
     windowSizeUpdater() {
@@ -357,44 +339,6 @@ export default Vue.extend({
         appearOnScroll.observe(slider);
       });
     },
-    slowerImageSCroll() {
-      const slowsscrollers = this.$el.querySelectorAll('.slowscroll');
-
-      slowsscrollers.forEach((entry) => {
-        const target = entry as HTMLElement;
-        if (target) {
-          const offset = 1;
-          // const viewportWidth: number = window.innerWidth;
-
-          // For respecting aspect ratio between stated widths to not repeat image on top or bottom
-          // if (viewportWidth <= 1583 && viewportWidth >= 1298) {
-          //   offset = 0.0035087719298246 * viewportWidth - 4.5543859649123;
-          // }
-
-          // Between that not/hardly possible without next image bars
-          // if (viewportWidth >= 1298 || viewportWidth <= 530) {
-
-          const scrolltotop = target.getBoundingClientRect().top;
-          const xvalue = 'center';
-          const factor = 0.1;
-          let yvalue = scrolltotop * factor;
-
-          // 50% for center y-axis
-          // Somehow css doesn't like double negation
-          if (yvalue < 1 && yvalue > -1) {
-            target.style.backgroundPosition =
-              xvalue + ' ' + 'calc(-' + yvalue * offset + 'px + 40%)';
-          } else {
-            yvalue = -yvalue;
-            target.style.backgroundPosition =
-              xvalue + ' ' + 'calc(' + yvalue * offset + 'px + 40%)';
-          }
-          // } else {
-          //   target.style.backgroundPosition = 'center';
-          // }
-        }
-      });
-    },
   },
 });
 </script>
@@ -432,44 +376,24 @@ export default Vue.extend({
     }
   }
 
-  .buySection {
-    max-width: 1500px;
+  .buyCard {
+    max-width: 1400px;
     width: 100%;
-    display: flex;
+    border: none;
 
-    .buyCard {
-      border: none;
-
-      @media screen and (max-width: 1330px), screen and (max-height: 950px) {
-        height: auto !important;
-      }
-
-      // @media screen and (max-width: 1000px) and (min-height: 950px),
-      //   screen and (max-width: 800px) and (min-height: 901px),
-      //   screen and (max-width: 780px) {
-      //   padding: 32px 32px 35px 42px;
-      // }
-
-      // @media screen and (max-width: 550px) {
-      //   padding: 32px 32px 35px 32px;
-      // }
+    @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+      height: auto !important;
     }
 
-    .detailImage {
-      padding: 45px;
-      padding-bottom: 40px;
-      padding-right: 0;
-      box-sizing: border-box;
-      height: 730px;
-      width: 720px;
+    // @media screen and (max-width: 1000px) and (min-height: 950px),
+    //   screen and (max-width: 800px) and (min-height: 901px),
+    //   screen and (max-width: 780px) {
+    //   padding: 32px 32px 35px 42px;
+    // }
 
-      .slowscroll {
-        width: 100%;
-        height: 100%;
-        background-size: auto 108%;
-        background-attachment: scroll;
-      }
-    }
+    // @media screen and (max-width: 550px) {
+    //   padding: 32px 32px 35px 32px;
+    // }
   }
 
   .detailsWrapper {
