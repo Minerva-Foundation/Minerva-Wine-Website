@@ -278,7 +278,7 @@ export default Vue.extend({
       .linkArrow {
         font-size: 1.2em;
         position: absolute;
-        top: 15px;
+        bottom: 12px;
         margin-left: 5px;
         color: #777;
       }
