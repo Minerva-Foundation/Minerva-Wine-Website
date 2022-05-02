@@ -127,9 +127,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { WalletController } from '@terra-money/wallet-controller';
 import * as defTypes from '~/assets/ts/defaultTypes';
-import { initController, getController } from '~/assets/ts/walletController';
 import { getBaseCrowdfundInfo } from '~/assets/ts/saleApiFunctions';
 
 export default Vue.extend({
@@ -140,7 +138,6 @@ export default Vue.extend({
     return { crowdfunds };
   },
   data: () => ({
-    walletController: {} as WalletController,
     typeFilters: [] as string[],
     countryFilters: [] as string[],
     vintageFilters: [] as string[],
@@ -206,16 +203,6 @@ export default Vue.extend({
 
     const x = this.$el.querySelector('.wrapperSticky');
     if (x) testFullViewFilter.observe(x);
-  },
-  created() {
-    // Init WalletController if not done yet
-    if (getController() === undefined) {
-      initController().then(() => {
-        this.walletController = getController() as WalletController;
-      });
-    } else {
-      this.walletController = getController() as WalletController;
-    }
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.calcVisibleCrowdfunds);

@@ -7,6 +7,7 @@
     />
     <Nuxt class="main" />
     <DefaultFooter class="footer" />
+    <InputsConnectWalletWindow />
   </div>
 </template>
 

@@ -1,10 +1,24 @@
 <template>
-  <button class="button">CONNECT WALLET</button>
+  <button class="button" @click.stop="makeWalletWindowVisible">
+    CONNECT WALLET
+  </button>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
+
+export default Vue.extend({
+  methods: {
+    makeWalletWindowVisible() {
+      toggleWalletWindowVisibility(true);
+    },
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .button {
-  cursor: default;
   font-size: 14px !important;
   height: 54px;
 

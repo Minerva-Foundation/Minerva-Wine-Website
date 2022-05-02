@@ -3,6 +3,7 @@
     <DefaultHeader :class="{ shadow: scrolled }" class="header" />
     <Nuxt class="main" />
     <DefaultFooter />
+    <InputsConnectWalletWindow />
   </div>
 </template>
 
