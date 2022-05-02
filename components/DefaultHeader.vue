@@ -37,7 +37,7 @@
             <ul class="subLinks" :class="{ subLinksTrans: transSublinks }">
               <li>
                 <NuxtLink to="/wine" @click.native="linkClicked"
-                  >Buy Wine</NuxtLink
+                  >Sales</NuxtLink
                 >
               </li>
               <li>
@@ -156,7 +156,7 @@
             <ul class="subLinks">
               <li @click="mobileMenuVis = false">
                 <NuxtLink to="/wine" @click.native="linkClicked"
-                  >Buy Wine</NuxtLink
+                  >Sales</NuxtLink
                 >
               </li>
               <li @click="mobileMenuVis = false">

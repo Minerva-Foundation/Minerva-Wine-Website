@@ -222,7 +222,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-$filerMobile: 1714px;
+$filerMobile: 0px;
 
 .clubHeader {
   position: relative;

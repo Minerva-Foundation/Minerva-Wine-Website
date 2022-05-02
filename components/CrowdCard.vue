@@ -2,7 +2,7 @@
   <div
     v-if="crowdF.slug.current.substring(0, 6) !== 'filler'"
     class="wrapperCrowdCard"
-    :class="{ large: large }"
+    :class="{ large: large, soonCard: crowdF.soon }"
   >
     <div class="info">
       <div class="title">
@@ -23,25 +23,39 @@
       <!-- <span class="shortInfo"> </span> -->
       <div class="variety meta">
         <span class="catName">Variety</span
-        ><span class="infoItem">{{ crowdF.variety }}</span>
+        ><span class="infoItem">{{
+          crowdF.soon ? '...' : crowdF.variety
+        }}</span>
       </div>
       <div class="type meta">
         <span class="catName">Type</span
-        ><span class="infoItem">{{ crowdF.type }}</span>
+        ><span class="infoItem">{{ crowdF.soon ? '...' : crowdF.type }}</span>
       </div>
       <div class="vintage meta">
         <span class="catName">Vintage</span
-        ><span class="infoItem">{{ crowdF.vintage }}</span>
+        ><span class="infoItem">{{
+          crowdF.soon ? '...' : crowdF.vintage
+        }}</span>
       </div>
       <div class="date meta">
         <span class="catName">Delivery Snapshot Date</span
-        ><span class="infoItem">{{ crowdF.date }}</span>
+        ><span class="infoItem">{{ crowdF.soon ? '...' : crowdF.date }}</span>
       </div>
       <div class="tc meta">
-        <span class="catName">Terms & Conditions</span
-        ><span class="infoItem">{{ crowdF.tc }}</span>
+        <span class="catName">Terms & Conditions</span>
+        <a
+          :href="crowdF.tc"
+          target="_blank"
+          :title="crowdF.tc"
+          class="infoItem tcEllipsis"
+        >
+          <div v-if="!crowdF.soon">https://ww</div>
+          <div class="fileName">
+            {{ crowdF.soon ? '...' : crowdF.tc }}
+          </div>
+        </a>
       </div>
-      <div class="timer">
+      <div v-if="!crowdF.soon" class="timer">
         <span class="timerLabel">{{
           ended ? 'ENDED' : started ? 'TIME LEFT' : 'STARTS IN'
         }}</span
@@ -58,7 +72,12 @@
         :alt="crowdF.merchant.title + ' Crowdloan Thumbnail'"
       />
     </div>
-    <div class="crowdInfo">
+    <div v-if="crowdF.soon" class="soonText">
+      COMING SOON<span class="smaller"
+        >Quality Wines<img src="~static/images/torch.svg" alt="Minerva logo"
+      /></span>
+    </div>
+    <div v-if="!crowdF.soon" class="crowdInfo">
       <div class="rest">
         <div class="purchaseInfo">
           <span class="case">Case Of 6 Bottles</span>
@@ -88,10 +107,7 @@
             <input :id="crowdF.slug.current" type="checkbox" /><label
               :for="crowdF.slug.current"
               >By buying you agree to the
-              <a
-                href="https://docs.minerva.market/legal-documents/minerva-privacy-policy"
-                target="_blank"
-                >Terms and Conditions</a
+              <a :href="crowdF.tc" target="_blank">Terms and Conditions</a
               >.<br />Delivery included in price</label
             >
           </span>
@@ -161,6 +177,7 @@ export default Vue.extend({
     timeToStart: '' as string,
     started: false,
     ended: true,
+    tcFileName: '',
   }),
   async fetch() {
     const temp = await getCrowdfundBlockchainData('asdasd');
@@ -293,6 +310,22 @@ export default Vue.extend({
     .infoItem {
       font-size: 1.05em;
       color: #333;
+    }
+
+    .tc {
+      .infoItem {
+        display: flex;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 58%;
+
+        .fileName {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          direction: rtl;
+          margin-left: -1px;
+        }
+      }
     }
 
     .meta {
@@ -684,6 +717,76 @@ export default Vue.extend({
 
   .progressBar {
     height: 6px !important;
+  }
+}
+
+.soonCard {
+  // grid-template-rows: 100%;
+  position: relative;
+
+  .soonText {
+    grid-area: crowdInfo;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    color: #777;
+    font-family: $standard-big-font;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 1085px) {
+      padding-top: 50px;
+    }
+
+    @media screen and (max-width: 450px) {
+      font-size: 2.8em;
+    }
+
+    .smaller {
+      font-size: 0.25em;
+      display: flex;
+      justify-content: center;
+
+      @media screen and (max-width: 450px) {
+        font-size: 0.4em;
+      }
+
+      img {
+        margin-left: 7px;
+        margin-top: -1px;
+        height: 17px;
+        filter: invert(46%) sepia(0%) saturate(1258%) hue-rotate(193deg)
+          brightness(102%) contrast(105%);
+
+        @media screen and (max-width: 450px) {
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  .info {
+    // justify-content: flex-end;
+
+    // .title {
+    //   position: absolute;
+    //   top: 0px;
+    //   padding-top: 45px;
+
+    //   @media screen and (max-width: 525px) {
+    //     padding-top: 32px;
+    //   }
+
+    //   @media screen and (max-width: 435px) {
+    //     padding-top: 25px;
+    //   }
+    // }
+
+    // .country {
+    //   position: absolute;
+    //   top: 105px;
+    // }
   }
 }
 </style>

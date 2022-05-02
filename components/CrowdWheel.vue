@@ -272,6 +272,14 @@ export default Vue.extend({
       }
     }
 
+    & > div:only-child {
+      .soonText {
+        @media screen and (max-width: 1330px) {
+          padding-top: 50px;
+        }
+      }
+    }
+
     & > * {
       border-bottom-width: 0px;
 

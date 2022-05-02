@@ -3,7 +3,7 @@
     <CrowdCard
       class="buyCard"
       :crowd-f="cf"
-      :large="windowWidth > 1520"
+      :large="windowWidth > 1450"
       :on-detail-site="true"
       @infoClicked="scrollTo('firstDetail')"
     />
@@ -15,8 +15,13 @@
       </div>
       <div class="varietyDetails fade-in">
         <div class="part1">
-          <div class="imgWrapper">
-            <img
+          <div
+            class="imgWrapper"
+            :style="{
+              'margin-left': cf.bottleimage ? 'none' : '0 !important',
+            }"
+          >
+            <!-- <img
               :src="
                 require('../../../static/images/bottles_' +
                   (cf.bottleCount ? cf.bottleCount : '6') +
@@ -24,14 +29,36 @@
               "
               alt=""
               class="countImg"
+            /> -->
+            <img
+              :src="
+                cf.bottleimage
+                  ? urlFor(cf.bottleimage.asset).url() +
+                    '?w=800&h=800&fit=fill&bg=ff00'
+                  : require('../../../static/images/bottles_' +
+                      (cf.bottleCount ? cf.bottleCount : '6') +
+                      '.jpg')
+              "
+              alt=""
+              class="countImg"
             />
           </div>
 
-          <div class="textInfo">
+          <div
+            class="textInfo"
+            :style="{
+              'margin-left': cf.bottleimage ? 'none' : '0 !important',
+            }"
+          >
             <span class="variety">{{ cf.varietyFirst }}</span>
             <p class="shortInfo">{{ cf.shortInfo }}</p>
           </div>
-          <div class="stats">
+          <div
+            class="stats"
+            :style="{
+              'margin-left': cf.bottleimage ? 'none' : '0 !important',
+            }"
+          >
             <div class="progressWrapper">
               BODY
               <div class="progressBar">
@@ -97,22 +124,40 @@
         class="varietyDetails fade-in"
       >
         <div class="part1">
-          <div class="imgWrapper">
+          <div
+            class="imgWrapper"
+            :style="{
+              'margin-left': add.bottleimage ? 'none' : '0 !important',
+            }"
+          >
             <img
               :src="
-                require('../../../static/images/bottles_' +
-                  (add.bottleCount ? add.bottleCount : '6') +
-                  '.jpg')
+                add.bottleimage
+                  ? urlFor(add.bottleimage.asset).url() +
+                    '?w=800&h=800&fit=fill&bg=ff00'
+                  : require('../../../static/images/bottles_' +
+                      (add.bottleCount ? add.bottleCount : '6') +
+                      '.jpg')
               "
               alt=""
               class="countImg"
             />
           </div>
-          <div class="textInfo">
+          <div
+            class="textInfo"
+            :style="{
+              'margin-left': add.bottleimage ? 'none' : '0 !important',
+            }"
+          >
             <span class="variety">{{ add.variety }}</span>
             <p class="shortInfo">{{ add.shortInfo }}</p>
           </div>
-          <div class="stats">
+          <div
+            class="stats"
+            :style="{
+              'margin-left': add.bottleimage ? 'none' : '0 !important',
+            }"
+          >
             <div class="progressWrapper">
               BODY
               <div class="progressBar">
@@ -253,6 +298,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityProjectDetails } from '@sanity/image-url/lib/types/types';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getCrowdfundInfoBySlug } from '~/assets/ts/saleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
@@ -293,6 +340,12 @@ export default Vue.extend({
     window.removeEventListener('resize', this.windowSizeUpdater);
   },
   methods: {
+    urlFor(src: string) {
+      const builder = imageUrlBuilder(
+        this.$sanity.config as SanityProjectDetails
+      );
+      return builder.image(src);
+    },
     windowSizeUpdater() {
       const viewportWidth: number = window.innerWidth;
       this.windowWidth = viewportWidth;
@@ -343,7 +396,7 @@ export default Vue.extend({
 .crowdDetailsFocused {
   background-color: white;
   color: #333;
-  padding: calc(64px + 3vw) 60px calc(64px + 3vw) 60px;
+  padding: calc(24px + 3vw) 60px calc(64px + 3vw) 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,10 +430,9 @@ export default Vue.extend({
     width: 100%;
     border: none;
 
-    @media screen and (max-width: 1330px), screen and (max-height: 950px) {
+    @media screen and (max-width: 1180px), screen and (max-height: 900px) {
       height: auto !important;
     }
-
     // @media screen and (max-width: 1000px) and (min-height: 950px),
     //   screen and (max-width: 800px) and (min-height: 901px),
     //   screen and (max-width: 780px) {
@@ -445,7 +497,7 @@ export default Vue.extend({
 
     .part1 {
       display: grid;
-      grid-template-columns: 405px calc(100% - 405px);
+      grid-template-columns: 370px calc(100% - 370px);
       grid-template-rows: calc(100% - 180px) 180px;
 
       @media screen and (max-width: 950px) and (min-height: 950px),
@@ -468,7 +520,7 @@ export default Vue.extend({
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        padding-right: 50px;
+        margin-left: -50px !important;
         box-sizing: border-box;
 
         @media screen and (max-width: 950px) and (min-height: 950px),
@@ -476,6 +528,7 @@ export default Vue.extend({
           grid-column: 1;
           grid-row: 2;
           padding-right: 40px;
+          margin-left: -20px !important;
         }
 
         @media screen and (max-width: 450px) {
@@ -484,8 +537,9 @@ export default Vue.extend({
         }
 
         .countImg {
-          width: 100%;
           height: 100%;
+          width: 100%;
+          overflow: hidden;
           object-fit: contain;
         }
       }
@@ -493,12 +547,14 @@ export default Vue.extend({
       .textInfo {
         grid-column: 2;
         grid-row: 1;
+        margin-left: -50px !important;
 
         @media screen and (max-width: 950px) and (min-height: 950px),
           screen and (max-width: 880px) {
           grid-column-start: 1;
           grid-column-end: span 2;
           grid-row: 1;
+          margin-left: 0px;
         }
 
         .variety {
@@ -520,6 +576,7 @@ export default Vue.extend({
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        margin-left: -50px !important;
 
         @media screen and (max-width: 950px) and (min-height: 950px),
           screen and (max-width: 880px) {

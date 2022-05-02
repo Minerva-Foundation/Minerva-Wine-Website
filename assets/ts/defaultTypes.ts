@@ -200,7 +200,9 @@ export interface CrowdfundBase {
     fruitiness?: number;
     bottleCount?: number;
     addDetails?:  VarietyDetails[];
-    varietyFirst: string;
+    varietyFirst?: string;
+    soon: boolean;
+    bottleimage?: Image;
 }
 
 export interface CrowdfundBlockchain {
