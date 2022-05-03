@@ -70,7 +70,7 @@
                 <img src="~static/images/white_type.jpg" alt="White Wine" />
                 WHITE
               </div>
-              <div
+              <!-- <div
                 class="filtercard filterType"
                 :class="{ selected: typeFilters.includes('champ') }"
                 @click="filterClick(typeFilters, 'champ')"
@@ -85,7 +85,7 @@
               >
                 <img src="~static/images/port_type.jpg" alt="Port Wine" />
                 PORT
-              </div>
+              </div> -->
             </div>
             <span class="filterTitle">Country</span>
             <inputsFilterSelect

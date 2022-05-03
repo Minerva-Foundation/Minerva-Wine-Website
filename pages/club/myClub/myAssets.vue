@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
     <h1 class="customh1">Nothing Here Yet</h1>
-    <span class="smaller">Coming soon</span>
+    <NuxtLink to="/wine"
+      ><button class="button">FIND YOUR WINE</button></NuxtLink
+    >
   </div>
 </template>
 
@@ -23,14 +25,8 @@ export default Vue.extend({
 
   .customh1 {
     color: #777;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 20vh;
-  }
-
-  .smaller {
-    font-size: 2em;
-    color: #999;
-    text-transform: uppercase;
   }
 }
 </style>

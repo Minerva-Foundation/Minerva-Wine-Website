@@ -108,7 +108,7 @@
               <button
                 class="button"
                 :class="{
-                  greyedOut: (!started && !ended) || ended,
+                  greyedOut: (!started && !ended),
                   endedBtn: ended,
                 }"
               >
@@ -131,7 +131,11 @@
             <input :id="crowdF.slug.current" type="checkbox" /><label
               :for="crowdF.slug.current"
               >By buying you agree to the
-              <a :href="crowdF.tc" target="_blank">Terms and Conditions</a
+              <a
+                :class="{ greyedOut: (!started && !ended) }"
+                :href="crowdF.tc"
+                target="_blank"
+                >Terms and Conditions</a
               >.<br />Delivery included in price</label
             >
           </span>
@@ -614,7 +618,7 @@ export default Vue.extend({
             }
 
             .warn {
-              color: #ff0000be;
+              color: $secondary;
             }
 
             .button {
@@ -664,6 +668,10 @@ export default Vue.extend({
 
             a {
               color: $secondary;
+            }
+
+            .greyedOut {
+              color: #777;
             }
           }
         }

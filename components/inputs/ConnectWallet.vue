@@ -29,7 +29,7 @@ import {
 } from '@terra-money/wallet-controller';
 import { Subscription, combineLatest } from 'rxjs';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
-import { initController, getController } from '~/assets/ts/walletController';
+import { getController } from '~/assets/ts/walletController';
 
 export default Vue.extend({
   props: {
@@ -48,19 +48,23 @@ export default Vue.extend({
     availableConnectTypes: [] as ConnectType[],
     availableConnections: [] as Connection[],
     formattedWalletAddr: '',
+    controllerGetTries: 0,
   }),
-  created() {
-    if (getController() === undefined) {
-      initController().then(() => {
-        this.walletController = getController() as WalletController;
-        this.subscribeWallet();
-        this.formatWalletAddr();
-      });
-    } else {
-      this.walletController = getController() as WalletController;
-      this.subscribeWallet();
-      this.formatWalletAddr();
-    }
+  mounted() {
+    // if (getController() === undefined) {
+    //   initController().then(() => {
+    //     this.walletController = getController() as WalletController;
+    //     this.subscribeWallet();
+    //     this.formatWalletAddr();
+    //     console.log('Init Button ' + this.location);
+    //   });
+    // } else {
+    //   console.log('Get Button ' + this.location);
+    //   this.walletController = getController() as WalletController;
+    //   this.subscribeWallet();
+    //   this.formatWalletAddr();
+    // }
+    this.waitForController();
   },
   beforeDestroy() {
     this.subscription?.unsubscribe();
@@ -71,6 +75,19 @@ export default Vue.extend({
         this.formattedWalletAddr = this.states.wallets[0].terraAddress;
       } else {
         this.formattedWalletAddr = '';
+      }
+    },
+    waitForController() {
+      if (getController() === undefined && this.controllerGetTries++ < 10) {
+        console.log(this.controllerGetTries);
+
+        setTimeout(() => {
+          this.waitForController();
+        }, 50);
+      } else {
+        this.walletController = getController() as WalletController;
+        this.subscribeWallet();
+        this.formatWalletAddr();
       }
     },
     makeWalletWindowVisible() {
@@ -85,23 +102,15 @@ export default Vue.extend({
     },
     subscribeWallet() {
       this.subscription = combineLatest([
-        this.walletController.availableConnectTypes(),
         this.walletController.availableInstallTypes(),
         this.walletController.availableConnections(),
         this.walletController.states(),
       ]).subscribe(
-        ([
-          _availableConnectTypes,
-          _availableInstallTypes,
-          _availableConnections,
-          _states,
-        ]) => {
+        ([_availableInstallTypes, _availableConnections, _states]) => {
           this.availableInstallTypes = _availableInstallTypes;
-          this.availableConnectTypes = _availableConnectTypes;
           const connections = _availableConnections;
           const i = connections.findIndex((e) => e.type === 'READONLY');
           if (i > -1) connections.splice(i, 1);
-          this.availableConnections = connections;
           this.states = _states;
           this.supportFeatures =
             _states.status === WalletStatus.WALLET_CONNECTED
@@ -139,7 +148,7 @@ export default Vue.extend({
         overflow: hidden;
         text-overflow: ellipsis;
         direction: rtl;
-        margin-left: -1px;
+        margin-left: -2px;
       }
     }
 

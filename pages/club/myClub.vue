@@ -3,7 +3,7 @@
     <aside class="clubHeader">
       <div class="headerContent">
         <div class="customh2">Welcome to</div>
-        <h1 class="customh1">My Club</h1>
+        <h1 class="customh1">Minerva Club</h1>
       </div>
       <div class="barrelWrapper">
         <img
@@ -34,7 +34,7 @@
             />
           </div>
           <div class="filterContWrapper">
-            <NuxtLink to="/club/myClub">My Wine</NuxtLink>
+            <NuxtLink to="/club/myClub/myAssets">My Wine</NuxtLink>
             <NuxtLink to="/club/myClub/events">Events</NuxtLink>
           </div>
         </div>
@@ -333,7 +333,7 @@ $filerMobile: 1200px;
 
         & > * {
           width: 100%;
-          height: 80px;
+          height: 83px;
           direction: ltr;
 
           @media screen and (max-width: 325px) {
@@ -353,7 +353,7 @@ $filerMobile: 1200px;
         a {
           display: flex;
           align-items: center;
-          padding-left: 50px;
+          padding-left: 60px;
           box-sizing: border-box;
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           color: #333;
@@ -364,7 +364,7 @@ $filerMobile: 1200px;
           letter-spacing: 0.02em;
 
           &:hover {
-            background-color: rgb(243, 243, 243);
+            background-color: rgba(243, 243, 243, 0.349);
           }
         }
       }
@@ -373,6 +373,11 @@ $filerMobile: 1200px;
 
   .content {
     min-height: calc(100vh - 420px);
+    width: 100%;
+
+    @media screen and (max-width: 530px) {
+      min-height: calc(100vh - 100px);
+    }
   }
 }
 </style>

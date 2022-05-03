@@ -64,7 +64,7 @@
                 >
               </li>
               <li>
-                <NuxtLink to="/club/myClub" @click.native="linkClicked"
+                <NuxtLink to="/club/myClub/myAssets" @click.native="linkClicked"
                   >My Club</NuxtLink
                 >
               </li>
@@ -181,7 +181,7 @@
                 >
               </li>
               <li @click="mobileMenuVis = false">
-                <NuxtLink to="/club/myClub" @click.native="linkClicked"
+                <NuxtLink to="/club/myClub/myAssets" @click.native="linkClicked"
                   >My Club</NuxtLink
                 >
               </li>
