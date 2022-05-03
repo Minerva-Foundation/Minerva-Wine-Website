@@ -64,7 +64,7 @@
                 >
               </li>
               <li>
-                <NuxtLink to="/club/myWine" @click.native="linkClicked"
+                <NuxtLink to="/club/myClub" @click.native="linkClicked"
                   >My Club</NuxtLink
                 >
               </li>
@@ -73,7 +73,7 @@
         </li>
       </ul>
       <div class="btnWrapper">
-        <InputsConnectWallet />
+        <InputsConnectWallet location="HEADER" />
       </div>
       <img
         src="~static/images/menu.svg"
@@ -484,6 +484,7 @@ li {
               width: 100%;
               font-size: 0.9em;
               cursor: pointer;
+              transition: background-color 0.2s ease;
 
               a {
                 width: 100%;

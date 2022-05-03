@@ -57,7 +57,13 @@
       </div>
       <div v-if="!crowdF.soon" class="timer">
         <span class="timerLabel">{{
-          ended ? 'ENDED' : started ? 'TIME LEFT' : 'STARTS IN'
+          ended
+            ? ''
+            : started
+            ? 'TIME LEFT'
+            : loadingChainData
+            ? ''
+            : 'STARTS IN'
         }}</span
         ><span class="time">
           {{ ended ? '' : started ? timeLeft : timeToStart }}</span
@@ -87,9 +93,27 @@
         </div>
         <div class="buy">
           <div class="btns">
-            <form class="purchase">
-              <input v-model="amount" type="text" class="amount" />
-              <button class="button">BUY NOW</button>
+            <form class="purchase" @submit.prevent>
+              <input
+                v-model="amount"
+                :class="{ warn: amountOverMax }"
+                type="text"
+                class="amount noselect"
+                :title="'Max: ' + cfbInfo.maxBuy"
+                @select="preventSelect($event)"
+                @keypress="isAllowed($event)"
+                @focus="clearAmoung"
+                @blur="restorePrevAmount"
+              />
+              <button
+                class="button"
+                :class="{
+                  greyedOut: (!started && !ended) || ended,
+                  endedBtn: ended,
+                }"
+              >
+                {{ ended ? ' ENDED ' : 'BUY NOW' }}
+              </button>
             </form>
             <NuxtLink
               v-if="!onDetailSite"
@@ -117,13 +141,13 @@
         FUNDED
         <div class="progressBar">
           <span
-            v-if="cfbInfo.current / cfbInfo.max > 0.1"
             class="value"
             :style="{
               width: (cfbInfo.current / cfbInfo.max) * 100 + '%',
             }"
           >
             <span
+              v-if="cfbInfo.current / cfbInfo.max > 0.1"
               class="label"
               :style="{
                 right: 99.5 - (cfbInfo.current / cfbInfo.max) * 100 + '%',
@@ -131,7 +155,9 @@
               >{{ cfbInfo.current }}</span
             >
             <span
-              v-if="cfbInfo.min <= cfbInfo.max - cfbInfo.max / 4"
+              v-if="
+                cfbInfo.min <= cfbInfo.max - cfbInfo.max / 4 && cfbInfo.min > 0
+              "
               class="minMark"
               :style="{
                 left: (cfbInfo.min / cfbInfo.max) * 100 + '%',
@@ -172,15 +198,19 @@ export default Vue.extend({
   },
   data: () => ({
     cfbInfo: {} as defTypes.CrowdfundBlockchain,
-    amount: 1,
+    amount: 1 as string | number,
     timeLeft: '' as string,
     timeToStart: '' as string,
     started: false,
-    ended: true,
+    ended: false,
     tcFileName: '',
+    amountOverMax: false,
+    loadingChainData: true,
+    prevAmount: 1 as string | number,
   }),
   async fetch() {
-    const temp = await getCrowdfundBlockchainData('asdasd');
+    const temp = await getCrowdfundBlockchainData(this.crowdF.contract);
+    this.loadingChainData = false;
     this.cfbInfo = temp;
   },
   mounted() {
@@ -226,6 +256,46 @@ export default Vue.extend({
           this.ended = true;
         }
       }, 1000);
+    },
+    isAllowed(evt: KeyboardEvent) {
+      const allowedKeys = Array.from({ length: this.cfbInfo.maxBuy }, (_v, k) =>
+        (k + 1).toString()
+      );
+
+      this.prevAmount = '';
+      console.log('test');
+
+      if (!allowedKeys.includes(this.amount.toString() + evt.key.toString())) {
+        evt.preventDefault();
+        this.amountOverMax = true;
+
+        if (evt.key.toString() === '0') {
+          this.amount = 1;
+        } else {
+          this.amount = this.cfbInfo.maxBuy;
+        }
+
+        setTimeout(() => {
+          this.amountOverMax = false;
+        }, 1000);
+      } else {
+        this.amountOverMax = false;
+      }
+    },
+    preventSelect(e: any) {
+      e.target.selectionStart = e.target.selectionEnd;
+    },
+    clearAmoung() {
+      this.prevAmount = this.amount;
+      this.amount = '';
+    },
+    restorePrevAmount() {
+      if (this.prevAmount !== '') {
+        this.amount = this.prevAmount;
+      }
+      if (this.amount === '') {
+        this.amount = 1;
+      }
     },
   },
 });
@@ -543,9 +613,31 @@ export default Vue.extend({
               }
             }
 
+            .warn {
+              color: #ff0000be;
+            }
+
             .button {
               border-top-left-radius: 0;
               border-bottom-left-radius: 0;
+            }
+
+            .endedBtn {
+              padding-left: 36px;
+              padding-right: 36px;
+            }
+
+            .greyedOut {
+              background-color: #bebebe;
+              cursor: default;
+
+              &::before {
+                content: none;
+              }
+
+              &::after {
+                content: none;
+              }
             }
           }
         }

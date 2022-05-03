@@ -2,6 +2,7 @@
   <div class="crowdDetailsFocused">
     <CrowdCard
       class="buyCard"
+      :class="{ fadeInOut: justMounted }"
       :crowd-f="cf"
       :large="windowWidth > 1450"
       :on-detail-site="true"
@@ -33,8 +34,7 @@
             <img
               :src="
                 cf.bottleimage
-                  ? urlFor(cf.bottleimage.asset).url() +
-                    '?w=800&h=800&fit=fill&bg=ff00'
+                  ? urlFor(cf.bottleimage.asset).url() + '?w=800&h=800&fit=crop'
                   : require('../../../static/images/bottles_' +
                       (cf.bottleCount ? cf.bottleCount : '6') +
                       '.jpg')
@@ -319,6 +319,7 @@ export default Vue.extend({
   data: () => ({
     cf: {} as defTypes.CrowdfundBase,
     windowWidth: 0,
+    justMounted: true,
     serializers: {
       types: {
         image: portableImage,
@@ -329,8 +330,16 @@ export default Vue.extend({
       },
     },
   }),
+  head() {
+    return {
+      title: 'Minerva Wine',
+    };
+  },
   mounted() {
     this.addScrollAnim();
+    setTimeout(() => {
+      this.justMounted = false;
+    }, 100);
   },
   beforeMount() {
     this.windowSizeUpdater();
@@ -429,6 +438,11 @@ export default Vue.extend({
     max-width: 1500px;
     width: 100%;
     border: none;
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility opacity;
+    transition-timing-function: ease;
+    transition-duration: 0.5s;
 
     @media screen and (max-width: 1180px), screen and (max-height: 900px) {
       height: auto !important;
@@ -554,7 +568,7 @@ export default Vue.extend({
           grid-column-start: 1;
           grid-column-end: span 2;
           grid-row: 1;
-          margin-left: 0px;
+          margin-left: 0px !important;
         }
 
         .variety {
@@ -582,6 +596,7 @@ export default Vue.extend({
           screen and (max-width: 880px) {
           grid-column: 2;
           grid-row: 2;
+          margin-left: -30px !important;
         }
 
         .progressWrapper {
@@ -651,5 +666,10 @@ export default Vue.extend({
   h1 {
     color: $main;
   }
+}
+
+.fadeInOut {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 </style>

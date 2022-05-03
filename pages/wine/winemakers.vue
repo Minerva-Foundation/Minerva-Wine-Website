@@ -111,6 +111,11 @@ export default Vue.extend({
     winemakers: [] as defTypes.MerchantDetailsBase[],
     visibleWinemakers: [] as defTypes.MerchantDetailsBase[],
   }),
+  head() {
+    return {
+      title: 'Minerva Wine',
+    };
+  },
   computed: {
     stringFilterCount() {
       return this.appliedFilterCount >= 10

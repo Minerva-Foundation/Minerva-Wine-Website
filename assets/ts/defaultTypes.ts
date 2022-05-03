@@ -207,11 +207,11 @@ export interface CrowdfundBase {
 
 export interface CrowdfundBlockchain {
     running: boolean,
-    price: Number,
-    min: Number,
-    max: Number,
-    current: Number,
-    maxBuy: Number
+    price: number,
+    min: number,
+    max: number,
+    current: number,
+    maxBuy: number
 }
 
 export interface LargeFirstImage {

@@ -149,6 +149,11 @@ export default Vue.extend({
     filterFullyInView: false,
     visibleCrowdfunds: [] as Object[],
   }),
+  head() {
+    return {
+      title: 'Minerva Wine',
+    };
+  },
   computed: {
     stringFilterCount() {
       return this.appliedFilterCount >= 10
@@ -180,7 +185,7 @@ export default Vue.extend({
       if (!this.countries.includes(cf.country.toLowerCase())) {
         this.countries.push(cf.country.toLowerCase());
       }
-      if (!this.vintages.includes(cf.vintage.toLowerCase())) {
+      if (!this.vintages.includes(cf.vintage.toLowerCase()) && !cf.soon) {
         this.vintages.push(cf.vintage.toLowerCase());
       }
     }
@@ -241,6 +246,7 @@ export default Vue.extend({
     },
     visibleWithFilters(cf: defTypes.CrowdfundBase): Boolean {
       return (
+        (!cf.soon || this.appliedFilterCount === 0) &&
         (this.typeFilters.length === 0
           ? true
           : this.typeFilters.includes(cf.type.toLowerCase())) &&

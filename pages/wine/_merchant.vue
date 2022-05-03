@@ -233,6 +233,11 @@ export default Vue.extend({
     newIndex: -1 as Number,
     windowWidth: 0,
   }),
+  head() {
+    return {
+      title: 'Minerva Wine',
+    };
+  },
   mounted() {
     this.addScrollAnim();
     this.slowerImageSCroll();
@@ -929,10 +934,6 @@ export default Vue.extend({
         }
       }
     }
-  }
-
-  .customh2 {
-    margin-bottom: 5px;
   }
 
   .customh3 {

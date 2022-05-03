@@ -15,7 +15,7 @@
       </div>
     </aside>
     <div class="mainCont">
-      <div
+      <!-- <div
         class="overlay"
         :class="{ overlayVis: mobileFilterVis }"
         @click="mobileFilterVis = false"
@@ -61,7 +61,7 @@
             />
           </div>
         </div>
-      </aside>
+      </aside> -->
       <ul
         class="linkWrapper"
         :style="{
@@ -127,96 +127,86 @@ export default Vue.extend({
     articleCount() {
       return this.articles.length;
     },
-    stringFilterCount() {
-      return this.appliedFilterCount >= 10
-        ? this.appliedFilterCount.toString()
-        : '0' + this.appliedFilterCount.toString();
-    },
-    categoriesFiltersUsable() {
-      // To map if an item is selected
-      const temp: { [k: string]: boolean } = {};
-      for (const cat of this.categories) {
-        temp[cat] = this.categoriesFilters.includes(cat);
-      }
-      return temp;
-    },
+    // stringFilterCount() {
+    //   return this.appliedFilterCount >= 10
+    //     ? this.appliedFilterCount.toString()
+    //     : '0' + this.appliedFilterCount.toString();
+    // },
+    // categoriesFiltersUsable() {
+    //   // To map if an item is selected
+    //   const temp: { [k: string]: boolean } = {};
+    //   for (const cat of this.categories) {
+    //     temp[cat] = this.categoriesFilters.includes(cat);
+    //   }
+    //   return temp;
+    // },
   },
   mounted() {
-    this.calcVisibleArticles();
-
-    // for (const article of this.articles) {
-    //   if (!this.categories.includes(article.country.toLowerCase())) {
-    //     this.categories.push(article.country.toLowerCase());
-    //   }
-    // }
-
-    const options = {
-      threshold: 0.99,
-    };
-
-    const realThis = this;
-
-    const testFullViewFilter = new IntersectionObserver(function (entries) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          realThis.filterFullyInView = true;
-        } else {
-          realThis.filterFullyInView = false;
-        }
-      });
-    }, options);
-
-    const x = this.$el.querySelector('.wrapperSticky');
-    if (x) testFullViewFilter.observe(x);
+    // this.calcVisibleArticles();
+    // // for (const article of this.articles) {
+    // //   if (!this.categories.includes(article.country.toLowerCase())) {
+    // //     this.categories.push(article.country.toLowerCase());
+    // //   }
+    // // }
+    // const options = {
+    //   threshold: 0.99,
+    // };
+    // const realThis = this;
+    // const testFullViewFilter = new IntersectionObserver(function (entries) {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       realThis.filterFullyInView = true;
+    //     } else {
+    //       realThis.filterFullyInView = false;
+    //     }
+    //   });
+    // }, options);
+    // const x = this.$el.querySelector('.wrapperSticky');
+    // if (x) testFullViewFilter.observe(x);
   },
   methods: {
-    filterClick(filter: Array<string>, item: string) {
-      const index = filter.indexOf(item);
-      if (index > -1) {
-        filter.splice(index, 1);
-        this.appliedFilterCount--;
-      } else {
-        filter.push(item);
-        this.appliedFilterCount++;
-      }
-
-      if (this.filterFullyInView) {
-        const winecards = this.$el.querySelector('.linkWrapper');
-        if (winecards) winecards.scrollIntoView();
-      }
-
-      this.calcVisibleArticles();
-    },
-    removeFilters() {
-      this.categoriesFilters = [];
-      this.appliedFilterCount = 0;
-
-      this.calcVisibleArticles();
-    },
-    selectionEventParserCategory(event: { option: string; checked: Boolean }) {
-      this.filterClick(this.categoriesFilters, event.option);
-    },
-    // visibleWithFilters(cf: defTypes.Article): Boolean {
-    //   return this.categoriesFilters.length === 0
-    //     ? true
-    //     : this.categoriesFilters.includes(cf.categories.toLowerCase());
+    // filterClick(filter: Array<string>, item: string) {
+    //   const index = filter.indexOf(item);
+    //   if (index > -1) {
+    //     filter.splice(index, 1);
+    //     this.appliedFilterCount--;
+    //   } else {
+    //     filter.push(item);
+    //     this.appliedFilterCount++;
+    //   }
+    //   if (this.filterFullyInView) {
+    //     const winecards = this.$el.querySelector('.linkWrapper');
+    //     if (winecards) winecards.scrollIntoView();
+    //   }
+    //   this.calcVisibleArticles();
     // },
-    calcVisibleArticles() {
-      const temp: Array<Object | undefined> = [];
-      let arrayIndex: number = 0;
-
-      // Fill up with filler panels that are transparent and test for current applied filters
-      for (let i = 1; arrayIndex < this.articles.length; i++) {
-        const x = this.articles[arrayIndex++];
-        if (x) {
-          // if (this.visibleWithFilters(x)) {
-          //   temp.push(x);
-          // }
-        }
-      }
-
-      this.visibleArticles = temp as defTypes.Article[];
-    },
+    // removeFilters() {
+    //   this.categoriesFilters = [];
+    //   this.appliedFilterCount = 0;
+    //   this.calcVisibleArticles();
+    // },
+    // selectionEventParserCategory(event: { option: string; checked: Boolean }) {
+    //   this.filterClick(this.categoriesFilters, event.option);
+    // },
+    // // visibleWithFilters(cf: defTypes.Article): Boolean {
+    // //   return this.categoriesFilters.length === 0
+    // //     ? true
+    // //     : this.categoriesFilters.includes(cf.categories.toLowerCase());
+    // // },
+    // calcVisibleArticles() {
+    //   const temp: Array<Object | undefined> = [];
+    //   let arrayIndex: number = 0;
+    //   // Fill up with filler panels that are transparent and test for current applied filters
+    //   for (let i = 1; arrayIndex < this.articles.length; i++) {
+    //     const x = this.articles[arrayIndex++];
+    //     if (x) {
+    //       // if (this.visibleWithFilters(x)) {
+    //       //   temp.push(x);
+    //       // }
+    //     }
+    //   }
+    //   this.visibleArticles = temp as defTypes.Article[];
+    // },
   },
 });
 </script>

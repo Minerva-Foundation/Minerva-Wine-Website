@@ -89,7 +89,6 @@ export default Vue.extend({
     supportFeatures: [] as String[],
     subscription: {} as Subscription | null,
   }),
-
   created() {
     if (getController() === undefined) {
       initController().then(() => {
@@ -132,6 +131,9 @@ export default Vue.extend({
             _states.status === WalletStatus.WALLET_CONNECTED
               ? Array.from(_states.supportFeatures)
               : [];
+          if (_states.status === 'WALLET_CONNECTED') {
+            this.makeWalletWindowInvisible();
+          }
         }
       );
     },
