@@ -4,7 +4,6 @@
       <div class="headerContent">
         <div class="customh2">Welcome to</div>
         <h1 class="customh1">Minerva Club</h1>
-        <InputsConnectWallet class="walletComp" />
       </div>
       <div class="barrelWrapper">
         <img
@@ -217,11 +216,11 @@ $filerMobile: 0px;
 .clubHeader {
   position: relative;
   background-color: $main;
-  height: 370px;
   display: flex;
   align-items: flex-end;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   margin-top: -1px;
+  height: 310px;
 
   @media screen and (max-width: 700px) {
     height: 300px;
@@ -232,12 +231,12 @@ $filerMobile: 0px;
     display: none;
   }
 
-  @media screen and (min-width: 700px) {
-    height: 340px;
+  @media screen and (max-height: 950px) and (min-width: 700px) {
+    height: 280px;
   }
 
   @media screen and (max-height: 900px) {
-    height: 300px;
+    height: 260px;
   }
 
   .headerContent {
@@ -271,34 +270,33 @@ $filerMobile: 0px;
     overflow: hidden;
 
     .barrels {
-      width: 1100px;
-      bottom: -390px;
+      width: 920px;
+      bottom: -330px;
       right: -50px;
       position: relative;
 
-      @media screen and (max-height: 900px) and (min-width: 1000px) {
-        bottom: -420px;
+      @media screen and (max-height: 950px) {
+        width: 850px;
+        bottom: -300px;
+      }
+
+      @media screen and (max-height: 900px) {
+        bottom: -320px;
       }
 
       @media screen and (max-height: 855px) {
-        bottom: -430px;
+        width: 820px;
+        bottom: -305px;
       }
 
       @media screen and (max-width: 1650px) {
-        width: 1060px;
         right: -70px;
-      }
-
-      @media screen and (max-width: 1400px) {
-        right: -150px;
       }
 
       @media screen and (max-width: 1200px) {
         right: -250px;
-      }
-
-      @media screen and (max-width: $second-incr) {
-        width: 970px;
+        width: 820px;
+        bottom: -305px;
       }
 
       @media screen and (max-width: 750px) {

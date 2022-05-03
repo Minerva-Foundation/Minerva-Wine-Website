@@ -152,7 +152,7 @@ export default Vue.extend({
   left: 0;
   position: fixed;
   backdrop-filter: blur(7px);
-  background-color: rgba(105, 105, 105, 0.219);
+  background-color: rgba(97, 97, 97, 0.089);
   width: 100vw;
   height: 100vh;
   justify-content: center;
