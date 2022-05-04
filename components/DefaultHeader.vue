@@ -211,6 +211,7 @@ export default Vue.extend({
     mobileConnectWalletVis: false,
     scrolled: false,
     linkJustClicked: false,
+    innerHeight: 0,
   }),
   computed: {
     currentPath() {
@@ -230,13 +231,12 @@ export default Vue.extend({
       }
     },
   },
-  updated() {
-    const vh = window.innerHeight;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  },
   beforeMount() {
     const vh = window.innerHeight;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    if (innerHeight < vh) {
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      this.innerHeight = vh;
+    }
   },
   methods: {
     hideMobileNav() {

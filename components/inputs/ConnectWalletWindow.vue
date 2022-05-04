@@ -56,7 +56,7 @@
           ></path>
         </svg>
       </button>
-      <span class="beta" title="Not all Smart Contracts are fully audited!">
+      <span class="beta" title="Not all Smart Contracts are fully audited yet!">
         BETA VERSION<img src="~static/images/torch.svg" class="torch" />
       </span>
     </div>
@@ -171,6 +171,8 @@ export default Vue.extend({
     max-width: 450px;
     width: 95%;
     position: relative;
+    -webkit-box-shadow: 0px 10px 50px -12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 10px 50px -12px rgba(0, 0, 0, 0.15);
 
     @media screen and (max-width: 550px) {
       margin-top: 2.5vw;
