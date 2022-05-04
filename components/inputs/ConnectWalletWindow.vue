@@ -231,6 +231,7 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 
     .torch {
       height: 1em;
