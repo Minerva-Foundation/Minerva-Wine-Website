@@ -396,6 +396,7 @@ export default Vue.extend({
     width: 350px;
     -webkit-box-shadow: none;
     box-shadow: none;
+    z-index: 10;
 
     @media screen and (max-width: $third-incr) {
       width: 100vw;

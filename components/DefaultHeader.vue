@@ -398,6 +398,7 @@ li {
       width: 220px;
       display: flex;
       justify-content: flex-end;
+      z-index: 4;
 
       @media screen and (max-width: 1050px) {
         margin-right: 80px;
@@ -663,8 +664,23 @@ li {
 
     .mobile {
       box-sizing: border-box;
-      max-height: calc(100vh - 265px);
-      overflow: scroll;
+      max-height: calc(265px + var(--vh));
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #fcfcfc;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        background-color: #f5f5f5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
 
       .ddCat {
         a {
