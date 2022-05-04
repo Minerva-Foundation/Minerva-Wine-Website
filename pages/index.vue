@@ -665,7 +665,7 @@ p {
 
       @media screen and (max-width: $second-incr) {
         flex-direction: column;
-        max-width: 80vw;
+        max-width: 85vw;
 
         & * {
           width: 100%;
@@ -805,7 +805,7 @@ p {
     z-index: 1;
 
     @media screen and (max-width: 1100px) {
-      width: 80vw;
+      width: 85vw;
       text-align: left;
       position: relative;
       right: auto;
@@ -865,7 +865,7 @@ p {
 
     @media screen and (max-width: 1500px) {
       margin-top: 0;
-      width: 80vw;
+      width: 85vw;
       top: auto;
       position: relative;
       left: auto;
@@ -986,7 +986,7 @@ p {
     padding-top: 290px;
 
     @media screen and (max-width: $first-incr) {
-      width: 82%;
+      width: 85%;
     }
 
     @media screen and (max-width: $second-incr) {

@@ -339,9 +339,13 @@ li {
       }
 
       .torch {
+        @media screen and (max-width: $third-incr) {
+          height: 45px;
+        }
+
         @media screen and (max-height: 855px),
           screen and (max-width: $fifth-incr) {
-          height: 45px;
+          height: 40px;
         }
       }
 
@@ -356,10 +360,15 @@ li {
             display: none;
           }
 
-          @media screen and (max-height: 855px),
-            screen and (max-width: $fifth-incr) {
+          @media screen and (max-width: $third-incr) {
             height: 25px;
             padding-right: 30px;
+          }
+
+          @media screen and (max-height: 855px),
+            screen and (max-width: $fifth-incr) {
+            height: 24px;
+            padding-right: 45px;
           }
         }
 
@@ -371,6 +380,11 @@ li {
 
           @media screen and (max-width: $fourth-incr) {
             display: block;
+          }
+
+          @media screen and (max-height: 855px),
+            screen and (max-width: $fifth-incr) {
+            font-size: 12px;
           }
 
           @media screen and (max-width: 370px) {
