@@ -404,7 +404,7 @@ export default Vue.extend({
     }
 
     .addrShowDetails {
-      width: 60%;
+      width: 70%;
     }
 
     .section {
@@ -423,10 +423,15 @@ export default Vue.extend({
       a {
         padding-left: 50px;
         padding-right: 50px;
+        justify-content: flex-start;
 
         @media screen and (max-width: $third-incr) {
           padding-left: 20vw;
           padding-right: 20vw;
+        }
+
+        span {
+          margin-right: 20px;
         }
       }
     }

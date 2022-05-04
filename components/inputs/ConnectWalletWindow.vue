@@ -56,12 +56,9 @@
           ></path>
         </svg>
       </button>
-      <span v-if="states.wallets" class="walletAddr"
-        >{{ states.wallets[0].terraAddress }}
+      <span class="beta" title="Not all Smart Contracts are fully audited!">
+        BETA VERSION<img src="~static/images/torch.svg" class="torch" />
       </span>
-      <button v-if="states.wallets" @click.stop="walletController.disconnect()">
-        Disconnect
-      </button>
     </div>
   </div>
 </template>
@@ -223,6 +220,20 @@ export default Vue.extend({
         background-color: white;
         color: #333;
       }
+    }
+  }
+
+  .beta {
+    font-size: 0.8em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .torch {
+      height: 1em;
+      padding-bottom: 2px;
+      padding-left: 8px;
     }
   }
 }

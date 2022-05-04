@@ -230,6 +230,10 @@ export default Vue.extend({
       }
     },
   },
+  updated() {
+    const vh = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
   beforeMount() {
     const vh = window.innerHeight;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -248,8 +252,6 @@ export default Vue.extend({
         const subMenus = this.$el.querySelectorAll('.ddCat');
 
         if (subMenus) {
-          console.log(subMenus);
-
           subMenus.forEach((e) => e.classList.remove('subLinksWrapperVis'));
         }
       }, 100);

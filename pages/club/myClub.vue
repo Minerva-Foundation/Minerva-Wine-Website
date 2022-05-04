@@ -247,7 +247,7 @@ $filerMobile: 1200px;
     width: 100%;
     height: 100%;
     background-color: transparent;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
   }
 
   @media screen and (max-width: $filerMobile) {
@@ -482,6 +482,6 @@ $filerMobile: 1200px;
 }
 
 .highlight {
-  background-color: rgba(243, 243, 243, 0.452) !important;
+  background-color: rgba(238, 238, 238, 0.815) !important;
 }
 </style>

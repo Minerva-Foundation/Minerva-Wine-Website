@@ -70,7 +70,10 @@
         >
       </div>
     </div>
-    <div class="image">
+    <div
+      class="image"
+      @click="$router.push({ path: '/wine/' + crowdF.merchant.slug.current })"
+    >
       <portableImage
         class="thumbnail"
         :asset="crowdF.cardImage.asset"
@@ -107,6 +110,7 @@
               />
               <button
                 class="button"
+                :title="'Max: ' + cfbInfo.maxBuy"
                 :class="{
                   greyedOut: !started && !ended,
                   endedBtn: ended,
@@ -465,6 +469,7 @@ export default Vue.extend({
 
   .image {
     margin-left: 20px;
+    cursor: pointer;
 
     .thumbnail {
       width: 100%;
