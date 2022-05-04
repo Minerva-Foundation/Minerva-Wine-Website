@@ -620,6 +620,9 @@ li {
       bottom: calc((100vh - var(--vh)) + 70px);
       margin-left: auto;
       margin-right: auto;
+      opacity: 0;
+      transition-delay: 0s;
+      transition-duration: 0.01s;
 
       @media screen and (max-height: 340px) {
         bottom: 30px;
@@ -754,6 +757,13 @@ li {
     }
 
     .mainLinks {
+      opacity: 1;
+
+      transition: opacity 0.3s ease;
+      transition-delay: 0.1s;
+    }
+
+    .btnWrapper {
       opacity: 1;
 
       transition: opacity 0.3s ease;
