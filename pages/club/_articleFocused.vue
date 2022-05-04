@@ -357,7 +357,7 @@ export default Vue.extend({
 
     .contentwrapperSanity {
       max-width: 55em;
-      padding-top: 130px;
+      padding-top: 110px;
 
       @media screen and (max-width: 1050px) and (min-height: 950px),
         screen and (max-width: 930px) {
@@ -365,7 +365,7 @@ export default Vue.extend({
       }
 
       @media screen and (max-height: 855px),
-        screen and (max-width: $fifth-incr) {
+        screen and (max-width: $third-incr) {
         padding-top: 60px;
       }
 

@@ -17,12 +17,12 @@
       <div
         class="overlay"
         :class="{ overlayVis: mobileFilterVis }"
-        @click="mobileFilterVis = false"
+        @click="closeMobileMenu()"
       ></div>
       <aside
         class="filter"
         :class="{
-          mobileFilterVis: mobileFilterVis,
+          mobileFilterVis: mobileFilterVis || windowWidth <= 465,
         }"
       >
         <div class="wrapperSticky">
@@ -55,7 +55,7 @@
               height="24"
               viewBox="0 0 24 24"
               class="closeMobileFilter"
-              @click="mobileFilterVis = false"
+              @click="closeMobileMenu()"
             >
               <path
                 fill="#777"
@@ -67,7 +67,7 @@
                 highlight: $nuxt.$route.path === '/club/myClub/myAssets',
               }"
               to="/club/myClub/myAssets"
-              @click.native="mobileFilterVis = false"
+              @click.native="closeMobileMenu()"
               >My Wine</NuxtLink
             >
             <NuxtLink
@@ -75,7 +75,7 @@
                 highlight: $nuxt.$route.path === '/club/myClub/events',
               }"
               to="/club/myClub/events"
-              @click.native="mobileFilterVis = false"
+              @click.native="closeMobileMenu()"
               >Events</NuxtLink
             >
             <NuxtLink
@@ -83,7 +83,7 @@
                 highlight: $nuxt.$route.path === '/club/myClub/profile',
               }"
               to="/club/myClub/profile"
-              @click.native="mobileFilterVis = false"
+              @click.native="closeMobileMenu()"
               >Profile</NuxtLink
             >
           </div>
@@ -111,12 +111,26 @@ export default Vue.extend({
   data: () => ({
     filterFullyInView: false,
     mobileFilterVis: false,
+    windowWidth: 0,
   }),
   head() {
     return {
       title: 'Minerva Club',
       meta: metadata as [],
     };
+  },
+  beforeMount() {
+    this.windowSizeUpdater();
+  },
+  methods: {
+    windowSizeUpdater() {
+      const viewportWidth: number = window.innerWidth;
+      this.windowWidth = viewportWidth;
+    },
+    closeMobileMenu() {
+      this.mobileFilterVis = false;
+      this.windowWidth = 100000;
+    },
   },
 });
 </script>
@@ -319,8 +333,12 @@ $filerMobile: 1200px;
         @media screen and (max-width: $third-incr) {
           width: 55px;
           height: 55px;
-          top: 18px;
           left: -54px;
+          top: 28px;
+        }
+
+        @media screen and (max-width: 465px) {
+          top: 18px;
         }
 
         .whitebar {

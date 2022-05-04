@@ -75,8 +75,6 @@ export default Vue.extend({
     },
     waitForController() {
       if (getController() === undefined && this.controllerGetTries++ < 10) {
-        console.log(this.controllerGetTries);
-
         setTimeout(() => {
           this.waitForController();
         }, 50);
