@@ -26,7 +26,7 @@ export default Vue.extend({
   .customh1 {
     color: #777;
     margin-bottom: 30px;
-    margin-top: 20vh;
+    margin-top: 15vh;
   }
 }
 </style>

@@ -196,7 +196,7 @@ export default Vue.extend({
     .windowTitle {
       color: white;
       font-size: max(1.8em, 20px);
-      letter-spacing: 00.02em;
+      letter-spacing: 00.03em;
       margin-bottom: 24px;
       font-family: $standard-big-font;
     }

@@ -308,6 +308,7 @@ export default Vue.extend({
         padding-bottom: 5px;
         color: #777;
         display: inline-block;
+        font-size: max(1em, 12px);
 
         @media screen and (max-width: $fourth-incr) {
           margin-left: 0;

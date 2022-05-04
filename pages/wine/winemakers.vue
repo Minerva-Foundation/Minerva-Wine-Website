@@ -434,7 +434,7 @@ $filerMobile: 1714px;
 
         @media screen and (max-height: 855px) and (max-width: $fourth-incr),
           screen and (max-width: $fifth-incr) {
-          top: 100px;
+          top: 93px;
         }
 
         .openMobileFilterWrapper {

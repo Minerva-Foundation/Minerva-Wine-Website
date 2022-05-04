@@ -76,7 +76,7 @@
         <InputsConnectWallet location="HEADER" />
       </div>
       <img
-        src="~static/images/menu.svg"
+        src="~static/images/menu_finer.svg"
         alt="Open Mobile Menu"
         class="mobileMenuBtn"
         @click.stop="mobileMenuVis = !mobileMenuVis"
@@ -230,6 +230,10 @@ export default Vue.extend({
       }
     },
   },
+  beforeMount() {
+    const vh = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
   methods: {
     hideMobileNav() {
       if (this.mobileMenuVis) this.mobileMenuVis = false;
@@ -312,7 +316,7 @@ li {
     padding: 0px 40px 0px 40px;
 
     @media screen and (max-height: 855px), screen and (max-width: $fifth-incr) {
-      height: 100px;
+      height: 93px;
     }
 
     @media screen and (max-width: 295px) {
@@ -361,7 +365,7 @@ li {
 
         .siteName {
           color: $bright-font;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 0.9;
           display: none;
 
@@ -574,10 +578,14 @@ li {
     right: 0;
     top: 0;
     transition: width 0.2s ease;
+    box-sizing: border-box;
 
-    @media screen and (max-width: 370px) {
+    @media screen and (max-width: $third-incr) {
       max-width: 100vw;
     }
+    // @media screen and (max-width: 370px) {
+    //   max-width: 100vw;
+    // }
 
     .closeMobileMenuBtn {
       position: absolute;
@@ -594,7 +602,7 @@ li {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 70px;
+      bottom: calc((100vh - var(--vh)) + 70px);
       margin-left: auto;
       margin-right: auto;
 
@@ -617,13 +625,13 @@ li {
     .mainLinks {
       height: 100%;
       flex-direction: column;
-      padding: 87px 0 15% 150px;
+      padding: 87px 0 15% 155px;
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;
 
-      @media screen and (max-width: 370px) {
-        padding-left: 40vw;
+      @media screen and (max-width: $third-incr) {
+        padding-left: 45vw;
       }
 
       @media screen and (max-height: 400px) {
@@ -721,6 +729,10 @@ li {
     width: 350px;
     -webkit-box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
     box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
+
+    @media screen and (max-width: $third-incr) {
+      width: 100vw;
+    }
 
     .mainLinks {
       opacity: 1;

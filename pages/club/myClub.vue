@@ -19,23 +19,73 @@
         :class="{ overlayVis: mobileFilterVis }"
         @click="mobileFilterVis = false"
       ></div>
-      <aside class="filter" :class="{ mobileFilterVis: mobileFilterVis }">
+      <aside
+        class="filter"
+        :class="{
+          mobileFilterVis: mobileFilterVis,
+        }"
+      >
         <div class="wrapperSticky">
           <div
             class="openMobileFilterWrapper"
-            :class="{ menuBtnClicked: mobileFilterVis }"
+            :class="{
+              menuBtnClicked: mobileFilterVis,
+            }"
             @click="mobileFilterVis = !mobileFilterVis"
           >
-            <div class="whitebar"></div>
-            <img
-              src="~static/images/filter.svg"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
               alt="Filter"
               class="openMobileFilter"
-            />
+              viewBox="0 0 24 24"
+              :class="{ openMenuBtnOpen: mobileFilterVis }"
+            >
+              <path
+                fill="#777"
+                d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z"
+              />
+            </svg>
           </div>
           <div class="filterContWrapper">
-            <NuxtLink to="/club/myClub/myAssets">My Wine</NuxtLink>
-            <NuxtLink to="/club/myClub/events">Events</NuxtLink>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="closeMobileFilter"
+              @click="mobileFilterVis = false"
+            >
+              <path
+                fill="#777"
+                d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z"
+              />
+            </svg>
+            <NuxtLink
+              :class="{
+                highlight: $nuxt.$route.path === '/club/myClub/myAssets',
+              }"
+              to="/club/myClub/myAssets"
+              @click.native="mobileFilterVis = false"
+              >My Wine</NuxtLink
+            >
+            <NuxtLink
+              :class="{
+                highlight: $nuxt.$route.path === '/club/myClub/events',
+              }"
+              to="/club/myClub/events"
+              @click.native="mobileFilterVis = false"
+              >Events</NuxtLink
+            >
+            <NuxtLink
+              :class="{
+                highlight: $nuxt.$route.path === '/club/myClub/profile',
+              }"
+              to="/club/myClub/profile"
+              @click.native="mobileFilterVis = false"
+              >Profile</NuxtLink
+            >
           </div>
         </div>
       </aside>
@@ -238,25 +288,24 @@ $filerMobile: 1200px;
 
       @media screen and (max-height: 855px) and (max-width: $fourth-incr),
         screen and (max-width: $fifth-incr) {
-        top: 100px;
+        top: 93px;
       }
 
       .openMobileFilterWrapper {
         position: absolute;
-        top: 23px;
-        left: -69px;
+        top: 21px;
+        left: -64px;
         transition: 0.15s ease opacity;
         opacity: 1;
         display: none;
-        width: 70px;
-        height: 60px;
+        width: 65px;
+        height: 62px;
         border-bottom-left-radius: 12px;
         border-top-left-radius: 12px;
         background-color: #fcfcfc;
         z-index: 5;
         box-sizing: border-box;
         border: rgba(0, 0, 0, 0.2) solid 1px;
-        border-right: 1px solid #fcfcfc;
         -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.07);
         box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
         cursor: pointer;
@@ -267,10 +316,10 @@ $filerMobile: 1200px;
           align-items: center;
         }
 
-        @media screen and (max-width: 435px) {
+        @media screen and (max-width: $third-incr) {
           width: 55px;
-          height: 50px;
-          top: 33px;
+          height: 55px;
+          top: 18px;
           left: -54px;
         }
 
@@ -282,17 +331,23 @@ $filerMobile: 1200px;
           width: 9px;
           background-color: #fcfcfc;
 
-          @media screen and (max-width: 435px) {
+          @media screen and (max-width: $third-incr) {
             height: 48px;
           }
         }
 
         .openMobileFilter {
-          width: 45px;
+          transform: rotate(-180deg);
+          transition: transform 0.2s ease;
 
-          @media screen and (max-width: 435px) {
-            width: 35px;
+          @media screen and (max-width: $third-incr) {
+            width: 23px !important;
+            height: 23px !important;
           }
+        }
+
+        .openMenuBtnOpen {
+          transform: rotate(0deg);
         }
       }
 
@@ -309,11 +364,20 @@ $filerMobile: 1200px;
         direction: rtl;
         color: #333;
         border-right: rgba(0, 0, 0, 0.2) solid 1px;
+        position: relative;
 
         @media screen and (max-width: $filerMobile) {
           direction: ltr;
           border-right: none;
           border-left: rgba(0, 0, 0, 0.2) solid 1px;
+        }
+
+        @media screen and (max-width: 465px) {
+          padding-top: 63px;
+
+          & > a:first-of-type {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+          }
         }
 
         // &::-webkit-scrollbar-track {
@@ -360,11 +424,29 @@ $filerMobile: 1200px;
           text-decoration: none;
           transition: background-color 0.2s ease;
           font-family: $standard-big-font;
-          font-size: 1.5em;
+          font-size: max(1.5em, 18px);
           letter-spacing: 0.02em;
 
           &:hover {
             background-color: rgba(243, 243, 243, 0.349);
+          }
+
+          @media screen and (max-width: 465px) {
+            justify-content: center;
+            padding-left: 0;
+          }
+        }
+
+        .closeMobileFilter {
+          display: none;
+          position: absolute;
+          top: 20px;
+          left: 30px;
+          width: 21px;
+          height: 24px;
+
+          @media screen and (max-width: 465px) {
+            display: block;
           }
         }
       }
@@ -372,12 +454,16 @@ $filerMobile: 1200px;
   }
 
   .content {
-    min-height: calc(100vh - 420px);
+    min-height: calc(100vh - 260px);
     width: 100%;
 
     @media screen and (max-width: 530px) {
-      min-height: calc(100vh - 100px);
+      min-height: calc(100vh - 93px);
     }
   }
+}
+
+.highlight {
+  background-color: rgba(243, 243, 243, 0.452) !important;
 }
 </style>

@@ -421,12 +421,12 @@ p {
   }
 
   @media screen and (max-height: 855px) {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 93px);
   }
 
   @media screen and (max-width: $third-incr) {
     min-height: 450px;
-    height: calc(var(--vh) - 100px);
+    height: calc(var(--vh) - 93px);
     background-color: $main-darker;
     background-image: none !important;
 

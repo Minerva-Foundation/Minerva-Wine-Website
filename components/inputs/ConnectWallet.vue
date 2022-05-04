@@ -1,9 +1,5 @@
 <template>
-  <button
-    class="button"
-    :class="{ autoWidth: location != 'HEADER' }"
-    @click.stop="makeWalletWindowVisible"
-  >
+  <button class="button" @click.stop="makeWalletWindowVisible">
     <div v-if="states.status === 'WALLET_CONNECTED'" class="addr">
       <div v-if="location === 'HEADER'" class="addrShow">
         <div class="addrStart">
@@ -157,10 +153,5 @@ export default Vue.extend({
       text-decoration: none;
     }
   }
-}
-
-.autoWidth {
-  min-width: auto;
-  padding-left: 40px !important;
 }
 </style>

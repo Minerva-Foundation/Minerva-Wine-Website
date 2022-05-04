@@ -108,7 +108,7 @@
               <button
                 class="button"
                 :class="{
-                  greyedOut: (!started && !ended),
+                  greyedOut: !started && !ended,
                   endedBtn: ended,
                 }"
               >
@@ -132,7 +132,7 @@
               :for="crowdF.slug.current"
               >By buying you agree to the
               <a
-                :class="{ greyedOut: (!started && !ended) }"
+                :class="{ greyedOut: !started && !ended }"
                 :href="crowdF.tc"
                 target="_blank"
                 >Terms and Conditions</a
@@ -142,7 +142,12 @@
         </div>
       </div>
       <div class="progress">
-        FUNDED
+        <span
+          :style="{
+            visibility: cfbInfo.current >= cfbInfo.max ? 'visible' : 'hidden',
+          }"
+          >FUNDED</span
+        >
         <div class="progressBar">
           <span
             class="value"
@@ -151,7 +156,7 @@
             }"
           >
             <span
-              v-if="cfbInfo.current / cfbInfo.max > 0.1"
+              v-if="cfbInfo.current > 0"
               class="label"
               :style="{
                 right: 99.5 - (cfbInfo.current / cfbInfo.max) * 100 + '%',

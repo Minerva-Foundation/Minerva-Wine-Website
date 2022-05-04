@@ -29,7 +29,7 @@ export default Vue.extend({
 
   .catName {
     color: #777;
-    font-size: 0.8em;
+    font-size: max(0.8em, 10px);
   }
 }
 </style>
