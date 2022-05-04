@@ -390,7 +390,7 @@ export default Vue.extend({
     border-top: rgba(255, 255, 255, 0.1) solid 1px;
     position: absolute;
     top: auto;
-    bottom: 0;
+    bottom: -70px;
     right: -76px;
     background-color: $main;
     width: 350px;
