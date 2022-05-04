@@ -664,23 +664,8 @@ li {
 
     .mobile {
       box-sizing: border-box;
-      max-height: calc(265px + var(--vh));
+      max-height: calc(var(--vh) - 265px);
       overflow-y: scroll;
-
-      &::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background-color: #fcfcfc;
-      }
-
-      &::-webkit-scrollbar {
-        width: 5px;
-        background-color: #f5f5f5;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-      }
 
       .ddCat {
         a {
