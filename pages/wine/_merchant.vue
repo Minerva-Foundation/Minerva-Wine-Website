@@ -243,6 +243,7 @@ export default Vue.extend({
     this.slowerImageSCroll();
   },
   beforeMount() {
+    this.windowSizeUpdater();
     window.addEventListener('scroll', this.slowerImageSCroll);
     window.addEventListener('resize', this.windowSizeUpdater);
   },

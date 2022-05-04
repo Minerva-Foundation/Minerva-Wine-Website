@@ -2,8 +2,8 @@
   <div class="wrapperWinePage">
     <aside class="clubHeader">
       <div class="headerContent">
-        <div class="customh2">Select</div>
-        <h1 class="customh1">Winemakers</h1>
+        <div class="customh2">Curated</div>
+        <h1 class="customh1">Quality Wines</h1>
       </div>
       <div class="barrelWrapper">
         <img

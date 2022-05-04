@@ -166,7 +166,7 @@ export default Vue.extend({
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: $main-darker;
-    border-radius: 14px;
+    border-radius: 1px;
     gap: 16px;
     height: max-content;
     margin-top: 60px;
@@ -203,7 +203,7 @@ export default Vue.extend({
 
     .connectButton {
       cursor: pointer;
-      border-radius: 9px;
+      border-radius: 7px;
       width: 100%;
       background-color: transparent;
       color: white;
