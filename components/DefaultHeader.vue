@@ -662,6 +662,10 @@ li {
     }
 
     .mobile {
+      box-sizing: border-box;
+      max-height: calc(100vh - 265px);
+      overflow: scroll;
+
       .ddCat {
         a {
           margin-right: 16px !important;
