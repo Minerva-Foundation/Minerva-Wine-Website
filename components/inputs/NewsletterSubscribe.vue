@@ -161,6 +161,12 @@ export default Vue.extend({
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-height: 950px) and (min-width: $third-incr) {
+      min-width: 14em !important;
+      min-height: 0;
+      padding: initial;
+    }
+
     @media screen and (max-width: $fourth-incr) {
       min-width: 120px !important;
       height: auto !important;

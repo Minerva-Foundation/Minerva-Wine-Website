@@ -269,6 +269,14 @@ $filerMobile: 1714px;
         }
       }
 
+      .customh2 {
+        margin-bottom: 0px;
+
+        // @media screen and (max-width: 643px) {
+        //   margin-bottom: -5px;
+        // }
+      }
+
       h1 {
         margin-bottom: 25px;
       }

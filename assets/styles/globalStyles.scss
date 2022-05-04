@@ -121,6 +121,10 @@ a {
   margin-bottom: -5px;
 }
 
+.headerContent .customh2 {
+  margin-bottom: 20px !important;
+}
+
 .customh3 {
   @extend .mainFontStlyeBig;
   font-weight: normal;
@@ -364,10 +368,22 @@ p {
   html {
     font-size: 0.9em;
   }
+
+  .button {
+    min-width: 170px !important;
+    min-height: 45px;
+    padding: 0px 15px 0px 15px;
+  }
 }
 
 @media screen and (max-height: 900px) and (min-width: $fourth-incr) {
   html {
     font-size: 0.8em;
+  }
+
+  .button {
+    min-width: 150px !important;
+    min-height: 45px;
+    padding: 0px 15px 0px 15px;
   }
 }
