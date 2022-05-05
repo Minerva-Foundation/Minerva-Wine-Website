@@ -27,7 +27,7 @@ export async function getCrowdfundBlockchainData(contract: string): Promise<defT
             min: 0,
             max: 50,
             current: 0,
-            maxBuy: 3
+            maxBuy: 2
         }
 
         return await new Promise((resolve) => {
