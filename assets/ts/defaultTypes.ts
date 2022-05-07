@@ -191,6 +191,7 @@ export interface CrowdfundBase {
     variety: string;
     vintage: string;
     end: Date;
+    maxSold: number;
     detail1?: Body[];
     detail2?: Body[];
     detail3?: Body[];
@@ -206,12 +207,16 @@ export interface CrowdfundBase {
 }
 
 export interface CrowdfundBlockchain {
-    running: boolean,
     price: number,
     min: number,
-    max: number,
     current: number,
-    maxBuy: number
+    maxBuy: number,
+    started: boolean,
+}
+
+export interface CrowdfundBlockchainPlaceholder {
+    price: number,
+    maxBuy: number,
 }
 
 export interface LargeFirstImage {

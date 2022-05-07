@@ -495,7 +495,7 @@ export default Vue.extend({
             margin-left: 0;
             margin-bottom: 20px;
             margin-left: 0;
-            padding: 40px 10px 0 10px;
+            padding: 40px 2px 0 2px;
             box-sizing: border-box;
             min-width: 0;
           }
@@ -648,7 +648,7 @@ export default Vue.extend({
   }
 
   .quote {
-    padding: min(11vw, 160px) calc(4vw + 20px) min(11vw, 180px) calc(4vw + 20px);
+    padding: min(11vw, 160px) calc(4vw + 20px) min(13vw, 180px) calc(4vw + 20px);
     box-sizing: border-box;
     display: flex;
     justify-content: center;

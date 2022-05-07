@@ -69,8 +69,8 @@ import {
   WalletController,
   Connection,
   ConnectType,
-  WalletStates,
-  WalletStatus,
+  // WalletStates,
+  // WalletStatus,
 } from '@terra-money/wallet-controller';
 import { Subscription, combineLatest } from 'rxjs';
 import { initController, getController } from '~/assets/ts/walletController';
@@ -80,10 +80,10 @@ export default Vue.extend({
   data: () => ({
     walletController: {} as WalletController,
     availableInstallTypes: [] as ConnectType[],
-    availableConnectTypes: [] as ConnectType[],
+    // availableConnectTypes: [] as ConnectType[],
     availableConnections: [] as Connection[],
-    states: {} as WalletStates,
-    supportFeatures: [] as String[],
+    // states: {} as WalletStates,
+    // supportFeatures: [] as String[],
     subscription: {} as Subscription | null,
   }),
   created() {
@@ -106,28 +106,21 @@ export default Vue.extend({
   methods: {
     subscribeWallet() {
       this.subscription = combineLatest([
-        this.walletController.availableConnectTypes(),
         this.walletController.availableInstallTypes(),
         this.walletController.availableConnections(),
         this.walletController.states(),
       ]).subscribe(
-        ([
-          _availableConnectTypes,
-          _availableInstallTypes,
-          _availableConnections,
-          _states,
-        ]) => {
+        ([_availableInstallTypes, _availableConnections, _states]) => {
           this.availableInstallTypes = _availableInstallTypes;
-          this.availableConnectTypes = _availableConnectTypes;
           const connections = _availableConnections;
           const i = connections.findIndex((e) => e.type === 'READONLY');
           if (i > -1) connections.splice(i, 1);
           this.availableConnections = connections;
-          this.states = _states;
-          this.supportFeatures =
-            _states.status === WalletStatus.WALLET_CONNECTED
-              ? Array.from(_states.supportFeatures)
-              : [];
+          // this.states = _states;
+          // this.supportFeatures =
+          //   _states.status === WalletStatus.WALLET_CONNECTED
+          //     ? Array.from(_states.supportFeatures)
+          //     : [];
           if (_states.status === 'WALLET_CONNECTED') {
             this.makeWalletWindowInvisible();
           }

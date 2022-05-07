@@ -123,9 +123,9 @@
 import Vue from 'vue';
 import {
   WalletController,
-  Connection,
-  ConnectType,
-  WalletStatus,
+  // Connection,
+  // ConnectType,
+  // WalletStatus,
 } from '@terra-money/wallet-controller';
 import { Subscription, combineLatest } from 'rxjs';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
@@ -142,11 +142,11 @@ export default Vue.extend({
   data: () => ({
     walletController: {} as WalletController,
     states: {} as any,
-    supportFeatures: [] as String[],
+    // supportFeatures: [] as String[],
     subscription: {} as Subscription | null,
-    availableInstallTypes: [] as ConnectType[],
-    availableConnectTypes: [] as ConnectType[],
-    availableConnections: [] as Connection[],
+    // availableInstallTypes: [] as ConnectType[],
+    // availableConnectTypes: [] as ConnectType[],
+    // availableConnections: [] as Connection[],
     formattedWalletAddr: '',
     controllerGetTries: 0,
     detailVisible: false,
@@ -203,23 +203,21 @@ export default Vue.extend({
     },
     subscribeWallet() {
       this.subscription = combineLatest([
-        this.walletController.availableInstallTypes(),
-        this.walletController.availableConnections(),
+        // this.walletController.availableInstallTypes(),
+        // this.walletController.availableConnections(),
         this.walletController.states(),
-      ]).subscribe(
-        ([_availableInstallTypes, _availableConnections, _states]) => {
-          this.availableInstallTypes = _availableInstallTypes;
-          const connections = _availableConnections;
-          const i = connections.findIndex((e) => e.type === 'READONLY');
-          if (i > -1) connections.splice(i, 1);
-          this.states = _states;
-          this.supportFeatures =
-            _states.status === WalletStatus.WALLET_CONNECTED
-              ? Array.from(_states.supportFeatures)
-              : [];
-          this.formatWalletAddr();
-        }
-      );
+      ]).subscribe(([_states]) => {
+        // this.availableInstallTypes = _availableInstallTypes;
+        // const connections = _availableConnections;
+        // const i = connections.findIndex((e) => e.type === 'READONLY');
+        // if (i > -1) connections.splice(i, 1);
+        this.states = _states;
+        // this.supportFeatures =
+        //   _states.status === WalletStatus.WALLET_CONNECTED
+        //     ? Array.from(_states.supportFeatures)
+        //     : [];
+        this.formatWalletAddr();
+      });
     },
     copyWalletAddr() {
       navigator.clipboard.writeText(this.states.wallets[0].terraAddress);
@@ -264,7 +262,7 @@ export default Vue.extend({
     overflow: hidden;
     text-overflow: ellipsis;
     direction: rtl;
-    margin-left: -2px;
+    margin-left: -3px;
     padding-bottom: 1px;
   }
 

@@ -187,6 +187,10 @@ export default Vue.extend({
     padding-left: 0px;
   }
 
+  @media screen and (max-width: $fourth-incr) {
+    padding-bottom: 18vw;
+  }
+
   hr {
     height: 1px;
     color: #ececec;

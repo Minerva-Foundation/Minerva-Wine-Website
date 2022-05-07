@@ -572,7 +572,7 @@ export default Vue.extend({
         }
 
         .variety {
-          font-size: 2.875em;
+          font-size: max(2.875em, 30px);
           font-family: $standard-big-font;
           color: $main;
           white-space: pre-wrap;
@@ -601,6 +601,7 @@ export default Vue.extend({
 
         .progressWrapper {
           margin-bottom: 30px;
+          font-size: max(1em, 11px);
 
           @media screen and (max-width: 950px) and (min-height: 950px),
             screen and (max-width: 880px) {

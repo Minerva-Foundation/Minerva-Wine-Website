@@ -77,7 +77,7 @@
       <portableImage
         class="thumbnail"
         :asset="crowdF.cardImage.asset"
-        new-height="500"
+        new-height="1000"
         :alt="crowdF.merchant.title + ' Crowdloan Thumbnail'"
       />
     </div>
@@ -148,7 +148,8 @@
       <div class="progress">
         <span
           :style="{
-            visibility: cfbInfo.current >= cfbInfo.max ? 'visible' : 'hidden',
+            visibility:
+              cfbInfo.current >= crowdF.maxSold ? 'visible' : 'hidden',
           }"
           >FUNDED</span
         >
@@ -156,28 +157,29 @@
           <span
             class="value"
             :style="{
-              width: (cfbInfo.current / cfbInfo.max) * 100 + '%',
+              width: (cfbInfo.current / crowdF.maxSold) * 100 + '%',
             }"
           >
             <span
-              v-if="cfbInfo.current > 0"
+              v-if="cfbInfo.current > 0 && cfbInfo.current < crowdF.maxSold"
               class="label"
               :style="{
-                right: 99.5 - (cfbInfo.current / cfbInfo.max) * 100 + '%',
+                right: 99.5 - (cfbInfo.current / crowdF.maxSold) * 100 + '%',
               }"
               >{{ cfbInfo.current }}</span
             >
             <span
               v-if="
-                cfbInfo.min <= cfbInfo.max - cfbInfo.max / 4 && cfbInfo.min > 0
+                cfbInfo.min <= crowdF.maxSold - crowdF.maxSold / 4 &&
+                cfbInfo.min > 0
               "
               class="minMark"
               :style="{
-                left: (cfbInfo.min / cfbInfo.max) * 100 + '%',
+                left: (cfbInfo.min / crowdF.maxSold) * 100 + '%',
               }"
               ><span class="minText">MIN</span></span
             >
-            <span class="labelMimax max">MAX: {{ cfbInfo.max }} Cases</span>
+            <span class="labelMimax max">MAX: {{ crowdF.maxSold }} Cases</span>
           </span>
         </div>
       </div>
@@ -220,24 +222,66 @@ export default Vue.extend({
     amountOverMax: false,
     loadingChainData: true,
     prevAmount: 1 as string | number,
+    polling: null as any,
+    timecalc: null as any,
+    chainRefreshIntervall: 5000,
+    chainPolling: false,
   }),
   async fetch() {
-    const temp = await getCrowdfundBlockchainData(this.crowdF.contract);
-    this.loadingChainData = false;
-    this.cfbInfo = temp;
+    if (!this.crowdF.soon) {
+      const temp = await getCrowdfundBlockchainData(
+        this.crowdF.contract,
+        this.$sanity
+      );
+      this.loadingChainData = false;
+      this.cfbInfo = temp;
+    }
   },
   mounted() {
     this.getTimeLeft();
   },
+  beforeDestroy() {
+    clearInterval(this.polling);
+    clearInterval(this.timecalc);
+  },
   methods: {
+    getChainData() {
+      this.polling = setInterval(() => {
+        getCrowdfundBlockchainData(this.crowdF.contract, this.$sanity).then(
+          (res) => {
+            this.cfbInfo = res;
+          }
+        );
+      }, this.chainRefreshIntervall);
+    },
     getTimeLeft() {
-      setInterval(() => {
+      this.timecalc = setInterval(() => {
         const now = new Date().getTime();
         const distanceStart = Date.parse(this.crowdF.start) - now;
         const distanceEnd = Date.parse(this.crowdF.end) - now;
 
-        if (distanceStart > 0) {
+        if (this.cfbInfo.current >= this.crowdF.maxSold) {
+          // Max was sold -> over
+          this.ended = true;
+
+          if (this.chainPolling) {
+            clearInterval(this.polling);
+            this.chainPolling = false;
+          }
+
+          clearInterval(this.timecalc);
+        } else if (distanceStart > 0 && !this.cfbInfo.started) {
+          // Should not have started and has not
           this.ended = false;
+
+          // If 1 min away -> start polling every 1s
+          if (distanceStart < 60000) {
+            this.chainRefreshIntervall = 1000;
+            if (!this.chainPolling) {
+              this.getChainData();
+              this.chainPolling = true;
+            }
+          }
 
           const days = Math.floor(distanceStart / (1000 * 60 * 60 * 24));
           const hours = Math.floor(
@@ -250,9 +294,40 @@ export default Vue.extend({
           // const seconds = Math.floor((distanceStart % (1000 * 60)) / 1000);
 
           this.timeToStart = days + 'd ' + hours + 'h ' + minutes + 'm ';
-        } else if (distanceEnd > 0) {
+        } else if (
+          distanceStart < 0 &&
+          !this.cfbInfo.started &&
+          distanceEnd > 0
+        ) {
+          // Should have started but hasn't yet -> increase polling speed to 0.5s
+          this.ended = false;
+          this.timeToStart = '...';
+
+          if (this.chainRefreshIntervall !== 500) {
+            this.chainRefreshIntervall = 500;
+            clearInterval(this.polling);
+            this.getChainData();
+          }
+
+          if (!this.chainPolling) {
+            this.getChainData();
+            this.chainPolling = true;
+          }
+        } else if (distanceEnd > 0 && this.cfbInfo.started) {
+          // Should have started and has -> slower polling at 5s
           this.started = true;
           this.ended = false;
+
+          if (this.chainRefreshIntervall !== 5000) {
+            this.chainRefreshIntervall = 5000;
+            clearInterval(this.polling);
+            this.getChainData();
+          }
+
+          if (!this.chainPolling) {
+            this.getChainData();
+            this.chainPolling = true;
+          }
 
           const days = Math.floor(distanceEnd / (1000 * 60 * 60 * 24));
           const hours = Math.floor(
@@ -266,7 +341,15 @@ export default Vue.extend({
 
           this.timeLeft = days + 'd ' + hours + 'h ' + minutes + 'm ';
         } else {
+          // Sale over -> no polling
           this.ended = true;
+
+          if (this.chainPolling) {
+            clearInterval(this.polling);
+            this.chainPolling = false;
+          }
+
+          clearInterval(this.timecalc);
         }
       }, 1000);
     },
@@ -406,7 +489,7 @@ export default Vue.extend({
           overflow: hidden;
           text-overflow: ellipsis;
           direction: rtl;
-          margin-left: -1px;
+          margin-left: -3px;
         }
       }
     }
@@ -639,6 +722,7 @@ export default Vue.extend({
             .endedBtn {
               padding-left: 36px;
               padding-right: 36px;
+              pointer-events: none;
             }
 
             .greyedOut {
