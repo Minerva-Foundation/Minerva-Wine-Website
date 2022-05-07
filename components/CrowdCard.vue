@@ -4,6 +4,27 @@
     class="wrapperCrowdCard"
     :class="{ large: large, soonCard: crowdF.soon }"
   >
+    <div v-if="overlay" class="buyingProcess">
+      <button class="close" @click="(overlay = false), (loading = false)">
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="#999"
+            d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+          ></path>
+        </svg>
+      </button>
+      <div class="content">
+        <span v-if="overlayText !== ''" class="overlayText">{{
+          overlayText
+        }}</span>
+        <NuxtLink v-if="showMWLink" to="/club/myClub/myAssets"
+          ><button class="button">
+            MY WINE<span class="linkArrow">&#x2197;</span>
+          </button></NuxtLink
+        >
+        <div v-if="loading" class="dot-pulse"></div>
+      </div>
+    </div>
     <div class="info">
       <div class="title">
         <NuxtLink :to="`/wine/${crowdF.merchant.slug.current}`">
@@ -87,7 +108,7 @@
       /></span>
     </div>
     <div v-if="!crowdF.soon" class="crowdInfo">
-      <div class="rest">
+      <div class="rest" :class="{ lessInfo: ended }">
         <div class="purchaseInfo">
           <span class="case">Case Of 6 Bottles</span>
           <span class="price"
@@ -96,8 +117,9 @@
         </div>
         <div class="buy">
           <div class="btns">
-            <form class="purchase" @submit.prevent>
+            <div class="purchase">
               <input
+                v-if="!ended"
                 v-model="amount"
                 :class="{ warn: amountOverMax }"
                 type="text"
@@ -115,10 +137,11 @@
                   greyedOut: !started && !ended,
                   endedBtn: ended,
                 }"
+                @click.stop="buy"
               >
                 {{ ended ? ' ENDED ' : 'BUY NOW' }}
               </button>
-            </form>
+            </div>
             <NuxtLink
               v-if="!onDetailSite"
               :to="{
@@ -131,16 +154,21 @@
               <button class="buttonLight"></button
             ></a>
           </div>
-          <span class="disclaimer">
-            <input :id="crowdF.slug.current" type="checkbox" /><label
-              :for="crowdF.slug.current"
+          <span v-if="!ended" class="disclaimer">
+            <input
+              :id="crowdF.slug.current"
+              v-model="tcChecked"
+              :class="{ warn: warnTCs }"
+              type="checkbox"
+              @click="warnTCs = false"
+            /><label :for="crowdF.slug.current"
               >By buying you agree to the
               <a
                 :class="{ greyedOut: !started && !ended }"
                 :href="crowdF.tc"
                 target="_blank"
                 >Terms and Conditions</a
-              >.<br />Delivery included in price</label
+              >.<br />Delivery included</label
             >
           </span>
         </div>
@@ -190,8 +218,22 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import {
+  TxAPI,
+  MsgExecuteContract,
+  Coin,
+  BaseAccount,
+} from '@terra-money/terra.js';
+import {
+  WalletController,
+  ConnectedWallet,
+} from '@terra-money/wallet-controller';
+import { Subscription } from 'rxjs';
+import { lcd } from '~/assets/ts/ConfigBlockchaiin';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getCrowdfundBlockchainData } from '~/assets/ts/saleBlockchainData';
+import { getController } from '~/assets/ts/walletController';
+import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 
 export default Vue.extend({
   name: 'CrowdfundCard',
@@ -226,6 +268,19 @@ export default Vue.extend({
     timecalc: null as any,
     chainRefreshIntervall: 5000,
     chainPolling: false,
+    gasEstimate: 0,
+    wallet: {} as ConnectedWallet | undefined,
+    controllerGetTries: 0,
+    walletController: {} as WalletController,
+    status: '',
+    subscription: null as Subscription | null,
+    tcChecked: false,
+    warnTCs: false,
+    loading: false,
+    overlay: false,
+    queryBuyTX: false,
+    overlayText: '',
+    showMWLink: false,
   }),
   async fetch() {
     if (!this.crowdF.soon) {
@@ -235,6 +290,7 @@ export default Vue.extend({
       );
       this.loadingChainData = false;
       this.cfbInfo = temp;
+      this.waitForController();
     }
   },
   mounted() {
@@ -243,8 +299,162 @@ export default Vue.extend({
   beforeDestroy() {
     clearInterval(this.polling);
     clearInterval(this.timecalc);
+    if (this.subscription) this.subscription.unsubscribe();
   },
   methods: {
+    buy() {
+      this.overlayText = '';
+      this.showMWLink = false;
+
+      if (!this.ended) {
+        if (this.status === 'ready') {
+          if (this.tcChecked) {
+            this.overlay = true;
+            this.warnTCs = false;
+
+            if (lcd.config.chainID !== this.wallet?.network.chainID) {
+              this.overlayText =
+                'Please conntect your wallet to the ' +
+                (lcd.config.chainID === 'bombay-12'
+                  ? lcd.config.chainID + ' testnet'
+                  : lcd.config.chainID === 'columbus-5'
+                  ? lcd.config.chainID + ' mainnet'
+                  : lcd.config.chainID + ' network') +
+                ' and reload the page!';
+              setTimeout(() => {
+                this.overlay = false;
+              }, 3000);
+            } else {
+              this.loading = true;
+              this.overlayText =
+                'Confirm the purchase of ' +
+                this.amount +
+                (this.amount === 1 ? ' case' : ' cases') +
+                ' for a total of ' +
+                this.cfbInfo.price * Number(this.amount) +
+                ' UST' +
+                ' in your wallet.';
+              this.postTx();
+            }
+          } else {
+            this.warnTCs = true;
+          }
+        } else {
+          toggleWalletWindowVisibility(true);
+
+          if (this.tcChecked) {
+            this.queryBuyTX = true;
+          } else {
+            this.warnTCs = true;
+            this.queryBuyTX = false;
+          }
+        }
+      }
+    },
+    subscribeWallet() {
+      this.subscription = this.walletController
+        .connectedWallet()
+        .subscribe((_connectedWallet) => {
+          this.wallet = _connectedWallet;
+
+          if (_connectedWallet) {
+            if (!_connectedWallet.availablePost) {
+              this.status = 'can-not-post';
+            } else {
+              this.status = 'ready';
+
+              if (this.queryBuyTX) {
+                this.overlay = true;
+                this.warnTCs = false;
+
+                if (lcd.config.chainID !== this.wallet?.network.chainID) {
+                  this.overlayText =
+                    'Please conntect your wallet to the ' +
+                    (lcd.config.chainID === 'bombay-12'
+                      ? lcd.config.chainID + ' testnet'
+                      : lcd.config.chainID === 'columbus-5'
+                      ? lcd.config.chainID + ' mainnet'
+                      : lcd.config.chainID + ' network') +
+                    ' and reload the page!';
+                  setTimeout(() => {
+                    this.overlay = false;
+                  }, 3000);
+                } else {
+                  this.loading = true;
+                  this.overlayText =
+                    'Confirm the purchase of ' +
+                    this.amount +
+                    (this.amount === 1 ? ' case' : ' cases') +
+                    ' for a total of ' +
+                    this.cfbInfo.price * Number(this.amount) +
+                    ' UST' +
+                    ' in your wallet.';
+                  this.postTx();
+                }
+              }
+            }
+          } else {
+            this.status = 'not-connected';
+          }
+        });
+    },
+    postTx() {
+      if (this.wallet) {
+        const api = new TxAPI(lcd);
+        const msg = new MsgExecuteContract(
+          this.wallet.terraAddress,
+          this.crowdF.contract,
+          { purchase: { number_of_tokens: Number(this.amount) } },
+          [new Coin('uusd', Number(this.amount) * this.cfbInfo.price * 1000000)]
+        );
+
+        lcd.auth.accountInfo(this.wallet.terraAddress).then((info) => {
+          const acc = info as BaseAccount;
+
+          api
+            .estimateFee([{ sequenceNumber: acc.sequence }], { msgs: [msg] })
+            .then((fee) => {
+              if (this.wallet)
+                this.wallet
+                  .post({ msgs: [msg], fee })
+                  .then(() => {
+                    this.loading = false;
+                    this.showMWLink = true;
+                    this.overlayText =
+                      'Success! Wine received after the crowdfund' +
+                      (this.cfbInfo.min > 0 &&
+                      this.cfbInfo.current < this.cfbInfo.min
+                        ? ' and if the minimum of ' +
+                          this.cfbInfo.min +
+                          ' is reached. Otherwise you will be refunded!'
+                        : '') +
+                      '.';
+                    setTimeout(() => {
+                      this.overlay = false;
+                    }, 12000);
+                  })
+                  .catch(() => {
+                    this.loading = false;
+                    this.overlayText =
+                      'Something went wrong! Please try again.';
+                    setTimeout(() => {
+                      this.overlay = false;
+                    }, 5000);
+                  });
+            });
+        });
+      }
+    },
+    waitForController() {
+      if (getController() === undefined && this.controllerGetTries++ < 10) {
+        setTimeout(() => {
+          this.waitForController();
+        }, 50);
+      } else {
+        this.walletController = getController() as WalletController;
+        this.subscribeWallet();
+      }
+    },
     getChainData() {
       this.polling = setInterval(() => {
         getCrowdfundBlockchainData(this.crowdF.contract, this.$sanity).then(
@@ -359,7 +569,6 @@ export default Vue.extend({
       );
 
       this.prevAmount = '';
-      console.log('test');
 
       if (!allowedKeys.includes(this.amount.toString() + evt.key.toString())) {
         evt.preventDefault();
@@ -413,6 +622,7 @@ export default Vue.extend({
   color: #333;
   background-color: white;
   font-size: max(1em, 12px);
+  position: relative;
 
   @media screen and (max-width: 1330px), screen and (max-height: 950px) {
     height: 680px;
@@ -619,6 +829,10 @@ export default Vue.extend({
         }
       }
       .buy {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
         .btns {
           padding-bottom: 10px;
           display: flex;
@@ -720,9 +934,11 @@ export default Vue.extend({
             }
 
             .endedBtn {
-              padding-left: 36px;
-              padding-right: 36px;
+              padding-left: 46.3px;
+              padding-right: 46.3px;
               pointer-events: none;
+              border-top-left-radius: 7px;
+              border-bottom-left-radius: 7px;
             }
 
             .greyedOut {
@@ -757,6 +973,12 @@ export default Vue.extend({
             }
           }
 
+          .warn {
+            -webkit-box-shadow: inset 0px 0px 0px 3px #e40000;
+            box-shadow: inset 0px 0px 0px 3px #505050;
+            filter: saturate(100%);
+          }
+
           label {
             cursor: pointer;
 
@@ -769,6 +991,14 @@ export default Vue.extend({
             }
           }
         }
+      }
+    }
+
+    .lessInfo {
+      padding-bottom: 8px;
+
+      @media screen and (max-width: 1085px) {
+        padding-bottom: 0px;
       }
     }
 
@@ -839,6 +1069,158 @@ export default Vue.extend({
       }
       .progress::-moz-progress-bar {
         background-color: $secondary !important;
+      }
+    }
+  }
+
+  .buyingProcess {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background-color: white;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      max-width: 65%;
+
+      .overlayText {
+        text-align: center;
+        color: #888;
+        font-size: 1.8em;
+      }
+
+      .button {
+        min-width: 120px !important;
+        height: auto !important;
+        min-height: 52px;
+        padding: 0px 5px 0px 10px;
+        font-size: 0.85rem;
+        position: relative;
+
+        .linkArrow {
+          position: relative;
+          padding-left: 5px;
+          bottom: 1px;
+          color: rgb(238, 238, 238);
+          font-size: 0.8em;
+        }
+      }
+
+      @media screen and (max-width: $fourth-incr) {
+        .button {
+          min-width: 120px !important;
+          height: auto !important;
+          min-height: 45px;
+          padding: 0px 5px 0px 5px;
+          font-size: 0.85rem;
+
+          @media screen and (max-width: $fifth-incr) {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 17px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    $dot-color: #999;
+
+    .dot-pulse {
+      position: relative;
+      left: -9999px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $dot-color;
+      color: $dot-color;
+      box-shadow: 9999px 0 0 -5px $dot-color;
+      animation: dotPulse 1.5s infinite linear;
+      animation-delay: 0.25s;
+    }
+
+    .dot-pulse::before,
+    .dot-pulse::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $dot-color;
+      color: $dot-color;
+    }
+
+    .dot-pulse::before {
+      box-shadow: 9975px 0 0 -5px $dot-color;
+      animation: dotPulseBefore 1.5s infinite linear;
+      animation-delay: 0s;
+    }
+
+    .dot-pulse::after {
+      box-shadow: 10023px 0 0 -5px $dot-color;
+      animation: dotPulseAfter 1.5s infinite linear;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes dotPulseBefore {
+      0% {
+        box-shadow: 9975px 0 0 -0px $dot-color;
+      }
+      30% {
+        box-shadow: 9975px 0 0 2px $dot-color;
+      }
+      60%,
+      100% {
+        box-shadow: 9975px 0 0 -0px $dot-color;
+      }
+    }
+
+    @keyframes dotPulse {
+      0% {
+        box-shadow: 9999px 0 0 0px $dot-color;
+      }
+      30% {
+        box-shadow: 9999px 0 0 2px $dot-color;
+      }
+      60%,
+      100% {
+        box-shadow: 9999px 0 0 -0px $dot-color;
+      }
+    }
+
+    @keyframes dotPulseAfter {
+      0% {
+        box-shadow: 10023px 0 0 -0px $dot-color;
+      }
+      30% {
+        box-shadow: 10023px 0 0 2px $dot-color;
+      }
+      60%,
+      100% {
+        box-shadow: 10023px 0 0 -0px $dot-color;
       }
     }
   }

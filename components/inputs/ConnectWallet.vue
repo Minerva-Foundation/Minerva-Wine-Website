@@ -143,7 +143,7 @@ export default Vue.extend({
     walletController: {} as WalletController,
     states: {} as any,
     // supportFeatures: [] as String[],
-    subscription: {} as Subscription | null,
+    subscription: null as Subscription | null,
     // availableInstallTypes: [] as ConnectType[],
     // availableConnectTypes: [] as ConnectType[],
     // availableConnections: [] as Connection[],

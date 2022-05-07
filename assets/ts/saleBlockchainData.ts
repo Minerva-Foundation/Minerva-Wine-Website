@@ -30,10 +30,11 @@ export async function getCrowdfundBlockchainData(contract: string, sanity: any):
 
     cfState = await Query(contract,{"state":{}}).catch(async () => {
         const temp = await getCrowdfundChainPlaceholders(contract, sanity) as defTypes.CrowdfundBlockchainPlaceholder;
-        cfState = {price: { amount: (temp.price * 1000000).toString(), denom: 'ust' }, min_tokens_sold: '0', amount_sold: '0', max_amount_per_wallet: temp.maxBuy}
+        cfState = {price: { amount: (temp.price * 1000000).toString(), denom: 'uusd' }, min_tokens_sold: '0', amount_sold: '0', max_amount_per_wallet: temp.maxBuy}
         fromChain = false;
         return cfState;
     }) as andromedaTypes.CrowdfundState;
+    
 
     const cfbInfo: defTypes.CrowdfundBlockchain = {
         price: Number(cfState.price.amount)/1000000,

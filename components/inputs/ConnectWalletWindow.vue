@@ -84,7 +84,7 @@ export default Vue.extend({
     availableConnections: [] as Connection[],
     // states: {} as WalletStates,
     // supportFeatures: [] as String[],
-    subscription: {} as Subscription | null,
+    subscription: null as Subscription | null,
   }),
   created() {
     if (getController() === undefined) {
