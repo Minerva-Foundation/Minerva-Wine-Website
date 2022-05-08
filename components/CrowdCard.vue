@@ -118,6 +118,12 @@
         <div class="buy">
           <div class="btns">
             <div class="purchase">
+              <infoWarningTooltip
+                v-if="amountOverMax"
+                class="amountWarning"
+                :text="'Max possible amount is ' + cfbInfo.maxBuy"
+                :upsidedown="true"
+              />
               <input
                 v-if="!ended"
                 v-model="amount"
@@ -155,6 +161,12 @@
             ></a>
           </div>
           <span v-if="!ended" class="disclaimer">
+            <infoWarningTooltip
+              v-if="warnTCs"
+              class="tcWarningTT"
+              :upsidedown="true"
+              text="Please accept the Terms and Conditions"
+            />
             <input
               :id="crowdF.slug.current"
               v-model="tcChecked"
@@ -582,7 +594,7 @@ export default Vue.extend({
 
         setTimeout(() => {
           this.amountOverMax = false;
-        }, 1000);
+        }, 2000);
       } else {
         this.amountOverMax = false;
       }
@@ -903,6 +915,19 @@ export default Vue.extend({
 
           .purchase {
             display: flex;
+            position: relative;
+            overflow: visible;
+
+            .amountWarning {
+              position: absolute;
+              bottom: 100%;
+              left: 0;
+              width: 180%;
+
+              @media screen and (max-width: 600px) {
+                width: 188px;
+              }
+            }
 
             .amount {
               border-top-left-radius: 7px;
@@ -960,6 +985,14 @@ export default Vue.extend({
           font-size: 0.81em;
           display: flex;
           align-items: flex-start;
+          position: relative;
+
+          .tcWarningTT {
+            z-index: 2;
+            position: absolute;
+            bottom: 100%;
+            left: -17px;
+          }
 
           input {
             margin-top: 1px;
@@ -1079,7 +1112,8 @@ export default Vue.extend({
     left: 1px;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.962);
+    backdrop-filter: blur(2px);
     z-index: 10;
     display: flex;
     justify-content: center;

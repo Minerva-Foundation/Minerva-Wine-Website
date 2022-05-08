@@ -272,7 +272,8 @@ export default Vue.extend({
       border-bottom: 1px solid transparent;
 
       @media screen and (max-width: 900px) {
-        border-bottom: 1px solid #cccccc;
+        border-bottom: 1px solid #e0e0e0;
+        border-top: 1px solid #e0e0e0;
       }
     }
 
