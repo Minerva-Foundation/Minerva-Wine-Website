@@ -248,7 +248,7 @@ import {
 import { Subscription } from 'rxjs';
 import { lcd } from '~/assets/ts/ConfigBlockchaiin';
 import * as defTypes from '~/assets/ts/defaultTypes';
-import { getCrowdfundBlockchainData } from '~/assets/ts/saleBlockchainData';
+import { getCrowdfundBlockchainData } from '~/assets/ts/BlockchainData';
 import { getController } from '~/assets/ts/walletController';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 
@@ -487,7 +487,7 @@ export default Vue.extend({
                         }
                         setTimeout(() => {
                           this.overlay = false;
-                        }, 1200000);
+                        }, 12000);
                       })
                       .catch(() => {
                         this.loading = false;
@@ -514,7 +514,7 @@ export default Vue.extend({
                 'Either you do not have enough UST or you reached your maximum purchase limit.';
               setTimeout(() => {
                 this.overlay = false;
-              }, 500000);
+              }, 6000);
             });
         });
       }

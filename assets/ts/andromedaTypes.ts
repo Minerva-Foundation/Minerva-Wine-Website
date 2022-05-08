@@ -8,3 +8,7 @@ export interface CrowdfundState {
     price: { amount: string, denom: string },
     recipient?: Object,
 }
+
+export interface Tokens {
+    tokens: string[]
+}

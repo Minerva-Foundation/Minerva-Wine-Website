@@ -1,5 +1,5 @@
 import { groq } from "@nuxtjs/sanity";
-import * as defTypes from "./defaultTypes"
+import * as defTypes from "./defaultTypes";
 
 const SanityCrowdfundPlacholders: { placeholders: defTypes.CrowdfundBlockchainPlaceholder, contract: string }[] = [];
 
@@ -70,4 +70,15 @@ export async function getCrowdfundChainPlaceholders(contract: string, sanity: an
     return crowdfund;
   }
   
+}
+
+export async function getNftAddresses(sanity: any): Promise<{slug: defTypes.Slug}[]> {
+  const query = groq`*[_type == "crowdfund"]{slug{current}}`;
+  
+  const crowdfunds: {slug: defTypes.Slug}[] = (
+    (await sanity.fetch(query)) as {slug: defTypes.Slug}[]
+  );
+    console.log(crowdfunds);
+    
+  return crowdfunds;
 }
