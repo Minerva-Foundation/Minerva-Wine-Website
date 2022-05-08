@@ -17,6 +17,9 @@
         <span v-if="overlayText !== ''" class="overlayText">{{
           overlayText
         }}</span>
+        <span v-if="overlayTextSmaller !== ''" class="overlayTextSmaller">{{
+          overlayTextSmaller
+        }}</span>
         <NuxtLink v-if="showMWLink" to="/club/myClub/myAssets"
           ><button class="button">
             MY WINE<span class="linkArrow">&#x2197;</span>
@@ -235,10 +238,12 @@ import {
   MsgExecuteContract,
   Coin,
   BaseAccount,
+  TxInfo,
 } from '@terra-money/terra.js';
 import {
   WalletController,
   ConnectedWallet,
+  TxResult,
 } from '@terra-money/wallet-controller';
 import { Subscription } from 'rxjs';
 import { lcd } from '~/assets/ts/ConfigBlockchaiin';
@@ -292,7 +297,9 @@ export default Vue.extend({
     overlay: false,
     queryBuyTX: false,
     overlayText: '',
+    overlayTextSmaller: '',
     showMWLink: false,
+    txInfoTries: 0,
   }),
   async fetch() {
     if (!this.crowdF.soon) {
@@ -316,6 +323,7 @@ export default Vue.extend({
   methods: {
     buy() {
       this.overlayText = '';
+      this.overlayTextSmaller = '';
       this.showMWLink = false;
 
       if (!this.ended) {
@@ -410,6 +418,22 @@ export default Vue.extend({
           }
         });
     },
+    getTxInfo(txRes: TxResult, api: TxAPI): Promise<TxInfo | null> {
+      return new Promise((resolve, reject) => {
+        setInterval(() => {
+          api
+            .txInfo(txRes.result.txhash)
+            .then((res) => {
+              resolve(res);
+            })
+            .catch(() => {
+              if (this.txInfoTries++ >= 15) {
+                reject(new Error('Timed out'));
+              }
+            });
+        }, 1000);
+      });
+    },
     postTx() {
       if (this.wallet) {
         const api = new TxAPI(lcd);
@@ -429,21 +453,50 @@ export default Vue.extend({
               if (this.wallet)
                 this.wallet
                   .post({ msgs: [msg], fee })
-                  .then(() => {
-                    this.loading = false;
-                    this.showMWLink = true;
-                    this.overlayText =
-                      'Success! Wine received after the crowdfund' +
-                      (this.cfbInfo.min > 0 &&
-                      this.cfbInfo.current < this.cfbInfo.min
-                        ? ' and if the minimum of ' +
-                          this.cfbInfo.min +
-                          ' is reached. Otherwise you will be refunded!'
-                        : '') +
-                      '.';
-                    setTimeout(() => {
-                      this.overlay = false;
-                    }, 12000);
+                  .then((e) => {
+                    this.overlayText = 'Processing';
+
+                    this.getTxInfo(e, api)
+                      .then((res) => {
+                        this.loading = false;
+                        this.showMWLink = true;
+                        this.overlayText = 'Success!';
+                        this.overlayTextSmaller =
+                          ' You will receive your wine after the crowdfund' +
+                          (this.cfbInfo.min > 0 &&
+                          this.cfbInfo.min > this.cfbInfo.current
+                            ? ' and if the minimum of ' +
+                              this.cfbInfo.min +
+                              ' cases sold is reached. Otherwise you will be refunded'
+                            : '') +
+                          '.';
+                        if (res?.logs) {
+                          const bought =
+                            res.logs[0].eventsByType.from_contract
+                              .number_of_tokens_purchased[0];
+                          if (bought < this.amount) {
+                            this.overlayTextSmaller =
+                              this.overlayTextSmaller +
+                              '\n Only ' +
+                              bought +
+                              (Number(bought) === 1
+                                ? ' case was'
+                                : ' cases were ') +
+                              ' purchased due to reaching the maximum purchase limit or selling out. Excess UST was returned.';
+                          }
+                        }
+                        setTimeout(() => {
+                          this.overlay = false;
+                        }, 1200000);
+                      })
+                      .catch(() => {
+                        this.loading = false;
+                        this.overlayText =
+                          'Something went wrong! Please try again.';
+                        setTimeout(() => {
+                          this.overlay = false;
+                        }, 5000);
+                      });
                   })
                   .catch(() => {
                     this.loading = false;
@@ -453,6 +506,15 @@ export default Vue.extend({
                       this.overlay = false;
                     }, 5000);
                   });
+            })
+            .catch(() => {
+              this.loading = false;
+              this.overlayText = 'Something went wrong!';
+              this.overlayTextSmaller =
+                'Either you do not have enough UST or you reached your maximum purchase limit.';
+              setTimeout(() => {
+                this.overlay = false;
+              }, 500000);
             });
         });
       }
@@ -1124,22 +1186,30 @@ export default Vue.extend({
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 30px;
       max-width: 65%;
 
       .overlayText {
         text-align: center;
         color: #888;
-        font-size: 1.8em;
+        font-size: 1.6em;
+      }
+
+      .overlayTextSmaller {
+        text-align: center;
+        color: #888;
+        font-size: 1.2em;
+        margin-top: 10px;
+        white-space: pre-line;
       }
 
       .button {
-        min-width: 120px !important;
+        min-width: 100px !important;
         height: auto !important;
-        min-height: 52px;
+        min-height: 45px;
         padding: 0px 5px 0px 10px;
         font-size: 0.85rem;
         position: relative;
+        margin-top: 40px;
 
         .linkArrow {
           position: relative;
@@ -1182,6 +1252,7 @@ export default Vue.extend({
     $dot-color: #999;
 
     .dot-pulse {
+      margin-top: 30px;
       position: relative;
       left: -9999px;
       width: 8px;
