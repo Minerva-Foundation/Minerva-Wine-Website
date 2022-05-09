@@ -79,7 +79,7 @@
         src="~static/images/menu_finer.svg"
         alt="Open Mobile Menu"
         class="mobileMenuBtn"
-        @click.stop="mobileMenuVis = !mobileMenuVis"
+        @click.stop="showMobileNav"
       />
     </nav>
     <div v-if="mobileMenuVis" class="overlayBlocker"></div>
@@ -94,7 +94,7 @@
         height="24"
         viewBox="0 0 24 24"
         class="closeMobileMenuBtn"
-        @click="mobileMenuVis = false"
+        @click="hideMobileNav"
       >
         <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
       </svg>
@@ -133,6 +133,7 @@
             to="/"
             class="linkHover"
             :class="{ underline: $nuxt.$route.path === '/' }"
+            @click.native="linkClicked"
             >Home</NuxtLink
           >
         </li>
@@ -232,15 +233,24 @@ export default Vue.extend({
   },
   beforeMount() {
     const vh = window.innerHeight;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
   },
   methods: {
     hideMobileNav() {
-      if (this.mobileMenuVis) this.mobileMenuVis = false;
+      if (this.mobileMenuVis) {
+        this.mobileMenuVis = false;
+        document.documentElement.style.setProperty('--bodyScroll', `scroll`);
+      }
+    },
+    showMobileNav() {
+      if (!this.mobileMenuVis) {
+        this.mobileMenuVis = true;
+        document.documentElement.style.setProperty('--bodyScroll', `hidden`);
+      }
     },
     linkClicked() {
       this.linkJustClicked = true;
+      document.documentElement.style.setProperty('--bodyScroll', `scroll`);
       setTimeout(() => {
         this.linkJustClicked = false;
       }, 100);

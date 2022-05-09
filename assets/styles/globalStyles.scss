@@ -1,7 +1,11 @@
 @import './vars.scss';
 
+:root {
+}
+
 html {
-  overflow-y: scroll;
+  --bodyScroll: scroll;
+  overflow-y: var(--bodyScroll);
 }
 
 * {
