@@ -102,7 +102,7 @@
         ></path>
       </svg>
       <div class="btnWrapper">
-        <InputsConnectWallet location="MOBILE" />
+        <InputsConnectWallet location="MOBILE" @closeMobile="linkClicked" />
       </div>
       <ul class="mainLinks mobile rosStretch">
         <!-- <li @click="mobileMenuVis = false">
@@ -236,24 +236,31 @@ export default Vue.extend({
   },
   beforeMount() {
     const vh = window.innerHeight;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--vhNav', `${vh}px`);
   },
   methods: {
     hideMobileNav() {
       if (this.mobileMenuVis) {
+        window.removeEventListener('scroll', this.handleScroll);
         this.mobileMenuVis = false;
         document.documentElement.style.setProperty('--bodyScroll', `scroll`);
       }
     },
     showMobileNav() {
       if (!this.mobileMenuVis) {
+        window.addEventListener('scroll', this.handleScroll);
         const vh = window.innerHeight;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--vhNav', `${vh}px`);
         this.mobileMenuVis = true;
         document.documentElement.style.setProperty('--bodyScroll', `hidden`);
       }
     },
+    handleScroll() {
+      const vh = window.innerHeight;
+      document.documentElement.style.setProperty('--vhNav', `${vh}px`);
+    },
     linkClicked() {
+      this.hideMobileNav();
       this.linkJustClicked = true;
       document.documentElement.style.setProperty('--bodyScroll', `scroll`);
       setTimeout(() => {
@@ -592,7 +599,8 @@ li {
     top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: transparent;
+    backdrop-filter: blur(1px);
+    background-color: rgba(97, 97, 97, 0.089);
     z-index: 19;
   }
 
@@ -630,7 +638,7 @@ li {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: calc((100vh - var(--vh)) + 70px);
+      bottom: calc((100vh - var(--vhNav)) + 70px);
       margin-left: auto;
       margin-right: auto;
       opacity: 0;
@@ -654,9 +662,10 @@ li {
     }
 
     .mainLinks {
-      height: 100%;
+      height: calc(100% - 70px);
       flex-direction: column;
-      padding: 87px 0 15% 0;
+      padding: 0 0 0 0;
+      margin-top: 70px;
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;
@@ -676,7 +685,7 @@ li {
 
     .mobile {
       box-sizing: border-box;
-      max-height: calc(var(--vh) - 265px);
+      max-height: calc(var(--vhNav) - 260px - 70px);
       overflow-y: scroll;
 
       .ddCat {

@@ -97,7 +97,7 @@
       <div class="section assets">
         <NuxtLink
           to="/club/myClub/myAssets"
-          @click.native="detailVisible = false"
+          @click.native="(detailVisible = false), $emit('closeMobile')"
         >
           <span>My Wine</span><span>{{ nfts }}</span>
         </NuxtLink>
