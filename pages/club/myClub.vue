@@ -259,8 +259,8 @@ $filerMobile: 1200px;
   .mobileFilterVis {
     @media screen and (max-width: $filerMobile) {
       right: 0px !important;
-      -webkit-box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
-      box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+      -webkit-box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.04);
+      box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.04);
     }
   }
 
@@ -320,8 +320,8 @@ $filerMobile: 1200px;
         z-index: 5;
         box-sizing: border-box;
         border: rgba(0, 0, 0, 0.2) solid 1px;
-        -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.07);
-        box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.07);
+        -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.04);
+        box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.04);
         cursor: pointer;
 
         @media screen and (max-width: $filerMobile) {

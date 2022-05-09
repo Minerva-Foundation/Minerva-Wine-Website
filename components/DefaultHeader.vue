@@ -90,13 +90,16 @@
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         class="closeMobileMenuBtn"
         @click="hideMobileNav"
       >
-        <path d="M10.477 0h-8.977l12.024 12-12.024 12h8.977l12.023-12z" />
+        <path
+          fill="#dddddd"
+          d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+        ></path>
       </svg>
       <div class="btnWrapper">
         <InputsConnectWallet location="MOBILE" />
@@ -244,6 +247,8 @@ export default Vue.extend({
     },
     showMobileNav() {
       if (!this.mobileMenuVis) {
+        const vh = window.innerHeight;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
         this.mobileMenuVis = true;
         document.documentElement.style.setProperty('--bodyScroll', `hidden`);
       }
@@ -282,7 +287,7 @@ li {
     transform: rotate(-45deg);
     display: inline;
     transition-property: transform top;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
     transition-timing-function: ease;
   }
 
@@ -615,7 +620,6 @@ li {
       position: absolute;
       top: 30px;
       left: 30px;
-      filter: $white-filter;
       cursor: pointer;
     }
 
@@ -652,14 +656,10 @@ li {
     .mainLinks {
       height: 100%;
       flex-direction: column;
-      padding: 87px 0 15% 155px;
+      padding: 87px 0 15% 0;
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;
-
-      @media screen and (max-width: $third-incr) {
-        padding-left: 45vw;
-      }
 
       @media screen and (max-height: 400px) {
         padding-top: 40px;
@@ -691,6 +691,24 @@ li {
         z-index: 2;
         cursor: pointer;
         width: fit-content;
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+        box-sizing: border-box;
+
+        .underline::before {
+          width: 2px;
+          border-radius: 1px;
+          height: 60%;
+          right: auto;
+          left: -10px;
+          top: 18%;
+        }
+
+        & > a {
+          display: flex;
+          justify-content: space-between;
+        }
 
         * {
           padding: 0;
@@ -698,7 +716,8 @@ li {
 
         .subLinksWrapper {
           z-index: 1;
-          display: none;
+          height: 0px;
+          transition: 0.2s height ease;
 
           .subLinks {
             list-style: none;
@@ -709,6 +728,8 @@ li {
             padding-bottom: 15px;
             border-radius: 1px;
             white-space: nowrap;
+            opacity: 0;
+            transition: 0.2s ease opacity;
 
             li {
               width: 100%;
@@ -750,18 +771,29 @@ li {
         }
       }
 
-      .subLinksWrapperVis .subLinksWrapper {
-        display: block;
+      .subLinksWrapperVis {
+        .ddArrow {
+          transform: rotate(135deg);
+        }
+
+        .subLinksWrapper {
+          height: 111px;
+
+          .subLinks {
+            opacity: 1;
+            transition-delay: 0.1s;
+          }
+        }
       }
     }
   }
 
   .vis {
-    width: 350px;
+    width: 290px;
     -webkit-box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
     box-shadow: -1px 0px 31px 12px rgba(0, 0, 0, 0.15);
 
-    @media screen and (max-width: $third-incr) {
+    @media screen and (max-width: 310px) {
       width: 100vw;
     }
 

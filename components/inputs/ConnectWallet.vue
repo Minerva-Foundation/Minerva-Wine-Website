@@ -52,7 +52,7 @@
           to="/club/myClub/myAssets"
           @click.native="detailVisible = false"
         >
-          <span>My Wine</span><span>0</span>
+          <span>My Wine</span><span>{{ nfts }}</span>
         </NuxtLink>
       </div>
       <div class="section">
@@ -99,7 +99,7 @@
           to="/club/myClub/myAssets"
           @click.native="detailVisible = false"
         >
-          <span>My Wine</span><span>0</span>
+          <span>My Wine</span><span>{{ nfts }}</span>
         </NuxtLink>
       </div>
       <div class="section">
@@ -130,6 +130,7 @@ import {
 import { Subscription, combineLatest } from 'rxjs';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 import { getController } from '~/assets/ts/walletController';
+import { getNftsForWallet } from '~/assets/ts/BlockchainData';
 
 export default Vue.extend({
   props: {
@@ -150,6 +151,7 @@ export default Vue.extend({
     formattedWalletAddr: '',
     controllerGetTries: 0,
     detailVisible: false,
+    nfts: 0,
   }),
   mounted() {
     // if (getController() === undefined) {
@@ -217,6 +219,14 @@ export default Vue.extend({
         //     ? Array.from(_states.supportFeatures)
         //     : [];
         this.formatWalletAddr();
+        if (this.states.status === 'WALLET_CONNECTED') {
+          getNftsForWallet(
+            this.states.wallets[0].terraAddress,
+            this.$sanity
+          ).then((nfts) => {
+            this.nfts = nfts.length;
+          });
+        }
       });
     },
     copyWalletAddr() {
@@ -389,27 +399,27 @@ export default Vue.extend({
     position: absolute;
     top: auto;
     bottom: -70px;
-    right: -76px;
+    right: -46px;
     background-color: $main;
-    width: 350px;
+    width: 290px;
     -webkit-box-shadow: none;
     box-shadow: none;
     z-index: 10;
 
-    @media screen and (max-width: $third-incr) {
+    @media screen and (max-width: 310px) {
       width: 100vw;
       right: calc(-50vw + 99px);
     }
 
     .addrShowDetails {
-      width: 70%;
+      width: 90%;
     }
 
     .section {
       padding-left: 50px;
       padding-right: 50px;
 
-      @media screen and (max-width: $third-incr) {
+      @media screen and (max-width: 310px) {
         padding-left: 20vw;
         padding-right: 20vw;
       }
@@ -423,7 +433,7 @@ export default Vue.extend({
         padding-right: 50px;
         justify-content: flex-start;
 
-        @media screen and (max-width: $third-incr) {
+        @media screen and (max-width: 310px) {
           padding-left: 20vw;
           padding-right: 20vw;
         }
