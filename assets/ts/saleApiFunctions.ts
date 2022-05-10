@@ -22,7 +22,7 @@ function sortCrowdfunds(crowdfund: defTypes.CrowdfundBase[]): defTypes.Crowdfund
 }
 
 export async function getBaseCrowdfundInfo(sanity: any ):  Promise<defTypes.CrowdfundBase[]> {
-    const query = groq`*[_type == "crowdfund" ]{merchant->{flag,title,slug},start,maxSold,end,contract,cardImage,country,date,soon,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
+    const query = groq`*[_type == "crowdfund" ]{merchant->{flag,title,slug},countryLongs,countryShorts,start,maxSold,end,contract,cardImage,country,date,soon,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
     
     const crowdfund: defTypes.CrowdfundBase[] = (
       (await sanity.fetch(query)) as defTypes.CrowdfundBase[]
@@ -32,7 +32,7 @@ export async function getBaseCrowdfundInfo(sanity: any ):  Promise<defTypes.Crow
 }
 
 export async function getBaseCrowdfundInfoForMerchant(id: string, sanity: any ):  Promise<defTypes.CrowdfundBase[]> {
-  const query = groq`*[_type == "crowdfund" && merchant._ref == "${id}"]{merchant->{flag,title,slug},maxSold,detail1,detail2,detail3,soon,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
+  const query = groq`*[_type == "crowdfund" && merchant._ref == "${id}"]{merchant->{flag,title,slug},countryLongs,countryShorts,maxSold,detail1,detail2,detail3,soon,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}  | order(start asc)`;
   
   const crowdfund: defTypes.CrowdfundBase[] = (
     (await sanity.fetch(query)) as defTypes.CrowdfundBase[]
@@ -42,7 +42,7 @@ export async function getBaseCrowdfundInfoForMerchant(id: string, sanity: any ):
 }
 
 export async function getCrowdfundInfoBySlug(slug: string, sanity: any ):  Promise<defTypes.CrowdfundBase> {
-  const query = groq`*[_type == "crowdfund" && slug.current == "${slug}"]{merchant->{flag,title,slug},maxSold,detail1,detail2,bottleimage,detail3,soon,bottleCount,addDetails,varietyFirst,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}`;
+  const query = groq`*[_type == "crowdfund" && slug.current == "${slug}"]{merchant->{flag,title,slug},countryLongs,countryShorts,maxSold,detail1,detail2,bottleimage,detail3,soon,bottleCount,addDetails,varietyFirst,artwork,start,end,contract,cardImage,country,acidity,body,fruitiness,date,shortInfo,slug,tc,type,variety,vintage}`;
   
   const crowdfund: defTypes.CrowdfundBase = (
     (await sanity.fetch(query)) as defTypes.CrowdfundBase[]
@@ -78,7 +78,6 @@ export async function getNftAddresses(sanity: any): Promise<{slug: defTypes.Slug
   const crowdfunds: {slug: defTypes.Slug}[] = (
     (await sanity.fetch(query)) as {slug: defTypes.Slug}[]
   );
-    console.log(crowdfunds);
     
   return crowdfunds;
 }

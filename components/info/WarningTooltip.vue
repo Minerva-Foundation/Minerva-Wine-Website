@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="text" :class="{ upsidedown: upsidedown }">{{ text }}</div>
+    <span class="text" :class="{ upsidedown: upsidedown }">{{ text }}</span>
   </div>
 </template>
 

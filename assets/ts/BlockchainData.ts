@@ -83,3 +83,19 @@ export async function getNftsForWallet(walletAddr: string, sanity: any): Promise
     return ownedNFTs;
 }
 
+export async function getNftAmount(walletAddr: string, sanity: any): Promise<Number> {
+    let ownedNFTs = 0;
+    const NFTs: {slug: defTypes.Slug}[] = await getNftAddresses(sanity);
+
+    for(const nft of NFTs) {
+        try {
+            const tokensOwned: andromedaTypes.Tokens = await Query(nft.slug.current, {"tokens": {"owner":walletAddr}})
+            ownedNFTs = tokensOwned.tokens.length
+        } catch {
+            console.log('Was no NFT contract');
+        }
+    }
+
+    return ownedNFTs;
+}
+

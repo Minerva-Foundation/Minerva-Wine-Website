@@ -600,7 +600,7 @@ li {
     height: 100vh;
     width: 100vw;
     backdrop-filter: blur(1px);
-    background-color: rgba(97, 97, 97, 0.089);
+    background-color: rgba(70, 70, 70, 0.267);
     z-index: 19;
   }
 
@@ -666,6 +666,8 @@ li {
       flex-direction: column;
       padding: 0 0 0 0;
       margin-top: 70px;
+      padding-top: 20px;
+      box-sizing: border-box;
       opacity: 0;
       transition-delay: 0s;
       transition-duration: 0.01s;

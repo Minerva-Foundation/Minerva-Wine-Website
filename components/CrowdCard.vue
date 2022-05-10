@@ -66,8 +66,8 @@
         ><span class="infoItem">{{ crowdF.soon ? '...' : crowdF.date }}</span>
       </div>
       <div class="tc meta">
-        <span class="catName">Terms & Conditions</span>
-        <a
+        <span class="catName">Delivery Available To</span>
+        <!-- <a
           :href="crowdF.tc"
           target="_blank"
           :title="crowdF.tc"
@@ -77,7 +77,19 @@
           <div class="fileName">
             {{ crowdF.soon ? '...' : crowdF.tc }}
           </div>
-        </a>
+        </a> -->
+        <span class="infoItem"
+          >{{ crowdF.soon ? '...' : crowdF.countryShorts }}
+          <span v-if="!crowdF.soon" class="infoIcon"> &#9432;</span>
+          <infoWarningTooltip
+            v-if="!crowdF.soon"
+            class="countryInfo"
+            :text="
+              crowdF.countryLongs +
+              '\n\n * Minerva reserves the right to expand this list of delivery locations prior to delivery, and will announce any additions to NFT holders directly.'
+            "
+          />
+        </span>
       </div>
       <div v-if="!crowdF.soon" class="timer">
         <span class="timerLabel">{{
@@ -431,7 +443,7 @@ export default Vue.extend({
                 reject(new Error('Timed out'));
               }
             });
-        }, 1000);
+        }, 2000);
       });
     },
     postTx() {
@@ -454,15 +466,38 @@ export default Vue.extend({
                 this.wallet
                   .post({ msgs: [msg], fee })
                   .then((e) => {
-                    this.overlayText = 'Processing';
+                    this.overlayText = 'Success!';
+                    this.overlayTextSmaller = 'Waiting for transaction results';
 
                     this.getTxInfo(e, api)
                       .then((res) => {
                         this.loading = false;
                         this.showMWLink = true;
                         this.overlayText = 'Success!';
+                        this.overlayTextSmaller = '';
+
+                        if (res?.logs) {
+                          const bought =
+                            res.logs[0].eventsByType.from_contract
+                              .number_of_tokens_purchased[0];
+                          if (bought < this.amount) {
+                            this.overlayTextSmaller =
+                              'Only ' +
+                              bought +
+                              (Number(bought) === 1
+                                ? ' case was'
+                                : ' cases were ') +
+                              ' purchased due to reaching the maximum purchase limit or selling out. Excess UST was returned.';
+                          } else {
+                            this.overlayTextSmaller =
+                              'You bought ' +
+                              bought +
+                              (Number(bought) === 1 ? ' case.' : ' cases.');
+                          }
+                        }
                         this.overlayTextSmaller =
-                          ' You will receive your wine after the crowdfund' +
+                          this.overlayTextSmaller +
+                          '\nYou will receive your wine after the crowdfund' +
                           (this.cfbInfo.min > 0 &&
                           this.cfbInfo.min > this.cfbInfo.current
                             ? ' and if the minimum of ' +
@@ -470,21 +505,7 @@ export default Vue.extend({
                               ' cases sold is reached. Otherwise you will be refunded'
                             : '') +
                           '.';
-                        if (res?.logs) {
-                          const bought =
-                            res.logs[0].eventsByType.from_contract
-                              .number_of_tokens_purchased[0];
-                          if (bought < this.amount) {
-                            this.overlayTextSmaller =
-                              this.overlayTextSmaller +
-                              '\n Only ' +
-                              bought +
-                              (Number(bought) === 1
-                                ? ' case was'
-                                : ' cases were ') +
-                              ' purchased due to reaching the maximum purchase limit or selling out. Excess UST was returned.';
-                          }
-                        }
+
                         setTimeout(() => {
                           this.overlay = false;
                         }, 12000);
@@ -765,15 +786,47 @@ export default Vue.extend({
     .tc {
       .infoItem {
         display: flex;
-        white-space: nowrap;
-        overflow: hidden;
-        max-width: 58%;
+        position: relative;
+        cursor: default;
+        max-width: fit-content;
+
+        .countryInfo {
+          position: absolute;
+          top: calc(100% + 10px);
+          width: 400px;
+          max-width: 70vw;
+          display: none;
+
+          .text {
+            display: inline-block;
+            height: auto;
+            white-space: pre-line;
+
+            &::after {
+              left: 10%;
+            }
+          }
+        }
+
+        .infoIcon {
+          position: relative;
+          font-size: 0.8em;
+          color: #777;
+          bottom: 1px;
+          left: 4px;
+        }
 
         .fileName {
           overflow: hidden;
           text-overflow: ellipsis;
           direction: rtl;
           margin-left: -3px;
+        }
+
+        &:hover {
+          .countryInfo {
+            display: block;
+          }
         }
       }
     }

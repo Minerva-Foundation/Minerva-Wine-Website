@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapperWindow">
     <div v-click-outside="makeWalletWindowInvisible" class="walletWindow">
       <button class="close" @click="makeWalletWindowInvisible">
         <svg viewBox="0 0 24 24">
@@ -56,7 +56,11 @@
           ></path>
         </svg>
       </button>
-      <span class="beta" title="Not all Smart Contracts are fully audited yet!">
+      <span class="beta">
+        <infoWarningTooltip
+          class="betaWarn"
+          text="Not all Smart Contracts are fully audited yet!"
+        />
         BETA VERSION<img src="~static/images/torch.svg" class="torch" />
       </span>
     </div>
@@ -135,7 +139,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.wrapperWindow {
   display: var(--wwv);
   z-index: 210;
   top: 0;
@@ -225,11 +229,37 @@ export default Vue.extend({
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    position: relative;
+    cursor: default;
 
     .torch {
       height: 1em;
       padding-bottom: 2px;
       padding-left: 8px;
+    }
+
+    .betaWarn {
+      display: none;
+      position: absolute;
+      top: calc(100% + 15px);
+      width: 250%;
+      left: -55%;
+    }
+
+    &:hover {
+      .betaWarn {
+        display: block;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.beta {
+  .betaWarn {
+    .text::after {
+      left: calc(50% - 14px);
     }
   }
 }

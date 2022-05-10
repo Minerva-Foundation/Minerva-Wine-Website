@@ -192,6 +192,8 @@ export interface CrowdfundBase {
     vintage: string;
     end: Date;
     maxSold: number;
+    countryShorts: string;
+    countryLongs: string;
     detail1?: Body[];
     detail2?: Body[];
     detail3?: Body[];

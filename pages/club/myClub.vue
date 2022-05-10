@@ -22,7 +22,9 @@
       <aside
         class="filter"
         :class="{
-          mobileFilterVis: mobileFilterVis || windowWidth <= 465,
+          mobileFilterVis:
+            mobileFilterVis ||
+            (windowWidth <= 465 && $route.query.nav !== 'false'),
         }"
       >
         <div class="wrapperSticky">

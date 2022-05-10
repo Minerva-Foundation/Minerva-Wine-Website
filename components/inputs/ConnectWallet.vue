@@ -96,7 +96,7 @@
       </div>
       <div class="section assets">
         <NuxtLink
-          to="/club/myClub/myAssets"
+          to="/club/myClub/myAssets?nav=false"
           @click.native="(detailVisible = false), $emit('closeMobile')"
         >
           <span>My Wine</span><span>{{ nfts }}</span>
@@ -130,7 +130,7 @@ import {
 import { Subscription, combineLatest } from 'rxjs';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 import { getController } from '~/assets/ts/walletController';
-import { getNftsForWallet } from '~/assets/ts/BlockchainData';
+import { getNftAmount } from '~/assets/ts/BlockchainData';
 
 export default Vue.extend({
   props: {
@@ -151,7 +151,7 @@ export default Vue.extend({
     formattedWalletAddr: '',
     controllerGetTries: 0,
     detailVisible: false,
-    nfts: 0,
+    nfts: 0 as Number,
   }),
   mounted() {
     // if (getController() === undefined) {
@@ -220,12 +220,11 @@ export default Vue.extend({
         //     : [];
         this.formatWalletAddr();
         if (this.states.status === 'WALLET_CONNECTED') {
-          getNftsForWallet(
-            this.states.wallets[0].terraAddress,
-            this.$sanity
-          ).then((nfts) => {
-            this.nfts = nfts.length;
-          });
+          getNftAmount(this.states.wallets[0].terraAddress, this.$sanity).then(
+            (nfts) => {
+              this.nfts = nfts;
+            }
+          );
         }
       });
     },
@@ -241,7 +240,7 @@ export default Vue.extend({
   font-size: 14px !important;
   height: 54px !important;
   max-width: 198px;
-  padding: 15px 20px 15px 20px !important;
+  padding: 15px 20px 16px 20px !important;
 
   &::before {
     border-radius: 7px !important;
