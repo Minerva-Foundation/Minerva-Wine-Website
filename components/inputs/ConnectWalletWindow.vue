@@ -259,7 +259,7 @@ export default Vue.extend({
 .beta {
   .betaWarn {
     .text::after {
-      left: calc(50% - 14px);
+      left: calc(50% - 14px) !important;
     }
   }
 }

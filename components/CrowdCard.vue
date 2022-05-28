@@ -816,7 +816,6 @@ export default Vue.extend({
           position: relative;
           font-size: 0.8em;
           color: #777;
-          bottom: 1px;
           left: 4px;
         }
 

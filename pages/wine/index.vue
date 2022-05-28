@@ -248,16 +248,17 @@ export default Vue.extend({
     },
     visibleWithFilters(cf: defTypes.CrowdfundBase): Boolean {
       return (
-        (!cf.soon || this.appliedFilterCount === 0) &&
-        (this.typeFilters.length === 0
+        this.appliedFilterCount === 0 ||
+        ((this.typeFilters.length === 0
           ? true
-          : this.typeFilters.includes(cf.type.toLowerCase())) &&
-        (this.countryFilters.length === 0
-          ? true
-          : this.countryFilters.includes(cf.country.toLowerCase())) &&
-        (this.vintageFilters.length === 0
-          ? true
-          : this.vintageFilters.includes(cf.vintage.toLowerCase()))
+          : this.typeFilters.includes(cf.type.toLowerCase()) && !cf.soon) &&
+          (this.countryFilters.length === 0
+            ? true
+            : this.countryFilters.includes(cf.country.toLowerCase())) &&
+          (this.vintageFilters.length === 0
+            ? true
+            : this.vintageFilters.includes(cf.vintage.toLowerCase()) &&
+              !cf.soon))
       );
     },
     calcVisibleCrowdfunds() {

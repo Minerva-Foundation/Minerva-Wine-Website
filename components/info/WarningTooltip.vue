@@ -25,6 +25,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .wrapper {
   width: 100%;
+  z-index: 100;
 
   .text {
     height: 1em;
