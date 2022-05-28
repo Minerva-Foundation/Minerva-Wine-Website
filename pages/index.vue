@@ -20,13 +20,13 @@
         <h2 class="customh2 fade-in">About</h2>
         <h1 class="customh1 fade-in">What Is Minerva?</h1>
         <div class="pwrapper">
-          <p class="slide-in from-left">
+          <p class="fade-in">
             Minerva is an international community of individuals who are
             passionate about wine. We work with select producers from across the
             world who have unique stories to tell and whose dedication to the
             art of winemaking set them apart in the wine industry.
           </p>
-          <p class="slide-in from-right">
+          <p class="fade-in">
             Minerva allows customers to buy en primeur wine directly from
             producers, with confirmation of sale stored safely on the
             blockchain. Our wines are carefully-selected for their quality and
@@ -54,7 +54,7 @@
       />
     </section>
     <section class="slide3">
-      <article class="sectionContent slide-in from-right">
+      <article class="sectionContent fade-in">
         <h2 class="customh2">Curated</h2>
         <h1 class="customh1">Quality Wines</h1>
         <p>
@@ -77,7 +77,7 @@
       <img src="~static/images/globe.png" alt="Globe" class="globe" />
     </section>
     <section class="slide4">
-      <article class="sectionContent slide-in from-left">
+      <article class="sectionContent fade-in">
         <h2 class="customh2">Welcome to</h2>
         <h1 class="customh1">Minerva Club</h1>
         <p>
@@ -98,7 +98,7 @@
           ><button class="button">EXPLORE THE CLUB</button></NuxtLink
         >
       </article>
-      <div class="imgwrapper slide-in from-right">
+      <div class="imgwrapper fade-in">
         <img
           src="~static/images/wine_shelf.webp"
           alt="Wine shelf"
@@ -247,6 +247,10 @@ export default Vue.extend({
 
   @media screen and (min-width: $third-incr) {
     top: -110px;
+  }
+
+  @media screen and (max-height: 855px) {
+    top: -93px;
   }
 }
 
@@ -420,9 +424,9 @@ p {
     min-height: max(45vw, 420px);
   }
 
-  @media screen and (max-height: 855px) {
-    height: calc(100vh - 93px);
-  }
+  // @media screen and (max-height: 855px) {
+  //   height: calc(100vh - 93px);
+  // }
 
   @media screen and (max-width: $third-incr) {
     min-height: 450px;
@@ -660,7 +664,7 @@ p {
       justify-content: space-between;
 
       & * {
-        width: 45%;
+        width: 47%;
       }
 
       @media screen and (max-width: $second-incr) {

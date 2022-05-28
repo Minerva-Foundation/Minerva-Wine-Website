@@ -46,6 +46,16 @@ $defWidth: 410px;
   height: 509px;
   padding-top: 39px;
 
+  @media screen and (max-width: 1500px) {
+    height: 450px;
+    padding-top: 30px;
+  }
+
+  @media screen and (max-width: 1320px) {
+    height: 425px;
+    padding-top: 24px;
+  }
+
   @media screen and (max-width: 645px) and (min-height: 1150px),
     screen and (max-width: 600px) and (min-height: 1050px),
     screen and (max-width: 550px) {
@@ -65,12 +75,30 @@ $defWidth: 410px;
 
   * {
     max-width: $defWidth;
+
+    @media screen and (max-width: 1500px) {
+      max-width: 375px;
+    }
+
+    @media screen and (max-width: 1320px) {
+      max-width: 347.5px;
+    }
   }
 
   .image {
     width: $defWidth;
     height: 295px;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 1500px) {
+      height: 270px;
+      width: 375px;
+    }
+
+    @media screen and (max-width: 1320px) {
+      height: 250px;
+      width: 347.5px;
+    }
 
     @media screen and (max-width: 645px) and (min-height: 1150px),
       screen and (max-width: 600px) and (min-height: 1050px),
@@ -105,8 +133,12 @@ $defWidth: 410px;
       padding-top: 5px;
       padding-bottom: 5px;
 
-      @media screen and (max-width: 570px) {
-        font-size: 2.6em;
+      @media screen and (max-width: 1500px) {
+        font-size: 2.7em;
+      }
+
+      @media screen and (max-width: 570px), screen and (max-width: 1320px) {
+        font-size: 2.5em;
       }
 
       @media screen and (max-width: 430px) {
@@ -134,8 +166,12 @@ $defWidth: 410px;
       margin-left: 15px;
       font-size: max(1.225em, 14px);
 
-      @media screen and (max-width: 570px) {
-        font-size: max(1.065em, 14px);
+      @media screen and (max-width: 1500px) {
+        font-size: max(1.125em, 14px);
+      }
+
+      @media screen and (max-width: 570px), screen and (max-width: 1320px) {
+        font-size: max(1.025em, 14px);
       }
 
       @media screen and (max-width: 430px) {
@@ -154,7 +190,12 @@ $defWidth: 410px;
         height: 39px;
         border-radius: 50%;
 
-        @media screen and (max-width: 570px) {
+        @media screen and (max-width: 1500px) {
+          height: 33px;
+          max-width: 33px !important;
+        }
+
+        @media screen and (max-width: 570px), screen and (max-width: 1320px) {
           height: 30px;
           max-width: 30px !important;
         }

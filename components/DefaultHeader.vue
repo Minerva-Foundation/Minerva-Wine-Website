@@ -237,6 +237,9 @@ export default Vue.extend({
   beforeMount() {
     const vh = window.innerHeight;
     document.documentElement.style.setProperty('--vhNav', `${vh}px`);
+    if (!this.$device.isWindows) {
+      document.documentElement.style.setProperty('--defH2Height', `0.5`);
+    }
   },
   methods: {
     hideMobileNav() {

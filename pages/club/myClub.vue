@@ -368,6 +368,10 @@ $filerMobile: 1200px;
 
         .openMenuBtnOpen {
           transform: rotate(0deg);
+
+          @media screen and (max-width: 465px) {
+            transform: rotate(-180deg);
+          }
         }
       }
 

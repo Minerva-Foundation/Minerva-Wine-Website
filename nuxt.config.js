@@ -67,7 +67,8 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/sanity/module',
-    'nuxt-typed-vuex'
+    'nuxt-typed-vuex',
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

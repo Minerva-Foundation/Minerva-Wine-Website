@@ -13,6 +13,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
+    "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/sanity": "^0.10.0",
     "@nuxtjs/style-resources": "^1.2.1",
     "@sanity/client": "^3.0.6",

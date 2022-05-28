@@ -178,6 +178,8 @@ export default Vue.extend({
     },
   },
   mounted() {
+    console.log(this.$device.isWindows);
+
     this.calcVisibleCrowdfunds();
     window.addEventListener('resize', this.calcVisibleCrowdfunds);
 

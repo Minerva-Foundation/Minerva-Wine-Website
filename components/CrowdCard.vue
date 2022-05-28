@@ -32,7 +32,7 @@
       <div class="title">
         <NuxtLink :to="`/wine/${crowdF.merchant.slug.current}`">
           <span class="titleText">{{ crowdF.merchant.title }}</span
-          ><span class="linkArrow">&#x2197;</span>
+          ><span v-if="!$device.isIos" class="linkArrow">&#x2197;</span>
         </NuxtLink>
       </div>
       <div class="country">
@@ -86,7 +86,7 @@
             class="countryInfo"
             :text="
               crowdF.countryLongs +
-              '\n\n * Minerva reserves the right to expand this list of delivery locations prior to delivery, and will announce any additions to NFT holders directly.'
+              '\n\n * Minerva reserves the right to expand this list of delivery locations prior to delivery, and will announce any additions through official channels.'
             "
           />
         </span>
@@ -102,8 +102,9 @@
             : 'STARTS IN'
         }}</span
         ><span class="time">
-          {{ ended ? '' : started ? timeLeft : timeToStart }}</span
-        >
+          <!-- {{ ended ? '' : started ? timeLeft : timeToStart }} -->
+          -
+        </span>
       </div>
     </div>
     <div
@@ -127,7 +128,7 @@
         <div class="purchaseInfo">
           <span class="case">Case Of 6 Bottles</span>
           <span class="price"
-            >{{ cfbInfo.price }} <span class="smaller">UST</span></span
+            >{{ cfbInfo.price }} <span class="smaller">USD</span></span
           >
         </div>
         <div class="buy">
@@ -169,7 +170,10 @@
                 path: `/wine/cf/${crowdF.slug.current}`,
               }"
             >
-              <button class="buttonLight"></button>
+              <button
+                :class="{ ios: $device.isIos }"
+                class="buttonLight"
+              ></button>
             </NuxtLink>
             <a v-else @click="$emit('infoClicked')">
               <button class="buttonLight"></button
@@ -1025,6 +1029,12 @@ export default Vue.extend({
             @media screen and (max-width: 435px) {
               padding: 0 !important;
               width: 39px;
+            }
+          }
+
+          .ios {
+            &::after {
+              content: 'i';
             }
           }
 

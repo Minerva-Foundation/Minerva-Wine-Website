@@ -672,6 +672,13 @@ $filerMobile: 1714px;
         display: grid;
         overflow: hidden;
 
+        @media screen and (max-width: 1500px) {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(410px, 1fr)
+          ) !important;
+        }
+
         @media screen and (max-width: 645px) and (min-height: 1150px),
           screen and (max-width: 600px) and (min-height: 1050px),
           screen and (max-width: 550px) {
