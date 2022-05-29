@@ -241,8 +241,8 @@ export default Vue.extend({
     .betaWarn {
       display: none;
       position: absolute;
-      top: calc(100% + 15px);
-      width: 250%;
+      top: calc(100% + 17px);
+      width: 350%;
       left: -55%;
     }
 

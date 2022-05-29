@@ -87,6 +87,10 @@ footer {
       brightness(121%) contrast(71%);
     padding-left: 30px;
 
+    @media screen and (max-width: 450px) {
+      right: 30px;
+    }
+
     @media screen and (max-width: 329px) {
       height: 120px;
       bottom: 35px;

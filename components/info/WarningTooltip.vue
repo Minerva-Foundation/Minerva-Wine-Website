@@ -36,7 +36,7 @@ export default Vue.extend({
     background-color: rgb(243, 243, 243);
     border-radius: 3px;
     color: #666;
-    font-size: 0.75rem;
+    font-size: max(0.75rem, 9px);
     width: fit-content;
     -webkit-box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0.03);
     box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0.03);

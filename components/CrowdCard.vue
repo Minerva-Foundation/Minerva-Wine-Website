@@ -736,11 +736,11 @@ export default Vue.extend({
   }
 
   @media screen and (max-width: 525px) {
-    padding: 32px 32px 35px 32px;
+    padding: 32px 32px 43px 32px;
   }
 
   @media screen and (max-width: 435px) {
-    padding: 25px 20px 27px 20px;
+    padding: 25px 20px 40px 20px;
   }
 
   .info {
@@ -1169,8 +1169,8 @@ export default Vue.extend({
       position: relative;
       color: #777;
 
-      @media screen and (max-width: 400px) {
-        margin-top: 35px;
+      @media screen and (max-width: 450px) {
+        margin-top: 10px;
       }
 
       .progressBar {
