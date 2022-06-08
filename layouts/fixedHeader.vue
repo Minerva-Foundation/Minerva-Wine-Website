@@ -27,24 +27,24 @@ export default Vue.extend({
     }
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    // window.addEventListener('scroll', this.handleScroll);
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+    // window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
-    handleScroll() {
-      const atTop: Boolean =
-        Math.max(
-          window.pageYOffset,
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        ) +
-          window.innerHeight ===
-        document.documentElement.clientHeight;
-      if (!atTop) this.scrolled = true;
-      else this.scrolled = false;
-    },
+    // handleScroll() {
+    //   const atTop: Boolean =
+    //     Math.max(
+    //       window.pageYOffset,
+    //       document.documentElement.scrollTop,
+    //       document.body.scrollTop
+    //     ) +
+    //       window.innerHeight ===
+    //     document.documentElement.clientHeight;
+    //   if (!atTop) this.scrolled = true;
+    //   else this.scrolled = false;
+    // },
   },
 });
 </script>
