@@ -1,5 +1,5 @@
 <template>
-  <article class="wrapperArticleCard">
+  <article class="wrappercardsArticleCard">
     <portableImage
       class="image"
       :asset="article.mainImage.asset"
@@ -20,7 +20,7 @@
     <div class="rmcat">
       <span class="rm">READ MORE</span>
       <div class="cats">
-        <CategoryBar
+        <infoCategoryBar
           v-for="cat in article.categories"
           :key="cat._id"
           :cat="{ name: cat.title, desciption: cat.desciption }"
@@ -64,7 +64,7 @@ export default Vue.extend({
 <style lang="scss">
 $defWidth: 547px;
 
-.wrapperArticleCard {
+.wrappercardsArticleCard {
   display: flex;
   flex-direction: column;
   height: 573px;

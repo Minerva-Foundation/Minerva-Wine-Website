@@ -1,5 +1,5 @@
 <template>
-  <article class="wrapperMerchantCard">
+  <article class="wrappercardsMerchantCard">
     <portableImage
       class="image"
       :asset="merchant.card.asset"
@@ -40,7 +40,7 @@ export default Vue.extend({
 <style lang="scss">
 $defWidth: 410px;
 
-.wrapperMerchantCard {
+.wrappercardsMerchantCard {
   display: flex;
   flex-direction: column;
   height: 509px;

@@ -262,11 +262,11 @@ import {
   TxResult,
 } from '@terra-money/wallet-controller';
 import { Subscription } from 'rxjs';
-import { lcd } from '~/assets/ts/terraConfigBlockchain';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getCrowdfundBlockchainData } from '~/assets/ts/BlockchainData';
-import { getController } from '~/assets/ts/terraWalletController';
-import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
+import { lcd } from '~/assets/ts/Chain/terraConfigBlockchain';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getCrowdfundBlockchainData } from '~/assets/ts/Chain/BlockchainData';
+import { getController } from '~/assets/ts/Chain/terraWalletController';
+import toggleWalletWindowVisibility from '~/assets/ts/Chain/walletMethods';
 
 export default Vue.extend({
   name: 'CrowdfundCard',

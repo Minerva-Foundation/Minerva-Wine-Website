@@ -12,7 +12,7 @@
       <InputsConnectWallet />
     </div>
     <div v-else class="nfts">
-      <NftCard v-for="(nft, index) in nfts" :key="index" :nft="nft" />
+      <cardsNftCard v-for="(nft, index) in nfts" :key="index" :nft="nft" />
     </div>
   </div>
 </template>
@@ -24,9 +24,9 @@ import {
   ConnectedWallet,
 } from '@terra-money/wallet-controller';
 import { Subscription } from 'rxjs';
-import { getController } from '~/assets/ts/terraWalletController';
-import { getNftsForWallet } from '~/assets/ts/BlockchainData';
-import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
+import { getController } from '~/assets/ts/Chain/terraWalletController';
+import { getNftsForWallet } from '~/assets/ts/Chain/BlockchainData';
+import toggleWalletWindowVisibility from '~/assets/ts/Chain/walletMethods';
 
 export default Vue.extend({
   name: 'MyWine',

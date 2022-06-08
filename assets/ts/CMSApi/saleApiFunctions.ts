@@ -1,5 +1,5 @@
 import { groq } from "@nuxtjs/sanity";
-import * as defTypes from "./defaultTypes";
+import * as defTypes from "../Types/defaultTypes";
 
 const SanityCrowdfundPlacholders: { placeholders: defTypes.CrowdfundBlockchainPlaceholder, contract: string }[] = [];
 

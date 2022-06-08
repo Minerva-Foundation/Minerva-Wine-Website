@@ -121,14 +121,14 @@
         </div>
       </main>
     </div>
-    <ScrollTop />
+    <inputsScrollTop />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getBaseCrowdfundInfo } from '~/assets/ts/saleApiFunctions';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getBaseCrowdfundInfo } from '~/assets/ts/CMSApi/saleApiFunctions';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity } }) {

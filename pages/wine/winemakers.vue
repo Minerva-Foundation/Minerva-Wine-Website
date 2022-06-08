@@ -77,7 +77,7 @@
             :key="wm._id"
             :to="`/wine/${wm.slug.current}`"
           >
-            <MerchantCard :merchant="wm" />
+            <cardsMerchantCard :merchant="wm" />
           </NuxtLink>
           <div class="borderhiderR"></div>
           <div class="borderhiderL"></div>
@@ -86,14 +86,14 @@
         <div class="borderhiderB"></div>
       </main>
     </div>
-    <ScrollTop />
+    <inputsScrollTop />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getMerchantDetails } from '~/assets/ts/merchantApiFunctions';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getMerchantDetails } from '~/assets/ts/CMSApi/merchantApiFunctions';
 
 export default Vue.extend({
   async asyncData({ app: { $sanity } }) {

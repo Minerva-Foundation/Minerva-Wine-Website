@@ -32,7 +32,7 @@
             ><i class="date"> {{ formatDate }}</i></span
           >
           <div class="cats">
-            <CategoryBar
+            <infoCategoryBar
               v-for="cat in currentArticle.categories"
               :key="cat._id"
               :cat="{ name: cat.title, desciption: cat.desciption }"
@@ -79,8 +79,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import imageUrlBuilder from '@sanity/image-url';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getArticleBySlug } from '~/assets/ts/articleApiFunctions';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getArticleBySlug } from '~/assets/ts/CMSApi/articleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';

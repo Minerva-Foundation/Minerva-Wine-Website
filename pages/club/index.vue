@@ -77,7 +77,7 @@
           :key="article._id"
           :to="`/club/${article.slug.current}`"
         >
-          <ArticleCard :article="article" />
+          <cardsArticleCard :article="article" />
         </NuxtLink>
         <div class="borderhiderR"></div>
         <div class="borderhiderB"></div>
@@ -90,11 +90,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/defaultTypes';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
 import {
   getBaseArticleInfo,
   getCategories,
-} from '~/assets/ts/articleApiFunctions';
+} from '~/assets/ts/CMSApi/articleApiFunctions';
 import meta from '~/assets/ts/helpers';
 
 const metadata = meta(

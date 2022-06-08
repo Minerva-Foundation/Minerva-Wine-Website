@@ -74,7 +74,7 @@
       </div>
     </div>
     <div v-if="cfs.length >= 1" class="wheelWrapper">
-      <CrowdWheel
+      <inputsCrowdWheel
         id="buy"
         name="buy"
         :cfs="cfs"
@@ -188,7 +188,7 @@
       </div>
       <hr />
     </div> -->
-    <ScrollTop />
+    <inputsScrollTop />
   </div>
 </template>
 
@@ -196,9 +196,9 @@
 import Vue from 'vue';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityProjectDetails } from '@sanity/image-url/lib/types/types';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getMerchantDetailBySlug } from '~/assets/ts/merchantApiFunctions';
-import { getBaseCrowdfundInfoForMerchant } from '~/assets/ts/saleApiFunctions';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getMerchantDetailBySlug } from '~/assets/ts/CMSApi/merchantApiFunctions';
+import { getBaseCrowdfundInfoForMerchant } from '~/assets/ts/CMSApi/saleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';

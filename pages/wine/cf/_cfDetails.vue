@@ -220,7 +220,7 @@
       </div>
     </div>
 
-    <ScrollTop />
+    <inputsScrollTop />
   </div>
   <!-- <div class="wrapper">
       <h2 class="customh2">About</h2>
@@ -300,8 +300,8 @@
 import Vue from 'vue';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityProjectDetails } from '@sanity/image-url/lib/types/types';
-import * as defTypes from '~/assets/ts/defaultTypes';
-import { getCrowdfundInfoBySlug } from '~/assets/ts/saleApiFunctions';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
+import { getCrowdfundInfoBySlug } from '~/assets/ts/CMSApi/saleApiFunctions';
 import portableImage from '~/components/portableTextComps/portableImage.vue';
 import portableLink from '~/components/portableTextComps/portableLink.vue';
 import portableYT from '~/components/portableTextComps/portableYT.vue';

@@ -80,8 +80,8 @@ import { Subscription, combineLatest } from 'rxjs';
 import {
   initController,
   getController,
-} from '~/assets/ts/terraWalletController';
-import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
+} from '~/assets/ts/Chain/terraWalletController';
+import toggleWalletWindowVisibility from '~/assets/ts/Chain/walletMethods';
 
 export default Vue.extend({
   data: () => ({

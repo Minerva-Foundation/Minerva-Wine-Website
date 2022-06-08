@@ -121,7 +121,7 @@
         <h2 class="customh2 fade-in">Learn</h2>
         <h1 class="customh1 fade-in">How It Works</h1>
         <div class="guideWrapper fade-in">
-          <CollapsibleGuide
+          <infoCollapsibleGuide
             iteration="Stage 01"
             header="Select your wine."
             main-text="Browse through the selection of fine wine listed. Once you have selected your wine of choice, you will be able to purchase using your blockchain wallet. The Minerva community funds new vintages and bespoke wines, with discounts offered for the early stage of purchase. Be sure to note the delivery guidance and take note of the producer’s delivery date."
@@ -129,14 +129,14 @@
           />
         </div>
         <div class="guideWrapper fade-in">
-          <CollapsibleGuide
+          <infoCollapsibleGuide
             iteration="Stage 02"
             header="View your wine online."
             main-text="Once you have purchased your wine you will be able to see it on ‘My Wines’. Each purchase is accompanied by a unique piece of artwork which are in themselves a desirable asset. At this point, you will be able to access exclusive material in ‘Minerva Club’; this includes a space where you can discuss with the producer directly. "
           />
         </div>
         <div class="guideWrapper fade-in">
-          <CollapsibleGuide
+          <infoCollapsibleGuide
             iteration="Stage 03"
             header="Wait & appreciate."
             main-text="Minerva sells wine as it enters production, meaning that customers can see their bottle progress from the vine onwards. As your wine matures, you can enjoy Minerva Club material, display your wine and artwork proudly in a number of different ways online, and enjoy access to additional yield opportunities through your purchase."
@@ -144,7 +144,7 @@
           />
         </div>
         <div class="guideWrapper fade-in">
-          <CollapsibleGuide
+          <infoCollapsibleGuide
             iteration="Stage 04"
             header="Receive your wine."
             main-text="Once your wine has matured in production, the winemaker will deliver directly to all addresses holding the NFT receipt at the specified delivery time. There will still be a record of your purchase and you will retain the unique artwork in your blockchain wallet. "

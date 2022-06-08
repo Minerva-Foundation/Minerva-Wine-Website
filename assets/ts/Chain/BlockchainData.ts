@@ -1,7 +1,7 @@
-import * as andromedaTypes from './andromedaTypes';
+import * as andromedaTypes from '../Types/andromedaTypes';
+import * as defTypes from "../Types/defaultTypes";
 import { Query } from './BlockchainHelpers';
-import * as defTypes from "./defaultTypes";
-import { getCrowdfundChainPlaceholders, getNftAddresses } from '~/assets/ts/saleApiFunctions';
+import { getCrowdfundChainPlaceholders, getNftAddresses } from '~/assets/ts/CMSApi/saleApiFunctions';
 
 export async function getCrowdfundBlockchainData(contract: string, sanity: any): Promise<defTypes.CrowdfundBlockchain> {
     

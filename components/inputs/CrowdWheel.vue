@@ -76,7 +76,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import * as defTypes from '~/assets/ts/defaultTypes';
+import * as defTypes from '~/assets/ts/Types/defaultTypes';
 
 export default Vue.extend({
   name: 'CrowdfundWheel',
