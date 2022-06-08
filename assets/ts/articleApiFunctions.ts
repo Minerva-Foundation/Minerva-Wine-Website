@@ -14,3 +14,9 @@ export async function getBaseArticleInfo(sanity: any ):  Promise<defTypes.Conden
     const articles: defTypes.CondensedArticle[] = await sanity.fetch(query) as defTypes.CondensedArticle[];
     return articles;
 }
+
+export async function getCategories(sanity: any ):  Promise<defTypes.Category[]> {
+  const query = groq`*[_type == "category"]{_id, title, description} | order(title desc)`;
+  const cats: defTypes.Category[] = await sanity.fetch(query) as defTypes.Category[];
+  return cats;
+}

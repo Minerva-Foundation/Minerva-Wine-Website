@@ -198,7 +198,7 @@ export default Vue.extend({
       const temp: Array<Object | undefined> = [];
       let arrayIndex: number = 0;
 
-      // Fill up with filler panels that are transparent and test for current applied filters
+      // test for current applied filters
       for (let i = 1; arrayIndex < this.wmCount; i++) {
         const x = this.winemakers[arrayIndex++];
         if (x) {
@@ -461,8 +461,8 @@ $filerMobile: 1714px;
           box-sizing: border-box;
           border: rgba(0, 0, 0, 0.2) solid 1px;
           border-right: 1px solid #fcfcfc;
-          -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.04);
-          box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.04);
+          // -webkit-box-shadow: 5px 0px 15px -3px rgba(0, 0, 0, 0.04);
+          // box-shadow: -5px 2px 15px -3px rgba(0, 0, 0, 0.04);
           cursor: pointer;
 
           @media screen and (max-width: $filerMobile) {
