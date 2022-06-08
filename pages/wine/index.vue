@@ -112,7 +112,7 @@
               'repeat(auto-fill, minmax(max(665px, 100%/3), 1fr))',
           }"
         >
-          <CrowdCard
+          <cardsCrowdCard
             v-for="crowdF in visibleCrowdfunds"
             :key="crowdF.slug.current"
             :crowd-f="crowdF"

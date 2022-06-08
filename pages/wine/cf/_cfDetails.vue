@@ -1,6 +1,6 @@
 <template>
   <div class="crowdDetailsFocused">
-    <CrowdCard
+    <cardsCrowdCard
       class="buyCard"
       :class="{ fadeInOut: justMounted }"
       :crowd-f="cf"
@@ -288,7 +288,7 @@
           </div>
 
           <div class="artworkWrapper">
-            <CrowdCard :crowd-f="cf" />
+            <cardsCrowdCard :crowd-f="cf" />
             <portableImage class="artwork" :asset="cf.artwork.asset" />
           </div>
         </div>

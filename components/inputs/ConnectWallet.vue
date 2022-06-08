@@ -129,7 +129,7 @@ import {
 } from '@terra-money/wallet-controller';
 import { Subscription, combineLatest } from 'rxjs';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
-import { getController } from '~/assets/ts/walletController';
+import { getController } from '~/assets/ts/terraWalletController';
 import { getNftAmount } from '~/assets/ts/BlockchainData';
 
 export default Vue.extend({

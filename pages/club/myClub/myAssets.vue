@@ -24,7 +24,7 @@ import {
   ConnectedWallet,
 } from '@terra-money/wallet-controller';
 import { Subscription } from 'rxjs';
-import { getController } from '~/assets/ts/walletController';
+import { getController } from '~/assets/ts/terraWalletController';
 import { getNftsForWallet } from '~/assets/ts/BlockchainData';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 

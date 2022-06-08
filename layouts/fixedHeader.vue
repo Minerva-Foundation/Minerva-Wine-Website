@@ -10,7 +10,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import { WalletController } from '@terra-money/wallet-controller';
-import { initController, getController } from '~/assets/ts/walletController';
+import {
+  initController,
+  getController,
+} from '~/assets/ts/terraWalletController';
 
 export default Vue.extend({
   data: () => ({

@@ -77,7 +77,10 @@ import {
   // WalletStatus,
 } from '@terra-money/wallet-controller';
 import { Subscription, combineLatest } from 'rxjs';
-import { initController, getController } from '~/assets/ts/walletController';
+import {
+  initController,
+  getController,
+} from '~/assets/ts/terraWalletController';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 
 export default Vue.extend({

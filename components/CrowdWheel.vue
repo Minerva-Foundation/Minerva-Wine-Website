@@ -29,7 +29,7 @@
         'max-width': cfs.length <= 1 ? '1340px !important' : 'none',
       }"
     >
-      <CrowdCard
+      <cardsCrowdCard
         v-for="cf in displayedCfs"
         :key="cf.slug.current"
         :crowd-f="cf"
@@ -172,19 +172,21 @@ export default Vue.extend({
 <style lang="scss">
 .wrapperWheel {
   width: 100%;
-  margin-bottom: calc(84px + 3vw);
+  margin-bottom: calc(34px + 3vw);
+  padding-bottom: 100px;
   box-sizing: border-box;
   padding-left: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-bottom: 100px;
-  padding-top: 50px;
   z-index: 2;
 
   @media screen and (max-width: 900px) {
     padding-left: 0px;
+    margin-bottom: calc(84px + 3vw);
+    padding-bottom: 100px;
+    padding-top: 50px;
   }
 
   @media screen and (max-width: $fourth-incr) {

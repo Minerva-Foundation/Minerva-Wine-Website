@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="crowdF.slug.current.substring(0, 6) !== 'filler'"
-    class="wrapperCrowdCard"
+    class="wrappercardsCrowdCard"
     :class="{ large: large, soonCard: crowdF.soon }"
   >
     <div v-if="overlay" class="buyingProcess">
@@ -244,7 +244,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="wrapperCrowdCard filler"></div>
+  <div v-else class="wrappercardsCrowdCard filler"></div>
 </template>
 
 <script lang="ts">
@@ -262,10 +262,10 @@ import {
   TxResult,
 } from '@terra-money/wallet-controller';
 import { Subscription } from 'rxjs';
-import { lcd } from '~/assets/ts/ConfigBlockchaiin';
+import { lcd } from '~/assets/ts/terraConfigBlockchain';
 import * as defTypes from '~/assets/ts/defaultTypes';
 import { getCrowdfundBlockchainData } from '~/assets/ts/BlockchainData';
-import { getController } from '~/assets/ts/walletController';
+import { getController } from '~/assets/ts/terraWalletController';
 import toggleWalletWindowVisibility from '~/assets/ts/walletMethods';
 
 export default Vue.extend({
@@ -706,7 +706,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.wrapperCrowdCard {
+.wrappercardsCrowdCard {
   height: 730px;
   display: grid;
   grid-template-columns: 55% 45%;
