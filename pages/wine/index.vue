@@ -656,6 +656,10 @@ $filerMobile: 1714px;
             .text {
               cursor: pointer;
               font-size: 16px !important;
+
+              &:hover {
+                color: #555;
+              }
             }
 
             .hm {

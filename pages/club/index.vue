@@ -40,6 +40,7 @@
           <inputsFilterSelect
             name="Category"
             placeholder="Select categories ..."
+            :hover="true"
             :options="categoriesFiltersUsable"
             @selectionChecked="selectionEventParserCategory"
           />
@@ -704,22 +705,30 @@ $filerMobile: 0px;
 <style lang="scss">
 .filterArticles {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #fcfcfc;
   overflow: visible;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  z-index: 7;
 
   .filterContWrapper {
     position: relative;
     height: 95px;
-    width: 100%;
+    width: 300px;
     overflow: visible;
 
     .selectWrapper {
-      top: 13px;
+      top: 0;
+      bottom: 0;
+      height: 69px;
+      margin-top: auto;
+      margin-bottom: auto;
       left: 15px;
       position: absolute;
+
+      @media screen and (max-width: $fourth-incr) {
+        height: 60px;
+      }
     }
   }
 
@@ -736,6 +745,10 @@ $filerMobile: 0px;
     .text {
       cursor: pointer;
       font-size: 16px !important;
+
+      &:hover {
+        color: #555;
+      }
     }
 
     .hm {

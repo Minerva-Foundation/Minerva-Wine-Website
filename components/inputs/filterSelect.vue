@@ -1,7 +1,21 @@
 <template>
   <div class="selectWrapper">
-    <div class="sel" :class="{ selected: selected }">
-      <div class="placeholder noselect" @click="selected = !selected">
+    <div
+      class="sel"
+      :class="{ selected: selected }"
+      v-on="
+        hover
+          ? {
+              mouseover: () => (selected = true),
+              mouseleave: () => (selected = false),
+            }
+          : {}
+      "
+    >
+      <div
+        class="placeholder noselect"
+        v-on="hover ? {} : { click: () => (selected = !selected) }"
+      >
         {{ placeholder }}
       </div>
       <div v-for="(checked, option) in options" :key="option" class="option">
@@ -43,6 +57,11 @@ export default Vue.extend({
       type: Object,
       required: false,
       default: () => {},
+    },
+    hover: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data: () => ({
@@ -112,7 +131,7 @@ export default Vue.extend({
 
     .arrow {
       position: absolute;
-      top: 22px;
+      top: 19px;
       right: 28px;
       width: 9px;
       height: 9px;
@@ -120,6 +139,9 @@ export default Vue.extend({
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 3px;
+      transition-timing-function: ease-in-out;
+      transition-duration: 0.2s;
+      transition-property: transform top;
       transform: rotate(43.5deg);
       -webkit-transform: rotate(43.5deg);
       cursor: pointer;
@@ -141,7 +163,7 @@ export default Vue.extend({
     border: 1px solid rgba(0, 0, 0, 0.349);
 
     .arrow {
-      border: solid rgb(0, 0, 0);
+      border: solid #333;
       border-width: 0 2px 2px 0;
       transform: rotate(-135deg);
       -webkit-transform: rotate(-135deg);
